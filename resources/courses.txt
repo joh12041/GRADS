@@ -1,0 +1,408 @@
+[
+    {
+        "name": "Operating Systems",
+        "id": "csci5103",
+        "numCredits": "3",
+        "courseArea": "ARCHITECTURE_SYSTEMS_SOFTWARE"
+    },
+    {
+            "name": "System Modeling and Performance Evaluation",
+            "id": "csci5104",
+            "numCredits": "3",
+            "courseArea": "ARCHITECTURE_SYSTEMS_SOFTWARE"
+    },
+    {
+            "name": "Introduction to Distributed Systems",
+            "id": "csci5105",
+            "numCredits": "3",
+            "courseArea": "ARCHITECTURE_SYSTEMS_SOFTWARE"
+    },
+    {
+            "name": "Programming Languages",
+            "id": "csci5106",
+            "numCredits": "3",
+            "courseArea": "ARCHITECTURE_SYSTEMS_SOFTWARE"
+    },
+    {
+            "name": "User Interface Design, Implementation, and Evaluation",
+            "id": "csci5115",
+            "numCredits": "3",
+            "courseArea": "APPLICATIONS"
+    },
+    {
+            "name": "Developing the Interactive Web",
+            "id": "csci5117",
+            "numCredits": "3"
+    },
+    {
+            "name": "Collaborative and Social Computing",
+            "id": "csci5125",
+            "numCredits": "3",
+	    "courseArea": "APPLICATIONS"
+    },
+    {
+            "name": "e-Public Health: Online Intervention Design",
+            "id": "csci5129",
+            "numCredits": "3"
+    },
+    {
+            "name": "Advanced Internet Programming",
+            "id": "csci5131",
+            "numCredits": "3"
+    },
+    {
+            "name": "Real-Time and Embedded Systems",
+            "id": "csci5143",
+            "numCredits": "3"
+    },
+    {
+            "name": "Introduction to Compilers",
+            "id": "csci5161",
+            "numCredits": "3",
+            "courseArea": "ARCHITECTURE_SYSTEMS_SOFTWARE"
+    },
+    {
+            "name": "Advanced Computer Architecture",
+            "id": "csci5204",
+            "numCredits": "3",
+            "courseArea": "ARCHITECTURE_SYSTEMS_SOFTWARE"
+    },
+    {
+            "name": "Data Communications and Computer Networks",
+            "id": "csci5211",
+            "numCredits": "3",
+            "courseArea": "ARCHITECTURE_SYSTEMS_SOFTWARE"
+    },
+    {
+            "name": "Foundations of Advanced Netowrking",
+            "id": "csci5221",
+            "numCredits": "3",
+            "courseArea": "ARCHITECTURE_SYSTEMS_SOFTWARE"
+    },
+    {
+            "name": "Wireless and Sensor Networks",
+            "id": "csci5231",
+            "numCredits": "3",
+            "courseArea": "ARCHITECTURE_SYSTEMS_SOFTWARE"
+    },
+    {
+            "name": "Introduction to Computer Security",
+            "id": "csci5271",
+            "numCredits": "3",
+            "courseArea": "APPLICATIONS"
+    },
+    {
+            "name": "Analysis of Numerical Algorithms",
+            "id": "csci5302",
+            "numCredits": "3",
+            "courseArea": "THEORY_ALGORITHMS"
+    },
+    {
+            "name": "Computational Aspects of Matrix Theory",
+            "id": "csci5304",
+            "numCredits": "3",
+            "courseArea": "THEORY_ALGORITHMS"
+    },
+    {
+            "name": "Computational Complexity",
+            "id": "csci5403",
+            "numCredits": "3",
+            "courseArea": "THEORY_ALGORITHMS"
+    },
+    {
+            "name": "Advanced Algorithms and Data Structures",
+            "id": "csci5421",
+            "numCredits": "3",
+            "courseArea": "THEORY_ALGORITHMS"
+    },
+    {
+            "name": "Introduction to Parallel Computing: Architectures, Algorithms, and Programming",
+            "id": "csci5451",
+            "numCredits": "3",
+            "courseArea": "ARCHITECTURE_SYSTEMS_SOFTWARE"
+    },
+    {
+            "name": "Functional Genomics, Systems Biology, and Bioinformatics",
+            "id": "csci5461",
+            "numCredits": "3",
+            "courseArea": "ARCHITECTURE_SYSTEMS_SOFTWARE"
+    },
+    {
+            "name": "Modern Cryptography",
+            "id": "csci5471",
+            "numCredits": "3",
+            "courseArea": "APPLICATIONS"
+    },
+    {
+            "name": "Computational Techniques for Genomics",
+            "id": "csci5481",
+            "numCredits": "3",
+            "courseArea": "APPLICATIONS"
+    },
+    {
+            "name": "Artificial Intelligence I",
+            "id": "csci5511",
+            "numCredits": "3",
+            "courseArea": "APPLICATIONS"
+    },
+    {
+            "name": "Artificial Intelligence II",
+            "id": "csci5512",
+            "numCredits": "3",
+            "courseArea": "APPLICATIONS"
+    },
+    {
+            "name": "Introduction to Machine Learning",
+            "id": "csci5521",
+            "numCredits": "3",
+            "courseArea": "APPLICATIONS"
+    },
+    {
+            "name": "Introduction to Data Mining",
+            "id": "csci5523",
+            "numCredits": "3",
+            "courseArea": "APPLICATIONS"
+    },
+    {
+            "name": "Machine Learning",
+            "id": "csci5525",
+            "numCredits": "3",
+            "courseArea": "THEORY_ALGORITHMS"
+            },
+    {
+            "name": "Introduction to Intelligent Robotic Systems",
+            "id": "csci5551",
+            "numCredits": "3",
+            "courseArea": "APPLICATIONS"
+            },
+    {
+            "name": "Sensing and Estimation in Robotics",
+            "id": "csci5552",
+            "numCredits": "3"
+            },
+    {
+            "name": "Computer Vision",
+            "id": "csci5561",
+            "numCredits": "3",
+            "courseArea": "APPLICATIONS"
+            },
+    {
+            "name": "Fundamentals of Computer Graphics I",
+            "id": "csci5607",
+            "numCredits": "3",
+            "courseArea": "APPLICATIONS"
+            },
+    {
+            "name": "Fundamentals of Computer Graphics 2",
+            "id": "csci5608",
+            "numCredits": "3",
+            "courseArea": "APPLICATIONS"
+            },
+    {
+            "name": "Visualization",
+            "id": "csci5609",
+            "numCredits": "3",
+            "courseArea": "APPLICATIONS"
+            },
+    {
+            "name": "Animation and Planning in Games",
+            "id": "csci5611",
+            "numCredits": "3",
+            "courseArea": "APPLICATIONS"
+            },
+    {
+            "name": "Virtual Reality and 3D Interaction",
+            "id": "csci5619",
+            "numCredits": "3",
+            "courseArea": "APPLICATIONS"
+            },
+    {
+            "name": "Principles of Database Systems",
+            "id": "csci5707",
+            "numCredits": "3",
+            "courseArea": "APPLICATIONS"
+            },
+    {
+            "name": "Architecture and Implementation of Database Management Systems",
+            "id": "csci5708",
+            "numCredits": "3",
+            "courseArea": "ARCHITECTURE_SYSTEMS_SOFTWARE"
+            },
+    {
+            "name": "From GPS and Virtual Globes to Spatial Computing",
+            "id": "csci5715",
+            "numCredits": "3"
+            },
+    {
+            "name": "Software Engineering I",
+            "id": "csci5801",
+            "numCredits": "3",
+            "courseArea": "ARCHITECTURE_SYSTEMS_SOFTWARE"
+            },
+    {
+            "name": "Software Engineering II",
+            "id": "csci5802",
+            "numCredits": "3",
+            "courseArea": "ARCHITECTURE_SYSTEMS_SOFTWARE"
+            },
+    {
+            "name": "Special Topics in Computer Science",
+            "id": "csci5980",
+            "numCredits": "1-3"
+            },
+    {
+            "name": "Independent Study",
+            "id": "csci5991",
+            "numCredits": "1-3"
+            },
+    {
+            "name": "Directed Research",
+            "id": "csci5994",
+            "numCredits": "1-3"
+            },
+    {
+            "name": "Cirricular Practical Training",
+            "id": "csci5996",
+            "numCredits": "1"
+            },
+    {
+            "name": "Introduction to Research in Computer Science I",
+            "id": "csci8001",
+            "numCredits": "1"
+            },
+    {
+            "name": "Introduction to Research in Computer Science II",
+            "id": "csci8002",
+            "numCredits": "2"
+            },
+    {
+            "name": "Advanced Operating Systems",
+            "id": "csci8101",
+            "numCredits": "3"
+            },
+    {
+            "name": "Foundations of Distributed Computing",
+            "id": "csci8102",
+            "numCredits": "3"
+            },
+    {
+            "name": "Understanding the Social Web",
+            "id": "csci8117",
+            "numCredits": "3"
+            },
+    {
+            "name": "Advanced Compiler Techniques",
+            "id": "csci8161",
+            "numCredits": "3"
+            },
+    {
+            "name": "Parallel Computer Organization",
+            "id": "csci8205",
+            "numCredits": "3"
+            },
+    {
+            "name": "Advanced Computer Networks and Their Applications",
+            "id": "csci8211",
+            "numCredits": "3"
+            },
+    {
+            "name": "Security and Privacy in Computing",
+            "id": "csci8271",
+            "numCredits": "3"
+            },
+    {
+            "name": "Sparse Matrix Computations",
+            "id": "csci8314",
+            "numCredits": "3"
+            },
+    {
+            "name": "FTE: Masters",
+            "id": "csci8333",
+            "numCredits": "1"
+            },
+    {
+            "name": "Numerical Linear Algebra in Data Exploration",
+            "id": "csci8363",
+            "numCredits": "3"
+            },
+    {
+            "name": "Computational Geometry and Applications",
+            "id": "csci8442",
+            "numCredits": "3"
+            },
+    {
+            "name": "FTE: Doctoral",
+            "id": "csci8444",
+            "numCredits": "1"
+            },
+    {
+            "name": "Intelligent Agents",
+            "id": "csci8551",
+            "numCredits": "3"
+            },
+    {
+            "name": "Doctoral Pre-Thesis Credits",
+            "id": "csci8666",
+            "numCredits": "1-6"
+            },
+    {
+            "name": "Overview of Database Research",
+            "id": "csci8701",
+            "numCredits": "3"
+            },
+    {
+            "name": "Spatial Databases and Applications",
+            "id": "csci8715",
+            "numCredits": "3"
+            },
+    {
+            "name": "Databases for Bioinformatics",
+            "id": "csci8725",
+            "numCredits": "3"
+            },
+    {
+            "name": "Advanced Database Systems",
+            "id": "csci8735",
+            "numCredits": "3"
+            },
+    {
+            "name": "Plan B Project",
+            "id": "csci8760",
+            "numCredits": "3"
+            },
+    {
+            "name": "Thesis Credit: Masters",
+            "id": "csci8777",
+            "numCredits": "1-18"
+            },
+    {
+            "name": "Advanced Software Engineering",
+            "id": "csci8801",
+            "numCredits": "3"
+            },
+    {
+            "name": "Thesis Credit: Doctoral",
+            "id": "csci8888",
+            "numCredits": "1-24"
+            },
+    {
+            "name": "Computer Science Colloquium",
+            "id": "csci8970",
+            "numCredits": "1"
+            },
+    {
+            "name": "Special Advanced Topics in Computer Science",
+            "id": "csci8980",
+            "numCredits": "3"
+            },
+    {
+            "name": "Independent Study",
+            "id": "csci8991",
+            "numCredits": "1-3"
+            },
+    {
+            "name": "Directed Research in Computer Science",
+            "id": "csci8994",
+            "numCredits": "1-3"
+    }
+]
