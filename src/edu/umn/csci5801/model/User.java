@@ -1,7 +1,5 @@
 package edu.umn.csci5801.model;
 
-import edu.umn.csci5801.model.Enums;
-
 public class User{
 
     private String id;
@@ -14,7 +12,7 @@ public class User{
         this.firstName = firstName;
     }
 
-    public void setDepartment(edu.umn.csci5801.model.User.Department department) {
+    public void setDepartment(Department department) {
         this.department = department;
     }
 
@@ -26,15 +24,15 @@ public class User{
         this.lastName = lastName;
     }
 
-    public void setRole(edu.umn.csci5801.model.User.Role role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 
-    public edu.umn.csci5801.model.User.Department getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 
-    public edu.umn.csci5801.model.User.Role getRole() {
+    public Role getRole() {
         return role;
     }
 

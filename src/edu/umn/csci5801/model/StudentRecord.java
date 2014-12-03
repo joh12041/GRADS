@@ -22,6 +22,6 @@ public class StudentRecord{
     }
 
     private Student student;
-    private edu.umn.csci5801.model.Enums.Department department;
-    private edu.umn.csci5801.model.Enums.Role role;
+    private Department department;
+    private Role role;
 }

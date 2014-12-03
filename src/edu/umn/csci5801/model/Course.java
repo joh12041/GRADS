@@ -1,7 +1,5 @@
 package edu.umn.csci5801.model;
 
-import edu.umn.csci5801.model.Enums;
-
 public class Course{
 
     private String name;
@@ -9,7 +7,7 @@ public class Course{
     private String numCredits;
     private CourseArea courseArea;
 
-    public void setCourseArea(edu.umn.csci5801.model.Course.CourseArea courseArea) {
+    public void setCourseArea(CourseArea courseArea) {
         this.courseArea = courseArea;
     }
 
@@ -29,7 +27,7 @@ public class Course{
         return id;
     }
 
-    public edu.umn.csci5801.model.Course.CourseArea getCourseArea() {
+    public CourseArea getCourseArea() {
         return courseArea;
     }
 
