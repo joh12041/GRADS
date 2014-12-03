@@ -7,6 +7,14 @@ import java.util.List;
  */
 public class MasterB {
     private List<Requirement> reqList;
-    public void createReq(String requirementList) {
+    public List<Requirement> getReqList() {
+        if(reqList == null) {
+            setReqList();
+        }
+        return reqList;
+    }
+    //TODO: This is where the Requirements for Masters B get inputted into an array
+    private void setReqList() {
+
     }
 }

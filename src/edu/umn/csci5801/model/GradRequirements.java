@@ -1,5 +1,6 @@
 package edu.umn.csci5801.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,23 +9,53 @@ import java.util.List;
 public class GradRequirements {
     private List<GradReqCheck> reqChecks;
     private List<Requirement> reqList;
+    private Degree degree;
 
-    //constructor
+    //constructorx
+    public GradRequirements() {}
     public GradRequirements(Degree deg, List<GradReqCheck> grc){
-        reqList = createReqList(deg);
+        //createReqList(deg);  *****UNCOMMENT AND HANDLE EXCEPTION*****
         testReqList(reqList, grc);
     }
-
-    public List<GradReqCheck> getReqChecks() {
-        return reqChecks;
+    public GradRequirements(Degree deg, List<GradReqCheck> grc, Degree d){
+        //createReqList(deg);  *****UNCOMMENT AND HANDLE EXCEPTION*****
+        testReqList(reqList, grc);
+        degree = d;
     }
 
-    public List<Requirement> getReqList() {
-        return reqList;
-    }
+    public void setReqChecks(List<GradReqCheck> list) { reqChecks = list; }
+    public void addReqCheck(GradReqCheck grc) { reqChecks.add(grc); }
+    public void setReqList(List<Requirement> list) { reqList = list; }
+    public void addRequirement(Requirement r) { reqList.add(r); }
+    public void setDegree(Degree d) { degree = d; }
 
-    //TODO:create ReqList based off of degree - calls degreeRequirement interface/factory thinger
-    private List<Requirement> createReqList(Degree degree) {
+    public List<GradReqCheck> getReqChecks() { return reqChecks; }
+    public List<Requirement> getReqList() { return reqList; }
+    public Degree getDegree() { return degree; }
+
+    public List<Requirement> createReqList(Degree degree) throws Exception {
+        List<Requirement> rList = new ArrayList<Requirement>();
+        if(degree == Degree.MS_A) {
+            MasterA MSA = new MasterA();
+            rList = MSA.getReqList();
+        }
+        else if(degree == Degree.MS_B) {
+            MasterB MSB = new MasterB();
+            rList = MSB.getReqList();
+        }
+        else if(degree == Degree.MS_C) {
+            MasterC MSC = new MasterC();
+            rList = MSC.getReqList();
+        }
+        else if(degree == Degree.PHD) {
+            PHD phd = new PHD();
+            rList = phd.getReqList();
+        }
+        else {
+            Exception e = new Exception();
+            throw e;
+        }
+        this.reqList = rList;
         return reqList;
     }
 

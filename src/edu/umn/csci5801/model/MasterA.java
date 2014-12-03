@@ -4,9 +4,16 @@ import java.util.List;
 /**
  * Created by Justin on 12/2/2014.
  */
-public class MasterA implements DegreeRequirement {
+public class MasterA {
     private List<Requirement> reqList;
-    public void createReq(String requirementList) {
+    public List<Requirement> getReqList() {
+        if(reqList == null) {
+            setReqList();
+        }
+        return reqList;
     }
+    //TODO: This is where the Requirements for Masters A get inputted into an array
+    private void setReqList() {
 
+    }
 }
