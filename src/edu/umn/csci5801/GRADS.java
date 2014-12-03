@@ -164,7 +164,22 @@ public class GRADS implements GRADSIntf
      * a validity check, or a non-GPC tries to call.  SEE NOTE IN CLASS HEADER.
      */
     public void updateTranscript(String userId, StudentRecord transcript) throws Exception {
-        return;
+        if(userList == null) {
+            Exception exception = new Exception();
+            throw exception;
+        }
+        int count = 0, index = -1;
+        for(StudentRecord sRecord : this.recordList) {
+            if(userId.equals(sRecord.getStudent().getId())) {
+                index = count;
+            }
+            count++;
+        }
+        if(index == -1) {
+            Exception e = new Exception();
+            throw e;
+        }
+        this.recordList.set(index,transcript);
     }
 
     /**
