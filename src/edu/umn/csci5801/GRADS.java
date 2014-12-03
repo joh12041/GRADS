@@ -147,6 +147,22 @@ public class GRADS implements GRADSIntf
          */
         public ProgressSummary generateProgressSummary(String userId) throws Exception {
             ProgressSummary progressSummary = new ProgressSummary();
+            boolean realUser = false;
+            User desiredUser = new User();
+            for(User u : userList) {
+                if (userId.equals(u.getId())) {
+                    desiredUser = u;
+                    realUser = true;
+                }
+            }
+            if(realUser &&
+                    ((currentUser.getRole().equals("GRADUATE_PROGRAM_COORDINATOR") &&
+                            currentUser.getDepartment().equals(desiredUser.getDepartment())) ||
+                    currentUser.getId().equals(userId))) {
+                progressSummary.checkGradStatus();
+            }
+
+            if ()
             return progressSummary;
         }
 
