@@ -188,12 +188,9 @@ public class GRADS implements GRADSIntf
                 //finds studentRecord from data passed in with loadRecords and gets progressSummary
                 for(StudentRecord sr : recordList) {
                     if (userId.equals(sr.getStudent().getId())) {
-                        StudentRecord studentRecord = new StudentRecord(sr.getStudent(), sr.getDepartment(),
-                                sr.getRole(), sr.getDegreeSought(), sr.getTermBegan(), sr.getAdvisor(),
-                                sr.getCommittee(), sr.getCoursesTaken(),sr.getNotes());
-                        ProgressSummary progressSummary = new ProgressSummary(studentRecord.getStudent(),
-                                studentRecord.getDepartment(), studentRecord.getDegreeSought(), studentRecord.getTermBegan(),
-                                studentRecord.getAdvisor(), studentRecord.getCommittee(), studentRecord.getNotes());
+                        ProgressSummary progressSummary = new ProgressSummary(sr.getStudent(),
+                                sr.getDepartment(), sr.getDegreeSought(), sr.getTermBegan(),
+                                sr.getAdvisor(), sr.getCommittee(), sr.getNotes());
                         progressSummary.checkGradStatus();
                         return progressSummary;
                     }
