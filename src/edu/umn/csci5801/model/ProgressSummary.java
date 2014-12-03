@@ -17,15 +17,15 @@ public class ProgressSummary {
     private List<String> notes;
 
     //Constructor
-    public void ProgressSummary(Student cStudent, Department cDepartment, Degree cDegree, Term cTermBegan,
-                                List<Professor> cAdvisors, List<Professor> cCommittee, List<String> cNotes) {
-        student = cStudent;
-        department = cDepartment;
-        degree = cDegree;
-        termBegan = cTermBegan;
-        advisors = cAdvisors;
-        committee = cCommittee;
-        notes = cNotes;
+    public void ProgressSummary(Student s, Department dep, Degree deg, Term tb,
+                                List<Professor> a, List<Professor> c, List<String> n) {
+        student = s;
+        department = dep;
+        degree = deg;
+        termBegan = tb;
+        advisors = a;
+        committee = c;
+        notes = n;
     }
 
     public void checkGradStatus() {
