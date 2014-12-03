@@ -1,6 +1,9 @@
 package edu.umn.csci5801.model;
 
-public class Course{
+/**
+ * Created by Justin on 12/2/2014.
+ */
+public class Course {
 
     private String name;
     private String id;

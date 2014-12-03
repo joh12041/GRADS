@@ -2,13 +2,13 @@
  * GRADSIntf
  * Interface for the GRADS top-level API.
  * Last Modified: 09/03/2014
- * 
+ *
  * Copyright (c) 2014, Gregory Gay and Jason Biatek
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without 
  * modification, are permitted provided that the following conditions are met:
- * 
+ *
  * - Redistributions of source code must retain the above copyright notice, this
  *   list of conditions and the following disclaimer.
  * - Redistributions in binary form must reproduce the above copyright notice, 
@@ -17,7 +17,7 @@
  * - Neither the name of the University of Minnesota nor the names of its 
  *   contributors may be used to endorse or promote products derived from this 
  *   software without specific prior written permission.
- *   
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
@@ -43,11 +43,11 @@ import edu.umn.csci5801.model.CourseTaken;
  * Graduation Requirement Assessment Data System (GRADS) 
  * and the processing code for checking and generating the
  * graduation progress summary.
- * 
+ *
  * NOTE:  When you implement this interface, it is good practice to create
  * your own exceptions for the project.  We expect this to be done for this 
  * project.
- * 
+ *
  *
  * @author ggay
  */
@@ -85,13 +85,13 @@ public interface GRADSIntf
      * @throws Exception  if the user id is invalid.  SEE NOTE IN CLASS HEADER.
      */
     public void setUser(String userId) throws Exception;
-    
+
     /**
      * Gets the user id of the user currently using the system.
      * @return  the X500 user id of the user currently using the system.
      */
     public String getUser();
-    
+
     /**
      * Gets a list of the userIds of the students that a GPC can view.
      * @return a list containing the userId of for each student in the
@@ -99,7 +99,7 @@ public interface GRADSIntf
      * @throws Exception is the current user is not a GPC.
      */
     public List<String> getStudentIDs() throws Exception;
-    
+
     /**
      * Gets the raw student record data for a given userId.
      * @param userId  the identifier of the student.
@@ -107,9 +107,9 @@ public interface GRADSIntf
      * @throws Exception  if the form data could not be retrieved.  SEE NOTE IN 
      *      CLASS HEADER.
      */
-    public StudentRecord getTranscript(String userId) 
+    public StudentRecord getTranscript(String userId)
             throws Exception;
-    
+
     /**
      * Saves a new set of student data to the records data.  
      * @param userId the student ID to overwrite.
@@ -117,7 +117,7 @@ public interface GRADSIntf
      * @throws Exception  if the transcript data could not be saved, failed
      * a validity check, or a non-GPC tries to call.  SEE NOTE IN CLASS HEADER.
      */
-    public void updateTranscript(String userId, StudentRecord transcript) 
+    public void updateTranscript(String userId, StudentRecord transcript)
             throws Exception;
 
     /**
@@ -127,7 +127,7 @@ public interface GRADSIntf
      * @throws Exception  if the note could not be saved or a non-GPC tries to call. 
      * SEE NOTE IN CLASS HEADER.
      */
-    public void addNote(String userId, String note) 
+    public void addNote(String userId, String note)
             throws Exception;
 
     /**
@@ -137,7 +137,7 @@ public interface GRADSIntf
      * @throws Exception  if the progress summary could not be generated.  
      * SEE NOTE IN CLASS HEADER.
      */
-    public ProgressSummary generateProgressSummary(String userId) 
+    public ProgressSummary generateProgressSummary(String userId)
             throws Exception;
 
     /**
@@ -149,6 +149,6 @@ public interface GRADSIntf
      * @throws Exception  if the progress summary could not be generated or the courses  
      * are invalid. SEE NOTE IN CLASS HEADER.
      */
-    public ProgressSummary simulateCourses(String userId, List<CourseTaken> courses) 
+    public ProgressSummary simulateCourses(String userId, List<CourseTaken> courses)
             throws Exception;
 }
