@@ -1,11 +1,12 @@
 package edu.umn.csci5801;
 
 /**
- * Created by Justin on 12/2/2014
+ * Created by Justin on 12/2/2014.
  */
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Reader;
@@ -33,8 +34,12 @@ public class GRADS implements GRADSIntf
          * @throws Exception for I/O errors.  SEE NOTE IN CLASS HEADER.
          */
         public void loadUsers(String usersFile) throws Exception{
-            List<User> users = new Gson().fromJson( new FileReader( new File(usersFile)), new TypeToken<List<User>>(){}.getType());
-            this.userList = users;
+            try {
+                List<User> users = new Gson().fromJson( new FileReader( new File(usersFile)), new TypeToken<List<User>>(){}.getType());
+                this.userList = users;
+            } catch (IOException ioException) {
+                System.out.println("IO Exception while Loading Users");
+            }
         }
 
         /**
@@ -43,8 +48,12 @@ public class GRADS implements GRADSIntf
          * @throws Exception for I/O errors.  SEE NOTE IN CLASS HEADER.
          */
         public void loadCourses(String coursesFile) throws Exception{
-            List<Course> courses = new Gson().fromJson( new FileReader( new File(coursesFile)), new TypeToken<List<Course>>(){}.getType());
-            this.courseList = courses;
+            try {
+                List<Course> courses = new Gson().fromJson( new FileReader( new File(coursesFile)), new TypeToken<List<Course>>(){}.getType());
+                this.courseList = courses;
+            } catch (IOException ioException) {
+                System.out.println("IO Exception while Loading Courses");
+            }
         }
 
         /**
@@ -53,8 +62,12 @@ public class GRADS implements GRADSIntf
          * @throws Exception for I/O errors.  SEE NOTE IN CLASS HEADER.
          */
         public void loadRecords(String recordsFile) throws Exception {
-            List<StudentRecord> records = new Gson().fromJson( new FileReader( new File(recordsFile)), new TypeToken<List<Course>>(){}.getType());
-            this.recordList = records;
+            try {
+                List<StudentRecord> records = new Gson().fromJson( new FileReader( new File(recordsFile)), new TypeToken<List<Course>>(){}.getType());
+                this.recordList = records;
+            } catch (IOException ioException) {
+                System.out.println("IO Exception while Loading Records");
+            }
         }
 
         /**
@@ -64,16 +77,22 @@ public class GRADS implements GRADSIntf
          */
         public void setUser(String userId) throws Exception {
             //loadUsers();
-            boolean assigned = false;
-            for(User u : userList) {
-                if(userId.equals(u.getId())) {
-                    this.currentUser = u;
-                    assigned = true;
-                }
+            if(userList == null) {
+                Exception exception = new Exception();
+                throw exception;
             }
-            if(!assigned){
-                System.out.println("Exception");
-                //Throws exception
+            else {
+                boolean assigned = false;
+                for (User u : userList) {
+                    if (userId.equals(u.getId())) {
+                        this.currentUser = u;
+                        assigned = true;
+                    }
+                }
+                if (!assigned) {
+                    Exception exception = new Exception();
+                    throw exception;
+                }
             }
         }
 
@@ -83,8 +102,8 @@ public class GRADS implements GRADSIntf
          */
         public String getUser() {
             if(this.currentUser == null) {
-                System.out.println("Exception");
-                //Throws exception
+                System.out.println("User Not Assigned");
+                return null;
             }
             return this.currentUser.getId();
         }
@@ -96,12 +115,19 @@ public class GRADS implements GRADSIntf
          * @throws Exception is the current user is not a GPC.
          */
         public List<String> getStudentIDs() throws Exception {
-            if(this.currentUser.getRole() == Role.STUDENT){
-                System.out.println("Exception");
-                //Throws exception
+            if(this.currentUser.getRole() == Role.STUDENT || userList == null){
+                Exception exception = new Exception();
+                throw exception;
             }
-            List<String> ret = new ArrayList<String>();
-            return ret;
+            List<String> studentIDList = new ArrayList<String>();
+            try {
+                for (User u : userList) {
+                    studentIDList.add(u.getId());
+                }
+            } catch(Exception e){
+                throw e;
+            }
+            return studentIDList;
         }
 
         /**
@@ -158,12 +184,12 @@ public class GRADS implements GRADSIntf
             if(realUser &&
                     ((currentUser.getRole().equals("GRADUATE_PROGRAM_COORDINATOR") &&
                             currentUser.getDepartment().equals(desiredUser.getDepartment())) ||
-                    currentUser.getId().equals(userId))) {
+                            currentUser.getId().equals(userId))) {
                 progressSummary.checkGradStatus();
             }
 
-            if ()
-            return progressSummary;
+            //if ()
+                return progressSummary;
         }
 
         /**
