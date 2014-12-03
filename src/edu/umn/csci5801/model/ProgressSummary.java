@@ -17,6 +17,7 @@ public class ProgressSummary {
     private List<String> notes;
 
     //Constructor
+    public ProgressSummary(){}
     public ProgressSummary(Student s, Department dep, Degree deg, Term tb,
                                 List<Professor> a, List<Professor> c, List<String> n) {
         student = s;

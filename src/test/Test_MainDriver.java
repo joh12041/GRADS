@@ -10,7 +10,6 @@ import edu.umn.csci5801.model.Course;
 import edu.umn.csci5801.model.CourseArea;
 import edu.umn.csci5801.model.CourseTaken;
 import edu.umn.csci5801.model.Degree;
-import edu.umn.csci5801.model.DegreeRequirement;
 import edu.umn.csci5801.model.Department;
 import edu.umn.csci5801.model.GradReqCheck;
 import edu.umn.csci5801.model.MasterA;
@@ -30,11 +29,14 @@ import edu.umn.csci5801.model.User;
 
 
 public class Test_MainDriver {
-    public static void main(String [] args) {
+    public static void main(String [] args) throws Exception {
         GRADS grads = new GRADS();
         Role role = Role.STUDENT;
         role = Role.GRADUATE_PROGRAM_COORDINATOR;
         System.out.println(role);
         System.out.println("Hello World");
+        System.out.println("Working Directory = " +
+                System.getProperty("user.dir"));
+        grads.loadUsers("resources/users.txt");
     }
 }

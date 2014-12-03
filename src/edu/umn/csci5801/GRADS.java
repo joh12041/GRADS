@@ -32,7 +32,7 @@ public class GRADS implements GRADSIntf
      * @param usersFile the filename of the users file.
      * @throws Exception for I/O errors.  SEE NOTE IN CLASS HEADER.
      */
-    public void loadUsers(String usersFile) throws Exception{
+    public void loadUsers(String usersFile) throws IOException{
         try {
             List<User> users = new Gson().fromJson( new FileReader( new File(usersFile)), new TypeToken<List<User>>(){}.getType());
             this.userList = users;
