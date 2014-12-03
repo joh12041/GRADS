@@ -1,10 +1,8 @@
 package edu.umn.csci5801.model;
 
-public class Course{
+import edu.umn.csci5801.model.Enums;
 
-    public enum CourseArea{
-        THEORY_ALGORITHMS, APPLICATIONS, ARCHITECTURE_SYSTEMS_SOFTWARE
-    }
+public class Course{
 
     private String name;
     private String id;

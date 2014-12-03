@@ -1,14 +1,8 @@
 package edu.umn.csci5801.model;
 
+import edu.umn.csci5801.model.Enums;
+
 public class User{
-
-    public enum Role{
-        STUDENT, GRADUATE_PROGRAM_COORDINATOR
-    }
-
-    public enum Department{
-        COMPUTER_SCIENCE, MATH
-    }
 
     private String id;
     private String firstName;
@@ -36,11 +30,11 @@ public class User{
         this.role = role;
     }
 
-    public edu.umn.CSCI5801.model.User.Department getDepartment() {
+    public edu.umn.csci5801.model.User.Department getDepartment() {
         return department;
     }
 
-    public edu.umn.CSCI5801.model.User.Role getRole() {
+    public edu.umn.csci5801.model.User.Role getRole() {
         return role;
     }
 
