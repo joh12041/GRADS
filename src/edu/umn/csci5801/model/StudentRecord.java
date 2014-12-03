@@ -18,6 +18,18 @@ public class StudentRecord {
     private List<CompletedMilestone> milestonesSet;
     private List<String> notes;
 
+    public StudentRecord(Student s, Department dep, Role r, Degree deg, Term tb, List<Professor> a, List<Professor> c,
+                         List<CourseTaken> ct, List<String> n){
+        student = s;
+        department = dep;
+        degreeSought = deg;
+        termBegan = tb;
+        advisor = a;
+        committee = c;
+        coursesTaken = ct;
+        notes = n;
+    }
+
     public Degree getDegreeSought() {
         return degreeSought;
     }

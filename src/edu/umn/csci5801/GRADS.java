@@ -185,13 +185,19 @@ public class GRADS implements GRADSIntf
                     ((currentUser.getRole().equals(Role.GRADUATE_PROGRAM_COORDINATOR) &&
                             currentUser.getDepartment().equals(desiredUser.getDepartment())) ||
                             currentUser.getId().equals(userId))) {
-                //TODO:instantiate studentRecord based on userId parameter: fill in line below with potentially parameters;
-                StudentRecord studentRecord = new StudentRecord();
-                ProgressSummary progressSummary = new ProgressSummary(studentRecord.getStudent(),
-                        studentRecord.getDepartment(), studentRecord.getDegreeSought(), studentRecord.getTermBegan(),
-                        studentRecord.getAdvisor(), studentRecord.getCommittee(), studentRecord.getNotes());
-                progressSummary.checkGradStatus();
-                return progressSummary;
+                //finds studentRecord from data passed in with loadRecords and gets progressSummary
+                for(StudentRecord sr : recordList) {
+                    if (userId.equals(sr.getStudent().getId())) {
+                        StudentRecord studentRecord = new StudentRecord(sr.getStudent(), sr.getDepartment(),
+                                sr.getRole(), sr.getDegreeSought(), sr.getTermBegan(), sr.getAdvisor(),
+                                sr.getCommittee(), sr.getCoursesTaken(),sr.getNotes());
+                        ProgressSummary progressSummary = new ProgressSummary(studentRecord.getStudent(),
+                                studentRecord.getDepartment(), studentRecord.getDegreeSought(), studentRecord.getTermBegan(),
+                                studentRecord.getAdvisor(), studentRecord.getCommittee(), studentRecord.getNotes());
+                        progressSummary.checkGradStatus();
+                        return progressSummary;
+                    }
+                }
             }
             else{
                 //throw exception
