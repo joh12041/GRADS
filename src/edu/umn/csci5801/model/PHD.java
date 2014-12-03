@@ -13,8 +13,8 @@ public class PHD {
         }
         return reqList;
     }
-    //TODO: This is where the Requirements for Masters PHD get inputted into an array
+    //TODO: This is where the Requirements for Masters PHD get inputted into a List
     private void setReqList() {
-
+        //See MasterA.java for format
     }
 }
