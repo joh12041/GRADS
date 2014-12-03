@@ -40,7 +40,7 @@ public class GRADS implements GRADSIntf
          * @throws Exception for I/O errors.  SEE NOTE IN CLASS HEADER.
          */
         public void loadCourses(String coursesFile) throws Exception{
-//            List<Course> courses = new Gson().fromJson( new FileReader( new File(coursesFile)), new TypeToken<List<Course>>(){}.getType());
+            List<Course> courses = new Gson().fromJson( new FileReader( new File(coursesFile)), new TypeToken<List<Course>>(){}.getType());
         }
 
         /**
@@ -48,7 +48,9 @@ public class GRADS implements GRADSIntf
          * @param recordsFile the filename of the transcripts file.
          * @throws Exception for I/O errors.  SEE NOTE IN CLASS HEADER.
          */
-        public void loadRecords(String recordsFile) throws Exception {}
+        public void loadRecords(String recordsFile) throws Exception {
+            List<StudentRecord> studentRecords = new Gson().fromJson( new FileReader( new File(recordsFile)), new TypeToken<List<StudentRecord>>(){}.getType());
+        }
 
         /**
          * Sets the user id (X500) of the user currently using the system.
