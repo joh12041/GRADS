@@ -1,7 +1,7 @@
 package edu.umn.csci5801;
 
 /**
- * Created by Justin on 12/2/2014
+ * Created by Justin on 12/2/2014.
  */
 
 import java.io.File;
@@ -12,12 +12,8 @@ import java.io.Reader;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import edu.umn.csci5801.model.StudentRecord;
-import edu.umn.csci5801.model.ProgressSummary;
-import edu.umn.csci5801.model.CourseTaken;
-import edu.umn.csci5801.model.User;
+import edu.umn.csci5801.model.*;
 import edu.umn.csci5801.GRADSIntf;
-import edu.umn.csci5801.model.Course;
 
 
 /**
@@ -25,6 +21,12 @@ import edu.umn.csci5801.model.Course;
   */
 public class GRADS implements GRADSIntf
 {
+    private List<User> userList;
+    public User currentUser;
+    private List<Student> studentList;
+    private List<Course> courseList;
+    private List<StudentRecord> recordList;
+
         /**
          * Loads the list of system usernames and permissions.
          * @param usersFile the filename of the users file.
@@ -32,6 +34,7 @@ public class GRADS implements GRADSIntf
          */
         public void loadUsers(String usersFile) throws Exception{
             List<User> users = new Gson().fromJson( new FileReader( new File(usersFile)), new TypeToken<List<User>>(){}.getType());
+            this.userList = users;
         }
 
         /**
@@ -41,6 +44,7 @@ public class GRADS implements GRADSIntf
          */
         public void loadCourses(String coursesFile) throws Exception{
             List<Course> courses = new Gson().fromJson( new FileReader( new File(coursesFile)), new TypeToken<List<Course>>(){}.getType());
+            this.courseList = courses;
         }
 
         /**
@@ -49,7 +53,8 @@ public class GRADS implements GRADSIntf
          * @throws Exception for I/O errors.  SEE NOTE IN CLASS HEADER.
          */
         public void loadRecords(String recordsFile) throws Exception {
-            List<StudentRecord> studentRecords = new Gson().fromJson( new FileReader( new File(recordsFile)), new TypeToken<List<StudentRecord>>(){}.getType());
+            List<StudentRecord> records = new Gson().fromJson( new FileReader( new File(recordsFile)), new TypeToken<List<Course>>(){}.getType());
+            this.recordList = records;
         }
 
         /**
@@ -57,13 +62,32 @@ public class GRADS implements GRADSIntf
          * @param userId  the X500 id of the user generating progress summaries.
          * @throws Exception  if the user id is invalid.  SEE NOTE IN CLASS HEADER.
          */
-        public void setUser(String userId) throws Exception {}
+        public void setUser(String userId) throws Exception {
+            //loadUsers();
+            boolean assigned = false;
+            for(User u : userList) {
+                if(userId.equals(u.getId())) {
+                    this.currentUser = u;
+                    assigned = true;
+                }
+            }
+            if(!assigned){
+                System.out.println("Exception");
+                //Throws exception
+            }
+        }
 
         /**
          * Gets the user id of the user currently using the system.
          * @return  the X500 user id of the user currently using the system.
          */
-        public String getUser() { return "hi"; }
+        public String getUser() {
+            if(this.currentUser == null) {
+                System.out.println("Exception");
+                //Throws exception
+            }
+            return this.currentUser.getId();
+        }
 
         /**
          * Gets a list of the userIds of the students that a GPC can view.
@@ -72,6 +96,10 @@ public class GRADS implements GRADSIntf
          * @throws Exception is the current user is not a GPC.
          */
         public List<String> getStudentIDs() throws Exception {
+            if(this.currentUser.getRole() == Role.STUDENT){
+                System.out.println("Exception");
+                //Throws exception
+            }
             List<String> ret = new ArrayList<String>();
             return ret;
         }
