@@ -23,10 +23,12 @@ public class GradRequirements {
         return reqList;
     }
 
+    //TODO:create ReqList based off of degree - calls degreeRequirement interface/factory thinger
     private List<Requirement> createReqList(Degree degree) {
         return reqList;
     }
 
+    //TODO:test ReqList against student record contained in partially filled-in grc
     private void testReqList(List<Requirement> requirements, List<GradReqCheck> grc) {
     }
 }
