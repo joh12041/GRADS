@@ -24,7 +24,6 @@ public class GRADS implements GRADSIntf
 {
     private List<User> userList;
     public User currentUser;
-    private List<Student> studentList;
     private List<Course> courseList;
     private List<StudentRecord> recordList;
 
@@ -138,7 +137,22 @@ public class GRADS implements GRADSIntf
      *      CLASS HEADER.
      */
     public StudentRecord getTranscript(String userId) throws Exception {
+        if(userList == null) {
+            Exception exception = new Exception();
+            throw exception;
+        }
         StudentRecord studentRecord = new StudentRecord();
+        boolean assigned = false;
+        for(StudentRecord sRecord : this.recordList) {
+            if(userId.equals(sRecord.getStudent().getId())) {
+                studentRecord = sRecord;
+                assigned = true;
+            }
+        }
+        if(!assigned) {
+            Exception e = new Exception();
+            throw e;
+        }
         return studentRecord;
     }
 
