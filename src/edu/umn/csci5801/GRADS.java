@@ -1,7 +1,7 @@
 package edu.umn.csci5801;
 
 /**
- * Created by Justin on 12/2/2014.
+ * Created by Justin on 12/2/2014
  */
 
 import java.io.File;
