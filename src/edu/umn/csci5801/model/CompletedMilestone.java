@@ -7,6 +7,12 @@ public class CompletedMilestone {
     private Milestone milestone;
     private Term term;
 
+    public CompletedMilestone() {}
+    public CompletedMilestone(Milestone m, Term t) {
+        milestone = m;
+        term = t;
+    }
+
     public void setMilestone(Milestone milestone){
         this.milestone = milestone;
     }
@@ -17,7 +23,6 @@ public class CompletedMilestone {
     public Milestone getMilestone(){
         return milestone;
     }
-
     public Term getTerm(){
         return term;
     }

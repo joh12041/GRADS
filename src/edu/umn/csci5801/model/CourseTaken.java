@@ -8,6 +8,13 @@ public class CourseTaken {
     private Term term;
     private Grade grade;
 
+    public CourseTaken() {}
+    public CourseTaken(Course c, Term t, Grade g) {
+        course = c;
+        term = t;
+        grade = g;
+    }
+
     public Course getCourse() { return course; }
     public Term getTerm() { return term; }
     public Grade getGrade() { return grade; }
