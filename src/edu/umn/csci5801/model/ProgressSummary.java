@@ -29,10 +29,7 @@ public class ProgressSummary {
     }
 
     public void checkGradStatus() {
-        List<Requirement> requirements;
-        GradReqCheck gradReqCheck = new GradReqCheck();
-        requirements = gradReqCheck.createReqList(degree);
-        gradReqCheck.testReqList(requirements);
-        reqCheckResult = gradReqCheck.getReqChecks();
+        GradRequirements gradRequirements = new GradRequirements(degree, reqCheckResult);
+        reqCheckResult = gradRequirements.getReqChecks();
     }
 }
