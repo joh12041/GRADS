@@ -172,8 +172,6 @@ public class GRADS implements GRADSIntf
          * SEE NOTE IN CLASS HEADER.
          */
         public ProgressSummary generateProgressSummary(String userId) throws Exception {
-            ProgressSummary progressSummary = new ProgressSummary();
-            StudentRecord studentRecord = new StudentRecord();
             boolean realUser = false;
             User desiredUser = new User();
             for(User u : userList) {
@@ -182,18 +180,22 @@ public class GRADS implements GRADSIntf
                     realUser = true;
                 }
             }
+            //check if correct permissions for accessing student progress summary
             if(realUser &&
                     ((currentUser.getRole().equals(Role.GRADUATE_PROGRAM_COORDINATOR) &&
                             currentUser.getDepartment().equals(desiredUser.getDepartment())) ||
                             currentUser.getId().equals(userId))) {
-                //TODO:instantiate studentRecord based on userId parameter
-                //TODO:instantiate progressSummary based on studentRecord
+                //TODO:instantiate studentRecord based on userId parameter: fill in line below with potentially parameters;
+                StudentRecord studentRecord = new StudentRecord();
+                ProgressSummary progressSummary = new ProgressSummary(studentRecord.getStudent(),
+                        studentRecord.getDepartment(), studentRecord.getDegreeSought(), studentRecord.getTermBegan(),
+                        studentRecord.getAdvisor(), studentRecord.getCommittee(), studentRecord.getNotes());
                 progressSummary.checkGradStatus();
+                return progressSummary;
             }
             else{
                 //throw exception
             }
-            return progressSummary;
         }
 
         /**

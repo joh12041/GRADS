@@ -17,7 +17,7 @@ public class ProgressSummary {
     private List<String> notes;
 
     //Constructor
-    public void ProgressSummary(Student s, Department dep, Degree deg, Term tb,
+    public ProgressSummary(Student s, Department dep, Degree deg, Term tb,
                                 List<Professor> a, List<Professor> c, List<String> n) {
         student = s;
         department = dep;
@@ -32,7 +32,7 @@ public class ProgressSummary {
         List<Requirement> requirements;
         GradReqCheck gradReqCheck = new GradReqCheck();
         requirements = gradReqCheck.createReqList(degree);
-        gradReqCheck.testReqList();
-        reqCheckResult = gradReqCheck.getReqChecks()
+        gradReqCheck.testReqList(requirements);
+        reqCheckResult = gradReqCheck.getReqChecks();
     }
 }
