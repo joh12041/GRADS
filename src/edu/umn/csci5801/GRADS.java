@@ -182,14 +182,15 @@ public class GRADS implements GRADSIntf
                 }
             }
             if(realUser &&
-                    ((currentUser.getRole().equals("GRADUATE_PROGRAM_COORDINATOR") &&
+                    ((currentUser.getRole().equals(Role.GRADUATE_PROGRAM_COORDINATOR) &&
                             currentUser.getDepartment().equals(desiredUser.getDepartment())) ||
                             currentUser.getId().equals(userId))) {
                 progressSummary.checkGradStatus();
             }
-
-            //if ()
-                return progressSummary;
+            else{
+                //throw exception
+            }
+            return progressSummary;
         }
 
         /**
