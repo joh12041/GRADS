@@ -1,7 +1,7 @@
 package edu.umn.csci5801.model;
 
 /**
- * Created by Justin on 12/2/2014.
+ * Created by zihong on 12/2/14.
  */
-public class PhD {
+public class PHD {
 }
