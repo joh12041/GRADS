@@ -89,7 +89,7 @@ public class MasterC {
         ctl3.add(new CourseTaken(new Course("Advanced Software Engineering","csci8801","3"),new Term(), Grade.C));
         ctl3.add(new CourseTaken(new Course("Special Advanced Topics in Computer Science","csci8980","3"),new Term(), Grade.C));
 
-        Requirement req3 = new Requirement(Reqs.PHD_LEVEL_COURSES,ctl3,3,ls);
+        Requirement req3 = new Requirement(Reqs.PHD_LEVEL_COURSES_PLANC,ctl3,6,ls);
         reqList.add(req3);
 
         //TODO:REQUIREMENT #4 TOTAL CREDITS

@@ -144,7 +144,33 @@ public class GradReqCheck {
     }
 
     private void casePHD_LEVEL_COURSES_PLANC(Requirement requirement, List<CourseTaken> courseTakenList) {
+        this.result = false;
+        boolean takenClass = false;
+        int takenCredits = 0;
+        List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
+        List<Course> validCourses = new ArrayList<Course>();
 
+        //Generate list of valid courses
+        for (CourseTaken validCourseTaken : requirement.getCourses()) {
+            validCourses.add(validCourseTaken.getCourse());
+        }
+
+        //Find and count only the coursesTaken that match the requirement
+        for (CourseTaken courseTaken : courseTakenList) {
+            if (validCourses.contains(courseTaken.getCourse())) {
+                newCourseTakenList.add(courseTaken);
+                //Check if passed and therefore credits count toward requirement
+                if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B || courseTaken.getGrade() == Grade.C) {
+                    takenCredits = takenCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());
+                }
+            }
+        }
+
+        //Fill in gradReqCheck
+        this.details = new Requirement(requirement.getName(), newCourseTakenList);
+        if (takenCredits >= requirement.getCredits()) {
+            this.result = true;
+        }
     }
 
     private void caseINTRO_TO_RESEARCH(Requirement requirement, List<CourseTaken> courseTakenList) {
