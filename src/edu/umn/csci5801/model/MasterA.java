@@ -83,13 +83,28 @@ public class MasterA {
 
         //REQUIREMENT #4 PHD LEVEL COURSES
         List<CourseTaken> ctl4 = new ArrayList<CourseTaken>();
-        CourseTaken ct4 = new CourseTaken(new Course("PhD level courses","csci8000","3"),new Term(), Grade.C);
-        ctl4.add(ct4);
+        ctl4.add(new CourseTaken(new Course("Advanced Operating Systems","csci8101","3"),new Term(), Grade.C));
+        ctl4.add(new CourseTaken(new Course("Foundations of Distributed Computing","csci8102","3"),new Term(), Grade.C));
+        ctl4.add(new CourseTaken(new Course("Understanding the Social Web","csci8117","3"),new Term(), Grade.C));
+        ctl4.add(new CourseTaken(new Course("Advanced Compiler Techniques","csci8161","3"),new Term(), Grade.C));
+        ctl4.add(new CourseTaken(new Course("Parallel Computer Organization","csci8205","3"),new Term(), Grade.C));
+        ctl4.add(new CourseTaken(new Course("Advanced Computer Networks and Their Applications","csci8211","3"),new Term(), Grade.C));
+        ctl4.add(new CourseTaken(new Course("Security and Privacy in Computing","csci8271","3"),new Term(), Grade.C));
+        ctl4.add(new CourseTaken(new Course("Sparse Matrix Computations","csci8314","3"),new Term(), Grade.C));
+        ctl4.add(new CourseTaken(new Course("Numerical Linear Algebra in Data Exploration","csci8363","3"),new Term(), Grade.C));
+        ctl4.add(new CourseTaken(new Course("Computational Geometry and Applications","csci8442","3"),new Term(), Grade.C));
+        ctl4.add(new CourseTaken(new Course("Intelligent Agents","csci8551","3"),new Term(), Grade.C));
+        ctl4.add(new CourseTaken(new Course("Overview of Database Research","csci8701","3"),new Term(), Grade.C));
+        ctl4.add(new CourseTaken(new Course("Spatial Databases and Applications","csci8715","3"),new Term(), Grade.C));
+        ctl4.add(new CourseTaken(new Course("Databases for Bioinformatics","csci8725","3"),new Term(), Grade.C));
+        ctl4.add(new CourseTaken(new Course("Advanced Database Systems","csci8735","3"),new Term(), Grade.C));
+        ctl4.add(new CourseTaken(new Course("Advanced Software Engineering","csci8801","3"),new Term(), Grade.C));
+        ctl4.add(new CourseTaken(new Course("Special Advanced Topics in Computer Science","csci8980","3"),new Term(), Grade.C));
 
         Requirement req4 = new Requirement("PHD_LEVEL_COURSES",ctl4,3,ls);
         reqList.add(req4);
 
-        //REQUIREMENT #5 TOTAL CREDITS
+        //TODO:REQUIREMENT #5 TOTAL CREDITS
         List<CourseTaken> ctl5 = new ArrayList<CourseTaken>();
         CourseTaken ct5 = new CourseTaken(new Course(),new Term(), Grade.C);
         ctl5.add(ct5);
@@ -97,7 +112,7 @@ public class MasterA {
         Requirement req5 = new Requirement("TOTAL_CREDITS",3.25f,ctl5,31,ls);
         reqList.add(req5);
 
-        //REQUIREMENT #6 COURSE CREDITS
+        //TODO:REQUIREMENT #6 COURSE CREDITS
         List<CourseTaken> ctl6 = new ArrayList<CourseTaken>();
         CourseTaken ct6 = new CourseTaken(new Course(),new Term(), Grade.C);
         ctl6.add(ct6);
