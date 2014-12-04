@@ -25,11 +25,8 @@ public class GradReqCheck {
     public Requirement getDetails() { return details; }
 
     public void testReq(Requirement requirement, List<CourseTaken> courseTakenList, List<CompletedMilestone> completedMilestoneList) {
-        //DETERMINE WHETHER REQUIREMENT PASSED IN IS MET IN COURSETAKENLIST AND COMPLETEDMILESTONES
-        //TODO: Logic for checking any given requirement
+        //Logic for checking any given requirement
         switch (requirement.getName()) {
-            //TODO: Fill in all the different case statements (one for each possible requirement name
-            //TODO: Basic Procedure: determine which of hte coursestaken will be used, create a requirements object out of them, compare that requirements object to requirement passed into method, set result
             case BREADTH_REQUIREMENT_MS:
                 caseBREADTH_REQUIREMENT_MS(requirement, courseTakenList);
                 break;
@@ -462,6 +459,10 @@ public class GradReqCheck {
     }
 
     private void caseCOURSE_CREDITS(Requirement requirement, List<CourseTaken> courseTakenList) {
+        //Track CSCI credits and Non-CSCI credits
+        //Use regex similar to IN_PROGRAM_GPA and OUT_OF_DEPARTMENT to get individual credit requirements
+        //Check that grades are A, B, or C
+        //Remove any thesis credits from consideration
 
     }
 

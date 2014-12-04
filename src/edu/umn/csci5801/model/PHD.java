@@ -88,7 +88,7 @@ public class PHD {
         reqList.add(req5);
 
         //REQUIREMENT #6 TOTAL_CREDITS
-        Requirement req6 = new Requirement(Reqs.TOTAL_CREDITS);
+        Requirement req6 = new Requirement(Reqs.TOTAL_CREDITS, 31);
         reqList.add(req6);
 
         //REQUIREMENT #7 OVERALL_GPA_PHD
