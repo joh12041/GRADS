@@ -65,18 +65,15 @@ public class MasterB {
         reqList.add(req1);
 
         //REQUIREMENT #2 PLAN_B_PROJECT
-
         List<CourseTaken> ctl2 = new ArrayList<CourseTaken>();
-        CourseTaken ct2 = new CourseTaken(new Course("PlanB_project","csci8760","3"),new Term(), Grade.S);
-        ctl2.add(ct2);
+        ctl2.add(new CourseTaken(new Course("PlanB_project","csci8760","3"),new Term(), Grade.S));
 
         Requirement req2 = new Requirement(Reqs.PLAN_B_PROJECT,ctl2,3,ls);
         reqList.add(req2);
 
         //REQUIREMENT #3 COLLOQUIUM
         List<CourseTaken> ctl3 = new ArrayList<CourseTaken>();
-        CourseTaken ct3 = new CourseTaken(new Course("Colloquium","csci8970","1"),new Term(), Grade.S);
-        ctl3.add(ct3);
+        ctl3.add(new CourseTaken(new Course("Colloquium","csci8970","1"),new Term(), Grade.S));
 
         Requirement req3 = new Requirement(Reqs.COLLOQUIUM,ctl3,1,ls);
         reqList.add(req3);
@@ -104,26 +101,27 @@ public class MasterB {
         Requirement req4 = new Requirement(Reqs.PHD_LEVEL_COURSES,ctl4,3,ls);
         reqList.add(req4);
 
-        //TODO:REQUIREMENT #5 TOTAL CREDITS
-        List<CourseTaken> ctl5 = new ArrayList<CourseTaken>();
-        CourseTaken ct5 = new CourseTaken(new Course(),new Term(), Grade.C);
-        ctl5.add(ct5);
-
-        Requirement req5 = new Requirement(Reqs.TOTAL_CREDITS_MSB,3.25,ctl5,31,ls);
+        //TODO:REQUIREMENT #5 TOTAL CREDITS_MSB
+        Requirement req5 = new Requirement(Reqs.TOTAL_CREDITS_MSB);
         reqList.add(req5);
 
-
-        //Requirement #6 COMPLETED MILESTONES
-        List<CompletedMilestone> lm6 = new ArrayList<CompletedMilestone>();
-        lm6.add(new CompletedMilestone(Milestone.DPF_SUBMITTED));
-        lm6.add(new CompletedMilestone(Milestone.DPF_APPROVED));
-        lm6.add(new CompletedMilestone(Milestone.THESIS_COMMITTEE_APPOINTED));
-        lm6.add(new CompletedMilestone(Milestone.GRADUATION_PACKET_REQUESTED));
-        lm6.add(new CompletedMilestone(Milestone.THESIS_SUBMITTED));
-        lm6.add(new CompletedMilestone(Milestone.THESIS_APPROVED));
-        lm6.add(new CompletedMilestone(Milestone.DEFENSE_PASSED));
-
-        Requirement req6 = new Requirement(Reqs.MILESTONES_MS_B,lm6,ls);
+        //REQUIREMENT #6 OVERALL_GPA_MS
+        Requirement req6 = new Requirement(Reqs.OVERALL_GPA_MS, 3.25);
         reqList.add(req6);
+
+        //REQUIREMENT #7 IN_PROGRAM_GPA_MS
+        Requirement req7 = new Requirement(Reqs.IN_PROGRAM_GPA_MS, 3.25);
+        reqList.add(req7);
+
+        //Requirement #8 COMPLETED MILESTONES
+        List<CompletedMilestone> lm8 = new ArrayList<CompletedMilestone>();
+        lm8.add(new CompletedMilestone(Milestone.DPF_SUBMITTED));
+        lm8.add(new CompletedMilestone(Milestone.DPF_APPROVED));
+        lm8.add(new CompletedMilestone(Milestone.THESIS_COMMITTEE_APPOINTED));
+        lm8.add(new CompletedMilestone(Milestone.GRADUATION_PACKET_REQUESTED));
+        lm8.add(new CompletedMilestone(Milestone.DEFENSE_PASSED));
+
+        Requirement req8 = new Requirement(Reqs.MILESTONES_MS_B,lm8,ls);
+        reqList.add(req8);
     }
 }
