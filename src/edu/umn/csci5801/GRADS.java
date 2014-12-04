@@ -190,6 +190,7 @@ public class GRADS implements GRADSIntf
      * SEE NOTE IN CLASS HEADER.
      */
     public void addNote(String userId, String note) throws Exception {
+
         if(this.recordList == null) {
             Exception e = new Exception();
             throw e;
@@ -217,9 +218,10 @@ public class GRADS implements GRADSIntf
      * SEE NOTE IN CLASS HEADER.
      */
     public ProgressSummary generateProgressSummary(String userId) throws Exception {
-        ProgressSummary nullProgressSummaryReturn = new ProgressSummary();
+        ProgressSummary progressSummaryReturn = new ProgressSummary();
         boolean realUser = false;
         User desiredUser = new User();
+        //TODO: THROW ERROR if userList is empty
         for(User u : userList) {
             if (userId.equals(u.getId())) {
                 desiredUser = u;
@@ -236,16 +238,16 @@ public class GRADS implements GRADSIntf
                 if (userId.equals(sr.getStudent().getId())) {
                     ProgressSummary progressSummary = new ProgressSummary(sr.getStudent(),
                             sr.getDepartment(), sr.getDegreeSought(), sr.getTermBegan(),
-                            sr.getAdvisors(), sr.getCommittee(), sr.getNotes());
+                            sr.getAdvisors(), sr.getCommittee(), sr.getNotes(), sr.getCoursesTaken());
                     progressSummary.checkGradStatus();
-                    return progressSummary;
+                    progressSummaryReturn = progressSummary;
                 }
             }
         }
         else{
             //throw exception
         }
-        return nullProgressSummaryReturn;
+        return progressSummaryReturn;
     }
 
     /**
@@ -258,8 +260,37 @@ public class GRADS implements GRADSIntf
      * are invalid. SEE NOTE IN CLASS HEADER.
      */
     public ProgressSummary simulateCourses(String userId, List<CourseTaken> courses) throws Exception {
-        ProgressSummary progressSummary = new ProgressSummary();
-        return progressSummary;
+        ProgressSummary progressSummaryReturn = new ProgressSummary();
+        boolean realUser = false;
+        User desiredUser = new User();
+        //TODO: THROW ERROR if userList is empty
+        for(User u : userList) {
+            if (userId.equals(u.getId())) {
+                desiredUser = u;
+                realUser = true;
+            }
+        }
+        //check if correct permissions for accessing student progress summary
+        if(realUser &&
+                ((currentUser.getRole().equals(Role.GRADUATE_PROGRAM_COORDINATOR) &&
+                        currentUser.getDepartment().equals(desiredUser.getDepartment())) ||
+                        currentUser.getId().equals(userId))) {
+            //finds studentRecord from data passed in with loadRecords and gets progressSummary
+            for(StudentRecord sr : recordList) {
+                if (userId.equals(sr.getStudent().getId())) {
+                    sr.appendCourses(courses);
+                    ProgressSummary progressSummary = new ProgressSummary(sr.getStudent(),
+                            sr.getDepartment(), sr.getDegreeSought(), sr.getTermBegan(),
+                            sr.getAdvisors(), sr.getCommittee(), sr.getNotes(), sr.getCoursesTaken());
+                    progressSummary.checkGradStatus();
+                    progressSummaryReturn = progressSummary;
+                }
+            }
+        }
+        else{
+            //throw exception
+        }
+        return progressSummaryReturn;
     }
 }
 

@@ -15,11 +15,13 @@ public class ProgressSummary {
     private List<Professor> committee;
     private List<GradReqCheck> reqCheckResult;
     private List<String> notes;
+    private List<CourseTaken> coursesTaken;
 
+    //Default Constructor
+    public ProgressSummary() {}
     //Constructor
-    public ProgressSummary(){}
     public ProgressSummary(Student s, Department dep, Degree deg, Term tb,
-                                List<Professor> a, List<Professor> c, List<String> n) {
+                           List<Professor> a, List<Professor> c, List<String> n, List<CourseTaken> ct) {
         student = s;
         department = dep;
         degree = deg;
@@ -27,6 +29,7 @@ public class ProgressSummary {
         advisors = a;
         committee = c;
         notes = n;
+        coursesTaken = ct;
     }
 
     public void checkGradStatus() {
