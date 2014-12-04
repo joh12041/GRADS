@@ -60,9 +60,4 @@ public class StudentRecord {
             this.coursesTaken.add(courseTaken);
         }
     }
-
-    public ProgressSummary checkProgressSummary(Degree d, List<CourseTaken> coursesTaken) {
-        ProgressSummary progressSummary = new ProgressSummary();
-        return progressSummary;
-    }
 }
