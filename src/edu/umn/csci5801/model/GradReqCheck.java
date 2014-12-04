@@ -1,5 +1,6 @@
 package edu.umn.csci5801.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,8 +29,8 @@ public class GradReqCheck {
         //TODO: Logic for checking any given requirement
         switch (requirement.getName()) {
             //TODO: Fill in all the different case statements (one for each possible requirement name
-            //TODO: Basic Procedure: determine which of hte coursestaken will be used, create a requirements object out of them, compare that requirements object to requirement passed into method, set result
             case BREADTH_REQUIREMENT_MS:
+                caseBREADTH_REQUIREMENT_MS(requirement, courseTakenList, completedMilestoneList);
                 break;
             case BREADTH_REQUIREMENT_PHD:
                 break;
@@ -40,6 +41,7 @@ public class GradReqCheck {
             case PLAN_B_PROJECT:
                 break;
             case COLLOQUIUM:
+                caseCOLLOQUIUM(requirement, courseTakenList, completedMilestoneList);
                 break;
             case OUT_OF_DEPARTMENT:
                 break;
@@ -71,6 +73,29 @@ public class GradReqCheck {
                 break;
             default:
                 break;
+        }
+    }
+
+    private void  caseBREADTH_REQUIREMENT_MS(Requirement requirement, List<CourseTaken> courseTakenList, List<CompletedMilestone> completedMilestoneList) {
+
+    }
+
+    private void caseCOLLOQUIUM(Requirement requirement, List<CourseTaken> courseTakenList, List<CompletedMilestone> completedMilestoneList) {
+        this.result = false;
+        boolean takenClass = false;
+        for(CourseTaken courseTaken : courseTakenList) {
+            if("csci5801".equals(courseTaken.getCourse().getId())) {
+                if(courseTaken.getGrade() == Grade.S) {
+                    this.result = true;
+                }
+                List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
+                newCourseTakenList.add(courseTaken);
+                this.details = new Requirement(Reqs.COLLOQUIUM, newCourseTakenList);
+                takenClass = true;
+            }
+        }
+        if(!takenClass) {
+            this.details = new Requirement(Reqs.COLLOQUIUM);
         }
     }
 }

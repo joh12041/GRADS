@@ -22,6 +22,10 @@ public class Requirement {
         name = _name_;
         gpa = _gpa_;
     }
+    public Requirement(Reqs _name_, List<CourseTaken> _courses_) {
+        name = _name_;
+        courses = _courses_;
+    }
     public Requirement(Reqs _name_, float _gpa_, List<CourseTaken> _courses_, int _credits_,
                        List<CompletedMilestone> _milestones_, List<String> _notes_) {
         name = _name_;
@@ -88,8 +92,7 @@ public class Requirement {
         return gradef;
     }
 
-    public void calculateGpa(List<CourseTaken> courseTakenList) {
-        //Pull grade and credits of each coursetaken, calculate GPA
+    public void calculateGpa() {
 
     }
 
