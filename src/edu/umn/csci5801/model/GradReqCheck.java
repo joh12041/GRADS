@@ -243,7 +243,7 @@ public class GradReqCheck {
             if (validCourseIDs.contains(courseTaken.getCourse().getId())) {
                 switch (courseTaken.getCourse().getCourseArea()) {
                     case APPLICATIONS:
-                        if (topAppl != null) {
+                        if (topAppl == null) {
                             if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B || courseTaken.getGrade() == Grade.C) {
                                 topAppl = courseTaken;
                                 break;
@@ -270,7 +270,7 @@ public class GradReqCheck {
                         break;
 
                     case THEORY_ALGORITHMS:
-                        if (topThry != null) {
+                        if (topThry == null) {
                             if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B || courseTaken.getGrade() == Grade.C) {
                                 topThry = courseTaken;
                                 break;
@@ -297,7 +297,7 @@ public class GradReqCheck {
                         break;
 
                     case ARCHITECTURE_SYSTEMS_SOFTWARE:
-                        if (topArch != null) {
+                        if (topArch == null) {
                             if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B || courseTaken.getGrade() == Grade.C) {
                                 topArch = courseTaken;
                                 break;
@@ -324,28 +324,41 @@ public class GradReqCheck {
                         break;
                 }
             }
-            if (topAppl != null) {
-                newCourseTakenList.add(topAppl);
-            }
-            if (topThry != null) {
-                newCourseTakenList.add(topThry);
-            }
-            if (topArch != null) {
-                newCourseTakenList.add(topArch);
-            }
-            if (fourth != null) {
-                newCourseTakenList.add(fourth);
-            }
-            if (fifth != null) {
-                newCourseTakenList.add(fifth);
-            }
+        }
 
-            //Fill in gradReqCheck
-            this.details = new Requirement(requirement.getName(), newCourseTakenList);
-            this.details.calculateGpa();
-            if (details.getGpa() >= requirement.getGpa() && this.details.getCourses().size() == 5) {
-                this.result = true;
+        if (topAppl != null) {
+            newCourseTakenList.add(topAppl);
+        }
+        if (topThry != null) {
+            newCourseTakenList.add(topThry);
+        }
+        if (topArch != null) {
+            newCourseTakenList.add(topArch);
+        }
+
+        for (CourseTaken courseTaken2 : courseTakenList) {
+            if (validCourseIDs.contains(courseTaken2.getCourse().getId())) {
+                if (!newCourseTakenList.contains(courseTaken2)) {
+                    if (fourth == null) {
+
+                    }
+                }
             }
+        }
+            
+        
+        if (fourth != null) {
+            newCourseTakenList.add(fourth);
+        }
+        if (fifth != null) {
+            newCourseTakenList.add(fifth);
+        }
+
+        //Fill in gradReqCheck
+        this.details = new Requirement(requirement.getName(), newCourseTakenList);
+        this.details.calculateGpa();
+        if (details.getGpa() >= requirement.getGpa() && this.details.getCourses().size() == 5) {
+            this.result = true;
         }
     }
 
