@@ -18,8 +18,11 @@ public class MasterA {
     //TODO: STEP 2 -- Append req to list "reqList.add(req1);"
     //TODO: STEP 3 -- Repeat for all Requirements
     private void setReqList() {
-        //public Requirement(String _name_, float _gpa_, List<CourseTaken> _courses_, int _credits_,
-                            //List<CompletedMilestone> _milestones_, List<String> _notes_) {
+
+        //List<String> to be included in all Requirements
+        String s = "";
+        List<String> ls = new ArrayList<String>();
+        ls.add(s);
 
         // REQUIREMENT #1 Breadth Requirement Courses
         List<CourseTaken> ctl1 = new ArrayList<CourseTaken>();
@@ -59,17 +62,12 @@ public class MasterA {
         ctl1.add(new CourseTaken(new Course("Virtual Reality and 3D Interaction","csci5619","3",CourseArea.APPLICATIONS), new Term(), Grade.C));
         ctl1.add(new CourseTaken(new Course("Principles of Database Systems","csci5707","3",CourseArea.APPLICATIONS), new Term(), Grade.C));
 
-        String s = "";
-        List<String> ls = new ArrayList<String>();
-        ls1.add(s);
-
         Requirement req1 = new Requirement("BREADTH_REQUIREMENT_MS", 3.25f, ctl1, 9, ls);
         reqList.add(req1);
 
         //REQUIREMENT #2 THESIS_MS
-
         List<CourseTaken> ctl2 = new ArrayList<CourseTaken>();
-        CourseTaken ct2 = new CourseTaken(new Course("Thesis_MS","csci8777","10"),new Term(), Grade.S);
+        CourseTaken ct2 = new CourseTaken(new Course("Thesis Credit: Masters","csci8777","10"),new Term(), Grade.S);
         ctl2.add(ct2);
 
         Requirement req2 = new Requirement("THESIS_MS",ctl2,10,ls);
@@ -77,7 +75,7 @@ public class MasterA {
 
         //REQUIREMENT #3 COLLOQUIUM
         List<CourseTaken> ctl3 = new ArrayList<CourseTaken>();
-        CourseTaken ct3 = new CourseTaken(new Course("Colloquium","csci8970","1"),new Term(), Grade.S);
+        CourseTaken ct3 = new CourseTaken(new Course("Computer Science Colloquium","csci8970","1"),new Term(), Grade.S);
         ctl3.add(ct3);
 
         Requirement req3 = new Requirement("COLLOQUIUM",ctl3,1,ls);
