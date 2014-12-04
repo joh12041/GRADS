@@ -43,10 +43,10 @@ public class GradReqCheck {
                 caseTHESIS(requirement, courseTakenList);
                 break;
             case PLAN_B_PROJECT:
-                casePLAN_B_PROJECT(requirement, courseTakenList);
+                casePASSED_AS_SATISFACTORY(requirement, courseTakenList);
                 break;
             case COLLOQUIUM:
-                caseCOLLOQUIUM(requirement, courseTakenList);
+                casePASSED_AS_SATISFACTORY(requirement, courseTakenList);
                 break;
             case OUT_OF_DEPARTMENT:
                 caseOUT_OF_DEPARTMENT(requirement, courseTakenList);
@@ -128,16 +128,12 @@ public class GradReqCheck {
         }
     }
 
-    private void casePLAN_B_PROJECT(Requirement requirement, List<CourseTaken> courseTakenList) {
-
-    }
-
-    private void caseCOLLOQUIUM(Requirement requirement, List<CourseTaken> courseTakenList) {
+    private void casePASSED_AS_SATISFACTORY(Requirement requirement, List<CourseTaken> courseTakenList) {
         this.result = false;
         boolean takenClass = false;
         List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
         for(CourseTaken courseTaken : courseTakenList) {
-            if("csci5801".equals(courseTaken.getCourse().getId())) {
+            if(requirement.getCourses().get(0).getCourse().getId().equals(courseTaken.getCourse().getId())) {
                 if(courseTaken.getGrade() == Grade.S) {
                     this.result = true;
                 }
