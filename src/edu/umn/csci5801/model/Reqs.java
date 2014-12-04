@@ -6,7 +6,7 @@
  * You may obtain a copy of the License at
  *
  *    http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,7 +18,7 @@ package edu.umn.csci5801.model;
 
 /**
  * Reqs.java - Enumeration containing all valid requirements
- * 
+ *
  * @author CSCI5801 Fall2014 Group1
  * @version 1.0
  */
@@ -33,7 +33,10 @@ public enum  Reqs {
     PHD_LEVEL_COURSES,
     PHD_LEVEL_COURSES_PLANC,
     INTRO_TO_RESEARCH,
-    TOTAL_CREDITS,
+    TOTAL_CREDITS_PHD,
+    TOTAL_CREDITS_MSA,
+    TOTAL_CREDITS_MSB,
+    TOTAL_CREDITS_MSC,
     COURSE_CREDITS,
     OVERALL_GPA_PHD,
     IN_PROGRAM_GPA_PHD,

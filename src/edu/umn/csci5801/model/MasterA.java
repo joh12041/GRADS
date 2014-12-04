@@ -20,16 +20,17 @@ public class MasterA {
     private void setReqList() {
 
         //List<String> to be included in all Requirements
-        String s = "";
         List<String> ls = new ArrayList<String>();
-        ls.add(s);
+        ls.add("");
 
-        // REQUIREMENT #1 Breadth Requirement Courses
+        // REQUIREMENT #1 BREADTH_REQUIREMENT_MS
         List<CourseTaken> ctl1 = new ArrayList<CourseTaken>();
         ctl1.add(new CourseTaken(new Course("Analysis of Numerical Algorithms","csci5302","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
         ctl1.add(new CourseTaken(new Course("Computational Aspects of Matrix Theory","csci5304","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
         ctl1.add(new CourseTaken(new Course("Computational Complexity","csci5403","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
         ctl1.add(new CourseTaken(new Course("Advanced Algorithms and Data Structures","csci5421","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5525","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+
         ctl1.add(new CourseTaken(new Course("Operating Systems","csci5103","3",CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));
         ctl1.add(new CourseTaken(new Course("System Modeling and Performance Evaluation","csci5104","3",CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));
         ctl1.add(new CourseTaken(new Course("Introduction to Distributed Systems","csci5105","3",CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));
@@ -44,6 +45,7 @@ public class MasterA {
         ctl1.add(new CourseTaken(new Course("Architecture and Implementation of Database Management Systems","csci5708","3",CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));
         ctl1.add(new CourseTaken(new Course("Software Engineering I","csci5801","3",CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));
         ctl1.add(new CourseTaken(new Course("Software Engineering II","csci5802","3",CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));
+
         ctl1.add(new CourseTaken(new Course("User Interface Design, Implementation, and Evaluation","csci5115","3",CourseArea.APPLICATIONS), new Term(), Grade.C));
         ctl1.add(new CourseTaken(new Course("Collaborative and Social Computing","csci5125","3",CourseArea.APPLICATIONS), new Term(), Grade.C));
         ctl1.add(new CourseTaken(new Course("Introduction to Computer Security","csci5271","3",CourseArea.APPLICATIONS), new Term(), Grade.C));
@@ -67,16 +69,14 @@ public class MasterA {
 
         //REQUIREMENT #2 THESIS_MS
         List<CourseTaken> ctl2 = new ArrayList<CourseTaken>();
-        CourseTaken ct2 = new CourseTaken(new Course("Thesis Credit: Masters","csci8777","10"),new Term(), Grade.S);
-        ctl2.add(ct2);
+        ctl2.add(new CourseTaken(new Course("Thesis Credit: Masters","csci8777","10"),new Term(), Grade.S));
 
         Requirement req2 = new Requirement(Reqs.THESIS_MS,ctl2,10,ls);
         reqList.add(req2);
 
         //REQUIREMENT #3 COLLOQUIUM
         List<CourseTaken> ctl3 = new ArrayList<CourseTaken>();
-        CourseTaken ct3 = new CourseTaken(new Course("Computer Science Colloquium","csci8970","1"),new Term(), Grade.S);
-        ctl3.add(ct3);
+        ctl3.add(new CourseTaken(new Course("Computer Science Colloquium","csci8970","1"),new Term(), Grade.S));
 
         Requirement req3 = new Requirement(Reqs.COLLOQUIUM,ctl3,1,ls);
         reqList.add(req3);
@@ -104,12 +104,11 @@ public class MasterA {
         Requirement req4 = new Requirement(Reqs.PHD_LEVEL_COURSES,ctl4,3,ls);
         reqList.add(req4);
 
-        //TODO:REQUIREMENT #5 TOTAL CREDITS
+        //REQUIREMENT #5 TOTAL_CREDITS_MSA
         List<CourseTaken> ctl5 = new ArrayList<CourseTaken>();
-        CourseTaken ct5 = new CourseTaken(new Course(),new Term(), Grade.C);
-        ctl5.add(ct5);
+        ctl5.add(new CourseTaken(new Course(),new Term(), Grade.C));
 
-        Requirement req5 = new Requirement(Reqs.TOTAL_CREDITS,3.25,ctl5,31,ls);
+        Requirement req5 = new Requirement(Reqs.TOTAL_CREDITS_MSA,3.25,ctl5,31,ls);
         reqList.add(req5);
 
         //TODO:REQUIREMENT #6 COURSE CREDITS

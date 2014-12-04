@@ -57,8 +57,17 @@ public class GradReqCheck {
             case INTRO_TO_RESEARCH:
                 casePASSED_AS_SATISFACTORY(requirement, courseTakenList);
                 break;
-            case TOTAL_CREDITS:
-                caseTOTAL_CREDITS(requirement, courseTakenList);
+            case TOTAL_CREDITS_PHD:
+                caseTOTAL_CREDITS_PHD(requirement, courseTakenList);
+                break;
+            case TOTAL_CREDITS_MSA:
+                caseTOTAL_CREDITS_MSA(requirement, courseTakenList);
+                break;
+            case TOTAL_CREDITS_MSB:
+                caseTOTAL_CREDITS_MSB(requirement, courseTakenList);
+                break;
+            case TOTAL_CREDITS_MSC:
+                caseTOTAL_CREDITS_MSC(requirement, courseTakenList);
                 break;
             case COURSE_CREDITS:
                 caseCOURSE_CREDITS(requirement, courseTakenList);
@@ -354,7 +363,7 @@ public class GradReqCheck {
                 }
             }
         }
-            
+
 
         if (fourth != null) {
             newCourseTakenList.add(fourth);
@@ -454,7 +463,19 @@ public class GradReqCheck {
         }
     }
 
-    private void caseTOTAL_CREDITS(Requirement requirement, List<CourseTaken> courseTakenList) {
+    private void caseTOTAL_CREDITS_PHD(Requirement requirement, List<CourseTaken> courseTakenList) {
+
+    }
+
+    private void caseTOTAL_CREDITS_MSA(Requirement requirement, List<CourseTaken> courseTakenList) {
+
+    }
+
+    private void caseTOTAL_CREDITS_MSB(Requirement requirement, List<CourseTaken> courseTakenList) {
+
+    }
+
+    private void caseTOTAL_CREDITS_MSC(Requirement requirement, List<CourseTaken> courseTakenList) {
 
     }
 
