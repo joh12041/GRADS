@@ -1,5 +1,7 @@
 package edu.umn.csci5801.model;
 
+import java.util.List;
+
 /**
  * Created by Justin on 12/2/2014.
  */
@@ -23,10 +25,12 @@ public class GradReqCheck {
     public boolean getResult() { return result; }
     public Requirement getDetails() { return details; }
 
-    public Requirement buildReq(Requirement requirement) {
-        return requirement;
-    }
-    public void testReq(Requirement requirement) {
-        return;
+    public void testReq(Requirement requirement, List<CourseTaken> courseTakenList, List<CompletedMilestone> completedMilestoneList) {
+        //DETERMINE WHETHER REQUIREMENT PASSED IN IS MET IN COURSETAKENLIST AND COMPLETEDMILESTONES
+        //TODO: Logic for checking any given requirement
+        switch (requirement.getName()) {
+            //TODO: Fill in all the different case statements (one for each possible requirement name
+            case "BREADTH_REQUIREMENT_MS":
+        }
     }
 }

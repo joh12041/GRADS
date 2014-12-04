@@ -62,4 +62,15 @@ public class Requirement {
     public List<String> getNotes() { return notes; }
     public String getName() { return name; }
 
+    private float gradeToFloat(Grade grade){
+        float gradef = new float;
+        switch (grade) {
+            case A: return 4.0f;
+        }
+    }
+
+    public void calculateGpa() {
+
+    }
+
 }
