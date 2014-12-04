@@ -21,14 +21,43 @@ public class MasterA {
         //public Requirement(String _name_, float _gpa_, List<CourseTaken> _courses_, int _credits_,
                             //List<CompletedMilestone> _milestones_, List<String> _notes_) {
 
-        //String n, String i_d, String nc, CourseArea ca
-
         // REQUIREMENT #1
         List<CourseTaken> ctl1 = new ArrayList<CourseTaken>();
-        CourseTaken ct1 = new CourseTaken(new Course("Analysis of Numerical Algorithms","csci5302","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C);
-        CourseTaken ct2 = new CourseTaken(new Course("Computational Aspects of Matrix Theory","csci5304","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C);
-        ctl1.add(ct1);
-        ctl1.add(ct2);
+        ctl1.add(new CourseTaken(new Course("Analysis of Numerical Algorithms","csci5302","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Computational Aspects of Matrix Theory","csci5304","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Computational Complexity","csci5403","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Advanced Algorithms and Data Structures","csci5421","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5103","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5104","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5105","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5106","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5161","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5204","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5211","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5221","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5231","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5451","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5461","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5708","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5801","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5802","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5115","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5125","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5271","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5471","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5481","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5511","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5512","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5521","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5523","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5551","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5561","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5607","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5608","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5609","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5611","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5619","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Machine Learning","csci5707","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
 
         CompletedMilestone m1 = new CompletedMilestone();
         List<CompletedMilestone> lm1 = new ArrayList<CompletedMilestone>();
