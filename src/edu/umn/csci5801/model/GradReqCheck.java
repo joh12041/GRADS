@@ -109,12 +109,17 @@ public class GradReqCheck {
         boolean takenClass = false;
         int takenCredits = 0;
         List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
+        List<String> validCourseIDs = new ArrayList<String>();
+
+        //Generate list of valid courses
+        for (CourseTaken validCourseTaken : requirement.getCourses()) {
+            validCourseIDs.add(validCourseTaken.getCourse().getId());
+        }
 
         //Find and count only the coursesTaken that match the requirement
-        for(CourseTaken courseTaken : courseTakenList) {
-            if (requirement.getCourses().get(0).getCourse().getId().equals(courseTaken.getCourse().getId())) {
+        for (CourseTaken courseTaken : courseTakenList) {
+            if (validCourseIDs.contains(courseTaken.getCourse().getId())) {
                 newCourseTakenList.add(courseTaken);
-                takenClass = true;
                 //Check if passed and therefore credits count toward requirement
                 if (courseTaken.getGrade() == Grade.S) {
                     takenCredits = takenCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());
@@ -123,15 +128,9 @@ public class GradReqCheck {
         }
 
         //Fill in gradReqCheck
-        if(takenClass) {
-            this.details = new Requirement(requirement.getName(), newCourseTakenList);
-            //Check if requirement passed
-            if (takenCredits >= requirement.getCredits()) {
-                this.result = true;
-            }
-        }
-        else {
-            this.details = new Requirement(requirement.getName());
+        this.details = new Requirement(requirement.getName(), newCourseTakenList);
+        if (takenCredits >= requirement.getCredits()) {
+            this.result = true;
         }
     }
 
