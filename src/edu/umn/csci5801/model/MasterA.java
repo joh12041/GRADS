@@ -59,76 +59,55 @@ public class MasterA {
         ctl1.add(new CourseTaken(new Course("Virtual Reality and 3D Interaction","csci5619","3",CourseArea.APPLICATIONS), new Term(), Grade.C));
         ctl1.add(new CourseTaken(new Course("Principles of Database Systems","csci5707","3",CourseArea.APPLICATIONS), new Term(), Grade.C));
 
-        String s1 = "";
-        List<String> ls1 = new ArrayList<String>();
-        ls1.add(s1);
+        String s = "";
+        List<String> ls = new ArrayList<String>();
+        ls1.add(s);
 
-        Requirement req1 = new Requirement("BREADTH_REQUIREMENT_MS", 3.25f, ctl1, 9, ls1);
+        Requirement req1 = new Requirement("BREADTH_REQUIREMENT_MS", 3.25f, ctl1, 9, ls);
         reqList.add(req1);
 
-        //REQUIREMENT #2
+        //REQUIREMENT #2 THESIS_MS
 
         List<CourseTaken> ctl2 = new ArrayList<CourseTaken>();
         CourseTaken ct2 = new CourseTaken(new Course("Thesis_MS","csci8777","10"),new Term(), Grade.S);
         ctl2.add(ct2);
 
-        String s2 = "";
-        List<String> ls2 = new ArrayList<String>();
-        ls2.add(s2);
-
-        Requirement req2 = new Requirement("THESIS_MS",ctl2,10,ls2);
+        Requirement req2 = new Requirement("THESIS_MS",ctl2,10,ls);
         reqList.add(req2);
 
-        //REQUIREMENT #3
+        //REQUIREMENT #3 COLLOQUIUM
         List<CourseTaken> ctl3 = new ArrayList<CourseTaken>();
         CourseTaken ct3 = new CourseTaken(new Course("Colloquium","csci8970","1"),new Term(), Grade.S);
         ctl3.add(ct3);
 
-        String s3 = "";
-        List<String> ls3 = new ArrayList<String>();
-        ls3.add(s3);
-
-        Requirement req3 = new Requirement("COLLOQUIUM",ctl3,1,ls3);
+        Requirement req3 = new Requirement("COLLOQUIUM",ctl3,1,ls);
         reqList.add(req3);
 
-        //REQUIREMENT #4
+        //REQUIREMENT #4 PHD LEVEL COURSES
         List<CourseTaken> ctl4 = new ArrayList<CourseTaken>();
         CourseTaken ct4 = new CourseTaken(new Course("PhD level courses","csci8000","3"),new Term(), Grade.C);
         ctl4.add(ct4);
 
-
-        String s4 = "";
-        List<String> ls4 = new ArrayList<String>();
-        ls4.add(s4);
-
-        Requirement req4 = new Requirement("PHD_LEVEL_COURSES",ctl4,3,ls4);
+        Requirement req4 = new Requirement("PHD_LEVEL_COURSES",ctl4,3,ls);
         reqList.add(req4);
 
-        //REQUIREMENT #5
+        //REQUIREMENT #5 TOTAL CREDITS
         List<CourseTaken> ctl5 = new ArrayList<CourseTaken>();
         CourseTaken ct5 = new CourseTaken(new Course(),new Term(), Grade.C);
         ctl5.add(ct5);
 
-        String s5 = "";
-        List<String> ls5 = new ArrayList<String>();
-        ls5.add(s5);
-
-        Requirement req5 = new Requirement("TOTAL_CREDITS",3.25f,ctl5,31,ls5);
+        Requirement req5 = new Requirement("TOTAL_CREDITS",3.25f,ctl5,31,ls);
         reqList.add(req5);
 
-        //REQUIREMENT #6
+        //REQUIREMENT #6 COURSE CREDITS
         List<CourseTaken> ctl6 = new ArrayList<CourseTaken>();
         CourseTaken ct6 = new CourseTaken(new Course(),new Term(), Grade.C);
         ctl6.add(ct6);
 
-        String s6 = "";
-        List<String> ls6 = new ArrayList<String>();
-        ls6.add(s6);
-
-        Requirement req6 = new Requirement("COURSE_CREDITS",3.25f,ctl6,22,ls6);
+        Requirement req6 = new Requirement("COURSE_CREDITS",3.25f,ctl6,22,ls);
         reqList.add(req6);
 
-        //Requirement #7
+        //Requirement #7 COMPLETED MILESTONES
         List<CompletedMilestone> lm7 = new ArrayList<CompletedMilestone>();
         lm7.add(new CompletedMilestone(Milestone.DPF_SUBMITTED));
         lm7.add(new CompletedMilestone(Milestone.DPF_APPROVED));
@@ -137,11 +116,8 @@ public class MasterA {
         lm7.add(new CompletedMilestone(Milestone.THESIS_SUBMITTED));
         lm7.add(new CompletedMilestone(Milestone.THESIS_APPROVED));
         lm7.add(new CompletedMilestone(Milestone.DEFENSE_PASSED));
-        String s7 = "";
-        List<String> ls7 = new ArrayList<String>();
-        ls7.add(s7);
 
-        Requirement req7 = new Requirement("MILESTONES_MS_A",lm7,ls7);
+        Requirement req7 = new Requirement("MILESTONES_MS_A",lm7,ls);
         reqList.add(req7);
     }
 }

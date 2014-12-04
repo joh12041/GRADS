@@ -43,7 +43,7 @@ public class Requirement {
         name = _name_;
         milestones = _milestones_;
         notes = _notes_;
-    })
+    }
 
     public void setName(String n) { name = n; }
     public void setGpa(float g_p_a) { gpa = g_p_a; }
