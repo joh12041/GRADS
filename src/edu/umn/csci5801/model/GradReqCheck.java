@@ -199,13 +199,27 @@ public class GradReqCheck {
                         break;
                 }
             }
+            if (topAppl != null) {
+                newCourseTakenList.add(topAppl);
+            }
+            if (topThry != null) {
+                newCourseTakenList.add(topThry);
+            }
+            if (topArch != null) {
+                newCourseTakenList.add(topArch);
+            }
 
-        //Fill in gradReqCheck
-        this.details = new Requirement(requirement.getName(), newCourseTakenList);
-        if (takenCredits >= requirement.getCredits()) {
-            this.result = true;
+
+            this.details.calculateGpa();
+            if (details.getGpa() >= requirement.getGpa()) {}
+                this.result = true;
+
+            //Fill in gradReqCheck
+            this.details = new Requirement(requirement.getName(), newCourseTakenList);
+            this.details.calculateGpa();
+            if (details.getGpa() >= )
+            }
         }
-    }
 
     private void caseBREADTH_REQUIREMENT_PHD(Requirement requirement, List<CourseTaken> courseTakenList) {
 
@@ -352,19 +366,5 @@ public class GradReqCheck {
         if (studentsMilestones == requirement.getMilestones().size()) {
             this.result = true;
         }
-        Requirement newRequirement = new Requirement();
-        newRequirement.setMilestones(completedMilestoneList);
-        if(requirement.getName() == Reqs.MILESTONES_MS_A) {
-            newRequirement.setName(Reqs.MILESTONES_MS_A);
-        } else if(requirement.getName() == Reqs.MILESTONES_MS_B) {
-            newRequirement.setName(Reqs.MILESTONES_MS_B);
-        } else if(requirement.getName() == Reqs.MILESTONES_MS_C) {
-            newRequirement.setName(Reqs.MILESTONES_MS_C);
-        } else if(requirement.getName() == Reqs.MILESTONES_PHD) {
-            newRequirement.setName(Reqs.MILESTONES_PHD);
-        } else {
-            // Throw exception
-        }
-        this.details = newRequirement;
     }
 }
