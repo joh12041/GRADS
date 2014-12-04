@@ -82,7 +82,7 @@ public class PHD {
         //REQUIREMENT #5 INTRO_TO_RESEARCH
         List<CourseTaken> ctl5 = new ArrayList<CourseTaken>();
         ctl5.add(new CourseTaken(new Course("Introduction to Research in Computer Science I","csci8001","1"),new Term(), Grade.S));
-        ctl5.add(new CourseTaken(new Course("Introduction to Research in Computer Science II","csci8002","1"),new Term(), Grade.S));
+        ctl5.add(new CourseTaken(new Course("Introduction to Research in Computer Science II","csci8002","2"),new Term(), Grade.S));
 
         Requirement req5 = new Requirement(Reqs.INTRO_TO_RESEARCH, ctl5, 2, ls);
         reqList.add(req5);

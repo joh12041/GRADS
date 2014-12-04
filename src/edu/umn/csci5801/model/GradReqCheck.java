@@ -52,10 +52,10 @@ public class GradReqCheck {
                 caseOUT_OF_DEPARTMENT(requirement, courseTakenList);
                 break;
             case PHD_LEVEL_COURSES:
-                casePHD_LEVEL_COURSES(requirement, courseTakenList);
+                casePASSED_WITH_C(requirement, courseTakenList);
                 break;
             case PHD_LEVEL_COURSES_PLANC:
-                casePHD_LEVEL_COURSES_PLANC(requirement, courseTakenList);
+                casePASSED_WITH_C(requirement, courseTakenList);
                 break;
             case INTRO_TO_RESEARCH:
                 caseINTRO_TO_RESEARCH(requirement, courseTakenList);
@@ -139,25 +139,21 @@ public class GradReqCheck {
 
     }
 
-    private void casePHD_LEVEL_COURSES(Requirement requirement, List<CourseTaken> courseTakenList) {
-
-    }
-
-    private void casePHD_LEVEL_COURSES_PLANC(Requirement requirement, List<CourseTaken> courseTakenList) {
+    private void casePASSED_WITH_C(Requirement requirement, List<CourseTaken> courseTakenList) {
         this.result = false;
         boolean takenClass = false;
         int takenCredits = 0;
         List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
-        List<Course> validCourses = new ArrayList<Course>();
+        List<String> validCourseIDs = new ArrayList<String>();
 
         //Generate list of valid courses
         for (CourseTaken validCourseTaken : requirement.getCourses()) {
-            validCourses.add(validCourseTaken.getCourse());
+            validCourseIDs.add(validCourseTaken.getCourse().getId());
         }
 
         //Find and count only the coursesTaken that match the requirement
         for (CourseTaken courseTaken : courseTakenList) {
-            if (validCourses.contains(courseTaken.getCourse())) {
+            if (validCourseIDs.contains(courseTaken.getCourse().getId())) {
                 newCourseTakenList.add(courseTaken);
                 //Check if passed and therefore credits count toward requirement
                 if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B || courseTaken.getGrade() == Grade.C) {
