@@ -213,8 +213,8 @@ public class GradReqCheck {
         for(CourseTaken courseTaken : courseTakenList) {
             if (courseTaken.getCourse().getId().matches("^csci5[0-9]{3}$")) {
                 newCourseTakenList.add(courseTaken);
-                }
             }
+        }
 
         //Calculate GPA and fill in gradReqCheck
         this.details = new Requirement(requirement.getName(), newCourseTakenList);
@@ -242,7 +242,21 @@ public class GradReqCheck {
         this.details = new Requirement(requirement.getName(), completedMilestoneList, requirement.getNotes());
         //Check if requirement passed
         if (studentsMilestones == requirement.getMilestones().size()) {
-                this.result = true;
+            this.result = true;
         }
+        Requirement newRequirement = new Requirement();
+        newRequirement.setMilestones(completedMilestoneList);
+        if(requirement.getName() == Reqs.MILESTONES_MS_A) {
+            newRequirement.setName(Reqs.MILESTONES_MS_A);
+        } else if(requirement.getName() == Reqs.MILESTONES_MS_B) {
+            newRequirement.setName(Reqs.MILESTONES_MS_B);
+        } else if(requirement.getName() == Reqs.MILESTONES_MS_C) {
+            newRequirement.setName(Reqs.MILESTONES_MS_C);
+        } else if(requirement.getName() == Reqs.MILESTONES_PHD) {
+            newRequirement.setName(Reqs.MILESTONES_PHD);
+        } else {
+            // Throw exception
+        }
+        this.details = newRequirement;
     }
 }
