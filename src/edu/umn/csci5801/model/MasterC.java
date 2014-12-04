@@ -57,7 +57,7 @@ public class MasterC {
         List<String> ls = new ArrayList<String>();
         ls.add(s);
 
-        Requirement req1 = new Requirement(Reqs.BREADTH_REQUIREMENT_MS, 3.25f, ctl1, 9, ls);
+        Requirement req1 = new Requirement(Reqs.BREADTH_REQUIREMENT_MS, 3.25, ctl1, 9, ls);
         reqList.add(req1);
 
 
@@ -97,7 +97,7 @@ public class MasterC {
         CourseTaken ct4 = new CourseTaken(new Course(),new Term(), Grade.C);
         ctl4.add(ct4);
 
-        Requirement req4 = new Requirement(Reqs.TOTAL_CREDITS,3.25f,ctl4,31,ls);
+        Requirement req4 = new Requirement(Reqs.TOTAL_CREDITS,3.25,ctl4,31,ls);
         reqList.add(req4);
 
 

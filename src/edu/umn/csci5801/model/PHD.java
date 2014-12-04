@@ -14,7 +14,7 @@ public class PHD {
         }
         return reqList;
     }
-    //TODO: This is where the Requirements for Masters PHD get inputted into a List
+    //TODO: This is where the Requirements for  PHD get inputted into a List
     private void setReqList() {
         List<String> ls = new ArrayList<String>();
         ls.add("");
@@ -57,7 +57,7 @@ public class PHD {
         ctl1.add(new CourseTaken(new Course("Virtual Reality and 3D Interaction","csci5619","3",CourseArea.APPLICATIONS), new Term(), Grade.C));
         ctl1.add(new CourseTaken(new Course("Principles of Database Systems","csci5707","3",CourseArea.APPLICATIONS), new Term(), Grade.C));
 
-        Requirement req1 = new Requirement(Reqs.BREADTH_REQUIREMENT_MS, 3.25f, ctl1, 9, ls);
+        Requirement req1 = new Requirement(Reqs.BREADTH_REQUIREMENT_PHD, 3.45, ctl1, 15, ls);
         reqList.add(req1);
 
         //REQUIREMENT #2 THESIS_PHD
@@ -92,11 +92,11 @@ public class PHD {
         reqList.add(req6);
 
         //REQUIREMENT #7 OVERALL_GPA_PHD
-        Requirement req7 = new Requirement(Reqs.OVERALL_GPA_PHD, 3.45f);
+        Requirement req7 = new Requirement(Reqs.OVERALL_GPA_PHD, 3.45);
         reqList.add(req7);
 
         //REQUIREMENT #8 IN_PROGRAM_GPA_PHD
-        Requirement req8 = new Requirement(Reqs.IN_PROGRAM_GPA_PHD, 3.45f);
+        Requirement req8 = new Requirement(Reqs.IN_PROGRAM_GPA_PHD, 3.45);
         reqList.add(req8);
 
         //Requirement #9 COMPLETED MILESTONES

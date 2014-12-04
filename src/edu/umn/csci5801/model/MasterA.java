@@ -62,7 +62,7 @@ public class MasterA {
         ctl1.add(new CourseTaken(new Course("Virtual Reality and 3D Interaction","csci5619","3",CourseArea.APPLICATIONS), new Term(), Grade.C));
         ctl1.add(new CourseTaken(new Course("Principles of Database Systems","csci5707","3",CourseArea.APPLICATIONS), new Term(), Grade.C));
 
-        Requirement req1 = new Requirement(Reqs.BREADTH_REQUIREMENT_MS, 3.25f, ctl1, 9, ls);
+        Requirement req1 = new Requirement(Reqs.BREADTH_REQUIREMENT_MS, 3.25, ctl1, 9, ls);
         reqList.add(req1);
 
         //REQUIREMENT #2 THESIS_MS
@@ -109,7 +109,7 @@ public class MasterA {
         CourseTaken ct5 = new CourseTaken(new Course(),new Term(), Grade.C);
         ctl5.add(ct5);
 
-        Requirement req5 = new Requirement(Reqs.TOTAL_CREDITS,3.25f,ctl5,31,ls);
+        Requirement req5 = new Requirement(Reqs.TOTAL_CREDITS,3.25,ctl5,31,ls);
         reqList.add(req5);
 
         //TODO:REQUIREMENT #6 COURSE CREDITS
@@ -117,7 +117,7 @@ public class MasterA {
         CourseTaken ct6 = new CourseTaken(new Course(),new Term(), Grade.C);
         ctl6.add(ct6);
 
-        Requirement req6 = new Requirement(Reqs.COURSE_CREDITS,3.25f,ctl6,22,ls);
+        Requirement req6 = new Requirement(Reqs.COURSE_CREDITS,3.25,ctl6,22,ls);
         reqList.add(req6);
 
         //Requirement #7 COMPLETED MILESTONES

@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class Requirement {
     private Reqs name;
-    private float gpa;
+    private double gpa;
     private List<CourseTaken> courses;
     private int credits;
     private List<CompletedMilestone> milestones;
@@ -18,7 +18,7 @@ public class Requirement {
     public Requirement(Reqs _name_) {
         name = _name_;
     }
-    public Requirement(Reqs _name_, float _gpa_) {
+    public Requirement(Reqs _name_, double _gpa_) {
         name = _name_;
         gpa = _gpa_;
     }
@@ -26,7 +26,7 @@ public class Requirement {
         name = _name_;
         courses = _courses_;
     }
-    public Requirement(Reqs _name_, float _gpa_, List<CourseTaken> _courses_, int _credits_,
+    public Requirement(Reqs _name_, double _gpa_, List<CourseTaken> _courses_, int _credits_,
                        List<CompletedMilestone> _milestones_, List<String> _notes_) {
         name = _name_;
         gpa = _gpa_;
@@ -42,7 +42,7 @@ public class Requirement {
         credits = _credits_;
         notes = _notes_;
     }
-    public Requirement(Reqs _name_, float _gpa_, List<CourseTaken> _courses_, int _credits_,
+    public Requirement(Reqs _name_, double _gpa_, List<CourseTaken> _courses_, int _credits_,
                        List<String> _notes_) {
         name = _name_;
         gpa = _gpa_;
@@ -57,7 +57,7 @@ public class Requirement {
     }
 
     public void setName(Reqs n) { name = n; }
-    public void setGpa(float g_p_a) { gpa = g_p_a; }
+    public void setGpa(double g_p_a) { gpa = g_p_a; }
     public void setCourses(List<CourseTaken> coursesTaken) { courses = coursesTaken; }
     public void addCourse(CourseTaken ct) { courses.add(ct); }
     public void setCredits(int c) { credits = c; }
@@ -66,34 +66,38 @@ public class Requirement {
     public void setNotes(List<String> list) { notes = list; }
     public void addNote(String note) { notes.add(note); }
 
-    public float getGpa() { return gpa; }
+    public double getGpa() { return gpa; }
     public int getCredits() { return credits; }
     public List<CompletedMilestone> getMilestones() { return milestones; }
     public List<CourseTaken> getCourses() { return courses; }
     public List<String> getNotes() { return notes; }
     public Reqs getName() { return name; }
 
-    private float gradeToFloat(Grade grade){
-        float gradef = 0f;
+    private double gradeToDouble(Grade grade){
+        double gradeD = 0.0;
         switch (grade) {
-            case A: gradef = 4.0f;
+            case A: gradeD = 4.0;
                 break;
-            case B: gradef = 3.0f;
+            case B: gradeD = 3.0;
                 break;
-            case C: gradef = 2.0f;
+            case C: gradeD = 2.0;
                 break;
-            case D: gradef = 1.0f;
+            case D: gradeD = 1.0;
                 break;
-            case F: gradef = 0.0f;
+            case F: gradeD = 0.0;
                 break;
             default:
 
         }
-        return gradef;
+        return gradeD;
     }
 
     public void calculateGpa(List<CourseTaken> courseTakenList) {
-        //Pull grade and credits of each coursetaken, calculate GPA
+        double totalGradePoints = 0;
+        double totalCourseCredits = 0;
+        for (CourseTaken cT : courseTakenList){
+            totalGradePoints = totalGradePoints + gradeToDouble(cT.getGrade());
+        }
     }
 
 }

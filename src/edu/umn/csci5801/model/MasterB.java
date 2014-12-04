@@ -58,7 +58,7 @@ public class MasterB {
         List<String> ls = new ArrayList<String>();
         ls.add(s);
 
-        Requirement req1 = new Requirement(Reqs.BREADTH_REQUIREMENT_MS, 3.25f, ctl1, 9, ls);
+        Requirement req1 = new Requirement(Reqs.BREADTH_REQUIREMENT_MS, 3.25, ctl1, 9, ls);
         reqList.add(req1);
 
         //REQUIREMENT #2 PLAN_B_PROJECT
@@ -83,7 +83,7 @@ public class MasterB {
         ctl4.add(new CourseTaken(new Course("Advanced Operating Systems","csci8101","3"),new Term(), Grade.C));
         ctl4.add(new CourseTaken(new Course("Foundations of Distributed Computing","csci8102","3"),new Term(), Grade.C));
         ctl4.add(new CourseTaken(new Course("Understanding the Social Web","csci8117","3"),new Term(), Grade.C));
-        ctl4.add(new CourseTaken(new Course("Advanced Compiler Techniques","csci8161","3"),new Term(), Grade.C));
+        ctl4.add(new CourseTaken(new Course("Advanced Compiler Techniques","csci8161.25","3"),new Term(), Grade.C));
         ctl4.add(new CourseTaken(new Course("Parallel Computer Organization","csci8205","3"),new Term(), Grade.C));
         ctl4.add(new CourseTaken(new Course("Advanced Computer Networks and Their Applications","csci8211","3"),new Term(), Grade.C));
         ctl4.add(new CourseTaken(new Course("Security and Privacy in Computing","csci8271","3"),new Term(), Grade.C));
@@ -106,7 +106,7 @@ public class MasterB {
         CourseTaken ct5 = new CourseTaken(new Course(),new Term(), Grade.C);
         ctl5.add(ct5);
 
-        Requirement req5 = new Requirement(Reqs.TOTAL_CREDITS,3.25f,ctl5,31,ls);
+        Requirement req5 = new Requirement(Reqs.TOTAL_CREDITS,3.25,ctl5,31,ls);
         reqList.add(req5);
 
 
