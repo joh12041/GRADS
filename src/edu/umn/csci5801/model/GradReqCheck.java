@@ -103,25 +103,32 @@ public class GradReqCheck {
 
     }
 
+    //Checks any requirement that is based on passing with satisfactory a certain number of credits of a single course
     private void casePASSED_AS_SATISFACTORY(Requirement requirement, List<CourseTaken> courseTakenList) {
         this.result = false;
         boolean takenClass = false;
-        int thesisCredits = 0;
+        int takenCredits = 0;
         List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
+
+        //Find and count only the coursesTaken that match the requirement
         for(CourseTaken courseTaken : courseTakenList) {
             if (requirement.getCourses().get(0).getCourse().getId().equals(courseTaken.getCourse().getId())) {
                 newCourseTakenList.add(courseTaken);
                 takenClass = true;
+                //Check if passed and therefore credits count toward requirement
                 if (courseTaken.getGrade() == Grade.S) {
-                    thesisCredits = thesisCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());
+                    takenCredits = takenCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());
                 }
             }
         }
-        if (thesisCredits >= requirement.getCredits()) {
-            this.result = true;
-        }
+
+        //Fill in gradReqCheck
         if(takenClass) {
             this.details = new Requirement(requirement.getName(), newCourseTakenList);
+            //Check if requirement passed
+            if (takenCredits >= requirement.getCredits()) {
+                this.result = true;
+            }
         }
         else {
             this.details = new Requirement(requirement.getName());
