@@ -1,5 +1,6 @@
 package edu.umn.csci5801.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -95,9 +96,17 @@ public class Requirement {
     public void calculateGpa() {
         double totalGradePoints = 0;
         int totalCourseCredits = 0;
+        List<Grade> validGrades = new ArrayList<Grade>();
+        validGrades.add(Grade.A);
+        validGrades.add(Grade.B);
+        validGrades.add(Grade.C);
+        validGrades.add(Grade.D);
+        validGrades.add(Grade.F);
         for (CourseTaken cT : courses){
-            totalGradePoints = totalGradePoints + (gradeToDouble(cT.getGrade()) * Integer.parseInt(cT.getCourse().getNumCredits()));
-            totalCourseCredits = totalCourseCredits + Integer.parseInt(cT.getCourse().getNumCredits());
+            if (validGrades.contains(cT.getGrade())) {
+                totalGradePoints = totalGradePoints + (gradeToDouble(cT.getGrade()) * Integer.parseInt(cT.getCourse().getNumCredits()));
+                totalCourseCredits = totalCourseCredits + Integer.parseInt(cT.getCourse().getNumCredits());
+            }
         }
         gpa = (totalGradePoints / totalCourseCredits);
     }
