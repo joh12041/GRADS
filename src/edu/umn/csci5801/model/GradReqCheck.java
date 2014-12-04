@@ -111,7 +111,6 @@ public class GradReqCheck {
         for(CourseTaken courseTaken : courseTakenList) {
             if ("csci8888".equals(courseTaken.getCourse().getId())) {
                 newCourseTakenList.add(courseTaken);
-                this.details = new Requirement(Reqs.COLLOQUIUM, newCourseTakenList);
                 takenClass = true;
                 if (courseTaken.getGrade() == Grade.S) {
                     thesisCredits = thesisCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());
@@ -121,10 +120,37 @@ public class GradReqCheck {
         if (thesisCredits >= requirement.getCredits()) {
             this.result = true;
         }
+        if(takenClass) {
+            this.details = new Requirement(requirement.getName(), newCourseTakenList);
+        }
+        else {
+            this.details = new Requirement(requirement.getName());
+        }
     }
 
     private void caseTHESIS_MS(Requirement requirement, List<CourseTaken> courseTakenList) {
-
+        this.result = false;
+        boolean takenClass = false;
+        int thesisCredits = 0;
+        List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
+        for(CourseTaken courseTaken : courseTakenList) {
+            if ("csci8777".equals(courseTaken.getCourse().getId())) {
+                newCourseTakenList.add(courseTaken);
+                takenClass = true;
+                if (courseTaken.getGrade() == Grade.S) {
+                    thesisCredits = thesisCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());
+                }
+            }
+        }
+        if (thesisCredits >= requirement.getCredits()) {
+            this.result = true;
+        }
+        if(takenClass) {
+            this.details = new Requirement(requirement.getName(), newCourseTakenList);
+        }
+        else {
+            this.details = new Requirement(requirement.getName());
+        }
     }
 
     private void casePLAN_B_PROJECT(Requirement requirement, List<CourseTaken> courseTakenList) {
@@ -145,10 +171,10 @@ public class GradReqCheck {
             }
         }
         if(takenClass) {
-            this.details = new Requirement(Reqs.COLLOQUIUM, newCourseTakenList);
+            this.details = new Requirement(requirement.getName(), newCourseTakenList);
         }
         else {
-            this.details = new Requirement(Reqs.COLLOQUIUM);
+            this.details = new Requirement(requirement.getName());
         }
     }
 
