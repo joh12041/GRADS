@@ -55,6 +55,9 @@ public class GradRequirements {
     }
 
     public void testReqList(List<CourseTaken> courseTakenList, List<CompletedMilestone> completedMilestoneList) {
-        
+        for (Requirement r : reqList) {
+            GradReqCheck grc = new GradReqCheck(r.getName());
+            grc.testReq(r, courseTakenList, completedMilestoneList);
+        }
     }
 }
