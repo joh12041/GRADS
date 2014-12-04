@@ -212,14 +212,141 @@ public class GradReqCheck {
             //Fill in gradReqCheck
             this.details = new Requirement(requirement.getName(), newCourseTakenList);
             this.details.calculateGpa();
-            if (details.getGpa() >= requirement.getGpa()) {
+            if (details.getGpa() >= requirement.getGpa() && this.details.getCourses().size() == 5) {
                 this.result = true;
             }
         }
     }
 
     private void caseBREADTH_REQUIREMENT_PHD(Requirement requirement, List<CourseTaken> courseTakenList) {
+        //Loop through course list
+        //Grab any A and hten B and then C for each breadth requirement
+        //Finish out the requirement
 
+        this.result = false;
+        CourseTaken topThry = null;
+        CourseTaken topAppl = null;
+        CourseTaken topArch = null;
+        CourseTaken fourth = null;
+        CourseTaken fifth = null;
+
+        List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
+        List<String> validCourseIDs = new ArrayList<String>();
+
+        //Generate list of valid courses
+        for (CourseTaken validCourseTaken : requirement.getCourses()) {
+            validCourseIDs.add(validCourseTaken.getCourse().getId());
+        }
+
+        //Find and count only the coursesTaken that match the requirement
+        for (CourseTaken courseTaken : courseTakenList) {
+            if (validCourseIDs.contains(courseTaken.getCourse().getId())) {
+                switch (courseTaken.getCourse().getCourseArea()) {
+                    case APPLICATIONS:
+                        if (topAppl != null) {
+                            if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B || courseTaken.getGrade() == Grade.C) {
+                                topAppl = courseTaken;
+                                break;
+                            }
+                            break;
+                        }
+                        if (topAppl.getGrade() == Grade.A) {
+                            break;
+                        }
+                        if (topAppl.getGrade() == Grade.B) {
+                            if (courseTaken.getGrade() == Grade.A) {
+                                topAppl = courseTaken;
+                                break;
+                            }
+                            break;
+                        }
+                        if (topAppl.getGrade() == Grade.C) {
+                            if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B) {
+                                topAppl = courseTaken;
+                                break;
+                            }
+                            break;
+                        }
+                        break;
+
+                    case THEORY_ALGORITHMS:
+                        if (topThry != null) {
+                            if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B || courseTaken.getGrade() == Grade.C) {
+                                topThry = courseTaken;
+                                break;
+                            }
+                            break;
+                        }
+                        if (topThry.getGrade() == Grade.A) {
+                            break;
+                        }
+                        if (topThry.getGrade() == Grade.B) {
+                            if (courseTaken.getGrade() == Grade.A) {
+                                topThry = courseTaken;
+                                break;
+                            }
+                            break;
+                        }
+                        if (topThry.getGrade() == Grade.C) {
+                            if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B) {
+                                topThry = courseTaken;
+                                break;
+                            }
+                            break;
+                        }
+                        break;
+
+                    case ARCHITECTURE_SYSTEMS_SOFTWARE:
+                        if (topArch != null) {
+                            if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B || courseTaken.getGrade() == Grade.C) {
+                                topArch = courseTaken;
+                                break;
+                            }
+                            break;
+                        }
+                        if (topArch.getGrade() == Grade.A) {
+                            break;
+                        }
+                        if (topArch.getGrade() == Grade.B) {
+                            if (courseTaken.getGrade() == Grade.A) {
+                                topArch = courseTaken;
+                                break;
+                            }
+                            break;
+                        }
+                        if (topArch.getGrade() == Grade.C) {
+                            if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B) {
+                                topArch = courseTaken;
+                                break;
+                            }
+                            break;
+                        }
+                        break;
+                }
+            }
+            if (topAppl != null) {
+                newCourseTakenList.add(topAppl);
+            }
+            if (topThry != null) {
+                newCourseTakenList.add(topThry);
+            }
+            if (topArch != null) {
+                newCourseTakenList.add(topArch);
+            }
+            if (fourth != null) {
+                newCourseTakenList.add(fourth);
+            }
+            if (fifth != null) {
+                newCourseTakenList.add(fifth);
+            }
+
+            //Fill in gradReqCheck
+            this.details = new Requirement(requirement.getName(), newCourseTakenList);
+            this.details.calculateGpa();
+            if (details.getGpa() >= requirement.getGpa() && this.details.getCourses().size() == 5) {
+                this.result = true;
+            }
+        }
     }
 
     //Checks any requirement that is based on passing with satisfactory a certain number of credits of a single course
