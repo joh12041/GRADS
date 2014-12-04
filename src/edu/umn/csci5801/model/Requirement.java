@@ -15,6 +15,13 @@ public class Requirement {
 
     //constructor
     public Requirement(){}
+    public Requirement(String _name_) {
+        name = _name_;
+    }
+    public Requirement(String _name_, float _gpa_) {
+        name = _name_;
+        gpa = _gpa_;
+    }
     public Requirement(String _name_, float _gpa_, List<CourseTaken> _courses_, int _credits_,
                        List<CompletedMilestone> _milestones_, List<String> _notes_) {
         name = _name_;
@@ -63,10 +70,15 @@ public class Requirement {
     public String getName() { return name; }
 
     private float gradeToFloat(Grade grade){
-        float gradef = new float;
+        float gradef = 0f;
         switch (grade) {
-            case A: return 4.0f;
+            case A: gradef = 4.0f;
+            case B: gradef = 3.0f;
+            case C: gradef = 2.0f;
+            case D: gradef = 1.0f;
+            case F: gradef = 0.0f;
         }
+        return gradef;
     }
 
     public void calculateGpa() {
