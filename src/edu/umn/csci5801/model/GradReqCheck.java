@@ -67,7 +67,7 @@ public class GradReqCheck {
                 caseCOURSE_CREDITS(requirement, courseTakenList);
                 break;
             case OVERALL_GPA_PHD:
-                caseOVERALL_GPA_MS(requirement, courseTakenList);
+                caseOVERALL_GPA_PHD(requirement, courseTakenList);
                 break;
             case IN_PROGRAM_GPA_PHD:
                 caseIN_PROGRAM_GPA_PHD(requirement, courseTakenList);
