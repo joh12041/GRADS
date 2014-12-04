@@ -322,23 +322,14 @@ public class GradReqCheck {
         }
 
         for (CourseTaken courseTaken2 : courseTakenList) {
-            if (validCourseIDs.contains(courseTaken2.getCourse().getId())) {
-                if (!newCourseTakenList.contains(courseTaken2)) {
-                    if (fourth == null) {
-                        if (courseTaken2.getGrade() == Grade.A || courseTaken2.getGrade() == Grade.B || courseTaken2.getGrade() == Grade.C) {
-                            fourth = courseTaken2;
-                            continue;
-                        }
-                        continue;
-                    }
-                    if (fifth == null) {
-                        if (courseTaken2.getGrade() == Grade.A || courseTaken2.getGrade() == Grade.B || courseTaken2.getGrade() == Grade.C) {
-                            fifth = courseTaken2;
-                            continue;
-                        }
-                        continue;
-                    }
-                    if
+            if (validCourseIDs.contains(courseTaken2.getCourse().getId()) && validGrades.contains(courseTaken2.getGrade()) && !newCourseTakenList.contains(courseTaken2)) {
+                if (fourth == null) {
+                    fourth = courseTaken2;
+                    continue;
+                }
+                if (fifth == null) {
+                    fifth = courseTaken2;
+                    continue;
                 }
             }
         }
