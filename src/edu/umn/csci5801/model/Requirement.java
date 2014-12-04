@@ -96,6 +96,8 @@ public class Requirement {
     public void calculateGpa() {
         double totalGradePoints = 0;
         int totalCourseCredits = 0;
+
+        //Only use letter grades
         List<Grade> validGrades = new ArrayList<Grade>();
         validGrades.add(Grade.A);
         validGrades.add(Grade.B);
