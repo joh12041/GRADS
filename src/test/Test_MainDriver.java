@@ -41,5 +41,6 @@ public class Test_MainDriver {
         grads.loadCourses("resources/courses.txt");
         grads.loadRecords("resources/students.txt");
         grads.setUser("gayxx067");
+        grads.getUser();
     }
 }
