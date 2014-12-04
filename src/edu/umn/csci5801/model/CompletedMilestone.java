@@ -51,7 +51,7 @@ public class CompletedMilestone {
      * setMilestone() - Method for setting the Milestone attribute of
      * a Milestone object
      * 
-     * @param milestone - A variable of type Milestone
+     * @param milestone - A variable of type Milestone identifying a milestone's name
      */
     public void setMilestone(Milestone milestone){
         this.milestone = milestone;
@@ -61,7 +61,7 @@ public class CompletedMilestone {
      * setTerm() - Method for setting the Term attribute of
      * a Milestone object
      * 
-     * @param term - A variable of type Term
+     * @param term - A variable of type Term identifying a milestone's term
      */
     public void setTerm(Term term){
         this.term = term;
