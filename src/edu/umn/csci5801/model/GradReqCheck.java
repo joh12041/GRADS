@@ -79,16 +79,16 @@ public class GradReqCheck {
                 caseIN_PROGRAM_GPA_MS(requirement, courseTakenList);
                 break;
             case MILESTONES_PHD:
-                caseMILESTONES_PHD(requirement, completedMilestoneList);
+                caseMILESTONES(requirement, completedMilestoneList);
                 break;
             case MILESTONES_MS_A:
-                caseMILESTONES_MS_A(requirement, completedMilestoneList);
+                caseMILESTONES(requirement, completedMilestoneList);
                 break;
             case MILESTONES_MS_B:
-                caseMILESTONES_MS_B(requirement, completedMilestoneList);
+                caseMILESTONES(requirement, completedMilestoneList);
                 break;
             case MILESTONES_MS_C:
-                caseMILESTONES_MS_C(requirement, completedMilestoneList);
+                caseMILESTONES(requirement, completedMilestoneList);
                 break;
             default:
                 break;
@@ -175,47 +175,25 @@ public class GradReqCheck {
 
     }
 
-    private void caseMILESTONES_PHD(Requirement requirement, List<CompletedMilestone> completedMilestoneList) {
+    private void caseMILESTONES(Requirement requirement, List<CompletedMilestone> completedMilestoneList) {
         this.result = false;
+        int studentsMilestones = 0;
 
-        List<CompletedMilestone> newCompletedMilestonesList = new ArrayList<CompletedMilestone>();
-
-        //Find and count only the coursesTaken that match the requirement
-        for(Milestone milestone : requirement.getMilestones()) {
-            if (requirement.getCourses().get(0).getCourse().getId().equals(completedMilestone.getCourse().getId())) {
-                newCourseTakenList.add(completedMilestone);
-                takenClass = true;
-                //Check if passed and therefore credits count toward requirement
-                if (completedMilestone.getGrade() == Grade.S) {
-                    takenCredits = takenCredits + Integer.parseInt(completedMilestone.getCourse().getNumCredits());
+        //Find if the student passed each milestone and count it if so
+        for(CompletedMilestone requiredMilestone : requirement.getMilestones()) {
+            for (CompletedMilestone studentMilestone : completedMilestoneList) {
+                if (studentMilestone.getMilestone() == (requiredMilestone.getMilestone())) {
+                    studentsMilestones++;
+                    break;
                 }
             }
         }
 
         //Fill in gradReqCheck
-        if(takenClass) {
-            this.details = new Requirement(requirement.getName(), completedMilestoneList);
-            //Check if requirement passed
-            if (takenCredits >= requirement.getCredits()) {
+        this.details = new Requirement(requirement.getName(), completedMilestoneList, requirement.getNotes());
+        //Check if requirement passed
+        if (studentsMilestones == requirement.getMilestones().size()) {
                 this.result = true;
-            }
-        }
-        else {
-            this.details = new Requirement(requirement.getName());
         }
     }
-
-    private void caseMILESTONES_MS_A(Requirement requirement, List<CompletedMilestone> completedMilestoneList) {
-
-    }
-
-    private void caseMILESTONES_MS_B(Requirement requirement, List<CompletedMilestone> completedMilestoneList) {
-
-    }
-
-    private void caseMILESTONES_MS_C(Requirement requirement, List<CompletedMilestone> completedMilestoneList) {
-
-    }
-
-
 }
