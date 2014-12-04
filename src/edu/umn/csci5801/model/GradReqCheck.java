@@ -70,13 +70,13 @@ public class GradReqCheck {
                 caseOVERALL_GPA_PHD(requirement, courseTakenList);
                 break;
             case IN_PROGRAM_GPA_PHD:
-                caseIN_PROGRAM_GPA_PHD(requirement, courseTakenList);
+                caseIN_PROGRAM_GPA(requirement, courseTakenList);
                 break;
             case OVERALL_GPA_MS:
                 caseOVERALL_GPA_MS(requirement, courseTakenList);
                 break;
             case IN_PROGRAM_GPA_MS:
-                caseIN_PROGRAM_GPA_MS(requirement, courseTakenList);
+                caseIN_PROGRAM_GPA(requirement, courseTakenList);
                 break;
             case MILESTONES_PHD:
                 caseMILESTONES(requirement, completedMilestoneList);
@@ -164,7 +164,7 @@ public class GradReqCheck {
 
     }
 
-    private void caseIN_PROGRAM_GPA_PHD(Requirement requirement, List<CourseTaken> courseTakenList) {
+    private void caseIN_PROGRAM_GPA(Requirement requirement, List<CourseTaken> courseTakenList) {
         this.result = false;
         List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
 
@@ -179,15 +179,11 @@ public class GradReqCheck {
         this.details = new Requirement(requirement.getName(), courseTakenList);
         this.details.calculateGpa();
         if (details.getGpa() >= requirement.getGpa()) {
-                this.result = true;
-            }
+            this.result = true;
+        }
     }
 
     private void caseOVERALL_GPA_MS(Requirement requirement, List<CourseTaken> courseTakenList) {
-
-    }
-
-    private void caseIN_PROGRAM_GPA_MS(Requirement requirement, List<CourseTaken> courseTakenList) {
 
     }
 
