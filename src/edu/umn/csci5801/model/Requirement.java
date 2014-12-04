@@ -87,17 +87,19 @@ public class Requirement {
             case F: gradeD = 0.0;
                 break;
             default:
-
+                //throw invalid grade exception or something
         }
         return gradeD;
     }
 
     public void calculateGpa(List<CourseTaken> courseTakenList) {
         double totalGradePoints = 0;
-        double totalCourseCredits = 0;
+        int totalCourseCredits = 0;
         for (CourseTaken cT : courseTakenList){
-            totalGradePoints = totalGradePoints + gradeToDouble(cT.getGrade());
+            totalGradePoints = totalGradePoints + (gradeToDouble(cT.getGrade()) * Integer.parseInt(cT.getCourse().getNumCredits()));
+            totalCourseCredits = totalCourseCredits + Integer.parseInt(cT.getCourse().getNumCredits());
         }
+        gpa = (totalGradePoints / totalCourseCredits);
     }
 
 }
