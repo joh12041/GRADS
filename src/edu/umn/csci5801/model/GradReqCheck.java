@@ -29,6 +29,7 @@ public class GradReqCheck {
         //TODO: Logic for checking any given requirement
         switch (requirement.getName()) {
             //TODO: Fill in all the different case statements (one for each possible requirement name
+            //TODO: Basic Procedure: determine which of hte coursestaken will be used, create a requirements object out of them, compare that requirements object to requirement passed into method, set result
             case BREADTH_REQUIREMENT_MS:
                 caseBREADTH_REQUIREMENT_MS(requirement, courseTakenList, completedMilestoneList);
                 break;

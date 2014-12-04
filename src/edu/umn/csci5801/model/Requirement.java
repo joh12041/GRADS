@@ -92,8 +92,8 @@ public class Requirement {
         return gradef;
     }
 
-    public void calculateGpa() {
-
+    public void calculateGpa(List<CourseTaken> courseTakenList) {
+        //Pull grade and credits of each coursetaken, calculate GPA
     }
 
 }
