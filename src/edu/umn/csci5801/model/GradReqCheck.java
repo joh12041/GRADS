@@ -37,10 +37,10 @@ public class GradReqCheck {
                 caseBREADTH_REQUIREMENT_PHD(requirement, courseTakenList);
                 break;
             case THESIS_PHD:
-                caseTHESIS(requirement, courseTakenList);
+                casePASSED_AS_SATISFACTORY(requirement, courseTakenList);
                 break;
             case THESIS_MS:
-                caseTHESIS(requirement, courseTakenList);
+                casePASSED_AS_SATISFACTORY(requirement, courseTakenList);
                 break;
             case PLAN_B_PROJECT:
                 casePASSED_AS_SATISFACTORY(requirement, courseTakenList);
@@ -103,7 +103,7 @@ public class GradReqCheck {
 
     }
 
-    private void caseTHESIS(Requirement requirement, List<CourseTaken> courseTakenList) {
+    private void casePASSED_AS_SATISFACTORY(Requirement requirement, List<CourseTaken> courseTakenList) {
         this.result = false;
         boolean takenClass = false;
         int thesisCredits = 0;
@@ -119,27 +119,6 @@ public class GradReqCheck {
         }
         if (thesisCredits >= requirement.getCredits()) {
             this.result = true;
-        }
-        if(takenClass) {
-            this.details = new Requirement(requirement.getName(), newCourseTakenList);
-        }
-        else {
-            this.details = new Requirement(requirement.getName());
-        }
-    }
-
-    private void casePASSED_AS_SATISFACTORY(Requirement requirement, List<CourseTaken> courseTakenList) {
-        this.result = false;
-        boolean takenClass = false;
-        List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
-        for(CourseTaken courseTaken : courseTakenList) {
-            if(requirement.getCourses().get(0).getCourse().getId().equals(courseTaken.getCourse().getId())) {
-                if(courseTaken.getGrade() == Grade.S) {
-                    this.result = true;
-                }
-                newCourseTakenList.add(courseTaken);
-                takenClass = true;
-            }
         }
         if(takenClass) {
             this.details = new Requirement(requirement.getName(), newCourseTakenList);
