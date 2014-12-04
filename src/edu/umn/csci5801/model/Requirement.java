@@ -6,7 +6,7 @@ import java.util.List;
  * Created by Justin on 12/2/2014.
  */
 public class Requirement {
-    private String name;
+    private Reqs name;
     private float gpa;
     private List<CourseTaken> courses;
     private int credits;
@@ -15,14 +15,14 @@ public class Requirement {
 
     //constructor
     public Requirement(){}
-    public Requirement(String _name_) {
+    public Requirement(Reqs _name_) {
         name = _name_;
     }
-    public Requirement(String _name_, float _gpa_) {
+    public Requirement(Reqs _name_, float _gpa_) {
         name = _name_;
         gpa = _gpa_;
     }
-    public Requirement(String _name_, float _gpa_, List<CourseTaken> _courses_, int _credits_,
+    public Requirement(Reqs _name_, float _gpa_, List<CourseTaken> _courses_, int _credits_,
                        List<CompletedMilestone> _milestones_, List<String> _notes_) {
         name = _name_;
         gpa = _gpa_;
@@ -31,14 +31,14 @@ public class Requirement {
         milestones = _milestones_;
         notes = _notes_;
     }
-    public Requirement(String _name_, List<CourseTaken> _courses_, int _credits_,
+    public Requirement(Reqs _name_, List<CourseTaken> _courses_, int _credits_,
                        List<String> _notes_) {
         name = _name_;
         courses = _courses_;
         credits = _credits_;
         notes = _notes_;
     }
-    public Requirement(String _name_, float _gpa_, List<CourseTaken> _courses_, int _credits_,
+    public Requirement(Reqs _name_, float _gpa_, List<CourseTaken> _courses_, int _credits_,
                        List<String> _notes_) {
         name = _name_;
         gpa = _gpa_;
@@ -46,13 +46,13 @@ public class Requirement {
         credits = _credits_;
         notes = _notes_;
     }
-    public Requirement(String _name_, List<CompletedMilestone> _milestones_, List<String> _notes_) {
+    public Requirement(Reqs _name_, List<CompletedMilestone> _milestones_, List<String> _notes_) {
         name = _name_;
         milestones = _milestones_;
         notes = _notes_;
     }
 
-    public void setName(String n) { name = n; }
+    public void setName(Reqs n) { name = n; }
     public void setGpa(float g_p_a) { gpa = g_p_a; }
     public void setCourses(List<CourseTaken> coursesTaken) { courses = coursesTaken; }
     public void addCourse(CourseTaken ct) { courses.add(ct); }
@@ -67,7 +67,7 @@ public class Requirement {
     public List<CompletedMilestone> getMilestones() { return milestones; }
     public List<CourseTaken> getCourses() { return courses; }
     public List<String> getNotes() { return notes; }
-    public String getName() { return name; }
+    public Reqs getName() { return name; }
 
     private float gradeToFloat(Grade grade){
         float gradef = 0f;
