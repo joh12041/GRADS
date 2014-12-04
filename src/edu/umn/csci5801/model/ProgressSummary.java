@@ -32,7 +32,7 @@ public class ProgressSummary {
         coursesTaken = ct;
     }
 
-    public void checkGradStatus(List<CompletedMilestone> completedMilestonesList) {
+    public void checkGradStatus(List<CompletedMilestone> completedMilestonesList) throws Exception {
         GradRequirements gradRequirements = new GradRequirements(degree);
         reqCheckResult = gradRequirements.getReqChecks();
     }

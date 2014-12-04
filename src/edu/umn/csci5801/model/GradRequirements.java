@@ -13,14 +13,9 @@ public class GradRequirements {
 
     //constructors
     public GradRequirements() {}
-    public GradRequirements(Degree deg){
+    public GradRequirements(Degree deg) throws Exception{
         //TODO:place in try/catch clause
         createReqList(deg);
-    }
-    public GradRequirements(Degree deg, List<GradReqCheck> grc, Degree d){
-        //createReqList(deg);  *****UNCOMMENT AND HANDLE EXCEPTION*****
-        testReqList(reqList, grc);
-        degree = d;
     }
 
     public void setReqChecks(List<GradReqCheck> list) { reqChecks = list; }
