@@ -11,10 +11,8 @@ public class GradReqCheck {
     private Requirement details;
 
     public GradReqCheck() {}
-    public GradReqCheck(String n, boolean ic, Requirement r) {
+    public GradReqCheck(String n) {
         reqName = n;
-        result = ic;
-        details = r;
     }
 
     public void setReqName(String n) { reqName = n; }
