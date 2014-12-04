@@ -20,8 +20,8 @@ import edu.umn.csci5801.GRADSIntf;
 /**
  * Your implementation of this interface must be named GRADS
  */
-public class GRADS implements GRADSIntf
-{
+public class GRADS implements GRADSIntf {
+	
     private List<User> userList;
     public User currentUser;
     private List<Course> courseList;
