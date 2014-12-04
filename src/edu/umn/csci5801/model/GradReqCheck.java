@@ -58,7 +58,7 @@ public class GradReqCheck {
                 casePASSED_WITH_C(requirement, courseTakenList);
                 break;
             case INTRO_TO_RESEARCH:
-                caseINTRO_TO_RESEARCH(requirement, courseTakenList);
+                casePASSED_AS_SATISFACTORY(requirement, courseTakenList);
                 break;
             case TOTAL_CREDITS:
                 caseTOTAL_CREDITS(requirement, courseTakenList);
@@ -184,10 +184,6 @@ public class GradReqCheck {
         if (takenCredits >= requirement.getCredits()) {
             this.result = true;
         }
-    }
-
-    private void caseINTRO_TO_RESEARCH(Requirement requirement, List<CourseTaken> courseTakenList) {
-
     }
 
     private void caseTOTAL_CREDITS(Requirement requirement, List<CourseTaken> courseTakenList) {
