@@ -67,13 +67,13 @@ public class GradReqCheck {
                 caseCOURSE_CREDITS(requirement, courseTakenList);
                 break;
             case OVERALL_GPA_PHD:
-                caseOVERALL_GPA_PHD(requirement, courseTakenList);
+                caseOVERALL_GPA(requirement, courseTakenList);
                 break;
             case IN_PROGRAM_GPA_PHD:
                 caseIN_PROGRAM_GPA(requirement, courseTakenList);
                 break;
             case OVERALL_GPA_MS:
-                caseOVERALL_GPA_MS(requirement, courseTakenList);
+                caseOVERALL_GPA(requirement, courseTakenList);
                 break;
             case IN_PROGRAM_GPA_MS:
                 caseIN_PROGRAM_GPA(requirement, courseTakenList);
@@ -159,9 +159,15 @@ public class GradReqCheck {
 
     }
 
-    private void caseOVERALL_GPA_PHD(Requirement requirement, List<CourseTaken> courseTakenList) {
+    private void caseOVERALL_GPA(Requirement requirement, List<CourseTaken> courseTakenList) {
+        this.result = false;
 
-
+        //Calculate GPA and fill in gradReqCheck
+        this.details = new Requirement(requirement.getName(), courseTakenList);
+        this.details.calculateGpa();
+        if (details.getGpa() >= requirement.getGpa()) {
+            this.result = true;
+        }
     }
 
     private void caseIN_PROGRAM_GPA(Requirement requirement, List<CourseTaken> courseTakenList) {
@@ -176,15 +182,11 @@ public class GradReqCheck {
             }
 
         //Calculate GPA and fill in gradReqCheck
-        this.details = new Requirement(requirement.getName(), courseTakenList);
+        this.details = new Requirement(requirement.getName(), newCourseTakenList);
         this.details.calculateGpa();
         if (details.getGpa() >= requirement.getGpa()) {
             this.result = true;
         }
-    }
-
-    private void caseOVERALL_GPA_MS(Requirement requirement, List<CourseTaken> courseTakenList) {
-
     }
 
     private void caseMILESTONES(Requirement requirement, List<CompletedMilestone> completedMilestoneList) {
