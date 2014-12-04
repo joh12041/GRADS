@@ -104,7 +104,23 @@ public class GradReqCheck {
     }
 
     private void caseTHESIS_PHD(Requirement requirement, List<CourseTaken> courseTakenList) {
-
+        this.result = false;
+        boolean takenClass = false;
+        int thesisCredits = 0;
+        List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
+        for(CourseTaken courseTaken : courseTakenList) {
+            if ("csci8888".equals(courseTaken.getCourse().getId())) {
+                newCourseTakenList.add(courseTaken);
+                this.details = new Requirement(Reqs.COLLOQUIUM, newCourseTakenList);
+                takenClass = true;
+                if (courseTaken.getGrade() == Grade.S) {
+                    thesisCredits = thesisCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());
+                }
+            }
+        }
+        if (thesisCredits >= requirement.getCredits()) {
+            this.result = true;
+        }
     }
 
     private void caseTHESIS_MS(Requirement requirement, List<CourseTaken> courseTakenList) {
@@ -118,18 +134,20 @@ public class GradReqCheck {
     private void caseCOLLOQUIUM(Requirement requirement, List<CourseTaken> courseTakenList) {
         this.result = false;
         boolean takenClass = false;
+        List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
         for(CourseTaken courseTaken : courseTakenList) {
             if("csci5801".equals(courseTaken.getCourse().getId())) {
                 if(courseTaken.getGrade() == Grade.S) {
                     this.result = true;
                 }
-                List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
                 newCourseTakenList.add(courseTaken);
-                this.details = new Requirement(Reqs.COLLOQUIUM, newCourseTakenList);
                 takenClass = true;
             }
         }
-        if(!takenClass) {
+        if(takenClass) {
+            this.details = new Requirement(Reqs.COLLOQUIUM, newCourseTakenList);
+        }
+        else {
             this.details = new Requirement(Reqs.COLLOQUIUM);
         }
     }
