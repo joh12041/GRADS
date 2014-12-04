@@ -1,20 +1,52 @@
+/**
+ * Copyright 2014 CSCI5801 Fall2014 Group1
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package edu.umn.csci5801.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by zihong on 12/2/14.
+ * PHD.java - Class containing all graduation requirements for students
+ * pursuing a PhD. Also included is a mechanism to access all requirements
+ * externally.
+ * 
+ * @author CSCI5801 Fall2014 Group1
+ * @version 1.0
  */
 public class PHD {
+	
     private List<Requirement> reqList;
+    
+    /**
+     * getReqList() - Method for getting the requirements list for PhD
+     * 
+     * @return reqList - Return the list of all requirements for graduation for PhD
+     */
     public List<Requirement> getReqList() {
         if(reqList == null) {
             setReqList();
         }
         return reqList;
     }
-    //TODO: This is where the Requirements for  PHD get inputted into a List
+    
+    /**
+     * setReqList() - Method for setting the requirements list for PhD
+     */
+    //TODO: This is where the Requirements for  PHD get inputed into a List
     private void setReqList() {
         List<String> ls = new ArrayList<String>();
         ls.add("");
