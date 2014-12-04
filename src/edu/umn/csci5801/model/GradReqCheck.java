@@ -106,7 +106,6 @@ public class GradReqCheck {
     //Checks any requirement that is based on passing with satisfactory a certain number of credits of a single course
     private void casePASSED_AS_SATISFACTORY(Requirement requirement, List<CourseTaken> courseTakenList) {
         this.result = false;
-        boolean takenClass = false;
         int takenCredits = 0;
         List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
         List<String> validCourseIDs = new ArrayList<String>();
@@ -135,7 +134,26 @@ public class GradReqCheck {
     }
 
     private void caseOUT_OF_DEPARTMENT(Requirement requirement, List<CourseTaken> courseTakenList) {
+        this.result = false;
+        int takenCredits = 0;
+        List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
 
+        //Find and count only the coursesTaken that match the requirement
+        for (CourseTaken courseTaken : courseTakenList) {
+            if (courseTaken.getCourse().getId().matches("^(?!csci).*[56789][0-9]{3}$")) {
+                newCourseTakenList.add(courseTaken);
+                //Check if passed and therefore credits count toward requirement
+                if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B || courseTaken.getGrade() == Grade.C) {
+                    takenCredits = takenCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());
+                }
+            }
+        }
+
+        //Fill in gradReqCheck
+        this.details = new Requirement(requirement.getName(), newCourseTakenList);
+        if (takenCredits >= requirement.getCredits()) {
+            this.result = true;
+        }
     }
 
     private void casePASSED_WITH_C(Requirement requirement, List<CourseTaken> courseTakenList) {
