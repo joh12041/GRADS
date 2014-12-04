@@ -66,13 +66,12 @@ public class MasterC {
 
         //REQUIREMENT #2 COLLOQUIUM
         List<CourseTaken> ctl2 = new ArrayList<CourseTaken>();
-        CourseTaken ct2 = new CourseTaken(new Course("Colloquium","csci8970","1"),new Term(), Grade.S);
-        ctl2.add(ct2);
+        ctl2.add(new CourseTaken(new Course("Colloquium","csci8970","1"),new Term(), Grade.S));
 
         Requirement req2 = new Requirement(Reqs.COLLOQUIUM,ctl2,1,ls);
         reqList.add(req2);
 
-        //REQUIREMENT #4 PHD LEVEL COURSES
+        //REQUIREMENT #4 PHD_LEVEL_COURSES_PLANC
         List<CourseTaken> ctl3 = new ArrayList<CourseTaken>();
         ctl3.add(new CourseTaken(new Course("Advanced Operating Systems","csci8101","3"),new Term(), Grade.C));
         ctl3.add(new CourseTaken(new Course("Foundations of Distributed Computing","csci8102","3"),new Term(), Grade.C));
@@ -95,26 +94,27 @@ public class MasterC {
         Requirement req3 = new Requirement(Reqs.PHD_LEVEL_COURSES_PLANC,ctl3,6,ls);
         reqList.add(req3);
 
-        //TODO:REQUIREMENT #4 TOTAL CREDITS
-        List<CourseTaken> ctl4 = new ArrayList<CourseTaken>();
-        CourseTaken ct4 = new CourseTaken(new Course(),new Term(), Grade.C);
-        ctl4.add(ct4);
-
-        Requirement req4 = new Requirement(Reqs.TOTAL_CREDITS_MSC,3.25,ctl4,31,ls);
+        //TODO:REQUIREMENT #4 TOTAL CREDITS_MSC
+        Requirement req4 = new Requirement(Reqs.TOTAL_CREDITS_MSC);
         reqList.add(req4);
 
-
-        //Requirement #5 COMPLETED MILESTONES
-        List<CompletedMilestone> lm5 = new ArrayList<CompletedMilestone>();
-        lm5.add(new CompletedMilestone(Milestone.DPF_SUBMITTED));
-        lm5.add(new CompletedMilestone(Milestone.DPF_APPROVED));
-        lm5.add(new CompletedMilestone(Milestone.THESIS_COMMITTEE_APPOINTED));
-        lm5.add(new CompletedMilestone(Milestone.GRADUATION_PACKET_REQUESTED));
-        lm5.add(new CompletedMilestone(Milestone.THESIS_SUBMITTED));
-        lm5.add(new CompletedMilestone(Milestone.THESIS_APPROVED));
-        lm5.add(new CompletedMilestone(Milestone.DEFENSE_PASSED));
-
-        Requirement req5 = new Requirement(Reqs.MILESTONES_MS_C,lm5,ls);
+        //REQUIREMENT #5 OVERALL_GPA_MS
+        Requirement req5 = new Requirement(Reqs.OVERALL_GPA_MS, 3.25);
         reqList.add(req5);
+
+        //REQUIREMENT #6 IN_PROGRAM_GPA_MS
+        Requirement req6 = new Requirement(Reqs.IN_PROGRAM_GPA_MS, 3.25);
+        reqList.add(req6);
+
+        //Requirement #7 MILESTONES_MS_C
+        List<CompletedMilestone> lm7 = new ArrayList<CompletedMilestone>();
+        lm7.add(new CompletedMilestone(Milestone.DPF_SUBMITTED));
+        lm7.add(new CompletedMilestone(Milestone.DPF_APPROVED));
+        lm7.add(new CompletedMilestone(Milestone.TRACKING_FORM_SUBMITTED));
+        lm7.add(new CompletedMilestone(Milestone.TRACKING_FORM_APPROVED));
+        lm7.add(new CompletedMilestone(Milestone.GRADUATION_PACKET_REQUESTED));
+
+        Requirement req7 = new Requirement(Reqs.MILESTONES_MS_C,lm7,ls);
+        reqList.add(req7);
     }
 }
