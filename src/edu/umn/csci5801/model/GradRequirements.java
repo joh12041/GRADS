@@ -54,7 +54,7 @@ public class GradRequirements {
         return reqList;
     }
 
-    //TODO:test ReqList against student record contained in partially filled-in grc
-    private void testReqList(List<Requirement> requirements, List<GradReqCheck> grc) {
+    public void testReqList(List<CourseTaken> courseTakenList, List<CompletedMilestone> completedMilestoneList) {
+        
     }
 }
