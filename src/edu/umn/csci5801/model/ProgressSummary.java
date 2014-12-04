@@ -37,4 +37,40 @@ public class ProgressSummary {
         gradRequirements.testReqList(coursesTaken, completedMilestonesList);
         reqCheckResult = gradRequirements.getReqChecks();
     }
+
+    public List<GradReqCheck> getReqCheckResult() {
+        return reqCheckResult;
+    }
+
+    public List<Professor> getCommittee() {
+        return committee;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public List<String> getNotes() {
+        return notes;
+    }
+
+    public List<CourseTaken> getCoursesTaken() {
+        return coursesTaken;
+    }
+
+    public Degree getDegree() {
+        return degree;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public Term getTermBegan() {
+        return termBegan;
+    }
+
+    public List<Professor> getAdvisors() {
+        return advisors;
+    }
 }

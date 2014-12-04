@@ -143,7 +143,7 @@ public class GradReqCheck {
                             break;
                         }
                         break;
-                    
+
                     case THEORY_ALGORITHMS:
                         if (topThry != null) {
                             if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B || courseTaken.getGrade() == Grade.C) {
@@ -170,7 +170,7 @@ public class GradReqCheck {
                             break;
                         }
                         break;
-                    
+
                     case ARCHITECTURE_SYSTEMS_SOFTWARE:
                         if (topArch != null) {
                             if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B || courseTaken.getGrade() == Grade.C) {
@@ -209,17 +209,14 @@ public class GradReqCheck {
                 newCourseTakenList.add(topArch);
             }
 
-
-            this.details.calculateGpa();
-            if (details.getGpa() >= requirement.getGpa()) {}
-                this.result = true;
-
             //Fill in gradReqCheck
             this.details = new Requirement(requirement.getName(), newCourseTakenList);
             this.details.calculateGpa();
-            if (details.getGpa() >= )
+            if (details.getGpa() >= requirement.getGpa()) {
+                this.result = true;
             }
         }
+    }
 
     private void caseBREADTH_REQUIREMENT_PHD(Requirement requirement, List<CourseTaken> courseTakenList) {
 
