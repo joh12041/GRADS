@@ -104,32 +104,33 @@ public class MasterA {
         Requirement req4 = new Requirement(Reqs.PHD_LEVEL_COURSES,ctl4,3,ls);
         reqList.add(req4);
 
-        //REQUIREMENT #5 TOTAL_CREDITS_MSA
-        List<CourseTaken> ctl5 = new ArrayList<CourseTaken>();
-        ctl5.add(new CourseTaken(new Course(),new Term(), Grade.C));
-
-        Requirement req5 = new Requirement(Reqs.TOTAL_CREDITS_MSA,3.25,ctl5,31,ls);
+        //TODO:REQUIREMENT #5 TOTAL_CREDITS_MSA
+        Requirement req5 = new Requirement(Reqs.TOTAL_CREDITS_MSA);
         reqList.add(req5);
 
         //TODO:REQUIREMENT #6 COURSE CREDITS
-        List<CourseTaken> ctl6 = new ArrayList<CourseTaken>();
-        CourseTaken ct6 = new CourseTaken(new Course(),new Term(), Grade.C);
-        ctl6.add(ct6);
-
-        Requirement req6 = new Requirement(Reqs.COURSE_CREDITS,3.25,ctl6,22,ls);
+        Requirement req6 = new Requirement(Reqs.COURSE_CREDITS);
         reqList.add(req6);
 
-        //Requirement #7 COMPLETED MILESTONES
-        List<CompletedMilestone> lm7 = new ArrayList<CompletedMilestone>();
-        lm7.add(new CompletedMilestone(Milestone.DPF_SUBMITTED));
-        lm7.add(new CompletedMilestone(Milestone.DPF_APPROVED));
-        lm7.add(new CompletedMilestone(Milestone.THESIS_COMMITTEE_APPOINTED));
-        lm7.add(new CompletedMilestone(Milestone.GRADUATION_PACKET_REQUESTED));
-        lm7.add(new CompletedMilestone(Milestone.THESIS_SUBMITTED));
-        lm7.add(new CompletedMilestone(Milestone.THESIS_APPROVED));
-        lm7.add(new CompletedMilestone(Milestone.DEFENSE_PASSED));
-
-        Requirement req7 = new Requirement(Reqs.MILESTONES_MS_A,lm7,ls);
+        //REQUIREMENT #7 OVERALL_GPA_MS
+        Requirement req7 = new Requirement(Reqs.OVERALL_GPA_MS, 3.25);
         reqList.add(req7);
+
+        //REQUIREMENT #8 IN_PROGRAM_GPA_MS
+        Requirement req8 = new Requirement(Reqs.IN_PROGRAM_GPA_MS, 3.25);
+        reqList.add(req8);
+
+        //Requirement #9 MILESTONES_MS_A
+        List<CompletedMilestone> lm9 = new ArrayList<CompletedMilestone>();
+        lm9.add(new CompletedMilestone(Milestone.DPF_SUBMITTED));
+        lm9.add(new CompletedMilestone(Milestone.DPF_APPROVED));
+        lm9.add(new CompletedMilestone(Milestone.THESIS_COMMITTEE_APPOINTED));
+        lm9.add(new CompletedMilestone(Milestone.GRADUATION_PACKET_REQUESTED));
+        lm9.add(new CompletedMilestone(Milestone.THESIS_SUBMITTED));
+        lm9.add(new CompletedMilestone(Milestone.THESIS_APPROVED));
+        lm9.add(new CompletedMilestone(Milestone.DEFENSE_PASSED));
+
+        Requirement req9 = new Requirement(Reqs.MILESTONES_MS_A,lm9,ls);
+        reqList.add(req9);
     }
 }
