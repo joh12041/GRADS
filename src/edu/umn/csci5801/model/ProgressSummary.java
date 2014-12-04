@@ -32,8 +32,8 @@ public class ProgressSummary {
         coursesTaken = ct;
     }
 
-    public void checkGradStatus() {
-        GradRequirements gradRequirements = new GradRequirements(degree, reqCheckResult);
+    public void checkGradStatus(List<CompletedMilestone> completedMilestonesList) {
+        GradRequirements gradRequirements = new GradRequirements(degree);
         reqCheckResult = gradRequirements.getReqChecks();
     }
 }

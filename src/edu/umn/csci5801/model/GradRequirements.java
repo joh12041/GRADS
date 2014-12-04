@@ -11,11 +11,11 @@ public class GradRequirements {
     private List<Requirement> reqList;
     private Degree degree;
 
-    //constructorx
+    //constructors
     public GradRequirements() {}
-    public GradRequirements(Degree deg, List<GradReqCheck> grc){
-        //createReqList(deg);  *****UNCOMMENT AND HANDLE EXCEPTION*****
-        testReqList(reqList, grc);
+    public GradRequirements(Degree deg){
+        //TODO:place in try/catch clause
+        createReqList(deg);
     }
     public GradRequirements(Degree deg, List<GradReqCheck> grc, Degree d){
         //createReqList(deg);  *****UNCOMMENT AND HANDLE EXCEPTION*****
