@@ -18,6 +18,12 @@ public class Course {
         courseArea = ca;
     }
 
+    public Course(String n, String i_d, String nc) {
+        name = n;
+        id = i_d;
+        numCredits = nc;
+    }
+
     public void setCourseArea(CourseArea courseArea) {
         this.courseArea = courseArea;
     }

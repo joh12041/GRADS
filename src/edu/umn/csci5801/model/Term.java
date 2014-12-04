@@ -23,8 +23,10 @@ public class Term {
         }
     }
     public void setSemester(Semester sem) { this.semester = sem;  }
+
     public void setYear(int yr) { this.year = yr; }
 
     public int getYear() { return year; }
+
     public Semester getSemester() { return semester; }
 }

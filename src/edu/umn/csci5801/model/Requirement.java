@@ -32,10 +32,6 @@ public class Requirement {
         milestones = _milestones_;
         notes = _notes_;
     }
-    public Requirement(String _name_, List<CompletedMilestone> _milestones_) {
-        name = _name_;
-        milestones = _milestones_;
-    }
 
     public void setName(String n) { name = n; }
     public void setGpa(float g_p_a) { gpa = g_p_a; }
