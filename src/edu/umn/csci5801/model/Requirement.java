@@ -73,10 +73,17 @@ public class Requirement {
         float gradef = 0f;
         switch (grade) {
             case A: gradef = 4.0f;
+                break;
             case B: gradef = 3.0f;
+                break;
             case C: gradef = 2.0f;
+                break;
             case D: gradef = 1.0f;
+                break;
             case F: gradef = 0.0f;
+                break;
+            default:
+
         }
         return gradef;
     }

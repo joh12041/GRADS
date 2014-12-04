@@ -29,6 +29,47 @@ public class GradReqCheck {
         switch (requirement.getName()) {
             //TODO: Fill in all the different case statements (one for each possible requirement name
             case BREADTH_REQUIREMENT_MS:
+                break;
+            case BREADTH_REQUIREMENT_PHD:
+                break;
+            case THESIS_PHD:
+                break;
+            case THESIS_MS:
+                break;
+            case PLAN_B_PROJECT:
+                break;
+            case COLLOQUIUM:
+                break;
+            case OUT_OF_DEPARTMENT:
+                break;
+            case PHD_LEVEL_COURSES:
+                break;
+            case PHD_LEVEL_COURSES_PLANC:
+                break;
+            case INTRO_TO_RESEARCH:
+                break;
+            case TOTAL_CREDITS:
+                break;
+            case COURSE_CREDITS:
+                break;
+            case OVERALL_GPA_PHD:
+                break;
+            case IN_PROGRAM_GPA_PHD:
+                break;
+            case OVERALL_GPA_MS:
+                break;
+            case IN_PROGRAM_GPA_MS:
+                break;
+            case MILESTONES_PHD:
+                break;
+            case MILESTONES_MS_A:
+                break;
+            case MILESTONES_MS_B:
+                break;
+            case MILESTONES_MS_C:
+                break;
+            default:
+                break;
         }
     }
 }
