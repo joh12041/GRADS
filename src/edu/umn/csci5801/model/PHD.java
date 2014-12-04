@@ -134,7 +134,7 @@ public class PHD {
         Requirement req8 = new Requirement(Reqs.IN_PROGRAM_GPA_PHD, 3.45);
         reqList.add(req8);
 
-        //Requirement #9 COMPLETED MILESTONES
+        //Requirement #9 MILESTONES_PHD
         List<CompletedMilestone> lm9 = new ArrayList<CompletedMilestone>();
         lm9.add(new CompletedMilestone(Milestone.PRELIM_COMMITTEE_APPOINTED));
         lm9.add(new CompletedMilestone(Milestone.WRITTEN_PE_SUBMITTED));
