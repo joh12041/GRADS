@@ -518,7 +518,7 @@ public class GradReqCheck {
 
         //Calculate GPA and fill in gradReqCheck
         this.details = new Requirement(requirement.getName(), newCourseTakenList);
-        if () {
+        if (csciCredits >= 16 && totalCredits >= 22) {
             this.result = true;
         }
     }
