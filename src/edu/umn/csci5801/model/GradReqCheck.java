@@ -485,6 +485,42 @@ public class GradReqCheck {
         //Check that grades are A, B, or C
         //Remove any thesis credits from consideration
 
+        this.result = false;
+        int csciCredits = 0;
+        int totalCredits = 0;
+        List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
+        List<Grade> validGrades = new ArrayList<Grade>();
+        validGrades.add(Grade.A);
+        validGrades.add(Grade.B);
+        validGrades.add(Grade.C);
+        List<String> invalidCourseIDs = new ArrayList<String>();
+        invalidCourseIDs.add("csci8777");
+        invalidCourseIDs.add("csci8888");
+        invalidCourseIDs.add("csci8666");
+
+        for(CourseTaken courseTaken : courseTakenList) {
+            if (validGrades.contains(courseTaken.getGrade()) && !invalidCourseIDs.contains(courseTaken.getCourse().getId())) {
+                //Collect only the coursesTaken that are CSCI 5000+ level
+                if (courseTaken.getCourse().getId().matches("^csci[56789][0-9]{3}$")) {
+                    newCourseTakenList.add(courseTaken);
+                    csciCredits = csciCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());
+                    totalCredits = totalCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());
+                    continue;
+                }
+                //Collect only the coursesTaken that are non-CSCI but still 5000+ level
+                if (courseTaken.getCourse().getId().matches("^(?!csci).*[56789][0-9]{3}$")) {
+                    newCourseTakenList.add(courseTaken);
+                    totalCredits = totalCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());
+                    continue;
+                }
+            }
+        }
+
+        //Calculate GPA and fill in gradReqCheck
+        this.details = new Requirement(requirement.getName(), newCourseTakenList);
+        if () {
+            this.result = true;
+        }
     }
 
     private void caseOVERALL_GPA(Requirement requirement, List<CourseTaken> courseTakenList) {
