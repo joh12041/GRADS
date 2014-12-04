@@ -32,7 +32,10 @@ public class CompletedMilestone {
      * CompletedMilestone() - Constructor for creating a Milestone object
      */
     public CompletedMilestone() {}
-    
+
+    public CompletedMilestone(Milestone m) {
+        milestone = m;
+    }
     /**
      * CompletedMilestone() - Constructor for creating a Milestone object
      * 
