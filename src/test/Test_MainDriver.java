@@ -38,5 +38,8 @@ public class Test_MainDriver {
         System.out.println("Working Directory = " +
                 System.getProperty("user.dir"));
         grads.loadUsers("resources/users.txt");
+        grads.loadCourses("resources/courses.txt");
+        grads.loadRecords("resources/students.txt");
+        grads.setUser("gayxx067");
     }
 }
