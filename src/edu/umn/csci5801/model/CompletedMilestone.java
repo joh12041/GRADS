@@ -8,6 +8,9 @@ public class CompletedMilestone {
     private Term term;
 
     public CompletedMilestone() {}
+    public CompletedMilestone(Milestone m){
+        milestone = m;
+    }
     public CompletedMilestone(Milestone m, Term t) {
         milestone = m;
         term = t;

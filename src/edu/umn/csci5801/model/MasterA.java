@@ -21,7 +21,7 @@ public class MasterA {
         //public Requirement(String _name_, float _gpa_, List<CourseTaken> _courses_, int _credits_,
                             //List<CompletedMilestone> _milestones_, List<String> _notes_) {
 
-        // REQUIREMENT #1
+        // REQUIREMENT #1 Breadth Requirement Courses
         List<CourseTaken> ctl1 = new ArrayList<CourseTaken>();
         ctl1.add(new CourseTaken(new Course("Analysis of Numerical Algorithms","csci5302","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
         ctl1.add(new CourseTaken(new Course("Computational Aspects of Matrix Theory","csci5304","3",CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));
@@ -34,7 +34,7 @@ public class MasterA {
         ctl1.add(new CourseTaken(new Course("Introduction to Compilers","csci5161","3",CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));
         ctl1.add(new CourseTaken(new Course("Advanced Computer Architecture","csci5204","3",CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));
         ctl1.add(new CourseTaken(new Course("Data Communications and Computer Networks","csci5211","3",CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));
-        ctl1.add(new CourseTaken(new Course("Foundations of Advanced Netowrking","csci5221","3",CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));
+        ctl1.add(new CourseTaken(new Course("Foundations of Advanced Networking","csci5221","3",CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));
         ctl1.add(new CourseTaken(new Course("Wireless and Sensor Networks","csci5231","3",CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));
         ctl1.add(new CourseTaken(new Course("Introduction to Parallel Computing: Architectures, Algorithms, and Programming","csci5451","3",CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));
         ctl1.add(new CourseTaken(new Course("Functional Genomics, Systems Biology, and Bioinformatics","csci5461","3",CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));
@@ -59,21 +59,11 @@ public class MasterA {
         ctl1.add(new CourseTaken(new Course("Virtual Reality and 3D Interaction","csci5619","3",CourseArea.APPLICATIONS), new Term(), Grade.C));
         ctl1.add(new CourseTaken(new Course("Principles of Database Systems","csci5707","3",CourseArea.APPLICATIONS), new Term(), Grade.C));
 
-
-        CompletedMilestone m1 = new CompletedMilestone();
-        List<CompletedMilestone> lm1 = new ArrayList<CompletedMilestone>();
-        lm1.add(m1);
-
         String s1 = "";
         List<String> ls1 = new ArrayList<String>();
         ls1.add(s1);
 
-        //String _name_, float _gpa_, List<CourseTaken> _courses_, int _credits_,
-        //List<CompletedMilestone> _milestones_, List<String> _notes_
-
-
-        Requirement req1 = new Requirement("BREADTH_REQUIREMENT_MS", 3.25f, ctl1, 9, lm1, ls1);
-
+        Requirement req1 = new Requirement("BREADTH_REQUIREMENT_MS", 3.25f, ctl1, 9, ls1);
         reqList.add(req1);
 
         //REQUIREMENT #2
@@ -82,15 +72,11 @@ public class MasterA {
         CourseTaken ct2 = new CourseTaken(new Course("Thesis_MS","csci8777","10"),new Term(), Grade.S);
         ctl2.add(ct2);
 
-        CompletedMilestone m2 = new CompletedMilestone();
-        List<CompletedMilestone> lm2 = new ArrayList<CompletedMilestone>();
-        lm2.add(m2);
-
         String s2 = "";
         List<String> ls2 = new ArrayList<String>();
         ls2.add(s2);
 
-        Requirement req2 = new Requirement("THESIS_MS",ctl2,10,lm2,ls2);
+        Requirement req2 = new Requirement("THESIS_MS",ctl2,10,ls2);
         reqList.add(req2);
 
         //REQUIREMENT #3
@@ -98,15 +84,11 @@ public class MasterA {
         CourseTaken ct3 = new CourseTaken(new Course("Colloquium","csci8970","1"),new Term(), Grade.S);
         ctl3.add(ct3);
 
-        CompletedMilestone m3 = new CompletedMilestone();
-        List<CompletedMilestone> lm3 = new ArrayList<CompletedMilestone>();
-        lm3.add(m3);
-
         String s3 = "";
         List<String> ls3 = new ArrayList<String>();
         ls3.add(s3);
 
-        Requirement req3 = new Requirement("COLLOQUIUM",ctl3,1,lm3,ls3);
+        Requirement req3 = new Requirement("COLLOQUIUM",ctl3,1,ls3);
         reqList.add(req3);
 
         //REQUIREMENT #4
@@ -114,15 +96,12 @@ public class MasterA {
         CourseTaken ct4 = new CourseTaken(new Course("PhD level courses","csci8000","3"),new Term(), Grade.C);
         ctl4.add(ct4);
 
-        CompletedMilestone m4 = new CompletedMilestone();
-        List<CompletedMilestone> lm4 = new ArrayList<CompletedMilestone>();
-        lm4.add(m4);
 
         String s4 = "";
         List<String> ls4 = new ArrayList<String>();
         ls4.add(s4);
 
-        Requirement req4 = new Requirement("PHD_LEVEL_COURSES",ctl4,3,lm4,ls4);
+        Requirement req4 = new Requirement("PHD_LEVEL_COURSES",ctl4,3,ls4);
         reqList.add(req4);
 
         //REQUIREMENT #5
@@ -130,15 +109,11 @@ public class MasterA {
         CourseTaken ct5 = new CourseTaken(new Course(),new Term(), Grade.C);
         ctl5.add(ct5);
 
-        CompletedMilestone m5 = new CompletedMilestone();
-        List<CompletedMilestone> lm5 = new ArrayList<CompletedMilestone>();
-        lm5.add(m5);
-
         String s5 = "";
         List<String> ls5 = new ArrayList<String>();
         ls5.add(s5);
 
-        Requirement req5 = new Requirement("TOTAL_CREDITS",3.25f,ctl5,31,lm5,ls5);
+        Requirement req5 = new Requirement("TOTAL_CREDITS",3.25f,ctl5,31,ls5);
         reqList.add(req5);
 
         //REQUIREMENT #6
@@ -146,15 +121,27 @@ public class MasterA {
         CourseTaken ct6 = new CourseTaken(new Course(),new Term(), Grade.C);
         ctl6.add(ct6);
 
-        CompletedMilestone m6 = new CompletedMilestone();
-        List<CompletedMilestone> lm6 = new ArrayList<CompletedMilestone>();
-        lm6.add(m6);
-
         String s6 = "";
         List<String> ls6 = new ArrayList<String>();
         ls6.add(s6);
 
-        Requirement req6 = new Requirement("COURSE_CREDITS",3.25f,ctl6,22,lm6,ls6);
+        Requirement req6 = new Requirement("COURSE_CREDITS",3.25f,ctl6,22,ls6);
         reqList.add(req6);
+
+        //Requirement #7
+        List<CompletedMilestone> lm7 = new ArrayList<CompletedMilestone>();
+        lm7.add(new CompletedMilestone(Milestone.DPF_SUBMITTED));
+        lm7.add(new CompletedMilestone(Milestone.DPF_APPROVED));
+        lm7.add(new CompletedMilestone(Milestone.THESIS_COMMITTEE_APPOINTED));
+        lm7.add(new CompletedMilestone(Milestone.GRADUATION_PACKET_REQUESTED));
+        lm7.add(new CompletedMilestone(Milestone.THESIS_SUBMITTED));
+        lm7.add(new CompletedMilestone(Milestone.THESIS_APPROVED));
+        lm7.add(new CompletedMilestone(Milestone.DEFENSE_PASSED));
+        String s7 = "";
+        List<String> ls7 = new ArrayList<String>();
+        ls7.add(s7);
+
+        Requirement req7 = new Requirement("MILESTONES_MS_A",lm7,ls7);
+        reqList.add(req7);
     }
 }

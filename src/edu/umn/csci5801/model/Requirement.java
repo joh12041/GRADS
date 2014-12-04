@@ -25,13 +25,25 @@ public class Requirement {
         notes = _notes_;
     }
     public Requirement(String _name_, List<CourseTaken> _courses_, int _credits_,
-                       List<CompletedMilestone> _milestones_, List<String> _notes_) {
+                       List<String> _notes_) {
         name = _name_;
         courses = _courses_;
         credits = _credits_;
-        milestones = _milestones_;
         notes = _notes_;
     }
+    public Requirement(String _name_, float _gpa_, List<CourseTaken> _courses_, int _credits_,
+                       List<String> _notes_) {
+        name = _name_;
+        gpa = _gpa_;
+        courses = _courses_;
+        credits = _credits_;
+        notes = _notes_;
+    }
+    public Requirement(String _name_, List<CompletedMilestone> _milestones_, List<String> _notes_) {
+        name = _name_;
+        milestones = _milestones_;
+        notes = _notes_;
+    })
 
     public void setName(String n) { name = n; }
     public void setGpa(float g_p_a) { gpa = g_p_a; }
