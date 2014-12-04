@@ -96,9 +96,6 @@ public class GradReqCheck {
     }
 
     private void  caseBREADTH_REQUIREMENT_MS(Requirement requirement, List<CourseTaken> courseTakenList) {
-        //Loop through course list
-        //Grab any A and hten B and then C for each breadth requirement
-        //Finish out the requirement
 
         this.result = false;
         CourseTaken topThry = null;
@@ -107,6 +104,10 @@ public class GradReqCheck {
 
         List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
         List<String> validCourseIDs = new ArrayList<String>();
+        List<Grade> validGrades = new ArrayList<Grade>();
+        validGrades.add(Grade.A);
+        validGrades.add(Grade.B);
+        validGrades.add(Grade.C);
 
         //Generate list of valid courses
         for (CourseTaken validCourseTaken : requirement.getCourses()) {
@@ -115,14 +116,11 @@ public class GradReqCheck {
 
         //Find and count only the coursesTaken that match the requirement
         for (CourseTaken courseTaken : courseTakenList) {
-            if (validCourseIDs.contains(courseTaken.getCourse().getId())) {
+            if (validCourseIDs.contains(courseTaken.getCourse().getId()) && validGrades.contains(courseTaken.getGrade())) {
                 switch (courseTaken.getCourse().getCourseArea()) {
                     case APPLICATIONS:
                         if (topAppl == null) {
-                            if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B || courseTaken.getGrade() == Grade.C) {
-                                topAppl = courseTaken;
-                                break;
-                            }
+                            topAppl = courseTaken;
                             break;
                         }
                         if (topAppl.getGrade() == Grade.A) {
@@ -146,10 +144,7 @@ public class GradReqCheck {
 
                     case THEORY_ALGORITHMS:
                         if (topThry == null) {
-                            if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B || courseTaken.getGrade() == Grade.C) {
-                                topThry = courseTaken;
-                                break;
-                            }
+                            topThry = courseTaken;
                             break;
                         }
                         if (topThry.getGrade() == Grade.A) {
@@ -173,10 +168,7 @@ public class GradReqCheck {
 
                     case ARCHITECTURE_SYSTEMS_SOFTWARE:
                         if (topArch == null) {
-                            if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B || courseTaken.getGrade() == Grade.C) {
-                                topArch = courseTaken;
-                                break;
-                            }
+                            topArch = courseTaken;
                             break;
                         }
                         if (topArch.getGrade() == Grade.A) {
@@ -199,29 +191,27 @@ public class GradReqCheck {
                         break;
                 }
             }
-            if (topAppl != null) {
-                newCourseTakenList.add(topAppl);
-            }
-            if (topThry != null) {
-                newCourseTakenList.add(topThry);
-            }
-            if (topArch != null) {
-                newCourseTakenList.add(topArch);
-            }
-
-            //Fill in gradReqCheck
-            this.details = new Requirement(requirement.getName(), newCourseTakenList);
-            this.details.calculateGpa();
-            if (details.getGpa() >= requirement.getGpa() && this.details.getCourses().size() == 5) {
-                this.result = true;
-            }
         }
+        if (topAppl != null) {
+            newCourseTakenList.add(topAppl);
+        }
+        if (topThry != null) {
+            newCourseTakenList.add(topThry);
+        }
+        if (topArch != null) {
+            newCourseTakenList.add(topArch);
+        }
+
+        //Fill in gradReqCheck
+        this.details = new Requirement(requirement.getName(), newCourseTakenList);
+        this.details.calculateGpa();
+        if (details.getGpa() >= requirement.getGpa() && this.details.getCourses().size() == 5) {
+            this.result = true;
+        }
+
     }
 
     private void caseBREADTH_REQUIREMENT_PHD(Requirement requirement, List<CourseTaken> courseTakenList) {
-        //Loop through course list
-        //Grab any A and hten B and then C for each breadth requirement
-        //Finish out the requirement
 
         this.result = false;
         CourseTaken topThry = null;
@@ -232,6 +222,10 @@ public class GradReqCheck {
 
         List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
         List<String> validCourseIDs = new ArrayList<String>();
+        List<Grade> validGrades = new ArrayList<Grade>();
+        validGrades.add(Grade.A);
+        validGrades.add(Grade.B);
+        validGrades.add(Grade.C);
 
         //Generate list of valid courses
         for (CourseTaken validCourseTaken : requirement.getCourses()) {
@@ -240,14 +234,11 @@ public class GradReqCheck {
 
         //Find and count only the coursesTaken that match the requirement
         for (CourseTaken courseTaken : courseTakenList) {
-            if (validCourseIDs.contains(courseTaken.getCourse().getId())) {
+            if (validCourseIDs.contains(courseTaken.getCourse().getId()) && validGrades.contains(courseTaken.getGrade())) {
                 switch (courseTaken.getCourse().getCourseArea()) {
                     case APPLICATIONS:
                         if (topAppl == null) {
-                            if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B || courseTaken.getGrade() == Grade.C) {
-                                topAppl = courseTaken;
-                                break;
-                            }
+                            topAppl = courseTaken;
                             break;
                         }
                         if (topAppl.getGrade() == Grade.A) {
@@ -271,10 +262,7 @@ public class GradReqCheck {
 
                     case THEORY_ALGORITHMS:
                         if (topThry == null) {
-                            if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B || courseTaken.getGrade() == Grade.C) {
-                                topThry = courseTaken;
-                                break;
-                            }
+                            topThry = courseTaken;
                             break;
                         }
                         if (topThry.getGrade() == Grade.A) {
@@ -298,10 +286,7 @@ public class GradReqCheck {
 
                     case ARCHITECTURE_SYSTEMS_SOFTWARE:
                         if (topArch == null) {
-                            if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B || courseTaken.getGrade() == Grade.C) {
-                                topArch = courseTaken;
-                                break;
-                            }
+                            topArch = courseTaken;
                             break;
                         }
                         if (topArch.getGrade() == Grade.A) {
@@ -340,8 +325,20 @@ public class GradReqCheck {
             if (validCourseIDs.contains(courseTaken2.getCourse().getId())) {
                 if (!newCourseTakenList.contains(courseTaken2)) {
                     if (fourth == null) {
-
+                        if (courseTaken2.getGrade() == Grade.A || courseTaken2.getGrade() == Grade.B || courseTaken2.getGrade() == Grade.C) {
+                            fourth = courseTaken2;
+                            continue;
+                        }
+                        continue;
                     }
+                    if (fifth == null) {
+                        if (courseTaken2.getGrade() == Grade.A || courseTaken2.getGrade() == Grade.B || courseTaken2.getGrade() == Grade.C) {
+                            fifth = courseTaken2;
+                            continue;
+                        }
+                        continue;
+                    }
+                    if
                 }
             }
         }
