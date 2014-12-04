@@ -161,10 +161,26 @@ public class GradReqCheck {
 
     private void caseOVERALL_GPA_PHD(Requirement requirement, List<CourseTaken> courseTakenList) {
 
+
     }
 
     private void caseIN_PROGRAM_GPA_PHD(Requirement requirement, List<CourseTaken> courseTakenList) {
+        this.result = false;
+        List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
 
+        //Find and collect only the coursesTaken that are CSCI 5000 level
+        for(CourseTaken courseTaken : courseTakenList) {
+            if (courseTaken.getCourse().getId().matches("^csci5[0-9]{3}$")) {
+                newCourseTakenList.add(courseTaken);
+                }
+            }
+
+        //Calculate GPA and fill in gradReqCheck
+        this.details = new Requirement(requirement.getName(), courseTakenList);
+        this.details.calculateGpa();
+        if (details.getGpa() >= requirement.getGpa()) {
+                this.result = true;
+            }
     }
 
     private void caseOVERALL_GPA_MS(Requirement requirement, List<CourseTaken> courseTakenList) {

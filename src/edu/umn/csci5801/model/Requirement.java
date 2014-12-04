@@ -92,10 +92,10 @@ public class Requirement {
         return gradeD;
     }
 
-    public void calculateGpa(List<CourseTaken> courseTakenList) {
+    public void calculateGpa() {
         double totalGradePoints = 0;
         int totalCourseCredits = 0;
-        for (CourseTaken cT : courseTakenList){
+        for (CourseTaken cT : courses){
             totalGradePoints = totalGradePoints + (gradeToDouble(cT.getGrade()) * Integer.parseInt(cT.getCourse().getNumCredits()));
             totalCourseCredits = totalCourseCredits + Integer.parseInt(cT.getCourse().getNumCredits());
         }
