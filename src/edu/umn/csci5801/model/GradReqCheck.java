@@ -331,6 +331,30 @@ public class GradReqCheck {
                     fifth = courseTaken2;
                     continue;
                 }
+                if (fourth.getGrade() == Grade.C) {
+                    if (courseTaken2.getGrade() == Grade.A || courseTaken2.getGrade() == Grade.B) {
+                        fourth = courseTaken2;
+                        continue;
+                    }
+                }
+                if (fifth.getGrade() == Grade.C) {
+                    if (courseTaken2.getGrade() == Grade.A || courseTaken2.getGrade() == Grade.B) {
+                        fifth = courseTaken2;
+                        continue;
+                    }
+                }
+                if (fourth.getGrade() == Grade.B) {
+                    if (courseTaken2.getGrade() == Grade.A) {
+                        fourth = courseTaken2;
+                        continue;
+                    }
+                }
+                if (fifth.getGrade() == Grade.B) {
+                    if (courseTaken2.getGrade() == Grade.A) {
+                        fifth = courseTaken2;
+                        continue;
+                    }
+                }
             }
         }
             
