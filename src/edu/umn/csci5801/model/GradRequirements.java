@@ -11,16 +11,11 @@ public class GradRequirements {
     private List<Requirement> reqList;
     private Degree degree;
 
-    //constructorx
+    //constructors
     public GradRequirements() {}
-    public GradRequirements(Degree deg, List<GradReqCheck> grc){
-        //createReqList(deg);  *****UNCOMMENT AND HANDLE EXCEPTION*****
-        testReqList(reqList, grc);
-    }
-    public GradRequirements(Degree deg, List<GradReqCheck> grc, Degree d){
-        //createReqList(deg);  *****UNCOMMENT AND HANDLE EXCEPTION*****
-        testReqList(reqList, grc);
-        degree = d;
+    public GradRequirements(Degree deg) throws Exception{
+        //TODO:place in try/catch clause
+        createReqList(deg);
     }
 
     public void setReqChecks(List<GradReqCheck> list) { reqChecks = list; }
@@ -59,7 +54,10 @@ public class GradRequirements {
         return reqList;
     }
 
-    //TODO:test ReqList against student record contained in partially filled-in grc
-    private void testReqList(List<Requirement> requirements, List<GradReqCheck> grc) {
+    public void testReqList(List<CourseTaken> courseTakenList, List<CompletedMilestone> completedMilestoneList) {
+        for (Requirement r : reqList) {
+            GradReqCheck grc = new GradReqCheck(r.getName());
+            grc.testReq(r, courseTakenList, completedMilestoneList);
+        }
     }
 }

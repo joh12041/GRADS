@@ -239,7 +239,7 @@ public class GRADS implements GRADSIntf
                     ProgressSummary progressSummary = new ProgressSummary(sr.getStudent(),
                             sr.getDepartment(), sr.getDegreeSought(), sr.getTermBegan(),
                             sr.getAdvisors(), sr.getCommittee(), sr.getNotes(), sr.getCoursesTaken());
-                    progressSummary.checkGradStatus();
+                    progressSummary.checkGradStatus(sr.getMilestonesSet());
                     progressSummaryReturn = progressSummary;
                 }
             }
@@ -282,7 +282,7 @@ public class GRADS implements GRADSIntf
                     ProgressSummary progressSummary = new ProgressSummary(sr.getStudent(),
                             sr.getDepartment(), sr.getDegreeSought(), sr.getTermBegan(),
                             sr.getAdvisors(), sr.getCommittee(), sr.getNotes(), sr.getCoursesTaken());
-                    progressSummary.checkGradStatus();
+                    progressSummary.checkGradStatus(sr.getMilestonesSet());
                     progressSummaryReturn = progressSummary;
                 }
             }
