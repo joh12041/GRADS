@@ -78,7 +78,7 @@ public class MasterB {
         Requirement req3 = new Requirement(Reqs.COLLOQUIUM,ctl3,1,ls);
         reqList.add(req3);
 
-        //REQUIREMENT #4 PHD LEVEL COURSES
+        //REQUIREMENT #4 PHD_LEVEL_COURSES
         List<CourseTaken> ctl4 = new ArrayList<CourseTaken>();
         ctl4.add(new CourseTaken(new Course("Advanced Operating Systems","csci8101","3"),new Term(), Grade.C));
         ctl4.add(new CourseTaken(new Course("Foundations of Distributed Computing","csci8102","3"),new Term(), Grade.C));
@@ -101,7 +101,7 @@ public class MasterB {
         Requirement req4 = new Requirement(Reqs.PHD_LEVEL_COURSES,ctl4,3,ls);
         reqList.add(req4);
 
-        //TODO:REQUIREMENT #5 TOTAL CREDITS_MSB
+        //TODO:REQUIREMENT #5 TOTAL_CREDITS_MSB
         Requirement req5 = new Requirement(Reqs.TOTAL_CREDITS_MSB);
         reqList.add(req5);
 
@@ -113,11 +113,11 @@ public class MasterB {
         Requirement req7 = new Requirement(Reqs.IN_PROGRAM_GPA_MS, 3.25);
         reqList.add(req7);
 
-        //Requirement #8 COMPLETED MILESTONES
+        //Requirement #8 MILESTONES_MS_B
         List<CompletedMilestone> lm8 = new ArrayList<CompletedMilestone>();
         lm8.add(new CompletedMilestone(Milestone.DPF_SUBMITTED));
         lm8.add(new CompletedMilestone(Milestone.DPF_APPROVED));
-        lm8.add(new CompletedMilestone(Milestone.THESIS_COMMITTEE_APPOINTED));
+        lm8.add(new CompletedMilestone(Milestone.PROJECT_COMMITTEE_APPOINTED));
         lm8.add(new CompletedMilestone(Milestone.GRADUATION_PACKET_REQUESTED));
         lm8.add(new CompletedMilestone(Milestone.DEFENSE_PASSED));
 
