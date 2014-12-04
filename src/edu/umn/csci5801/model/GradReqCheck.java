@@ -37,10 +37,10 @@ public class GradReqCheck {
                 caseBREADTH_REQUIREMENT_PHD(requirement, courseTakenList);
                 break;
             case THESIS_PHD:
-                caseTHESIS_PHD(requirement, courseTakenList);
+                caseTHESIS(requirement, courseTakenList);
                 break;
             case THESIS_MS:
-                caseTHESIS_MS(requirement, courseTakenList);
+                caseTHESIS(requirement, courseTakenList);
                 break;
             case PLAN_B_PROJECT:
                 casePLAN_B_PROJECT(requirement, courseTakenList);
@@ -103,38 +103,13 @@ public class GradReqCheck {
 
     }
 
-    private void caseTHESIS_PHD(Requirement requirement, List<CourseTaken> courseTakenList) {
+    private void caseTHESIS(Requirement requirement, List<CourseTaken> courseTakenList) {
         this.result = false;
         boolean takenClass = false;
         int thesisCredits = 0;
         List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
         for(CourseTaken courseTaken : courseTakenList) {
-            if ("csci8888".equals(courseTaken.getCourse().getId())) {
-                newCourseTakenList.add(courseTaken);
-                takenClass = true;
-                if (courseTaken.getGrade() == Grade.S) {
-                    thesisCredits = thesisCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());
-                }
-            }
-        }
-        if (thesisCredits >= requirement.getCredits()) {
-            this.result = true;
-        }
-        if(takenClass) {
-            this.details = new Requirement(requirement.getName(), newCourseTakenList);
-        }
-        else {
-            this.details = new Requirement(requirement.getName());
-        }
-    }
-
-    private void caseTHESIS_MS(Requirement requirement, List<CourseTaken> courseTakenList) {
-        this.result = false;
-        boolean takenClass = false;
-        int thesisCredits = 0;
-        List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
-        for(CourseTaken courseTaken : courseTakenList) {
-            if ("csci8777".equals(courseTaken.getCourse().getId())) {
+            if (requirement.getCourses().get(0).getCourse().getId().equals(courseTaken.getCourse().getId())) {
                 newCourseTakenList.add(courseTaken);
                 takenClass = true;
                 if (courseTaken.getGrade() == Grade.S) {
