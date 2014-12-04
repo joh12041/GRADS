@@ -118,7 +118,7 @@ public class GradReqCheck {
             if (validCourseIDs.contains(courseTaken.getCourse().getId())) {
                 switch (courseTaken.getCourse().getCourseArea()) {
                     case APPLICATIONS:
-                        if (topAppl != null) {
+                        if (topAppl == null) {
                             if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B || courseTaken.getGrade() == Grade.C) {
                                 topAppl = courseTaken;
                                 break;
@@ -145,7 +145,7 @@ public class GradReqCheck {
                         break;
 
                     case THEORY_ALGORITHMS:
-                        if (topThry != null) {
+                        if (topThry == null) {
                             if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B || courseTaken.getGrade() == Grade.C) {
                                 topThry = courseTaken;
                                 break;
@@ -172,7 +172,7 @@ public class GradReqCheck {
                         break;
 
                     case ARCHITECTURE_SYSTEMS_SOFTWARE:
-                        if (topArch != null) {
+                        if (topArch == null) {
                             if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B || courseTaken.getGrade() == Grade.C) {
                                 topArch = courseTaken;
                                 break;
@@ -346,7 +346,7 @@ public class GradReqCheck {
             }
         }
             
-        
+
         if (fourth != null) {
             newCourseTakenList.add(fourth);
         }
