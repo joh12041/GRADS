@@ -57,7 +57,7 @@ public class MasterC {
         List<String> ls = new ArrayList<String>();
         ls.add(s);
 
-        Requirement req1 = new Requirement("BREADTH_REQUIREMENT_MS", 3.25f, ctl1, 9, ls);
+        Requirement req1 = new Requirement(Reqs.BREADTH_REQUIREMENT_MS, 3.25f, ctl1, 9, ls);
         reqList.add(req1);
 
 
@@ -66,7 +66,7 @@ public class MasterC {
         CourseTaken ct2 = new CourseTaken(new Course("Colloquium","csci8970","1"),new Term(), Grade.S);
         ctl2.add(ct2);
 
-        Requirement req2 = new Requirement("COLLOQUIUM",ctl2,1,ls);
+        Requirement req2 = new Requirement(Reqs.COLLOQUIUM,ctl2,1,ls);
         reqList.add(req2);
 
         //REQUIREMENT #4 PHD LEVEL COURSES
@@ -89,7 +89,7 @@ public class MasterC {
         ctl3.add(new CourseTaken(new Course("Advanced Software Engineering","csci8801","3"),new Term(), Grade.C));
         ctl3.add(new CourseTaken(new Course("Special Advanced Topics in Computer Science","csci8980","3"),new Term(), Grade.C));
 
-        Requirement req3 = new Requirement("PHD_LEVEL_COURSES",ctl3,3,ls);
+        Requirement req3 = new Requirement(Reqs.PHD_LEVEL_COURSES,ctl3,3,ls);
         reqList.add(req3);
 
         //TODO:REQUIREMENT #4 TOTAL CREDITS
@@ -97,7 +97,7 @@ public class MasterC {
         CourseTaken ct4 = new CourseTaken(new Course(),new Term(), Grade.C);
         ctl4.add(ct4);
 
-        Requirement req4 = new Requirement("TOTAL_CREDITS",3.25f,ctl4,31,ls);
+        Requirement req4 = new Requirement(Reqs.TOTAL_CREDITS,3.25f,ctl4,31,ls);
         reqList.add(req4);
 
 
@@ -111,7 +111,7 @@ public class MasterC {
         lm5.add(new CompletedMilestone(Milestone.THESIS_APPROVED));
         lm5.add(new CompletedMilestone(Milestone.DEFENSE_PASSED));
 
-        Requirement req5 = new Requirement("MILESTONES_MS_A",lm5,ls);
+        Requirement req5 = new Requirement(Reqs.MILESTONES_MS_C,lm5,ls);
         reqList.add(req5);
     }
 }
