@@ -125,7 +125,7 @@ public class GradRequirements {
      * getDegree() - Method which returns a list of Requirements
      * 
      * @param degree - Variable of type Degree which contains the type of degree to test against
-     * @return reqChecks - Returns the List<Reqirements> to test completed requirements against
+     * @return reqChecks - Returns the List<Requirements> to test completed requirements against
      */
     public List<Requirement> createReqList(Degree degree) throws Exception {
         List<Requirement> rList = new ArrayList<Requirement>();
@@ -159,7 +159,7 @@ public class GradRequirements {
      * @param courseTakenList - Variable of type List<CourseTaken> which contains completed courses 
      * @param completedMilestoneList - Variable of type List<CompletedMilestone> which contains completed milestones
      */
-    public void testReqList(List<CourseTaken> courseTakenList, List<CompletedMilestone> completedMilestoneList) {
+    public void testReqList(List<CourseTaken> courseTakenList, List<CompletedMilestone> completedMilestoneList) throws Exception {
         reqChecks = new ArrayList<GradReqCheck>();
         for (Requirement r : reqList) {
             GradReqCheck grc = new GradReqCheck(r.getName());
