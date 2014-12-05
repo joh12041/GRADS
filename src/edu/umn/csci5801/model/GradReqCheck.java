@@ -468,7 +468,23 @@ public class GradReqCheck {
     }
 
     private void caseTOTAL_CREDITS_MSA(Requirement requirement, List<CourseTaken> courseTakenList) {
+        this.result = false;
+        int totalCredits = 0;
+        List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
 
+        //Only letter grades A, B, C, and S count towards requirements
+        List<Grade> validGrades = new ArrayList<Grade>();
+        validGrades.add(Grade.A);
+        validGrades.add(Grade.B);
+        validGrades.add(Grade.C);
+        validGrades.add(Grade.S);
+
+        for(CourseTaken courseTaken : courseTakenList) {
+            if (validGrades.contains(courseTaken.getGrade())) {
+                newCourseTakenList.add(courseTaken);
+                totalCredits = totalCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());
+            }
+        }
     }
 
     private void caseTOTAL_CREDITS_MSB(Requirement requirement, List<CourseTaken> courseTakenList) {
@@ -489,11 +505,15 @@ public class GradReqCheck {
         int csciCredits = 0;
         int totalCredits = 0;
         List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
+
+        //Only letter grades A, B, C count towards requirements
         List<Grade> validGrades = new ArrayList<Grade>();
         validGrades.add(Grade.A);
         validGrades.add(Grade.B);
         validGrades.add(Grade.C);
         List<String> invalidCourseIDs = new ArrayList<String>();
+
+        //Thesis credits do not count
         invalidCourseIDs.add("csci8777");
         invalidCourseIDs.add("csci8888");
         invalidCourseIDs.add("csci8666");
@@ -507,12 +527,9 @@ public class GradReqCheck {
                     totalCredits = totalCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());
                     continue;
                 }
-                //Collect only the coursesTaken that are non-CSCI but still 5000+ level
-                if (courseTaken.getCourse().getId().matches("^(?!csci).*[56789][0-9]{3}$")) {
-                    newCourseTakenList.add(courseTaken);
-                    totalCredits = totalCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());
-                    continue;
-                }
+                //Collect only the coursesTaken that are non-CSCI or CSCI below the 5000 level
+                newCourseTakenList.add(courseTaken);
+                totalCredits = totalCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());
             }
         }
 
