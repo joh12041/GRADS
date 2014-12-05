@@ -1,8 +1,20 @@
-package edu.umn.csci5801;
-
 /**
- * Created by Justin on 12/2/2014.
+ * Copyright 2014 CSCI5801 Fall2014 Group1
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
+
+package edu.umn.csci5801;
 
 import java.io.File;
 import java.io.FileReader;
@@ -18,7 +30,12 @@ import edu.umn.csci5801.GRADSIntf;
 
 
 /**
- * Your implementation of this interface must be named GRADS
+ * GRADS.java - Class implementing the GRADS interface,
+ * which contains all methods available in an API accessible
+ * to those who implement other systems interacting with GRADS
+ *
+ * @author CSCI5801 Fall2014 Group1
+ * @version 1.0
  */
 public class GRADS implements GRADSIntf {
 	
@@ -28,7 +45,8 @@ public class GRADS implements GRADSIntf {
     private List<StudentRecord> recordList;
 
     /**
-     * Loads the list of system usernames and permissions.
+     * loadUsers() - Loads the list of system usernames and permissions.
+     * 
      * @param usersFile the filename of the users file.
      * @throws Exception for I/O errors.  SEE NOTE IN CLASS HEADER.
      */
@@ -42,7 +60,8 @@ public class GRADS implements GRADSIntf {
     }
 
     /**
-     * Loads the list of courses.
+     * loadCourses() - Loads the list of courses.
+     * 
      * @param coursesFile the filename of the users file.
      * @throws Exception for I/O errors.  SEE NOTE IN CLASS HEADER.
      */
@@ -56,7 +75,8 @@ public class GRADS implements GRADSIntf {
     }
 
     /**
-     * Loads the list of system transcripts.
+     * loadRecords() - Loads the list of system transcripts.
+     * 
      * @param recordsFile the filename of the transcripts file.
      * @throws Exception for I/O errors.  SEE NOTE IN CLASS HEADER.
      */
@@ -70,7 +90,8 @@ public class GRADS implements GRADSIntf {
     }
 
     /**
-     * Sets the user id (X500) of the user currently using the system.
+     * setUser() - Sets the user id (X500) of the user currently using the system.
+     * 
      * @param userId  the X500 id of the user generating progress summaries.
      * @throws Exception  if the user id is invalid.  SEE NOTE IN CLASS HEADER.
      */
@@ -96,7 +117,8 @@ public class GRADS implements GRADSIntf {
     }
 
     /**
-     * Gets the user id of the user currently using the system.
+     * getUser() - Gets the user id of the user currently using the system.
+     * 
      * @return  the X500 user id of the user currently using the system.
      */
     public String getUser() {
@@ -108,7 +130,8 @@ public class GRADS implements GRADSIntf {
     }
 
     /**
-     * Gets a list of the userIds of the students that a GPC can view.
+     * getStudentIDs() - Gets a list of the userIds of the students that a GPC can view.
+     * 
      * @return a list containing the userId of for each student in the
      *      system belonging to the current user
      * @throws Exception is the current user is not a GPC.
@@ -130,7 +153,8 @@ public class GRADS implements GRADSIntf {
     }
 
     /**
-     * Gets the raw student record data for a given userId.
+     * getTranscript() - Gets the raw student record data for a given userId.
+     * 
      * @param userId  the identifier of the student.
      * @return  the student record data.
      * @throws Exception  if the form data could not be retrieved.  SEE NOTE IN
@@ -157,7 +181,8 @@ public class GRADS implements GRADSIntf {
     }
 
     /**
-     * Saves a new set of student data to the records data.
+     * updateTranscript() - Saves a new set of student data to the records data.
+     * 
      * @param userId the student ID to overwrite.
      * @param transcript  the new student record
      * @throws Exception  if the transcript data could not be saved, failed
@@ -183,7 +208,8 @@ public class GRADS implements GRADSIntf {
     }
 
     /**
-     * Appends a note to a student record.
+     * addNote() - Appends a note to a student record.
+     * 
      * @param userId the student ID to add a note to.
      * @param note  the note to append
      * @throws Exception  if the note could not be saved or a non-GPC tries to call.
@@ -211,7 +237,8 @@ public class GRADS implements GRADSIntf {
     }
 
     /**
-     * Generates progress summary
+     * generateProgressSummary() - Generates progress summary
+     * 
      * @param userId the student to generate the record for.
      * @returns the student's progress summary in a data class matching the JSON format.
      * @throws Exception  if the progress summary could not be generated.
@@ -251,8 +278,9 @@ public class GRADS implements GRADSIntf {
     }
 
     /**
-     * Generates a new progress summary, assuming that the student passes the
+     * simulateCourses() - Generates a new progress summary, assuming that the student passes the
      * provided set of prospective courses.
+     * 
      * @param userId the student to generate the record for.
      * @param courses a list of the prospective courses.
      * @returns a map containing the student's hypothetical progress summary
