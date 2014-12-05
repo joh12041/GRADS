@@ -44,7 +44,7 @@ public class Test_MainDriver {
         grads.getUser();
         //grads.getStudentIDs();
         ProgressSummary ps = new ProgressSummary();
-        ps = grads.generateProgressSummary("gayxx067");
+        ps = grads.generateProgressSummary("desil1337");
         grads.simulateCourses("nguy0621",ps.getCoursesTaken());
     }
 }

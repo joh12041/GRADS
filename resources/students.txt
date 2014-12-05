@@ -301,7 +301,7 @@
         "firstName": "Robert",
         "lastName": "Bob"
       },
-      "department": "MATH",
+      "department": "COMPUTER_SCIENCE",
       "degreeSought": "PHD",
       "termBegan": {
         "semester": "Fall",
@@ -495,7 +495,7 @@
                  "year": 2009
                },
                "grade": "_"
-             },
+             }
            ],
 
            "milestonesSet": [
