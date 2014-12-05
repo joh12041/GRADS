@@ -48,6 +48,8 @@ public class MasterC {
      */
     private void setReqList() {
 
+        List<Requirement> tempReqList = new ArrayList<Requirement>();
+
         List<String> ls = new ArrayList<String>();
         ls.add("");
 
@@ -93,14 +95,14 @@ public class MasterC {
         ctl1.add(new CourseTaken(new Course("Principles of Database Systems","csci5707","3",CourseArea.APPLICATIONS), new Term(), Grade.C));
 
         Requirement req1 = new Requirement(Reqs.BREADTH_REQUIREMENT_MS, 3.25, ctl1, 9, ls);
-        reqList.add(req1);
+        tempReqList.add(req1);
 
         //REQUIREMENT #2 COLLOQUIUM
         List<CourseTaken> ctl2 = new ArrayList<CourseTaken>();
         ctl2.add(new CourseTaken(new Course("Colloquium","csci8970","1"),new Term(), Grade.S));
 
         Requirement req2 = new Requirement(Reqs.COLLOQUIUM,ctl2,1,ls);
-        reqList.add(req2);
+        tempReqList.add(req2);
 
         //REQUIREMENT #4 PHD_LEVEL_COURSES_PLANC
         List<CourseTaken> ctl3 = new ArrayList<CourseTaken>();
@@ -123,19 +125,19 @@ public class MasterC {
         ctl3.add(new CourseTaken(new Course("Special Advanced Topics in Computer Science","csci8980","3"),new Term(), Grade.C));
 
         Requirement req3 = new Requirement(Reqs.PHD_LEVEL_COURSES_PLANC,ctl3,6,ls);
-        reqList.add(req3);
+        tempReqList.add(req3);
 
         //REQUIREMENT #4 TOTAL CREDITS_MSC
         Requirement req4 = new Requirement(Reqs.TOTAL_CREDITS_MSC);
-        reqList.add(req4);
+        tempReqList.add(req4);
 
         //REQUIREMENT #5 OVERALL_GPA_MS
         Requirement req5 = new Requirement(Reqs.OVERALL_GPA_MS, 3.25);
-        reqList.add(req5);
+        tempReqList.add(req5);
 
         //REQUIREMENT #6 IN_PROGRAM_GPA_MS
         Requirement req6 = new Requirement(Reqs.IN_PROGRAM_GPA_MS, 3.25);
-        reqList.add(req6);
+        tempReqList.add(req6);
 
         //Requirement #7 MILESTONES_MS_C
         List<CompletedMilestone> lm7 = new ArrayList<CompletedMilestone>();
@@ -146,6 +148,8 @@ public class MasterC {
         lm7.add(new CompletedMilestone(Milestone.GRADUATION_PACKET_REQUESTED));
 
         Requirement req7 = new Requirement(Reqs.MILESTONES_MS_C,lm7,ls);
-        reqList.add(req7);
+        tempReqList.add(req7);
+
+        reqList = tempReqList;
     }
 }

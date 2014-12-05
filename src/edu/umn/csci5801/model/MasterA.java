@@ -48,6 +48,8 @@ public class MasterA {
      */
     private void setReqList() {
 
+        List<Requirement> tempReqList = new ArrayList<Requirement>();
+
         //List<String> to be included in all Requirements
         List<String> ls = new ArrayList<String>();
         ls.add("");
@@ -94,21 +96,21 @@ public class MasterA {
         ctl1.add(new CourseTaken(new Course("Principles of Database Systems","csci5707","3",CourseArea.APPLICATIONS), new Term(), Grade.C));
 
         Requirement req1 = new Requirement(Reqs.BREADTH_REQUIREMENT_MS, 3.25, ctl1, 9, ls);
-        reqList.add(req1);
+        tempReqList.add(req1);
 
         //REQUIREMENT #2 THESIS_MS
         List<CourseTaken> ctl2 = new ArrayList<CourseTaken>();
         ctl2.add(new CourseTaken(new Course("Thesis Credit: Masters","csci8777","10"),new Term(), Grade.S));
 
         Requirement req2 = new Requirement(Reqs.THESIS_MS,ctl2,10,ls);
-        reqList.add(req2);
+        tempReqList.add(req2);
 
         //REQUIREMENT #3 COLLOQUIUM
         List<CourseTaken> ctl3 = new ArrayList<CourseTaken>();
         ctl3.add(new CourseTaken(new Course("Computer Science Colloquium","csci8970","1"),new Term(), Grade.S));
 
         Requirement req3 = new Requirement(Reqs.COLLOQUIUM,ctl3,1,ls);
-        reqList.add(req3);
+        tempReqList.add(req3);
 
         //REQUIREMENT #4 PHD_LEVEL_COURSES
         List<CourseTaken> ctl4 = new ArrayList<CourseTaken>();
@@ -131,23 +133,23 @@ public class MasterA {
         ctl4.add(new CourseTaken(new Course("Special Advanced Topics in Computer Science","csci8980","3"),new Term(), Grade.C));
 
         Requirement req4 = new Requirement(Reqs.PHD_LEVEL_COURSES,ctl4,3,ls);
-        reqList.add(req4);
+        tempReqList.add(req4);
 
         //REQUIREMENT #5 TOTAL_CREDITS_MSA
         Requirement req5 = new Requirement(Reqs.TOTAL_CREDITS_MSA);
-        reqList.add(req5);
+        tempReqList.add(req5);
 
         //REQUIREMENT #6 COURSE_CREDITS
         Requirement req6 = new Requirement(Reqs.COURSE_CREDITS);
-        reqList.add(req6);
+        tempReqList.add(req6);
 
         //REQUIREMENT #7 OVERALL_GPA_MS
         Requirement req7 = new Requirement(Reqs.OVERALL_GPA_MS, 3.25);
-        reqList.add(req7);
+        tempReqList.add(req7);
 
         //REQUIREMENT #8 IN_PROGRAM_GPA_MS
         Requirement req8 = new Requirement(Reqs.IN_PROGRAM_GPA_MS, 3.25);
-        reqList.add(req8);
+        tempReqList.add(req8);
 
         //Requirement #9 MILESTONES_MS_A
         List<CompletedMilestone> lm9 = new ArrayList<CompletedMilestone>();
@@ -160,6 +162,8 @@ public class MasterA {
         lm9.add(new CompletedMilestone(Milestone.DEFENSE_PASSED));
 
         Requirement req9 = new Requirement(Reqs.MILESTONES_MS_A,lm9,ls);
-        reqList.add(req9);
+        tempReqList.add(req9);
+
+        reqList = tempReqList;
     }
 }

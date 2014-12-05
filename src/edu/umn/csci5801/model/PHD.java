@@ -47,6 +47,9 @@ public class PHD {
      * setReqList() - Method for setting the requirements list for PhD
      */
     private void setReqList() {
+
+        List<Requirement> tempReqList = new ArrayList<Requirement>();
+
         List<String> ls = new ArrayList<String>();
         ls.add("");
 
@@ -92,26 +95,26 @@ public class PHD {
         ctl1.add(new CourseTaken(new Course("Principles of Database Systems","csci5707","3",CourseArea.APPLICATIONS), new Term(), Grade.C));
 
         Requirement req1 = new Requirement(Reqs.BREADTH_REQUIREMENT_PHD, 3.45, ctl1, 15, ls);
-        reqList.add(req1);
+        tempReqList.add(req1);
 
         //REQUIREMENT #2 THESIS_PHD
         List<CourseTaken> ctl2 = new ArrayList<CourseTaken>();
         ctl2.add(new CourseTaken(new Course("Thesis Credit: Doctoral","csci8888","24"),new Term(), Grade.S));
 
         Requirement req2 = new Requirement(Reqs.THESIS_PHD,ctl2,24,ls);
-        reqList.add(req2);
+        tempReqList.add(req2);
 
         //REQUIREMENT #3 COLLOQUIUM
         List<CourseTaken> ctl3 = new ArrayList<CourseTaken>();
         ctl3.add(new CourseTaken(new Course("Computer Science Colloquium","csci8970","1"),new Term(), Grade.S));
 
         Requirement req3 = new Requirement(Reqs.COLLOQUIUM,ctl3,1,ls);
-        reqList.add(req3);
+        tempReqList.add(req3);
 
         //REQUIREMENT #4 OUT_OF_DEPARTMENT
 
         Requirement req4 = new Requirement(Reqs.OUT_OF_DEPARTMENT);
-        reqList.add(req4);
+        tempReqList.add(req4);
 
         //REQUIREMENT #5 INTRO_TO_RESEARCH
         List<CourseTaken> ctl5 = new ArrayList<CourseTaken>();
@@ -119,19 +122,19 @@ public class PHD {
         ctl5.add(new CourseTaken(new Course("Introduction to Research in Computer Science II","csci8002","2"),new Term(), Grade.S));
 
         Requirement req5 = new Requirement(Reqs.INTRO_TO_RESEARCH, ctl5, 3, ls);
-        reqList.add(req5);
+        tempReqList.add(req5);
 
         //REQUIREMENT #6 TOTAL_CREDITS_PHD
         Requirement req6 = new Requirement(Reqs.TOTAL_CREDITS_PHD, 31);
-        reqList.add(req6);
+        tempReqList.add(req6);
 
         //REQUIREMENT #7 OVERALL_GPA_PHD
         Requirement req7 = new Requirement(Reqs.OVERALL_GPA_PHD, 3.45);
-        reqList.add(req7);
+        tempReqList.add(req7);
 
         //REQUIREMENT #8 IN_PROGRAM_GPA_PHD
         Requirement req8 = new Requirement(Reqs.IN_PROGRAM_GPA_PHD, 3.45);
-        reqList.add(req8);
+        tempReqList.add(req8);
 
         //Requirement #9 MILESTONES_PHD
         List<CompletedMilestone> lm9 = new ArrayList<CompletedMilestone>();
@@ -149,6 +152,8 @@ public class PHD {
         lm9.add(new CompletedMilestone(Milestone.DEFENSE_PASSED));
 
         Requirement req9 = new Requirement(Reqs.MILESTONES_PHD,lm9,ls);
-        reqList.add(req9);
+        tempReqList.add(req9);
+
+        reqList = tempReqList;
     }
 }
