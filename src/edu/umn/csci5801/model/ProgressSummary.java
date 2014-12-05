@@ -58,9 +58,19 @@ public class ProgressSummary {
      * @param completedMilestonesList - Input of type List<CompletedMilestone> which contains a student's completed milestones
      */
     public void checkGradStatus(List<CompletedMilestone> completedMilestonesList) throws Exception {
-        GradRequirements gradRequirements = new GradRequirements(degree);
-        gradRequirements.testReqList(coursesTaken, completedMilestonesList);
-        reqCheckResult = gradRequirements.getReqChecks();
+    	GradRequirements gradRequirements = new GradRequirements(degree);
+    	try {
+    		gradRequirements.testReqList(coursesTaken, completedMilestonesList);
+    	} catch(Exception e) {
+    		Exception exception = new InvalidRequirementException("Exception when checking courses against milestones in checkGradStatus", e);
+            throw exception;
+    	}
+    	try {
+    		reqCheckResult = gradRequirements.getReqChecks();
+    	} catch(Exception e) {
+    		Exception exception = new InvalidRequirementException("Exception when checking completed requirements against graduation requirements in checkGradStatus", e);
+            throw exception;
+    	}
     }
 
     /**

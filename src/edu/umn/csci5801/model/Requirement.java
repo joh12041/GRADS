@@ -137,7 +137,7 @@ public class Requirement {
      * @param grade - Input of type Grade which contains a letter grade
      * @return gradeD - Returns a Double containing a numerical value for a grade
      */
-    private double gradeToDouble(Grade grade){
+    private double gradeToDouble (Grade grade) throws Exception {
         double gradeD = 0.0;
         switch (grade) {
             case A: gradeD = 4.0;
@@ -151,7 +151,8 @@ public class Requirement {
             case F: gradeD = 0.0;
                 break;
             default:
-                //throw invalid grade exception or something
+            	Exception exception = new InvalidGradeException("Exception when converting letter grade to numeric grade");
+                throw exception;
         }
         return gradeD;
     }
@@ -159,7 +160,7 @@ public class Requirement {
     /**
      * calculateGpa() - Method for determining the GPA of a set of courses
      */
-    public void calculateGpa() {
+    public void calculateGpa() throws Exception {
         double totalGradePoints = 0;
         int totalCourseCredits = 0;
 
@@ -172,8 +173,13 @@ public class Requirement {
         validGrades.add(Grade.F);
         for (CourseTaken cT : courses){
             if (validGrades.contains(cT.getGrade())) {
-                totalGradePoints = totalGradePoints + (gradeToDouble(cT.getGrade()) * Integer.parseInt(cT.getCourse().getNumCredits()));
-                totalCourseCredits = totalCourseCredits + Integer.parseInt(cT.getCourse().getNumCredits());
+            	try {
+            		totalGradePoints = totalGradePoints + (gradeToDouble(cT.getGrade()) * Integer.parseInt(cT.getCourse().getNumCredits()));
+            		totalCourseCredits = totalCourseCredits + Integer.parseInt(cT.getCourse().getNumCredits());
+            	} catch(InvalidGradeException e) {
+            		Exception exception = new InvalidGradeException(e);
+                    throw exception;
+            	}
             }
         }
         gpa = (totalGradePoints / totalCourseCredits);
