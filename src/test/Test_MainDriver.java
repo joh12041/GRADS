@@ -40,9 +40,11 @@ public class Test_MainDriver {
         grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
         grads.loadRecords("resources/students.txt");
-        grads.setUser("nguy0621");
+        grads.setUser("tolas9999");
         grads.getUser();
         //grads.getStudentIDs();
-        grads.generateProgressSummary("nguy0621");
+        ProgressSummary ps = new ProgressSummary();
+        ps = grads.generateProgressSummary("gayxx067");
+        grads.simulateCourses("nguy0621",ps.getCoursesTaken());
     }
 }

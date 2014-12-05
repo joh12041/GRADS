@@ -60,6 +60,12 @@ public class GradReqCheck {
         //Logic for checking any given requirement
         switch (requirement.getName()) {
             case BREADTH_REQUIREMENT_MS:
+                if (courseTakenList == null) {
+                    Requirement r = new Requirement();
+                    this.details = r;
+                    this.result = false;
+                    break;
+                }
                 try {
                     caseBREADTH_REQUIREMENT_MS(requirement, courseTakenList);
                 } catch(InvalidGradeException e) {
@@ -68,6 +74,12 @@ public class GradReqCheck {
                 }
                 break;
             case BREADTH_REQUIREMENT_PHD:
+                if (courseTakenList == null) {
+                    Requirement r = new Requirement();
+                    this.details = r;
+                    this.result = false;
+                    break;
+                }
                 try {
                     caseBREADTH_REQUIREMENT_PHD(requirement, courseTakenList);
                 } catch(InvalidGradeException e) {
@@ -76,45 +88,129 @@ public class GradReqCheck {
                 }
                 break;
             case THESIS_PHD:
+                if (courseTakenList == null) {
+                    Requirement r = new Requirement();
+                    this.details = r;
+                    this.result = false;
+                    break;
+                }
                 casePASSED_AS_SATISFACTORY(requirement, courseTakenList);
                 break;
             case THESIS_MS:
+                if (courseTakenList == null) {
+                    Requirement r = new Requirement();
+                    this.details = r;
+                    this.result = false;
+                    break;
+                }
                 casePASSED_AS_SATISFACTORY(requirement, courseTakenList);
                 break;
             case PLAN_B_PROJECT:
+                if (courseTakenList == null) {
+                    Requirement r = new Requirement();
+                    this.details = r;
+                    this.result = false;
+                    break;
+                }
                 casePASSED_AS_SATISFACTORY(requirement, courseTakenList);
                 break;
             case COLLOQUIUM:
+                if (courseTakenList == null) {
+                    Requirement r = new Requirement();
+                    this.details = r;
+                    this.result = false;
+                    break;
+                }
                 casePASSED_AS_SATISFACTORY(requirement, courseTakenList);
                 break;
             case OUT_OF_DEPARTMENT:
+                if (courseTakenList == null) {
+                    Requirement r = new Requirement();
+                    this.details = r;
+                    this.result = false;
+                    break;
+                }
                 caseOUT_OF_DEPARTMENT(requirement, courseTakenList);
                 break;
             case PHD_LEVEL_COURSES:
+                if (courseTakenList == null) {
+                    Requirement r = new Requirement();
+                    this.details = r;
+                    this.result = false;
+                    break;
+                }
                 casePASSED_WITH_C(requirement, courseTakenList);
                 break;
             case PHD_LEVEL_COURSES_PLANC:
+                if (courseTakenList == null) {
+                    Requirement r = new Requirement();
+                    this.details = r;
+                    this.result = false;
+                    break;
+                }
                 casePASSED_WITH_C(requirement, courseTakenList);
                 break;
             case INTRO_TO_RESEARCH:
-                casePASSED_AS_SATISFACTORY(requirement, courseTakenList);
+                if (courseTakenList == null) {
+                    Requirement r = new Requirement();
+                    this.details = r;
+                    this.result = false;
+                    break;
+                }
+                casePASSED_WITH_C(requirement, courseTakenList);
                 break;
             case TOTAL_CREDITS_PHD:
+                if (courseTakenList == null) {
+                    Requirement r = new Requirement();
+                    this.details = r;
+                    this.result = false;
+                    break;
+                }
                 caseTOTAL_CREDITS_PHD(requirement, courseTakenList);
                 break;
             case TOTAL_CREDITS_MSA:
+                if (courseTakenList == null) {
+                    Requirement r = new Requirement();
+                    this.details = r;
+                    this.result = false;
+                    break;
+                }
                 caseTOTAL_CREDITS_MSA(requirement, courseTakenList);
                 break;
             case TOTAL_CREDITS_MSB:
+                if (courseTakenList == null) {
+                    Requirement r = new Requirement();
+                    this.details = r;
+                    this.result = false;
+                    break;
+                }
                 caseTOTAL_CREDITS_MSBC(requirement, courseTakenList);
                 break;
             case TOTAL_CREDITS_MSC:
+                if (courseTakenList == null) {
+                    Requirement r = new Requirement();
+                    this.details = r;
+                    this.result = false;
+                    break;
+                }
                 caseTOTAL_CREDITS_MSBC(requirement, courseTakenList);
                 break;
             case COURSE_CREDITS:
+                if (courseTakenList == null) {
+                    Requirement r = new Requirement();
+                    this.details = r;
+                    this.result = false;
+                    break;
+                }
                 caseCOURSE_CREDITS(requirement, courseTakenList);
                 break;
             case OVERALL_GPA_PHD:
+                if (courseTakenList == null) {
+                    Requirement r = new Requirement();
+                    this.details = r;
+                    this.result = false;
+                    break;
+                }
                 try {
                     caseOVERALL_GPA(requirement, courseTakenList);
                 } catch(InvalidGradeException e) {
@@ -123,6 +219,12 @@ public class GradReqCheck {
                 }
                 break;
             case IN_PROGRAM_GPA_PHD:
+                if (courseTakenList == null) {
+                    Requirement r = new Requirement();
+                    this.details = r;
+                    this.result = false;
+                    break;
+                }
                 try {
                     caseIN_PROGRAM_GPA(requirement, courseTakenList);
                 } catch(InvalidGradeException e) {
@@ -131,6 +233,12 @@ public class GradReqCheck {
                 }
                 break;
             case OVERALL_GPA_MS:
+                if (courseTakenList == null) {
+                    Requirement r = new Requirement();
+                    this.details = r;
+                    this.result = false;
+                    break;
+                }
                 try {
                     caseOVERALL_GPA(requirement, courseTakenList);
                 } catch(InvalidGradeException e) {
@@ -139,6 +247,12 @@ public class GradReqCheck {
                 }
                 break;
             case IN_PROGRAM_GPA_MS:
+                if (courseTakenList == null) {
+                    Requirement r = new Requirement();
+                    this.details = r;
+                    this.result = false;
+                    break;
+                }
                 try {
                     caseIN_PROGRAM_GPA(requirement, courseTakenList);
                 } catch(InvalidGradeException e) {
@@ -147,19 +261,44 @@ public class GradReqCheck {
                 }
                 break;
             case MILESTONES_PHD:
+                if (completedMilestoneList == null) {
+                    Requirement r = new Requirement();
+                    this.details = r;
+                    this.result = false;
+                    break;
+                }
                 caseMILESTONES(requirement, completedMilestoneList);
                 break;
             case MILESTONES_MS_A:
+                if (completedMilestoneList == null) {
+                    Requirement r = new Requirement();
+                    this.details = r;
+                    this.result = false;
+                    break;
+                }
                 caseMILESTONES(requirement, completedMilestoneList);
                 break;
             case MILESTONES_MS_B:
+                if (completedMilestoneList == null) {
+                    Requirement r = new Requirement();
+                    this.details = r;
+                    this.result = false;
+                    break;
+                }
                 caseMILESTONES(requirement, completedMilestoneList);
                 break;
             case MILESTONES_MS_C:
+                if (completedMilestoneList == null) {
+                    Requirement r = new Requirement();
+                    this.details = r;
+                    this.result = false;
+                    break;
+                }
                 caseMILESTONES(requirement, completedMilestoneList);
                 break;
             default:
-                break;
+                Exception e = new InvalidRequirementException();
+                throw e;
         }
     }
 
@@ -497,6 +636,7 @@ public class GradReqCheck {
 
         //Fill in gradReqCheck
         this.details = new Requirement(requirement.getName(), newCourseTakenList);
+        this.details.setCredits(takenCredits);
         if (takenCredits >= requirement.getCredits()) {
             this.result = true;
         }
@@ -520,6 +660,7 @@ public class GradReqCheck {
 
         //Fill in gradReqCheck
         this.details = new Requirement(requirement.getName(), newCourseTakenList);
+        this.details.setCredits(takenCredits);
         if (takenCredits >= requirement.getCredits()) {
             this.result = true;
         }
@@ -550,6 +691,7 @@ public class GradReqCheck {
 
         //Fill in gradReqCheck
         this.details = new Requirement(requirement.getName(), newCourseTakenList);
+        this.details.setCredits(takenCredits);
         if (takenCredits >= requirement.getCredits()) {
             this.result = true;
         }
@@ -593,6 +735,7 @@ public class GradReqCheck {
 
         //Fill in reqCheck and ensure 16 CSCI 5000+ level credits and 31 total
         this.details = new Requirement(requirement.getName(), newCourseTakenList);
+        this.details.setCredits(totalCredits);
         if (csciCredits >= reqCsciCredits && totalCredits >= reqTotalCredits) {
             this.result = true;
         }
@@ -619,6 +762,7 @@ public class GradReqCheck {
         }
 
         this.details = new Requirement(requirement.getName(), newCourseTakenList);
+        this.details.setCredits(totalCredits);
         if (totalCredits >= reqTotalCredits) {
             this.result = true;
         }
@@ -656,6 +800,7 @@ public class GradReqCheck {
 
         //Fill in reqCheck and ensure 16 CSCI 5000+ level credits and 31 total
         this.details = new Requirement(requirement.getName(), newCourseTakenList);
+        this.details.setCredits(totalCredits);
         if (csciCredits >= reqCsciCredits && totalCredits >= reqTotalCredits) {
             this.result = true;
         }
@@ -704,6 +849,7 @@ public class GradReqCheck {
 
         //Calculate GPA and fill in gradReqCheck
         this.details = new Requirement(requirement.getName(), newCourseTakenList);
+        this.details.setCredits(totalCredits);
         if (csciCredits >= reqCsciCredits && totalCredits >= reqTotalCredits) {
             this.result = true;
         }

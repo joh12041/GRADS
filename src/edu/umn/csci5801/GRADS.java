@@ -324,7 +324,7 @@ public class GRADS implements GRADSIntf {
         }
         String representation = new GsonBuilder().setPrettyPrinting().create().toJson(progressSummaryReturn);
         try {
-            FileWriter out = new FileWriter("progress.txt");
+            FileWriter out = new FileWriter("simulatedprogress.txt");
             out.write(representation);
             out.close();
         } catch(IOException e) {
