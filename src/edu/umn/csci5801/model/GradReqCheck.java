@@ -464,12 +464,52 @@ public class GradReqCheck {
     }
 
     private void caseTOTAL_CREDITS_PHD(Requirement requirement, List<CourseTaken> courseTakenList) {
+        this.result = false;
+        int csciCredits = 0;
+        int totalCredits = 0;
+        int reqCsciCredits = 16;
+        int reqTotalCredits = 31;
+        List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
 
+        //Only letter grades A, B, C, and S count towards requirements
+        List<Grade> validGrades = new ArrayList<Grade>();
+        validGrades.add(Grade.A);
+        validGrades.add(Grade.B);
+        validGrades.add(Grade.C);
+        validGrades.add(Grade.S);
+        List<String> invalidCourseIDs = new ArrayList<String>();
+
+        //Thesis credits do not count
+        invalidCourseIDs.add("csci8777");
+        invalidCourseIDs.add("csci8888");
+        invalidCourseIDs.add("csci8666");
+
+        for(CourseTaken courseTaken : courseTakenList) {
+            if (validGrades.contains(courseTaken.getGrade()) && !invalidCourseIDs.contains(courseTaken.getCourse().getId())) {
+                //Collect only the coursesTaken that are CSCI 5000+ level
+                if (courseTaken.getCourse().getId().matches("^csci[56789][0-9]{3}$")) {
+                    newCourseTakenList.add(courseTaken);
+                    csciCredits = csciCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());
+                    totalCredits = totalCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());
+                    continue;
+                }
+                //Collect the coursesTaken that are non-CSCI or CSCI below the 5000 level
+                newCourseTakenList.add(courseTaken);
+                totalCredits = totalCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());
+            }
+        }
+
+        //Fill in reqCheck and ensure 16 CSCI 5000+ level credits and 31 total
+        this.details = new Requirement(requirement.getName(), newCourseTakenList);
+        if (csciCredits >= reqCsciCredits && totalCredits >= reqTotalCredits) {
+            this.result = true;
+        }
     }
 
     private void caseTOTAL_CREDITS_MSA(Requirement requirement, List<CourseTaken> courseTakenList) {
         this.result = false;
         int totalCredits = 0;
+        int reqTotalCredits = 31;
         List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
 
         //Only letter grades A, B, C, and S count towards requirements
@@ -484,6 +524,11 @@ public class GradReqCheck {
                 newCourseTakenList.add(courseTaken);
                 totalCredits = totalCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());
             }
+        }
+
+        this.details = new Requirement(requirement.getName(), newCourseTakenList);
+        if (totalCredits >= reqTotalCredits) {
+            this.result = true;
         }
     }
 
@@ -504,6 +549,8 @@ public class GradReqCheck {
         this.result = false;
         int csciCredits = 0;
         int totalCredits = 0;
+        int reqCsciCredits = 16;
+        int reqTotalCredits = 22;
         List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
 
         //Only letter grades A, B, C count towards requirements
@@ -511,6 +558,7 @@ public class GradReqCheck {
         validGrades.add(Grade.A);
         validGrades.add(Grade.B);
         validGrades.add(Grade.C);
+        validGrades.add(Grade.S);
         List<String> invalidCourseIDs = new ArrayList<String>();
 
         //Thesis credits do not count
@@ -535,7 +583,7 @@ public class GradReqCheck {
 
         //Calculate GPA and fill in gradReqCheck
         this.details = new Requirement(requirement.getName(), newCourseTakenList);
-        if (csciCredits >= 16 && totalCredits >= 22) {
+        if (csciCredits >= reqCsciCredits && totalCredits >= reqTotalCredits) {
             this.result = true;
         }
     }
