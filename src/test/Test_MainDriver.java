@@ -40,7 +40,7 @@ public class Test_MainDriver {
         grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
         grads.loadRecords("resources/students.txt");
-        grads.setUser("gayxx067");
+        grads.setUser("tolas9999");
         grads.getUser();
         grads.getStudentIDs();
     }

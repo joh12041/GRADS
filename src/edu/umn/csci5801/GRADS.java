@@ -16,12 +16,10 @@
 
 package edu.umn.csci5801;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.Reader;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -82,7 +80,7 @@ public class GRADS implements GRADSIntf {
      */
     public void loadRecords(String recordsFile) throws Exception {
         try {
-            List<StudentRecord> records = new Gson().fromJson( new FileReader( new File(recordsFile)), new TypeToken<List<Course>>(){}.getType());
+            List<StudentRecord> records = new Gson().fromJson( new FileReader( new File(recordsFile)), new TypeToken<List<StudentRecord>>(){}.getType());
             this.recordList = records;
         } catch (IOException ioException) {
             System.out.println("IO Exception while Loading Records");
@@ -142,14 +140,23 @@ public class GRADS implements GRADSIntf {
         }
         List<String> studentIDList = new ArrayList<String>();
         try {
-            for (User u : userList) {
-                studentIDList.add(u.getId());
+            for (StudentRecord sr : recordList) {
+                studentIDList.add(sr.getStudent().getId());
             }
         } catch(Exception e){
             throw e;
         }
+        String representation = new GsonBuilder().setPrettyPrinting().create().toJson(studentIDList);
+        try {
+            FileWriter out = new FileWriter("studentids.txt");
+            out.write(representation);
+            out.close();
+        } catch(IOException e) {
+            throw e;
+        }
         return studentIDList;
     }
+
 
     /**
      * getTranscript() - Gets the raw student record data for a given userId.
