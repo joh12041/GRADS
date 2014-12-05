@@ -46,7 +46,6 @@ public class PHD {
     /**
      * setReqList() - Method for setting the requirements list for PhD
      */
-    //TODO: This is where the Requirements for  PHD get inputed into a List
     private void setReqList() {
         List<String> ls = new ArrayList<String>();
         ls.add("");
@@ -122,7 +121,7 @@ public class PHD {
         Requirement req5 = new Requirement(Reqs.INTRO_TO_RESEARCH, ctl5, 3, ls);
         reqList.add(req5);
 
-        //TODO:REQUIREMENT #6 TOTAL_CREDITS_PHD
+        //REQUIREMENT #6 TOTAL_CREDITS_PHD
         Requirement req6 = new Requirement(Reqs.TOTAL_CREDITS_PHD, 31);
         reqList.add(req6);
 
