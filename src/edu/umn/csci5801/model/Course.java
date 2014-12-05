@@ -50,6 +50,14 @@ public class Course {
         courseArea = ca;
     }
 
+    /**
+     * Course() - Constructor for creating a Course object
+     *
+     * @param n - A variable of type String identifying a course's name
+     * @param i_d - A variable of type String identifying a course's id
+     * @param nc - A variable of type String identifying a course's number of credits
+     */
+
     public Course(String n, String i_d, String nc) {
         name = n;
         id = i_d;
