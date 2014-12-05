@@ -6,7 +6,7 @@
  * You may obtain a copy of the License at
  *
  *    http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,17 +23,17 @@ import java.util.List;
  * MasterA.java - Class containing all graduation requirements for students
  * pursuing a Master's degree on Plan A. Also included is a mechanism to access
  * all requirements externally.
- * 
+ *
  * @author CSCI5801 Fall2014 Group1
  * @version 1.0
  */
 public class MasterA {
-	
+
     private List<Requirement> reqList;
-    
+
     /**
      * getReqList() - Method for getting the requirements list for Master Plan A
-     * 
+     *
      * @return reqList - Return the list of all requirements for graduation for Master Plan A
      */
     public List<Requirement> getReqList() {
@@ -42,7 +42,7 @@ public class MasterA {
         }
         return reqList;
     }
-    
+
     /**
      * setReqList() - Method for setting the requirements list for Master Plan A
      */
@@ -114,7 +114,7 @@ public class MasterA {
         Requirement req3 = new Requirement(Reqs.COLLOQUIUM,ctl3,1,ls);
         reqList.add(req3);
 
-        //REQUIREMENT #4 PHD LEVEL COURSES
+        //REQUIREMENT #4 PHD_LEVEL_COURSES
         List<CourseTaken> ctl4 = new ArrayList<CourseTaken>();
         ctl4.add(new CourseTaken(new Course("Advanced Operating Systems","csci8101","3"),new Term(), Grade.C));
         ctl4.add(new CourseTaken(new Course("Foundations of Distributed Computing","csci8102","3"),new Term(), Grade.C));
@@ -141,7 +141,7 @@ public class MasterA {
         Requirement req5 = new Requirement(Reqs.TOTAL_CREDITS_MSA);
         reqList.add(req5);
 
-        //TODO:REQUIREMENT #6 COURSE CREDITS
+        //TODO:REQUIREMENT #6 COURSE_CREDITS
         Requirement req6 = new Requirement(Reqs.COURSE_CREDITS);
         reqList.add(req6);
 
