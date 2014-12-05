@@ -26,4 +26,5 @@ hs_err_pid*
 
 # output files
 studentids.txt
-
+studentrecord.txt
+progress.txt

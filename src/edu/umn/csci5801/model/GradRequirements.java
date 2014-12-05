@@ -163,6 +163,7 @@ public class GradRequirements {
         for (Requirement r : reqList) {
             GradReqCheck grc = new GradReqCheck(r.getName());
             grc.testReq(r, courseTakenList, completedMilestoneList);
+            this.reqChecks.add(grc);
         }
     }
 }
