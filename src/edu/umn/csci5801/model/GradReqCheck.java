@@ -183,10 +183,18 @@ public class GradReqCheck {
         }
 
 
+        CourseArea ca = null;
         //Find and count only the coursesTaken that match the requirement
         for (CourseTaken courseTaken : courseTakenList) {
-            if (validCourseIDs.contains(courseTaken.getCourse().getId()) && validGrades.contains(courseTaken.getGrade())) {
-                switch (courseTaken.getCourse().getCourseArea()) {
+            for (CourseTaken validCourseTaken2 : requirement.getCourses()) {
+                if (courseTaken.getCourse().getId().equals(validCourseTaken2.getCourse().getId())) {
+                    ca = validCourseTaken2.getCourse().getCourseArea();
+                    break;
+                }
+            }
+
+            if (ca != null && validCourseIDs.contains(courseTaken.getCourse().getId()) && validGrades.contains(courseTaken.getGrade())) {
+                switch (ca) {
                     case APPLICATIONS:
                         if (topAppl == null) {
                             topAppl = courseTaken;
@@ -309,16 +317,18 @@ public class GradReqCheck {
         System.out.println(validCourseIDs.size());
         System.out.println(courseTakenList.size());
 
-
+        CourseArea ca = null;
         //Find and count only the coursesTaken that match the requirement
         for (CourseTaken courseTaken : courseTakenList) {
-            System.out.println(courseTaken.getCourse().getName());
-            System.out.println(courseTaken.getCourse().getCourseArea());
-            System.out.println(courseTaken.getCourse().getId());
-            System.out.println(courseTaken.getGrade());
-            System.out.println("NEXT");
-            if (courseTaken.getCourse().getCourseArea() != null && validCourseIDs.contains(courseTaken.getCourse().getId()) && validGrades.contains(courseTaken.getGrade())) {
-                switch (courseTaken.getCourse().getCourseArea()) {
+            for (CourseTaken validCourseTaken2 : requirement.getCourses()) {
+                if (courseTaken.getCourse().getId().equals(validCourseTaken2.getCourse().getId())) {
+                    ca = validCourseTaken2.getCourse().getCourseArea();
+                    break;
+                }
+            }
+
+            if (ca != null && validCourseIDs.contains(courseTaken.getCourse().getId()) && validGrades.contains(courseTaken.getGrade())) {
+                switch (ca) {
                     case APPLICATIONS:
                         if (topAppl == null) {
                             topAppl = courseTaken;
