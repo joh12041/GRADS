@@ -43,7 +43,6 @@ public class GradRequirements {
      * @param deg - A variable of type Degree identifying the degree a student is pursuing
      */
     public GradRequirements(Degree deg) throws Exception{
-        //TODO:place in try/catch clause
         createReqList(deg);
     }
 

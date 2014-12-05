@@ -182,6 +182,7 @@ public class GradReqCheck {
             validCourseIDs.add(validCourseTaken.getCourse().getId());
         }
 
+
         //Find and count only the coursesTaken that match the requirement
         for (CourseTaken courseTaken : courseTakenList) {
             if (validCourseIDs.contains(courseTaken.getCourse().getId()) && validGrades.contains(courseTaken.getGrade())) {
@@ -304,9 +305,18 @@ public class GradReqCheck {
         for (CourseTaken validCourseTaken : requirement.getCourses()) {
             validCourseIDs.add(validCourseTaken.getCourse().getId());
         }
+        System.out.println(validGrades.size());
+        System.out.println(validCourseIDs.size());
+        System.out.println(courseTakenList.size());
+
 
         //Find and count only the coursesTaken that match the requirement
         for (CourseTaken courseTaken : courseTakenList) {
+            System.out.println(courseTaken.getCourse().getName());
+            System.out.println(courseTaken.getCourse().getCourseArea());
+            System.out.println(courseTaken.getCourse().getId());
+            System.out.println(courseTaken.getGrade());
+            System.out.println("NEXT");
             if (courseTaken.getCourse().getCourseArea() != null && validCourseIDs.contains(courseTaken.getCourse().getId()) && validGrades.contains(courseTaken.getGrade())) {
                 switch (courseTaken.getCourse().getCourseArea()) {
                     case APPLICATIONS:
