@@ -46,7 +46,6 @@ public class MasterC {
     /**
      * setReqList() - Method for setting the requirements list for Master Plan C
      */
-    //TODO: This is where the Requirements for Masters C get inputted into a List
     private void setReqList() {
 
         List<String> ls = new ArrayList<String>();
@@ -126,7 +125,7 @@ public class MasterC {
         Requirement req3 = new Requirement(Reqs.PHD_LEVEL_COURSES_PLANC,ctl3,6,ls);
         reqList.add(req3);
 
-        //TODO:REQUIREMENT #4 TOTAL CREDITS_MSC
+        //REQUIREMENT #4 TOTAL CREDITS_MSC
         Requirement req4 = new Requirement(Reqs.TOTAL_CREDITS_MSC);
         reqList.add(req4);
 

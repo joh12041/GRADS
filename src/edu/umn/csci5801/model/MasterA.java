@@ -46,10 +46,6 @@ public class MasterA {
     /**
      * setReqList() - Method for setting the requirements list for Master Plan A
      */
-    //TODO: This is where the Requirements for Masters A get inputed into a List
-    //TODO: STEP 1 -- Create Requirement
-    //TODO: STEP 2 -- Append req to list "reqList.add(req1);"
-    //TODO: STEP 3 -- Repeat for all Requirements
     private void setReqList() {
 
         //List<String> to be included in all Requirements
@@ -137,11 +133,11 @@ public class MasterA {
         Requirement req4 = new Requirement(Reqs.PHD_LEVEL_COURSES,ctl4,3,ls);
         reqList.add(req4);
 
-        //TODO:REQUIREMENT #5 TOTAL_CREDITS_MSA
+        //REQUIREMENT #5 TOTAL_CREDITS_MSA
         Requirement req5 = new Requirement(Reqs.TOTAL_CREDITS_MSA);
         reqList.add(req5);
 
-        //TODO:REQUIREMENT #6 COURSE_CREDITS
+        //REQUIREMENT #6 COURSE_CREDITS
         Requirement req6 = new Requirement(Reqs.COURSE_CREDITS);
         reqList.add(req6);
 

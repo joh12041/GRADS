@@ -46,7 +46,6 @@ public class MasterB {
     /**
      * setReqList() - Method for setting the requirements list for Master Plan B
      */
-    //TODO: This is where the Requirements for Masters B get inputted into a List
     private void setReqList() {
 
         List<String> ls = new ArrayList<String>();
@@ -133,7 +132,7 @@ public class MasterB {
         Requirement req4 = new Requirement(Reqs.PHD_LEVEL_COURSES,ctl4,3,ls);
         reqList.add(req4);
 
-        //TODO:REQUIREMENT #5 TOTAL_CREDITS_MSB
+        //REQUIREMENT #5 TOTAL_CREDITS_MSB
         Requirement req5 = new Requirement(Reqs.TOTAL_CREDITS_MSB);
         reqList.add(req5);
 
