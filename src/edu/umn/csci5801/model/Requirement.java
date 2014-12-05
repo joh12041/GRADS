@@ -104,13 +104,13 @@ public class Requirement {
         validGrades.add(Grade.C);
         validGrades.add(Grade.D);
         validGrades.add(Grade.F);
-        for (CourseTaken cT : this.courses){
+        for (CourseTaken cT : courses){
             if (validGrades.contains(cT.getGrade())) {
                 totalGradePoints = totalGradePoints + (gradeToDouble(cT.getGrade()) * Integer.parseInt(cT.getCourse().getNumCredits()));
                 totalCourseCredits = totalCourseCredits + Integer.parseInt(cT.getCourse().getNumCredits());
             }
         }
-        this.gpa = (totalGradePoints / totalCourseCredits);
+        gpa = (totalGradePoints / totalCourseCredits);
     }
 
 }

@@ -28,9 +28,9 @@ import java.util.List;
  * @version 1.0
  */
 public class MasterC {
-	
+
     private List<Requirement> reqList;
-    
+
     /**
      * getReqList() - Method for getting the requirements list for Master Plan C
      *
@@ -42,7 +42,7 @@ public class MasterC {
         }
         return reqList;
     }
-    
+
     /**
      * setReqList() - Method for setting the requirements list for Master Plan C
      */
