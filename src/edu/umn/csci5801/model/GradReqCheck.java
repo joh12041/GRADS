@@ -6,7 +6,7 @@
  * You may obtain a copy of the License at
  *
  *    http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -21,12 +21,12 @@ import java.util.List;
 
 /**
  * GradReqCheck.java - Class that handles the checking of completed student requirements against graduation requirements
- * 
+ *
  * @author CSCI5801 Fall2014 Group1
  * @version 1.0
  */
 public class GradReqCheck {
-	
+
     private Reqs reqName;
     private boolean result;
     private Requirement details;
@@ -38,7 +38,7 @@ public class GradReqCheck {
     public GradReqCheck(Reqs n) {
         reqName = n;
     }
-    
+
     /**
      * Methods for setting attributes of a GradReqCheck object
      */
@@ -56,14 +56,24 @@ public class GradReqCheck {
     /**
      * Methods which test various completed requirements against graduation requirements, in whole or in part
      */
-    public void testReq(Requirement requirement, List<CourseTaken> courseTakenList, List<CompletedMilestone> completedMilestoneList) {
+    public void testReq(Requirement requirement, List<CourseTaken> courseTakenList, List<CompletedMilestone> completedMilestoneList) throws Exception {
         //Logic for checking any given requirement
         switch (requirement.getName()) {
             case BREADTH_REQUIREMENT_MS:
-                caseBREADTH_REQUIREMENT_MS(requirement, courseTakenList);
+                try {
+                    caseBREADTH_REQUIREMENT_MS(requirement, courseTakenList);
+                } catch(InvalidGradeException e) {
+                    Exception exception = new InvalidGradeException(e);
+                    throw exception;
+                }
                 break;
             case BREADTH_REQUIREMENT_PHD:
-                caseBREADTH_REQUIREMENT_PHD(requirement, courseTakenList);
+                try {
+                    caseBREADTH_REQUIREMENT_PHD(requirement, courseTakenList);
+                } catch(InvalidGradeException e) {
+                    Exception exception = new InvalidGradeException(e);
+                    throw exception;
+                }
                 break;
             case THESIS_PHD:
                 casePASSED_AS_SATISFACTORY(requirement, courseTakenList);
@@ -105,16 +115,36 @@ public class GradReqCheck {
                 caseCOURSE_CREDITS(requirement, courseTakenList);
                 break;
             case OVERALL_GPA_PHD:
-                caseOVERALL_GPA(requirement, courseTakenList);
+                try {
+                    caseOVERALL_GPA(requirement, courseTakenList);
+                } catch(InvalidGradeException e) {
+                    Exception exception = new InvalidGradeException(e);
+                    throw exception;
+                }
                 break;
             case IN_PROGRAM_GPA_PHD:
-                caseIN_PROGRAM_GPA(requirement, courseTakenList);
+                try {
+                    caseIN_PROGRAM_GPA(requirement, courseTakenList);
+                } catch(InvalidGradeException e) {
+                    Exception exception = new InvalidGradeException(e);
+                    throw exception;
+                }
                 break;
             case OVERALL_GPA_MS:
-                caseOVERALL_GPA(requirement, courseTakenList);
+                try {
+                    caseOVERALL_GPA(requirement, courseTakenList);
+                } catch(InvalidGradeException e) {
+                    Exception exception = new InvalidGradeException(e);
+                    throw exception;
+                }
                 break;
             case IN_PROGRAM_GPA_MS:
-                caseIN_PROGRAM_GPA(requirement, courseTakenList);
+                try {
+                    caseIN_PROGRAM_GPA(requirement, courseTakenList);
+                } catch(InvalidGradeException e) {
+                    Exception exception = new InvalidGradeException(e);
+                    throw exception;
+                }
                 break;
             case MILESTONES_PHD:
                 caseMILESTONES(requirement, completedMilestoneList);
@@ -133,7 +163,7 @@ public class GradReqCheck {
         }
     }
 
-    private void  caseBREADTH_REQUIREMENT_MS(Requirement requirement, List<CourseTaken> courseTakenList) {
+    private void  caseBREADTH_REQUIREMENT_MS(Requirement requirement, List<CourseTaken> courseTakenList) throws Exception {
 
         this.result = false;
         CourseTaken topThry = null;
@@ -242,14 +272,19 @@ public class GradReqCheck {
 
         //Fill in gradReqCheck
         this.details = new Requirement(requirement.getName(), newCourseTakenList);
-        this.details.calculateGpa();
+        try {
+            this.details.calculateGpa();
+        } catch(InvalidGradeException e) {
+            Exception exception = new InvalidGradeException(e);
+            throw exception;
+        }
         if (details.getGpa() >= requirement.getGpa() && this.details.getCourses().size() == 5) {
             this.result = true;
         }
 
     }
 
-    private void caseBREADTH_REQUIREMENT_PHD(Requirement requirement, List<CourseTaken> courseTakenList) {
+    private void caseBREADTH_REQUIREMENT_PHD(Requirement requirement, List<CourseTaken> courseTakenList) throws Exception {
 
         this.result = false;
         CourseTaken topThry = null;
@@ -406,7 +441,12 @@ public class GradReqCheck {
 
         //Fill in gradReqCheck
         this.details = new Requirement(requirement.getName(), newCourseTakenList);
-        this.details.calculateGpa();
+        try {
+            this.details.calculateGpa();
+        } catch(InvalidGradeException e) {
+            Exception exception = new InvalidGradeException(e);
+            throw exception;
+        }
         if (details.getGpa() >= requirement.getGpa() && this.details.getCourses().size() == 5) {
             this.result = true;
         }
@@ -649,18 +689,23 @@ public class GradReqCheck {
         }
     }
 
-    private void caseOVERALL_GPA(Requirement requirement, List<CourseTaken> courseTakenList) {
+    private void caseOVERALL_GPA(Requirement requirement, List<CourseTaken> courseTakenList) throws Exception {
         this.result = false;
 
         //Calculate GPA and fill in gradReqCheck
         this.details = new Requirement(requirement.getName(), courseTakenList);
-        this.details.calculateGpa();
+        try {
+            this.details.calculateGpa();
+        } catch(InvalidGradeException e) {
+            Exception exception = new InvalidGradeException(e);
+            throw exception;
+        }
         if (details.getGpa() >= requirement.getGpa()) {
             this.result = true;
         }
     }
 
-    private void caseIN_PROGRAM_GPA(Requirement requirement, List<CourseTaken> courseTakenList) {
+    private void caseIN_PROGRAM_GPA(Requirement requirement, List<CourseTaken> courseTakenList) throws Exception {
         this.result = false;
         List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
 
@@ -673,7 +718,12 @@ public class GradReqCheck {
 
         //Calculate GPA and fill in gradReqCheck
         this.details = new Requirement(requirement.getName(), newCourseTakenList);
-        this.details.calculateGpa();
+        try {
+            this.details.calculateGpa();
+        } catch(InvalidGradeException e) {
+            Exception exception = new InvalidGradeException(e);
+            throw exception;
+        }
         if (details.getGpa() >= requirement.getGpa()) {
             this.result = true;
         }
