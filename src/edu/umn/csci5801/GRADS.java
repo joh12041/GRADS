@@ -320,6 +320,15 @@ public class GRADS implements GRADSIntf {
                 progressSummaryReturn = progressSummary;
             }
         }
+        String representation = new GsonBuilder().setPrettyPrinting().create().toJson(progressSummaryReturn);
+        try {
+            FileWriter out = new FileWriter("progress.txt");
+            out.write(representation);
+            out.close();
+        } catch(IOException e) {
+            throw e;
+        }
+
         return progressSummaryReturn;
     }
 }
