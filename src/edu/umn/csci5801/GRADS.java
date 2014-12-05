@@ -38,7 +38,7 @@ import edu.umn.csci5801.GRADSIntf;
  * @version 1.0
  */
 public class GRADS implements GRADSIntf {
-	
+
     private List<User> userList;
     public User currentUser;
     private List<Course> courseList;
@@ -46,7 +46,7 @@ public class GRADS implements GRADSIntf {
 
     /**
      * loadUsers() - Loads the list of system usernames and permissions.
-     * 
+     *
      * @param usersFile the filename of the users file.
      * @throws Exception for I/O errors.  SEE NOTE IN CLASS HEADER.
      */
@@ -61,7 +61,7 @@ public class GRADS implements GRADSIntf {
 
     /**
      * loadCourses() - Loads the list of courses.
-     * 
+     *
      * @param coursesFile the filename of the users file.
      * @throws Exception for I/O errors.  SEE NOTE IN CLASS HEADER.
      */
@@ -76,7 +76,7 @@ public class GRADS implements GRADSIntf {
 
     /**
      * loadRecords() - Loads the list of system transcripts.
-     * 
+     *
      * @param recordsFile the filename of the transcripts file.
      * @throws Exception for I/O errors.  SEE NOTE IN CLASS HEADER.
      */
@@ -91,12 +91,11 @@ public class GRADS implements GRADSIntf {
 
     /**
      * setUser() - Sets the user id (X500) of the user currently using the system.
-     * 
+     *
      * @param userId  the X500 id of the user generating progress summaries.
      * @throws Exception  if the user id is invalid.  SEE NOTE IN CLASS HEADER.
      */
     public void setUser(String userId) throws Exception {
-        //loadUsers();
         if(userList == null) {
             Exception exception = new Exception();
             throw exception;
@@ -118,7 +117,7 @@ public class GRADS implements GRADSIntf {
 
     /**
      * getUser() - Gets the user id of the user currently using the system.
-     * 
+     *
      * @return  the X500 user id of the user currently using the system.
      */
     public String getUser() {
@@ -131,13 +130,13 @@ public class GRADS implements GRADSIntf {
 
     /**
      * getStudentIDs() - Gets a list of the userIds of the students that a GPC can view.
-     * 
+     *
      * @return a list containing the userId of for each student in the
      *      system belonging to the current user
      * @throws Exception is the current user is not a GPC.
      */
     public List<String> getStudentIDs() throws Exception {
-        if(this.currentUser.getRole() == Role.STUDENT || userList == null){
+        if(currentUser == null || currentUser.getRole() == Role.STUDENT || currentUser.getDepartment() != Department.COMPUTER_SCIENCE){
             Exception exception = new Exception();
             throw exception;
         }
@@ -154,14 +153,14 @@ public class GRADS implements GRADSIntf {
 
     /**
      * getTranscript() - Gets the raw student record data for a given userId.
-     * 
+     *
      * @param userId  the identifier of the student.
      * @return  the student record data.
      * @throws Exception  if the form data could not be retrieved.  SEE NOTE IN
      *      CLASS HEADER.
      */
     public StudentRecord getTranscript(String userId) throws Exception {
-        if(userList == null) {
+        if(currentUser == null || currentUser.getDepartment() != Department.COMPUTER_SCIENCE || (currentUser.getRole() == Role.STUDENT && !(userId.equals(currentUser.getId())))) {
             Exception exception = new Exception();
             throw exception;
         }
@@ -182,14 +181,14 @@ public class GRADS implements GRADSIntf {
 
     /**
      * updateTranscript() - Saves a new set of student data to the records data.
-     * 
+     *
      * @param userId the student ID to overwrite.
      * @param transcript  the new student record
      * @throws Exception  if the transcript data could not be saved, failed
      * a validity check, or a non-GPC tries to call.  SEE NOTE IN CLASS HEADER.
      */
     public void updateTranscript(String userId, StudentRecord transcript) throws Exception {
-        if(userList == null) {
+        if(currentUser == null || currentUser.getDepartment() != Department.COMPUTER_SCIENCE || (currentUser.getRole() == Role.STUDENT && !(userId.equals(currentUser.getId())))) {
             Exception exception = new Exception();
             throw exception;
         }
@@ -209,14 +208,17 @@ public class GRADS implements GRADSIntf {
 
     /**
      * addNote() - Appends a note to a student record.
-     * 
+     *
      * @param userId the student ID to add a note to.
      * @param note  the note to append
      * @throws Exception  if the note could not be saved or a non-GPC tries to call.
      * SEE NOTE IN CLASS HEADER.
      */
     public void addNote(String userId, String note) throws Exception {
-
+        if(currentUser == null || currentUser.getDepartment() != Department.COMPUTER_SCIENCE || (currentUser.getRole() == Role.STUDENT && !(userId.equals(currentUser.getId())))) {
+            Exception exception = new Exception();
+            throw exception;
+        }
         if(this.recordList == null) {
             Exception e = new Exception();
             throw e;
@@ -238,41 +240,28 @@ public class GRADS implements GRADSIntf {
 
     /**
      * generateProgressSummary() - Generates progress summary
-     * 
+     *
      * @param userId the student to generate the record for.
      * @returns the student's progress summary in a data class matching the JSON format.
      * @throws Exception  if the progress summary could not be generated.
      * SEE NOTE IN CLASS HEADER.
      */
     public ProgressSummary generateProgressSummary(String userId) throws Exception {
+        if(currentUser == null || currentUser.getDepartment() != Department.COMPUTER_SCIENCE || (currentUser.getRole() == Role.STUDENT && !(userId.equals(currentUser.getId())))) {
+            Exception exception = new Exception();
+            throw exception;
+        }
         ProgressSummary progressSummaryReturn = new ProgressSummary();
-        boolean realUser = false;
-        User desiredUser = new User();
-        //TODO: THROW ERROR if userList is empty
-        for(User u : userList) {
-            if (userId.equals(u.getId())) {
-                desiredUser = u;
-                realUser = true;
+
+        //finds studentRecord from data passed in with loadRecords and gets progressSummary
+        for(StudentRecord sr : recordList) {
+            if (currentUser.getDepartment() == sr.getDepartment() && userId.equals(sr.getStudent().getId())) {
+                ProgressSummary progressSummary = new ProgressSummary(sr.getStudent(),
+                        sr.getDepartment(), sr.getDegreeSought(), sr.getTermBegan(),
+                        sr.getAdvisors(), sr.getCommittee(), sr.getNotes(), sr.getCoursesTaken());
+                progressSummary.checkGradStatus(sr.getMilestonesSet());
+                progressSummaryReturn = progressSummary;
             }
-        }
-        //check if correct permissions for accessing student progress summary
-        if(realUser &&
-                ((currentUser.getRole().equals(Role.GRADUATE_PROGRAM_COORDINATOR) &&
-                        currentUser.getDepartment().equals(desiredUser.getDepartment())) ||
-                        currentUser.getId().equals(userId))) {
-            //finds studentRecord from data passed in with loadRecords and gets progressSummary
-            for(StudentRecord sr : recordList) {
-                if (userId.equals(sr.getStudent().getId())) {
-                    ProgressSummary progressSummary = new ProgressSummary(sr.getStudent(),
-                            sr.getDepartment(), sr.getDegreeSought(), sr.getTermBegan(),
-                            sr.getAdvisors(), sr.getCommittee(), sr.getNotes(), sr.getCoursesTaken());
-                    progressSummary.checkGradStatus(sr.getMilestonesSet());
-                    progressSummaryReturn = progressSummary;
-                }
-            }
-        }
-        else{
-            //throw exception
         }
         return progressSummaryReturn;
     }
@@ -280,7 +269,7 @@ public class GRADS implements GRADSIntf {
     /**
      * simulateCourses() - Generates a new progress summary, assuming that the student passes the
      * provided set of prospective courses.
-     * 
+     *
      * @param userId the student to generate the record for.
      * @param courses a list of the prospective courses.
      * @returns a map containing the student's hypothetical progress summary
@@ -288,35 +277,22 @@ public class GRADS implements GRADSIntf {
      * are invalid. SEE NOTE IN CLASS HEADER.
      */
     public ProgressSummary simulateCourses(String userId, List<CourseTaken> courses) throws Exception {
+        if(currentUser == null || currentUser.getDepartment() != Department.COMPUTER_SCIENCE || (currentUser.getRole() == Role.STUDENT && !(userId.equals(currentUser.getId())))) {
+            Exception exception = new Exception();
+            throw exception;
+        }
         ProgressSummary progressSummaryReturn = new ProgressSummary();
-        boolean realUser = false;
-        User desiredUser = new User();
-        //TODO: THROW ERROR if userList is empty
-        for(User u : userList) {
-            if (userId.equals(u.getId())) {
-                desiredUser = u;
-                realUser = true;
+
+        //finds studentRecord from data passed in with loadRecords and gets progressSummary
+        for(StudentRecord sr : recordList) {
+            if (currentUser.getDepartment() == sr.getDepartment() && userId.equals(sr.getStudent().getId())) {
+                sr.appendCourses(courses);
+                ProgressSummary progressSummary = new ProgressSummary(sr.getStudent(),
+                        sr.getDepartment(), sr.getDegreeSought(), sr.getTermBegan(),
+                        sr.getAdvisors(), sr.getCommittee(), sr.getNotes(), sr.getCoursesTaken());
+                progressSummary.checkGradStatus(sr.getMilestonesSet());
+                progressSummaryReturn = progressSummary;
             }
-        }
-        //check if correct permissions for accessing student progress summary
-        if(realUser &&
-                ((currentUser.getRole().equals(Role.GRADUATE_PROGRAM_COORDINATOR) &&
-                        currentUser.getDepartment().equals(desiredUser.getDepartment())) ||
-                        currentUser.getId().equals(userId))) {
-            //finds studentRecord from data passed in with loadRecords and gets progressSummary
-            for(StudentRecord sr : recordList) {
-                if (userId.equals(sr.getStudent().getId())) {
-                    sr.appendCourses(courses);
-                    ProgressSummary progressSummary = new ProgressSummary(sr.getStudent(),
-                            sr.getDepartment(), sr.getDegreeSought(), sr.getTermBegan(),
-                            sr.getAdvisors(), sr.getCommittee(), sr.getNotes(), sr.getCoursesTaken());
-                    progressSummary.checkGradStatus(sr.getMilestonesSet());
-                    progressSummaryReturn = progressSummary;
-                }
-            }
-        }
-        else{
-            //throw exception
         }
         return progressSummaryReturn;
     }
