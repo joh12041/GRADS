@@ -64,10 +64,10 @@ public class GradReqCheck {
                 caseTOTAL_CREDITS_MSA(requirement, courseTakenList);
                 break;
             case TOTAL_CREDITS_MSB:
-                caseTOTAL_CREDITS_MSB(requirement, courseTakenList);
+                caseTOTAL_CREDITS_MSBC(requirement, courseTakenList);
                 break;
             case TOTAL_CREDITS_MSC:
-                caseTOTAL_CREDITS_MSC(requirement, courseTakenList);
+                caseTOTAL_CREDITS_MSBC(requirement, courseTakenList);
                 break;
             case COURSE_CREDITS:
                 caseCOURSE_CREDITS(requirement, courseTakenList);
@@ -532,12 +532,41 @@ public class GradReqCheck {
         }
     }
 
-    private void caseTOTAL_CREDITS_MSB(Requirement requirement, List<CourseTaken> courseTakenList) {
+    private void caseTOTAL_CREDITS_MSBC(Requirement requirement, List<CourseTaken> courseTakenList) {
+        this.result = false;
+        int csciCredits = 0;
+        int totalCredits = 0;
+        int reqCsciCredits = 16;
+        int reqTotalCredits = 31;
+        List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
 
-    }
+        //Only letter grades A, B, C, and S count towards requirements
+        List<Grade> validGrades = new ArrayList<Grade>();
+        validGrades.add(Grade.A);
+        validGrades.add(Grade.B);
+        validGrades.add(Grade.C);
+        validGrades.add(Grade.S);
 
-    private void caseTOTAL_CREDITS_MSC(Requirement requirement, List<CourseTaken> courseTakenList) {
+        for(CourseTaken courseTaken : courseTakenList) {
+            if (validGrades.contains(courseTaken.getGrade())) {
+                //Collect only the coursesTaken that are CSCI 5000+ level
+                if (courseTaken.getCourse().getId().matches("^csci[56789][0-9]{3}$")) {
+                    newCourseTakenList.add(courseTaken);
+                    csciCredits = csciCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());
+                    totalCredits = totalCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());
+                    continue;
+                }
+                //Collect the coursesTaken that are non-CSCI or CSCI below the 5000 level
+                newCourseTakenList.add(courseTaken);
+                totalCredits = totalCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());
+            }
+        }
 
+        //Fill in reqCheck and ensure 16 CSCI 5000+ level credits and 31 total
+        this.details = new Requirement(requirement.getName(), newCourseTakenList);
+        if (csciCredits >= reqCsciCredits && totalCredits >= reqTotalCredits) {
+            this.result = true;
+        }
     }
 
     private void caseCOURSE_CREDITS(Requirement requirement, List<CourseTaken> courseTakenList) {
