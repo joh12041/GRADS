@@ -19,7 +19,7 @@ package edu.umn.csci5801.model;
 import java.util.List;
 
 /**
- * ProgressSummary.java - Class that handles the status of a Requirement
+ * ProgressSummary.java - Class that handles the creation of a progress summary
  * 
  * @author CSCI5801 Fall2014 Group1
  * @version 1.0

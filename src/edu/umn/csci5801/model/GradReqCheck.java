@@ -20,26 +20,42 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Justin on 12/2/2014.
+ * GradReqCheck.java - Class that handles the checking of completed student requirements against graduation requirements
+ * 
+ * @author CSCI5801 Fall2014 Group1
+ * @version 1.0
  */
 public class GradReqCheck {
+	
     private Reqs reqName;
     private boolean result;
     private Requirement details;
 
+    /**
+     * ProgressSummary() - Constructors for creating a GradReqCheck object
+     */
     public GradReqCheck() {}
     public GradReqCheck(Reqs n) {
         reqName = n;
     }
-
+    
+    /**
+     * Methods for setting attributes of a GradReqCheck object
+     */
     public void setReqName(Reqs n) { reqName = n; }
     public void setResult(boolean ic) { result = ic; }
     public void setDetails(Requirement r) { details = r; }
 
+    /**
+     * Methods for getting attributes of a GradReqCheck object
+     */
     public Reqs getReqName() { return reqName; }
     public boolean getResult() { return result; }
     public Requirement getDetails() { return details; }
 
+    /**
+     * Methods which test various completed requirements against graduation requirements, in whole or in part
+     */
     public void testReq(Requirement requirement, List<CourseTaken> courseTakenList, List<CompletedMilestone> completedMilestoneList) {
         //Logic for checking any given requirement
         switch (requirement.getName()) {
