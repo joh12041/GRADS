@@ -40,5 +40,12 @@
         "lastName": "De Silva",
         "role": "STUDENT",
         "department": "COMPUTER_SCIENCE"
+    },
+    {
+        "id": "hanxx123",
+        "firstName": "Meimei",
+        "lastName": "Han",
+        "role": "STUDENT",
+        "department": "COMPUTER_SCIENCE"
     }
 ]

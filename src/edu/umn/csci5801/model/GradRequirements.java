@@ -160,6 +160,7 @@ public class GradRequirements {
      * @param completedMilestoneList - Variable of type List<CompletedMilestone> which contains completed milestones
      */
     public void testReqList(List<CourseTaken> courseTakenList, List<CompletedMilestone> completedMilestoneList) {
+        reqChecks = new ArrayList<GradReqCheck>();
         for (Requirement r : reqList) {
             GradReqCheck grc = new GradReqCheck(r.getName());
             grc.testReq(r, courseTakenList, completedMilestoneList);

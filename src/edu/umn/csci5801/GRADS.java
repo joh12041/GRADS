@@ -278,6 +278,7 @@ public class GRADS implements GRADSIntf {
                         sr.getAdvisors(), sr.getCommittee(), sr.getNotes(), sr.getCoursesTaken());
                 progressSummary.checkGradStatus(sr.getMilestonesSet());
                 progressSummaryReturn = progressSummary;
+                break;
             }
         }
         String representation = new GsonBuilder().setPrettyPrinting().create().toJson(progressSummaryReturn);

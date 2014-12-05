@@ -272,7 +272,7 @@ public class GradReqCheck {
 
         //Find and count only the coursesTaken that match the requirement
         for (CourseTaken courseTaken : courseTakenList) {
-            if (validCourseIDs.contains(courseTaken.getCourse().getId()) && validGrades.contains(courseTaken.getGrade())) {
+            if (courseTaken.getCourse().getCourseArea() != null && validCourseIDs.contains(courseTaken.getCourse().getId()) && validGrades.contains(courseTaken.getGrade())) {
                 switch (courseTaken.getCourse().getCourseArea()) {
                     case APPLICATIONS:
                         if (topAppl == null) {
