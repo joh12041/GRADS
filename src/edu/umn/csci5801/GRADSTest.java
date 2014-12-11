@@ -27,19 +27,33 @@ public class GRADSTest extends TestCase {
     }
 
     @Test
+    public void testExceptionThrownLoadCourses() throws Exception {
+        GRADS grads = new GRADS();
+        grads.loadCourses("resources/not_a_file.txt");
+    }
+    @Test
     public void testLoadRecords() throws Exception {
     	GRADS grads = new GRADS();
     	grads.loadRecords("resources/students.txt");
     }
 
     @Test
-    public void testSetUser() throws Exception {
+    public void testExceptionThrownLoadRecords() throws Exception {
+        GRADS grads = new GRADS();
+        grads.loadCourses("resources/not_a_file.txt");
+    }
 
+    @Test
+    public void testSetUser() throws Exception {
+        GRADS grads = new GRADS();
+        grads.setUser("tolas9999");
     }
 
     @Test
     public void testGetUser() throws Exception {
-
+        GRADS grads = new GRADS();
+        grads.setUser("tolas9999");
+        assertEquals("tolas9999",grads.getUser());
     }
 
     @Test
