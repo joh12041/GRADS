@@ -29,3 +29,6 @@ studentids.txt
 studentrecord.txt
 progress.txt
 simulatedprogress.txt
+
+# build file
+build.properties
