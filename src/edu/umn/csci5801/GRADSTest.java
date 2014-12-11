@@ -4,6 +4,8 @@ import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
+
 import static org.junit.Assert.*;
 
 public class GRADSTest extends TestCase {
@@ -14,7 +16,7 @@ public class GRADSTest extends TestCase {
         grads.loadUsers("resources/users.txt");
     }
 
-    @Test
+    @Test(expected = IOException.class)
     public void textExceptionThrownLoadUsers() throws Exception {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/not_a_file.txt");
@@ -26,7 +28,7 @@ public class GRADSTest extends TestCase {
     	grads.loadCourses("resources/courses.txt");
     }
 
-    @Test
+    @Test(expected = IOException.class)
     public void testExceptionThrownLoadCourses() throws Exception {
         GRADS grads = new GRADS();
         grads.loadCourses("resources/not_a_file.txt");
@@ -37,21 +39,23 @@ public class GRADSTest extends TestCase {
     	grads.loadRecords("resources/students.txt");
     }
 
-    @Test
+    @Test(expected = IOException.class)
     public void testExceptionThrownLoadRecords() throws Exception {
         GRADS grads = new GRADS();
-        grads.loadCourses("resources/not_a_file.txt");
+        grads.loadRecords("resources/not_a_file.txt");
     }
 
     @Test
     public void testSetUser() throws Exception {
         GRADS grads = new GRADS();
+        grads.loadUsers("resources/users.txt");
         grads.setUser("tolas9999");
     }
 
     @Test
     public void testGetUser() throws Exception {
         GRADS grads = new GRADS();
+        grads.loadUsers("resources/users.txt");
         grads.setUser("tolas9999");
         assertEquals("tolas9999",grads.getUser());
     }

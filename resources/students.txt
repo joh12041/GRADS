@@ -1,5 +1,4 @@
 [
-  [
   {
     "student": {
       "id": "smith1234",
@@ -304,7 +303,6 @@
       }
     ],
     "coursesTaken": [
-    {
       {
         "course": {
           "name": "Advanced Algorithms and Data Structures",
@@ -461,7 +459,6 @@
         },
         "grade": "S"
       }
-    }
     ],
     "milestonesSet": [
       {
@@ -476,7 +473,7 @@
       "note1",
       "note2"
     ]
-  }
+  },
   {
     "student": {
       "id": "nguy0621",
