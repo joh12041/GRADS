@@ -115,7 +115,47 @@ public class GRADSTest extends TestCase {
 
     }
     
-    //TODO: Insert tests for Test Case 3.1.2 to 3.1.8
+    @Test
+    //GPA below PhD req, rest met
+    public void testPhDSimulateCoursesLowGPA() throws Exception {
+
+    }
+    
+    @Test
+    //GPA below Master req, rest met
+    public void testMasterSimulateCoursesLowGPA() throws Exception {
+
+    }
+    
+    @Test
+    //PhD doesn't meet thesis credit, rest met
+    public void testPhDSimulateCoursesThesisCredit() throws Exception {
+
+    }
+    
+    @Test
+    //All requirements met
+    public void testMasterSimulateCoursesAllMet() throws Exception {
+
+    }
+    
+    @Test
+    //PhD adds courses to meet necessary requirements
+    public void testPhDSimulateCoursesNewCourse() throws Exception {
+
+    }
+    
+    @Test
+    //MastersA adds courses to meet necessary requirements except 8000 level
+    public void testMasterSimulateCoursesNewCourse() throws Exception {
+
+    }
+    
+    @Test
+    //MastersA doesn't meet credits, 8000-level, or Colloquium
+    public void testMasterSimulateCoursesNew() throws Exception {
+
+    }
     
     @Test
     public void testGPCAddMilestone() throws Exception {
