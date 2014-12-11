@@ -1,5 +1,26 @@
 [
     {
+       "id": "smith1234",
+       "firstName": "John",
+       "lastName": "Smith",
+        "role": "STUDENT",
+        "department": "COMPUTER_SCIENCE"
+    },
+    {
+       "id": "doe5678",
+       "firstName": "Jane",
+       "lastName": "Doe",
+        "role": "STUDENT",
+        "department": "COMPUTER_SCIENCE"
+    },
+    {
+       "id": "zhang9101",
+       "firstName": "Wei",
+       "lastName": "Zhang",
+        "role": "STUDENT",
+        "department": "COMPUTER_SCIENCE"
+    },
+    {
        "id": "nguy0621",
        "firstName": "Luan",
        "lastName": "Nguyen",

@@ -89,17 +89,32 @@ public class GRADSTest extends TestCase {
 
     @Test
     public void testStudentGenerateOwnProgressSummary() throws Exception {
-
+    	GRADS grads = new GRADS();
+    	grads.loadUsers("resources/users.txt");
+    	grads.loadCourses("resources/courses.txt");
+    	grads.loadRecords("resources/students.txt");
+    	grads.setUser("smith1234");
+    	grads.generateProgressSummary("smith1234");
     }
     
     @Test
     public void testStudentGenerateOtherProgressSummary() throws Exception {
-
+    	GRADS grads = new GRADS();
+    	grads.loadUsers("resources/users.txt");
+    	grads.loadCourses("resources/courses.txt");
+    	grads.loadRecords("resources/students.txt");
+    	grads.setUser("smith1234");
+    	grads.generateProgressSummary("doe5678");
     }
     
     @Test
     public void testGPCGenerateProgressSummary() throws Exception {
-
+    	GRADS grads = new GRADS();
+    	grads.loadUsers("resources/users.txt");
+    	grads.loadCourses("resources/courses.txt");
+    	grads.loadRecords("resources/students.txt");
+    	grads.setUser("tolas9999");
+    	grads.generateProgressSummary("smith1234");
     }
 
     @Test
