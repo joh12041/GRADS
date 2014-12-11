@@ -49,9 +49,9 @@
         "department": "COMPUTER_SCIENCE"
     },
     {
-        "id": "smith0001",
-        "firstName": "John",
-        "lastName": "Smith",
+        "id": "pitt0001",
+        "firstName": "Brad",
+        "lastName": "Pitt",
         "role": "GRADUATE_PROGRAM_COORDINATOR",
         "department": "MATH"
     },

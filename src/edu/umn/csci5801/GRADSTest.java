@@ -1,5 +1,6 @@
 package edu.umn.csci5801;
 
+import edu.umn.csci5801.model.InvalidUserException;
 import junit.framework.TestCase;
 
 import org.junit.Before;
@@ -67,11 +68,20 @@ public class GRADSTest extends TestCase {
 
     @Test
     public void testGPCGetStudentIDs() throws Exception {
-
+        GRADS grads = new GRADS();
+        grads.loadUsers("resources/users.txt");
+        grads.loadRecords("resources/courses.txt");
+        grads.setUser("tolas9999");
+        grads.getStudentIDs();
     }
     
-    @Test
+    @Test(expected = InvalidUserException.class)
     public void testStudentGetStudentIDs() throws Exception {
+        GRADS grads = new GRADS();
+        grads.loadUsers("resources/users.txt");
+        grads.loadRecords("resources/courses.txt");
+        grads.setUser("nguy0621");
+        grads.getStudentIDs();
 
     }
 
