@@ -1,10 +1,15 @@
 package edu.umn.csci5801;
 
 import junit.framework.TestCase;
+
 import org.junit.Before;
 import org.junit.Test;
 
+import edu.umn.csci5801.model.CourseTaken;
+
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -111,8 +116,8 @@ public class GRADSTest extends TestCase {
     	grads.loadUsers("resources/users.txt");
     	grads.loadCourses("resources/courses.txt");
     	grads.loadRecords("resources/students.txt");
-    	grads.setUser("smith1234");
-    	grads.generateProgressSummary("smith1234");
+    	grads.setUser("zhang9101");
+    	grads.generateProgressSummary("zhang9101");
     }
     
     @Test
@@ -121,7 +126,7 @@ public class GRADSTest extends TestCase {
     	grads.loadUsers("resources/users.txt");
     	grads.loadCourses("resources/courses.txt");
     	grads.loadRecords("resources/students.txt");
-    	grads.setUser("smith1234");
+    	grads.setUser("zhang9101");
     	grads.generateProgressSummary("doe5678");
     }
     
@@ -132,22 +137,40 @@ public class GRADSTest extends TestCase {
     	grads.loadCourses("resources/courses.txt");
     	grads.loadRecords("resources/students.txt");
     	grads.setUser("tolas9999");
-    	grads.generateProgressSummary("smith1234");
+    	grads.generateProgressSummary("zhang9101");
     }
 
     @Test
     public void testStudentSimulateOwnCourses() throws Exception {
-
+    	GRADS grads = new GRADS();
+    	List<CourseTaken> coursesTaken =  Arrays.asList();
+    	grads.loadUsers("resources/users.txt");
+    	grads.loadCourses("resources/courses.txt");
+    	grads.loadRecords("resources/students.txt");
+    	grads.setUser("zhang9101");
+    	grads.simulateCourses("zhang9101", coursesTaken);
     }
     
     @Test
     public void testStudentSimulateOtherCourses() throws Exception {
-
+    	GRADS grads = new GRADS();
+    	List<CourseTaken> coursesTaken =  Arrays.asList();
+    	grads.loadUsers("resources/users.txt");
+    	grads.loadCourses("resources/courses.txt");
+    	grads.loadRecords("resources/students.txt");
+    	grads.setUser("zhang9101");
+    	grads.simulateCourses("doe5678", coursesTaken);
     }
     
     @Test
     public void testGPCSimulateCourses() throws Exception {
-
+    	GRADS grads = new GRADS();
+    	List<CourseTaken> coursesTaken =  Arrays.asList();
+    	grads.loadUsers("resources/users.txt");
+    	grads.loadCourses("resources/courses.txt");
+    	grads.loadRecords("resources/students.txt");
+    	grads.setUser("tolas9999");
+    	grads.simulateCourses("zhang9101", coursesTaken);
     }
     
     @Test
