@@ -6,12 +6,15 @@ import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
 
+import edu.umn.csci5801.model.CourseArea;
 import edu.umn.csci5801.model.CourseTaken;
+import edu.umn.csci5801.model.Grade;
+import edu.umn.csci5801.model.Term;
+import edu.umn.csci5801.model.Course;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -256,13 +259,26 @@ public class GRADSTest extends TestCase {
     @Test
     //PhD adds courses to meet necessary requirements
     public void testPhDSimulateCoursesNewCourse() throws Exception {
-    	/*GRADS grads = new GRADS();
-    	List<CourseTaken> coursesTaken =  Arrays.asList("csci8980", "math5335");
+    	GRADS grads = new GRADS();
+    	Term f15 = new Term();
+    	f15.setSemester("FALL");
+    	f15.setYear(2015);
+    	Course csci8980 = new Course("Special Advanced Topics in Computer Science", "csci8980", "3");
+    	CourseTaken csci8980f15 = new CourseTaken(csci8980, f15, Grade.B);
+    	Course math5335 = new Course("MATH 5335", "math5335", "4");
+    	CourseTaken math5335f15 = new CourseTaken(math5335, f15, Grade.A);
+    	Course math5336 = new Course("MATH 5336", "math5336", "3");
+    	CourseTaken math5336f15 = new CourseTaken(math5336, f15, Grade.A);
+    	Course csci5512 = new Course("Artificial Intelligence II", "csci5512", "3", CourseArea.APPLICATIONS);
+    	CourseTaken csci5512f15 = new CourseTaken(csci5512, f15, Grade.B);
+    	Course cs8970 = new Course("Computer Science Colloquium", "csci8970", "1");
+    	CourseTaken cs8970f15 = new CourseTaken(cs8970, f15, Grade.S);
     	grads.loadUsers("resources/users.txt");
     	grads.loadCourses("resources/courses.txt");
     	grads.loadRecords("resources/students.txt");
+    	List<CourseTaken> coursesTaken =  Arrays.asList(csci8980f15, math5335f15, math5336f15, csci5512f15, cs8970f15);
     	grads.setUser("zhang9101");
-    	grads.simulateCourses("zhang9101", coursesTaken);*/
+    	grads.simulateCourses("zhang9101", coursesTaken);
     }
     
     @Test
