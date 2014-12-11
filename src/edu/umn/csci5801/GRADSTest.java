@@ -22,12 +22,14 @@ public class GRADSTest extends TestCase {
 
     @Test
     public void testLoadCourses() throws Exception {
-
+    	GRADS grads = new GRADS();
+    	grads.loadCourses("resources/courses.txt");
     }
 
     @Test
     public void testLoadRecords() throws Exception {
-
+    	GRADS grads = new GRADS();
+    	grads.loadRecords("resources/students.txt");
     }
 
     @Test
