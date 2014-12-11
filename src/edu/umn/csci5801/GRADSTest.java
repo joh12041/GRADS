@@ -12,7 +12,6 @@ public class GRADSTest extends TestCase {
     public void testLoadUsers() throws Exception {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
-        as
     }
 
     @Test
@@ -42,32 +41,79 @@ public class GRADSTest extends TestCase {
     }
 
     @Test
-    public void testGetStudentIDs() throws Exception {
+    public void testGPCGetStudentIDs() throws Exception {
+
+    }
+    
+    @Test
+    public void testStudentGetStudentIDs() throws Exception {
 
     }
 
     @Test
-    public void testGetTranscript() throws Exception {
+    public void testStudentGetOwnTranscript() throws Exception {
 
     }
 
     @Test
-    public void testUpdateTranscript() throws Exception {
+    public void testStudentGetOtherTranscript() throws Exception {
+
+    }
+    
+    @Test
+    public void testGPCGetTranscript() throws Exception {
+
+    }
+    
+    @Test
+    public void testStudentUpdateTranscript() throws Exception {
+
+    }
+    
+    @Test
+    public void testGPCUpdateTranscript() throws Exception {
 
     }
 
     @Test
-    public void testAddNote() throws Exception {
+    public void testStudentAddNote() throws Exception {
+
+    }
+    
+    @Test
+    public void testGPCAddNote() throws Exception {
 
     }
 
     @Test
-    public void testGenerateProgressSummary() throws Exception {
+    public void testStudentGenerateOwnProgressSummary() throws Exception {
+
+    }
+    
+    @Test
+    public void testStudentGenerateOtherProgressSummary() throws Exception {
+
+    }
+    
+    @Test
+    public void testGPCGenerateProgressSummary() throws Exception {
 
     }
 
     @Test
-    public void testSimulateCourses() throws Exception {
+    public void testStudentSimulateOwnCourses() throws Exception {
 
     }
+    
+    @Test
+    public void testStudentSimulateOtherCourses() throws Exception {
+
+    }
+    
+    @Test
+    public void testGPCSimulateCourses() throws Exception {
+
+    }
+    
+    //TODO: Insert specific requirements for Test Case 3.1.2 to 3.1.8
 }
