@@ -115,5 +115,71 @@ public class GRADSTest extends TestCase {
 
     }
     
-    //TODO: Insert specific requirements for Test Case 3.1.2 to 3.1.8
+    //TODO: Insert tests for Test Case 3.1.2 to 3.1.8
+    
+    @Test
+    public void testGPCAddMilestone() throws Exception {
+
+    }
+    
+    @Test
+    public void testGPCChangeMilestone() throws Exception {
+
+    }
+    
+    @Test
+    public void testGPCChangeAdvisor() throws Exception {
+
+    }
+    
+    @Test
+    //PhD or Plan B student
+    public void testStudentAuthorizedChangeAdvisor() throws Exception {
+
+    }
+    
+    @Test
+    //PhD or Plan B student
+    public void testStudentUnauthorizedChangeAdvisor() throws Exception {
+
+    }
+    
+    @Test
+    //PhD, Plan A, or Plan C
+    public void testGPCChangeCommittee() throws Exception {
+
+    }
+    
+    @Test
+    //PhD, Plan A, or Plan C
+    public void testStudentAuthorizedChangeCommittee() throws Exception {
+
+    }
+    
+    @Test
+    //PhD, Plan A, or Plan C
+    public void testStudentUnauthorizedChangeCommittee() throws Exception {
+
+    }
+    
+    @Test
+    public void testGPCChangeGrade() throws Exception {
+
+    }
+    
+    @Test
+    public void testStudentChangeGrade() throws Exception {
+
+    }
+    
+    @Test
+    public void testGPCAllowCourse() throws Exception {
+
+    }
+    
+    @Test
+    public void testStudentAllowCourse() throws Exception {
+
+    }
+    
 }
