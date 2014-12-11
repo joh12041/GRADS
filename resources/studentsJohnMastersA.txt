@@ -6,7 +6,7 @@
       "lastName": "Smith"
     },
     "department": "COMPUTER_SCIENCE",
-    "degreeSought": "PHD",
+    "degreeSought": "MS_A",
     "termBegan": {
       "semester": "FALL",
       "year": 2007
