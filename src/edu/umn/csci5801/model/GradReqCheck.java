@@ -452,9 +452,6 @@ public class GradReqCheck {
         for (CourseTaken validCourseTaken : requirement.getCourses()) {
             validCourseIDs.add(validCourseTaken.getCourse().getId());
         }
-        System.out.println(validGrades.size());
-        System.out.println(validCourseIDs.size());
-        System.out.println(courseTakenList.size());
 
         CourseArea ca = null;
         //Find and count only the coursesTaken that match the requirement
