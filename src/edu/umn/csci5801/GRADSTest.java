@@ -176,31 +176,61 @@ public class GRADSTest extends TestCase {
     @Test
     //GPA below PhD req, rest met
     public void testPhDSimulateCoursesLowGPA() throws Exception {
-
+    	GRADS grads = new GRADS();
+    	List<CourseTaken> coursesTaken =  Arrays.asList();
+    	grads.loadUsers("resources/users.txt");
+    	grads.loadCourses("resources/courses.txt");
+    	grads.loadRecords("resources/students.txt");
+    	grads.setUser("smith1234");
+    	grads.simulateCourses("smith1234", coursesTaken);
     }
     
     @Test
     //GPA below Master req, rest met
     public void testMasterSimulateCoursesLowGPA() throws Exception {
-
+    	GRADS grads = new GRADS();
+    	List<CourseTaken> coursesTaken =  Arrays.asList();
+    	grads.loadUsers("resources/users.txt");
+    	grads.loadCourses("resources/courses.txt");
+    	grads.loadRecords("resources/studentsJohnMastersA.txt");
+    	grads.setUser("smith1234");
+    	grads.simulateCourses("smith1234", coursesTaken);
     }
     
     @Test
     //PhD doesn't meet thesis credit, rest met
     public void testPhDSimulateCoursesThesisCredit() throws Exception {
-
+    	GRADS grads = new GRADS();
+    	List<CourseTaken> coursesTaken =  Arrays.asList();
+    	grads.loadUsers("resources/users.txt");
+    	grads.loadCourses("resources/courses.txt");
+    	grads.loadRecords("resources/studentsJanePhd.txt");
+    	grads.setUser("doe5678");
+    	grads.simulateCourses("doe5678", coursesTaken);
     }
     
     @Test
     //All requirements met
     public void testMasterSimulateCoursesAllMet() throws Exception {
-
+    	GRADS grads = new GRADS();
+    	List<CourseTaken> coursesTaken =  Arrays.asList();
+    	grads.loadUsers("resources/users.txt");
+    	grads.loadCourses("resources/courses.txt");
+    	grads.loadRecords("resources/students.txt");
+    	grads.setUser("doe5678");
+    	grads.simulateCourses("doe5678", coursesTaken);
     }
     
     @Test
     //PhD adds courses to meet necessary requirements
     public void testPhDSimulateCoursesNewCourse() throws Exception {
-
+    	/*GRADS grads = new GRADS();
+    	List<CourseTaken> coursesTaken =  Arrays.asList("csci8980", "math5335");
+    	grads.loadUsers("resources/users.txt");
+    	grads.loadCourses("resources/courses.txt");
+    	grads.loadRecords("resources/students.txt");
+    	grads.setUser("zhang9101");
+    	grads.simulateCourses("zhang9101", coursesTaken);*/
     }
     
     @Test
