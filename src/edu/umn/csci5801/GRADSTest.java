@@ -8,6 +8,10 @@ import org.junit.Test;
 
 import edu.umn.csci5801.model.CourseTaken;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -15,6 +19,22 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class GRADSTest extends TestCase {
+
+    private String readFile(String fileName) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        try {
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+
+            while (line != null) {
+                sb.append(line);
+                line = br.readLine();
+            }
+            return sb.toString();
+            } finally {
+            br.close();
+        }
+    }
 
     @Test
     public void testLoadUsers() throws Exception {
@@ -72,7 +92,9 @@ public class GRADSTest extends TestCase {
         grads.loadUsers("resources/users.txt");
         grads.loadRecords("resources/courses.txt");
         grads.setUser("tolas9999");
-        grads.getStudentIDs();
+        //String expectedOutput =
+        //grads.getStudentIDs();
+        //assertEquals(,new FileReader("studentids.txt").read());
     }
     
     @Test(expected = InvalidUserException.class)
