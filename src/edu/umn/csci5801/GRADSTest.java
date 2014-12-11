@@ -28,9 +28,8 @@ public class GRADSTest extends TestCase {
         try {
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
-
             while (line != null) {
-                sb.append(line);
+                sb.append(line.replaceAll("\\s",""));
                 line = br.readLine();
             }
             return sb.toString();
@@ -93,11 +92,11 @@ public class GRADSTest extends TestCase {
     public void testGPCGetStudentIDs() throws Exception {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
-        grads.loadRecords("resources/courses.txt");
+        grads.loadRecords("resources/students.txt");
         grads.setUser("tolas9999");
-        //String expectedOutput =
-        //grads.getStudentIDs();
-        //assertEquals(,new FileReader("studentids.txt").read());
+        grads.getStudentIDs();
+        String expectedOutputString = "[\"smith1234\",\"doe5678\",\"nguy0621\",\"gayxx067\",\"bob099\",\"desil1337\",\"hanxx123\"]";
+        assertEquals(expectedOutputString,readFile("studentids.txt"));
     }
     
     @Test(expected = InvalidUserException.class)
@@ -107,7 +106,6 @@ public class GRADSTest extends TestCase {
         grads.loadRecords("resources/courses.txt");
         grads.setUser("nguy0621");
         grads.getStudentIDs();
-
     }
 
     @Test
@@ -155,7 +153,7 @@ public class GRADSTest extends TestCase {
     	grads.generateProgressSummary("zhang9101");
     }
     
-    @Test
+    @Test(expected = InvalidUserException.class)
     public void testStudentGenerateOtherProgressSummary() throws Exception {
     	GRADS grads = new GRADS();
     	grads.loadUsers("resources/users.txt");
