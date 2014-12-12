@@ -140,7 +140,7 @@ public class GRADSTest extends TestCase {
     @Test
     public void testLoadRecords() throws Exception {
         GRADS grads = new GRADS();
-        grads.loadRecords("resources/students.txt");
+        grads.loadRecords("resources/students_original.txt");
     }
 
     @Test(expected = IOException.class)
@@ -168,7 +168,7 @@ public class GRADSTest extends TestCase {
     public void testGPCGetStudentIDs() throws Exception {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
-        grads.loadRecords("resources/students.txt");
+        grads.loadRecords("resources/students_original.txt");
         grads.setUser("tolas9999");
         grads.getStudentIDs();
         String expectedOutputString = "[\"smith1234\",\"doe5678\",\"nguy0621\",\"gayxx067\",\"bob099\",\"desil1337\",\"hanxx123\",\"zhang9101\"]";
@@ -194,7 +194,7 @@ public class GRADSTest extends TestCase {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/students.txt");
+        grads.loadRecords("resources/students_original.txt");
         grads.setUser("hanxx123");
         StudentRecord transcript = grads.getTranscript("hanxx123");
 
@@ -217,7 +217,7 @@ public class GRADSTest extends TestCase {
             GRADS grads = new GRADS();
             grads.loadUsers("resources/users.txt");
             grads.loadCourses("resources/courses.txt");
-            grads.loadRecords("resources/students.txt");
+            grads.loadRecords("resources/students_original.txt");
             grads.setUser("smith1234");
             grads.getTranscript("hanxx123");
             fail("Should throw Invalid User Exception");
@@ -231,14 +231,14 @@ public class GRADSTest extends TestCase {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/students.txt");
+        grads.loadRecords("resources/students_original.txt");
         grads.setUser("hanxx123");
         StudentRecord transcript = grads.getTranscript("hanxx123");
 
         // Compare to:
         GRADS grads1 = new GRADS();
         grads1.loadUsers("resources/users.txt");
-        grads1.loadRecords("resources/students.txt");
+        grads1.loadRecords("resources/students_original.txt");
         grads1.setUser("tolas9999");  // CSCI GPC
         StudentRecord compareTranscript = grads1.getTranscript("hanxx123");
 
@@ -250,7 +250,7 @@ public class GRADSTest extends TestCase {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/students.txt");
+        grads.loadRecords("resources/students_original.txt");
         grads.setUser("hanxx123");
 
         StudentRecord studentRecord = grads.getTranscript("hanxx123");
@@ -277,7 +277,7 @@ public class GRADSTest extends TestCase {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/students.txt");
+        grads.loadRecords("resources/students_original.txt");
         grads.setUser("tolas9999");
 
         StudentRecord studentRecord = grads.getTranscript("hanxx123");
@@ -304,7 +304,7 @@ public class GRADSTest extends TestCase {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/students.txt");
+        grads.loadRecords("resources/students_original.txt");
         grads.setUser("hanxx123");
 
         StudentRecord studentRecord = grads.getTranscript("hanxx123");
@@ -327,7 +327,7 @@ public class GRADSTest extends TestCase {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/students.txt");
+        grads.loadRecords("resources/students_original.txt");
         grads.setUser("tolas9999");
 
         StudentRecord studentRecord = grads.getTranscript("hanxx123");
@@ -351,7 +351,7 @@ public class GRADSTest extends TestCase {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/students.txt");
+        grads.loadRecords("resources/students_original.txt");
         grads.setUser("zhang9101");
         grads.generateProgressSummary("zhang9101");
     }
@@ -362,7 +362,7 @@ public class GRADSTest extends TestCase {
             GRADS grads = new GRADS();
             grads.loadUsers("resources/users.txt");
             grads.loadCourses("resources/courses.txt");
-            grads.loadRecords("resources/students.txt");
+            grads.loadRecords("resources/students_original.txt");
             grads.setUser("zhang9101");
             grads.generateProgressSummary("doe5678");
             fail("Student can't generate another student's progress summary");
@@ -378,19 +378,19 @@ public class GRADSTest extends TestCase {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/students.txt");
+        grads.loadRecords("resources/students_original.txt");
         grads.setUser("tolas9999");
         grads.generateProgressSummary("zhang9101");
     }
 
-    //needs second check with courses already added to a students.txt transcript and then compare function
+    //needs second check with courses already added to a students_original.txt transcript and then compare function
     @Test
     public void testStudentSimulateOwnCourses() throws Exception {
         GRADS grads = new GRADS();
         List<CourseTaken> coursesTaken =  Arrays.asList();
         grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/students.txt");
+        grads.loadRecords("resources/students_original.txt");
         grads.setUser("zhang9101");
         grads.simulateCourses("zhang9101", coursesTaken);
     }
@@ -402,7 +402,7 @@ public class GRADSTest extends TestCase {
             List<CourseTaken> coursesTaken = Arrays.asList();
             grads.loadUsers("resources/users.txt");
             grads.loadCourses("resources/courses.txt");
-            grads.loadRecords("resources/students.txt");
+            grads.loadRecords("resources/students_original.txt");
             grads.setUser("zhang9101");
             grads.simulateCourses("doe5678", coursesTaken);
         } catch (InvalidUserException e) {
@@ -417,7 +417,7 @@ public class GRADSTest extends TestCase {
         List<CourseTaken> coursesTaken =  Arrays.asList();
         grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/students.txt");
+        grads.loadRecords("resources/students_original.txt");
         grads.setUser("tolas9999");
         grads.simulateCourses("zhang9101", coursesTaken);
     }
@@ -430,7 +430,7 @@ public class GRADSTest extends TestCase {
         List<CourseTaken> coursesTaken =  Arrays.asList();
         grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/students.txt");
+        grads.loadRecords("resources/students_original.txt");
         grads.setUser("smith1234");
         grads.simulateCourses("smith1234", coursesTaken);
     }
@@ -471,7 +471,7 @@ public class GRADSTest extends TestCase {
         List<CourseTaken> coursesTaken =  Arrays.asList();
         grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/students.txt");
+        grads.loadRecords("resources/students_original.txt");
         grads.setUser("doe5678");
         grads.simulateCourses("doe5678", coursesTaken);
     }
@@ -496,7 +496,7 @@ public class GRADSTest extends TestCase {
         CourseTaken cs8970f15 = new CourseTaken(cs8970, f15, Grade.S);
         grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/students.txt");
+        grads.loadRecords("resources/students_original.txt");
         List<CourseTaken> coursesTaken =  Arrays.asList(csci8980f15, math5335f15, math5336f15, csci5512f15, cs8970f15);
         grads.setUser("zhang9101");
         grads.simulateCourses("zhang9101", coursesTaken);
@@ -521,7 +521,7 @@ public class GRADSTest extends TestCase {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/students.txt");
+        grads.loadRecords("resources/students_original.txt");
         grads.setUser("tolas9999");
         StudentRecord studentRecord = grads.getTranscript("zhang9101");
         studentRecord.addMilestonesSet(new CompletedMilestone(Milestone.PRELIM_COMMITTEE_APPOINTED, new Term(Semester.FALL, 2014)));
@@ -542,7 +542,7 @@ public class GRADSTest extends TestCase {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/students.txt");
+        grads.loadRecords("resources/students_original.txt");
         grads.setUser("tolas9999");
         StudentRecord studentRecord = grads.getTranscript("hanxx123");
 
@@ -571,7 +571,7 @@ public class GRADSTest extends TestCase {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/students.txt");
+        grads.loadRecords("resources/students_original.txt");
         grads.setUser("tolas9999");
 
         StudentRecord studentRecord = grads.getTranscript("desil1337");
@@ -595,7 +595,7 @@ public class GRADSTest extends TestCase {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/students.txt");
+        grads.loadRecords("resources/students_original.txt");
         grads.setUser("desil1337");
 
         StudentRecord studentRecord = grads.getTranscript("desil1337");
@@ -622,7 +622,7 @@ public class GRADSTest extends TestCase {
             List<CourseTaken> coursesTaken = Arrays.asList();
             grads.loadUsers("resources/users.txt");
             grads.loadCourses("resources/courses.txt");
-            grads.loadRecords("resources/students.txt");
+            grads.loadRecords("resources/students_original.txt");
             grads.setUser("zhang9101");
             StudentRecord studentRecord = grads.getTranscript("gayxx067");
             studentRecord.addAdvisor(new Professor(Department.MATH, "Will", "Smith"));
@@ -639,7 +639,7 @@ public class GRADSTest extends TestCase {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/students.txt");
+        grads.loadRecords("resources/students_original.txt");
         grads.setUser("tolas9999");
 
         StudentRecord studentRecord = grads.getTranscript("nguy0621");
@@ -664,7 +664,7 @@ public class GRADSTest extends TestCase {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/students.txt");
+        grads.loadRecords("resources/students_original.txt");
         grads.setUser("nguy0621");
 
         StudentRecord studentRecord = grads.getTranscript("nguy0621");
@@ -690,7 +690,7 @@ public class GRADSTest extends TestCase {
             GRADS grads = new GRADS();
             grads.loadUsers("resources/users.txt");
             grads.loadCourses("resources/courses.txt");
-            grads.loadRecords("resources/students.txt");
+            grads.loadRecords("resources/students_original.txt");
             grads.setUser("gayxx067");
 
             StudentRecord studentRecord = grads.getTranscript("nguy0621");
@@ -708,7 +708,7 @@ public class GRADSTest extends TestCase {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/students.txt");
+        grads.loadRecords("resources/students_original.txt");
         grads.setUser("tolas9999");
 
         StudentRecord studentRecord = grads.getTranscript("desil1337");
