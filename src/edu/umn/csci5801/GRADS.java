@@ -222,6 +222,15 @@ public class GRADS implements GRADSIntf {
             throw e;
         }
         this.recordList.set(index,transcript);
+
+        String representation = new GsonBuilder().setPrettyPrinting().create().toJson(this.recordList);
+        try {
+            FileWriter out = new FileWriter("resources/students.txt");
+            out.write(representation);
+            out.close();
+        } catch(IOException e) {
+            throw e;
+        }
     }
 
     /**
@@ -253,6 +262,14 @@ public class GRADS implements GRADSIntf {
         }
         else {
             this.recordList.get(index).addNote(note);
+        }
+        String representation = new GsonBuilder().setPrettyPrinting().create().toJson(this.recordList);
+        try {
+            FileWriter out = new FileWriter("resources/students.txt");
+            out.write(representation);
+            out.close();
+        } catch(IOException e) {
+            throw e;
         }
     }
 

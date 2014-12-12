@@ -32,7 +32,7 @@ public class ProgressSummary {
     private Term termBegan;
     private List<Professor> advisors;
     private List<Professor> committee;
-    private List<GradReqCheck> reqCheckResult;
+    private List<GradReqCheck> requirementCheckResults;
     private List<String> notes;
     private List<CourseTaken> coursesTaken;
 
@@ -66,7 +66,7 @@ public class ProgressSummary {
             throw exception;
     	}
     	try {
-    		reqCheckResult = gradRequirements.getReqChecks();
+    		requirementCheckResults = gradRequirements.getReqChecks();
     	} catch(Exception e) {
     		Exception exception = new InvalidRequirementException("Exception when checking completed requirements against graduation requirements in checkGradStatus", e);
             throw exception;
@@ -76,8 +76,8 @@ public class ProgressSummary {
     /**
      * Methods for getting attributes of a ProgressSummary object
      */
-    public List<GradReqCheck> getReqCheckResult() {
-        return reqCheckResult;
+    public List<GradReqCheck> getRequirementCheckResults() {
+        return requirementCheckResults;
     }
 
     public List<Professor> getCommittee() {
