@@ -268,7 +268,7 @@
   },
   {
     "student": {
-      "id": "doe5678",
+      "id": "nguy0621",
       "firstName": "Jane",
       "lastName": "Doe"
     },
@@ -1122,5 +1122,283 @@
                 "note2",
                 "note3"
               ]
-            }
+            },
+    {
+              "student": {
+                "id": "zhang9101",
+                "firstName": "Wei",
+                "lastName": "Zhang"
+              },
+              "department": "COMPUTER_SCIENCE",
+              "degreeSought": "MS_A",
+              "termBegan": {
+                "semester": "FALL",
+                "year": 2011
+              },
+              "advisors": [
+                {
+                  "department": "COMPUTER_SCIENCE",
+                  "firstName": "William",
+                  "lastName": "Schuler"
+                }
+              ],
+              "committee": [
+                {
+                  "department": "COMPUTER_SCIENCE",
+                  "firstName": "Maria",
+                  "lastName": "Gini"
+                },
+                {
+                  "department": "COMPUTER_SCIENCE",
+                  "firstName": "Daniel",
+                  "lastName": "Boley"
+                },
+                {
+                  "department": "MATH",
+                  "firstName": "Richard",
+                  "lastName": "McGehee"
+                }
+              ],
+              "coursesTaken": [
+                {
+                  "course": {
+                    "name": "Advanced Algorithms and Data Structures",
+                    "id": "csci5421",
+                    "numCredits": "3"
+                  },
+                  "term": {
+                    "semester": "FALL",
+                    "year": 2011
+                  },
+                  "grade": "A"
+                },
+                {
+                  "course": {
+                    "name": "Machine Learning",
+                    "id": "csci5525",
+                    "numCredits": "3"
+                  },
+                  "term": {
+                    "semester": "FALL",
+                    "year": 2011
+                  },
+                  "grade": "A"
+                },
+                {
+                  "course": {
+                    "name": "Operating System",
+                    "id": "csci5103",
+                    "numCredits": "3"
+                  },
+                  "term": {
+                    "semester": "FALL",
+                    "year": 2011
+                  },
+                  "grade": "B"
+                },
+                {
+                  "course": {
+                    "name": "Programming Languages",
+                    "id": "csci5106",
+                    "numCredits": "3"
+                  },
+                  "term": {
+                    "semester": "SPRING",
+                    "year": 2012
+                  },
+                  "grade": "B"
+                },
+                 {
+                  "course": {
+                    "name": "Distributed Systems",
+                    "id": "csci5105",
+                    "numCredits": "3"
+                  },
+                  "term": {
+                    "semester": "SPRING",
+                    "year": 2012
+                  },
+                  "grade": "A"
+                },
+                {
+                  "course": {
+                    "name": "Intro to Compilers",
+                    "id": "csci5161",
+                    "numCredits": "3"
+                  },
+                  "term": {
+                    "semester": "SPRING",
+                    "year": 2012
+                  },
+                  "grade": "B"
+                },
+                {
+                  "course": {
+                    "name": "Software Engineering I",
+                    "id": "csci5801",
+                    "numCredits": "3"
+                  },
+                  "term": {
+                    "semester": "FALL",
+                    "year": 2012
+                  },
+                  "grade": "_"
+                },
+                {
+                  "course": {
+                    "name": "AI I",
+                    "id": "csci5511",
+                    "numCredits": "3"
+                  },
+                  "term": {
+                    "semester": "FALL",
+                    "year": 2012
+                  },
+                  "grade": "_"
+                }
+            ],
+              "milestonesSet": [
+              ],
+              "notes": [
+              ]
+    },
+    {
+                  "student": {
+                    "id": "zhang9101",
+                    "firstName": "Wei",
+                    "lastName": "Zhang"
+                  },
+                  "department": "COMPUTER_SCIENCE",
+                  "degreeSought": "MS_A",
+                  "termBegan": {
+                    "semester": "FALL",
+                    "year": 2011
+                  },
+                  "advisors": [
+                    {
+                      "department": "COMPUTER_SCIENCE",
+                      "firstName": "William",
+                      "lastName": "Schuler"
+                    }
+                  ],
+                  "committee": [
+                    {
+                      "department": "COMPUTER_SCIENCE",
+                      "firstName": "Maria",
+                      "lastName": "Gini"
+                    },
+                    {
+                      "department": "COMPUTER_SCIENCE",
+                      "firstName": "Daniel",
+                      "lastName": "Boley"
+                    },
+                    {
+                      "department": "MATH",
+                      "firstName": "Richard",
+                      "lastName": "McGehee"
+                    }
+                  ],
+                  "coursesTaken": [
+                    {
+                      "course": {
+                        "name": "Advanced Algorithms and Data Structures",
+                        "id": "csci5421",
+                        "numCredits": "3"
+                      },
+                      "term": {
+                        "semester": "FALL",
+                        "year": 2011
+                      },
+                      "grade": "A"
+                    },
+                    {
+                      "course": {
+                        "name": "Machine Learning",
+                        "id": "csci5525",
+                        "numCredits": "3"
+                      },
+                      "term": {
+                        "semester": "FALL",
+                        "year": 2011
+                      },
+                      "grade": "A"
+                    },
+                    {
+                      "course": {
+                        "name": "Operating System",
+                        "id": "csci5103",
+                        "numCredits": "3"
+                      },
+                      "term": {
+                        "semester": "FALL",
+                        "year": 2011
+                      },
+                      "grade": "B"
+                    },
+                    {
+                      "course": {
+                        "name": "Programming Languages",
+                        "id": "csci5106",
+                        "numCredits": "3"
+                      },
+                      "term": {
+                        "semester": "SPRING",
+                        "year": 2012
+                      },
+                      "grade": "B"
+                    },
+                     {
+                      "course": {
+                        "name": "Distributed Systems",
+                        "id": "csci5105",
+                        "numCredits": "3"
+                      },
+                      "term": {
+                        "semester": "SPRING",
+                        "year": 2012
+                      },
+                      "grade": "A"
+                    },
+                    {
+                      "course": {
+                        "name": "Intro to Compilers",
+                        "id": "csci5161",
+                        "numCredits": "3"
+                      },
+                      "term": {
+                        "semester": "SPRING",
+                        "year": 2012
+                      },
+                      "grade": "B"
+                    },
+                    {
+                      "course": {
+                        "name": "Software Engineering I",
+                        "id": "csci5801",
+                        "numCredits": "3"
+                      },
+                      "term": {
+                        "semester": "FALL",
+                        "year": 2012
+                      },
+                      "grade": "_"
+                    },
+                    {
+                      "course": {
+                        "name": "AI I",
+                        "id": "csci5511",
+                        "numCredits": "3"
+                      },
+                      "term": {
+                        "semester": "FALL",
+                        "year": 2012
+                      },
+                      "grade": "_"
+                    }
+                ],
+                  "milestonesSet": [
+                  ],
+                  "notes": [
+                  ]
+        }
 ]
