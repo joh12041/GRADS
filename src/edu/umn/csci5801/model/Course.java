@@ -135,4 +135,20 @@ public class Course {
     public CourseArea getCourseArea() {
         return courseArea;
     }
+
+    public boolean compareCourse(Course c) {
+        if(!this.id.equals(c.getId())) {
+            return false;
+        }
+        if(this.courseArea != c.getCourseArea()) {
+            return false;
+        }
+        if(!this.numCredits.equals(c.getNumCredits())) {
+            return false;
+        }
+        if(!this.name.equals(c.getName())) {
+            return false;
+        }
+        return true;
+    }
 }

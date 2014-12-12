@@ -100,4 +100,17 @@ public class Professor {
     public String getLastName() {
         return lastName;
     }
+
+    public boolean compareProfessor(Professor p) {
+        if(this.department != p.getDepartment()) {
+            return false;
+        }
+        if(!this.firstName.equals(p.getFirstName())) {
+            return false;
+        }
+        if(!this.lastName.equals(p.getLastName())) {
+            return false;
+        }
+        return true;
+    }
 }

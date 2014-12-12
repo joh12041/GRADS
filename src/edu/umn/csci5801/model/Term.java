@@ -28,6 +28,24 @@ public class Term {
     private Semester semester;
     private int year;
 
+    public Term() {};
+    public Term(Semester s, int y) {
+        semester = s;
+        year = y;
+    }
+    public Term(String s, int y) {
+        year = y;
+        if(s.equals("FALL")){
+            this.semester = Semester.FALL;
+        }
+        else if(s.equals("SPRING")) {
+            this.semester = Semester.SPRING;
+        }
+        else if(s.equals("SUMMER")) {
+            this.semester = Semester.SUMMER;
+        }
+    }
+
     /**
      * setSemester() - Method for setting the semester attribute of a Term object
      *
@@ -84,5 +102,15 @@ public class Term {
      */
     public int getYear() {
         return year;
+    }
+
+    public boolean sameTerm(Term t) {
+        if(this.semester != t.getSemester()) {
+            return false;
+        }
+        else if(this.year != t.getYear()) {
+            return false;
+        }
+        return true;
     }
 }

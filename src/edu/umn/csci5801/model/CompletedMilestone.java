@@ -86,4 +86,14 @@ public class CompletedMilestone {
     public Term getTerm(){
         return term;
     }
+    
+    public boolean compareCompletedMilestone(CompletedMilestone cm) {
+        if(this.milestone != cm.getMilestone()) {
+            return false;
+        }
+        else if(!this.term.sameTerm(cm.getTerm())) {
+            return false;
+        }
+        return true;
+    }
 }

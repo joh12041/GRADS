@@ -100,4 +100,17 @@ public class CourseTaken {
     public Grade getGrade() {
         return grade;
     }
+
+    public boolean compareCourseTaken(CourseTaken ct) {
+        if(!this.course.compareCourse(ct.getCourse())) {
+            return false;
+        }
+        if(this.grade != ct.getGrade()) {
+            return false;
+        }
+        if(this.term != ct.getTerm()) {
+            return false;
+        }
+        return true;
+    }
 }

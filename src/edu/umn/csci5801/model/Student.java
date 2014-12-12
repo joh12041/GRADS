@@ -98,4 +98,17 @@ public class Student {
     public String getLastName() {
         return lastName;
     }
+
+    public boolean sameStudents(Student s) {
+        if(!this.id.equals(s.getId())) {
+            return false;
+        }
+        else if(!this.firstName.equals(s.getFirstName())) {
+            return false;
+        }
+        else if(!this.lastName.equals((s.getLastName()))) {
+            return false;
+        }
+        return true;
+    }
 }
