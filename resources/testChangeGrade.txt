@@ -508,11 +508,6 @@
         "department": "MATH",
         "firstName": "Richard",
         "lastName": "McGehee"
-      },
-      {
-        "department": "COMPUTER_SCIENCE",
-        "firstName": "Iron",
-        "lastName": "Man"
       }
     ],
     "coursesTaken": [
@@ -870,11 +865,6 @@
                "department": "COMPUTER_SCIENCE",
                "firstName": "Joseph",
                "lastName": "Konstan"
-             },
-             {
-               "department": "COMPUTER_SCIENCE",
-               "firstName": "Will",
-               "lastName": "Smith"
              }
            ],
            "committee": [
@@ -906,7 +896,7 @@
                  "semester": "SPRING",
                  "year": 2008
                },
-               "grade": "S"
+               "grade": "A"
              },
 
              {

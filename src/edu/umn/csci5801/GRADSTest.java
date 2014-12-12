@@ -615,34 +615,117 @@ public class GRADSTest extends TestCase {
     //try/catch clause needed
     //PhD or Plan B student
     public void testStudentUnauthorizedChangeAdvisor() throws Exception {
-
+        try {
+            GRADS grads = new GRADS();
+            List<CourseTaken> coursesTaken = Arrays.asList();
+            grads.loadUsers("resources/users.txt");
+            grads.loadCourses("resources/courses.txt");
+            grads.loadRecords("resources/students.txt");
+            grads.setUser("zhang9101");
+            StudentRecord studentRecord = grads.getTranscript("gayxx067");
+            studentRecord.addAdvisor(new Professor(Department.MATH, "Will", "Smith"));
+            grads.updateTranscript("gayxx067", studentRecord);
+        } catch (InvalidUserException e) {
+            assertTrue(e.getMessage().equals("Invalid user"));
+        }
     }
 
     @Test
     //delete? or write similar to ones above
     //PhD, Plan A, or Plan C
     public void testGPCChangeCommittee() throws Exception {
+        GRADS grads = new GRADS();
+        grads.loadUsers("resources/users.txt");
+        grads.loadCourses("resources/courses.txt");
+        grads.loadRecords("resources/students.txt");
+        grads.setUser("tolas9999");
 
+        StudentRecord studentRecord = grads.getTranscript("nguy0621");
+        studentRecord.addCommitteeMember(new Professor(Department.COMPUTER_SCIENCE, "Iron", "Man"));
+        grads.updateTranscript("nguy0621", studentRecord);
+        StudentRecord newTranscript = grads.getTranscript("nguy0621");
+
+        // Compare to:
+        GRADS grads1 = new GRADS();
+        grads1.loadUsers("resources/users.txt");
+        grads1.loadRecords("resources/testAddAdvisor.txt");
+        grads1.setUser("tolas9999");  // CSCI GPC
+        StudentRecord compareTranscript = grads1.getTranscript("nguy0621");
+
+        assert(compareStudentRecords(newTranscript, compareTranscript));
     }
 
     @Test
     //delete?
     //PhD, Plan A, or Plan C
     public void testStudentAuthorizedChangeCommittee() throws Exception {
+        GRADS grads = new GRADS();
+        grads.loadUsers("resources/users.txt");
+        grads.loadCourses("resources/courses.txt");
+        grads.loadRecords("resources/students.txt");
+        grads.setUser("nguy0621");
 
+        StudentRecord studentRecord = grads.getTranscript("nguy0621");
+        studentRecord.addCommitteeMember(new Professor(Department.COMPUTER_SCIENCE, "Iron", "Man"));
+        grads.updateTranscript("nguy0621", studentRecord);
+        StudentRecord newTranscript = grads.getTranscript("nguy0621");
+
+        // Compare to:
+        GRADS grads1 = new GRADS();
+        grads1.loadUsers("resources/users.txt");
+        grads1.loadRecords("resources/testAddAdvisor.txt");
+        grads1.setUser("nguy0621");  // CSCI GPC
+        StudentRecord compareTranscript = grads1.getTranscript("nguy0621");
+
+        assert(compareStudentRecords(newTranscript, compareTranscript));
     }
 
     @Test
     //try/catch clause if this is needed
     //PhD, Plan A, or Plan C
     public void testStudentUnauthorizedChangeCommittee() throws Exception {
+        try {
+            GRADS grads = new GRADS();
+            grads.loadUsers("resources/users.txt");
+            grads.loadCourses("resources/courses.txt");
+            grads.loadRecords("resources/students.txt");
+            grads.setUser("gayxx067");
 
+            StudentRecord studentRecord = grads.getTranscript("nguy0621");
+            studentRecord.addCommitteeMember(new Professor(Department.COMPUTER_SCIENCE, "Iron", "Man"));
+            grads.updateTranscript("nguy0621", studentRecord);
+        } catch (InvalidUserException e) {
+            assertTrue(e.getMessage().equals("Invalid user"));
+        }
     }
-
+    //desil1337
+    //tolas9999
     @Test
     //need to fix this
     public void testGPCChangeGrade() throws Exception {
+        GRADS grads = new GRADS();
+        grads.loadUsers("resources/users.txt");
+        grads.loadCourses("resources/courses.txt");
+        grads.loadRecords("resources/students.txt");
+        grads.setUser("tolas9999");
 
+        StudentRecord studentRecord = grads.getTranscript("desil1337");
+        List<CourseTaken> courseTakenList = studentRecord.getCoursesTaken();
+        Course course = courseTakenList.get(0).getCourse();
+        Term term = courseTakenList.get(0).getTerm();
+        courseTakenList.set(0, new CourseTaken(course, term, Grade.A));
+        studentRecord.setCoursesTaken(courseTakenList);
+        grads.updateTranscript("desil1337", studentRecord);
+        StudentRecord newTranscript = grads.getTranscript("desil1337");
+
+        // Compare to:
+        GRADS grads1 = new GRADS();
+        grads1.loadUsers("resources/users.txt");
+        grads1.loadRecords("resources/testChangeGrade.txt");
+        grads1.setUser("tolas9999");  // CSCI GPC
+        StudentRecord compareTranscript = grads1.getTranscript("desil1337");
+
+        assert(compareStudentRecords(newTranscript, compareTranscript));
     }
 
     @Test
