@@ -210,6 +210,7 @@ public class GRADSTest extends TestCase {
 
     //@Test(expected = InvalidUserException.class)
     //@Test(expected = Exception.class)
+    //Needs try/catch clause
     @Test(expected = IOException.class)
     public void testStudentGetOtherTranscript() throws Exception {
         try {
@@ -344,6 +345,7 @@ public class GRADSTest extends TestCase {
         assert(compareStudentRecords(newTranscript, compareTranscript));
     }
 
+    //can't think of any way to assert this easily
     @Test
     public void testStudentGenerateOwnProgressSummary() throws Exception {
         GRADS grads = new GRADS();
@@ -370,6 +372,7 @@ public class GRADSTest extends TestCase {
 
     }
 
+    //no good way to test correctness
     @Test
     public void testGPCGenerateProgressSummary() throws Exception {
         GRADS grads = new GRADS();
@@ -380,6 +383,7 @@ public class GRADSTest extends TestCase {
         grads.generateProgressSummary("zhang9101");
     }
 
+    //needs second check with courses already added to a students.txt transcript and then compare function
     @Test
     public void testStudentSimulateOwnCourses() throws Exception {
         GRADS grads = new GRADS();
@@ -406,6 +410,7 @@ public class GRADSTest extends TestCase {
         }
     }
 
+    //see test two above for student
     @Test
     public void testGPCSimulateCourses() throws Exception {
         GRADS grads = new GRADS();
@@ -418,6 +423,7 @@ public class GRADSTest extends TestCase {
     }
 
     @Test
+    //maybe check the GPA specifically?
     //GPA below PhD req, rest met
     public void testPhDSimulateCoursesLowGPA() throws Exception {
         GRADS grads = new GRADS();
@@ -430,6 +436,7 @@ public class GRADSTest extends TestCase {
     }
 
     @Test
+    //maybe check the GPA specifically?
     //GPA below Master req, rest met
     public void testMasterSimulateCoursesLowGPA() throws Exception {
         GRADS grads = new GRADS();
@@ -442,6 +449,7 @@ public class GRADSTest extends TestCase {
     }
 
     @Test
+    //maybe check the thesis credit directly?
     //PhD doesn't meet thesis credit, rest met
     public void testPhDSimulateCoursesThesisCredit() throws Exception {
         GRADS grads = new GRADS();
@@ -454,6 +462,7 @@ public class GRADSTest extends TestCase {
     }
 
     @Test
+    //how to test?
     //All requirements met
     public void testMasterSimulateCoursesAllMet() throws Exception {
         GRADS grads = new GRADS();
@@ -466,6 +475,7 @@ public class GRADSTest extends TestCase {
     }
 
     @Test
+    //how to test?
     //PhD adds courses to meet necessary requirements
     public void testPhDSimulateCoursesNewCourse() throws Exception {
         GRADS grads = new GRADS();
@@ -491,12 +501,14 @@ public class GRADSTest extends TestCase {
     }
 
     @Test
+    //delete?
     //MastersA adds courses to meet necessary requirements except 8000 level
     public void testMasterSimulateCoursesNewCourse() throws Exception {
 
     }
 
     @Test
+    //delete?
     //MastersA doesn't meet credits, 8000-level, or Colloquium
     public void testMasterSimulateCoursesNew() throws Exception {
 
@@ -600,45 +612,53 @@ public class GRADSTest extends TestCase {
     }
 
     @Test
+    //try/catch clause needed
     //PhD or Plan B student
     public void testStudentUnauthorizedChangeAdvisor() throws Exception {
 
     }
 
     @Test
+    //delete? or write similar to ones above
     //PhD, Plan A, or Plan C
     public void testGPCChangeCommittee() throws Exception {
 
     }
 
     @Test
+    //delete?
     //PhD, Plan A, or Plan C
     public void testStudentAuthorizedChangeCommittee() throws Exception {
 
     }
 
     @Test
+    //try/catch clause if this is needed
     //PhD, Plan A, or Plan C
     public void testStudentUnauthorizedChangeCommittee() throws Exception {
 
     }
 
     @Test
+    //need to fix this
     public void testGPCChangeGrade() throws Exception {
 
     }
 
     @Test
+    //need to evaluate if this should fail or not
     public void testStudentChangeGrade() throws Exception {
 
     }
 
     @Test
+    //is this even a thing?
     public void testGPCAllowCourse() throws Exception {
 
     }
 
     @Test
+    //this is not a thing
     public void testStudentAllowCourse() throws Exception {
 
     }
