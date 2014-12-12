@@ -1,28 +1,18 @@
 package edu.umn.csci5801;
 
-import edu.umn.csci5801.model.InvalidUserException;
+import edu.umn.csci5801.model.*;
 import junit.framework.TestCase;
 
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import edu.umn.csci5801.model.CourseArea;
-import edu.umn.csci5801.model.CourseTaken;
-import edu.umn.csci5801.model.Grade;
-import edu.umn.csci5801.model.Term;
-import edu.umn.csci5801.model.Course;
-import edu.umn.csci5801.model.StudentRecord;
-import edu.umn.csci5801.model.Professor;
-import edu.umn.csci5801.model.CompletedMilestone;
-import edu.umn.csci5801.model.Milestone;
-import edu.umn.csci5801.model.Semester;
-
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -201,37 +191,152 @@ public class GRADSTest extends TestCase {
 
     @Test
     public void testStudentGetOwnTranscript() throws Exception {
+        GRADS grads = new GRADS();
+        grads.loadUsers("resources/users.txt");
+        grads.loadCourses("resources/courses.txt");
+        grads.loadRecords("resources/students.txt");
+        grads.setUser("hanxx123");
+        StudentRecord transcript = grads.getTranscript("hanxx123");
 
+        // Compare to:
+        GRADS grads1 = new GRADS();
+        grads1.loadUsers("resources/users.txt");
+        grads1.loadRecords("resources/testGPCAddMilestone.txt");
+        grads1.setUser("tolas9999");  // CSCI GPC
+        StudentRecord compareTranscript = grads1.getTranscript("hanxx123");
+
+        assert(compareStudentRecords(transcript, compareTranscript));
     }
 
-    @Test
+    //@Test(expected = InvalidUserException.class)
+    //@Test(expected = Exception.class)
+    @Test(expected = IOException.class)
     public void testStudentGetOtherTranscript() throws Exception {
-
+        GRADS grads = new GRADS();
+        grads.loadUsers("resources/users.txt");
+        grads.loadCourses("resources/courses.txt");
+        grads.loadRecords("resources/students.txt");
+        grads.setUser("smith1234");
+        grads.getTranscript("hanxx123");
     }
 
     @Test
     public void testGPCGetTranscript() throws Exception {
+        GRADS grads = new GRADS();
+        grads.loadUsers("resources/users.txt");
+        grads.loadCourses("resources/courses.txt");
+        grads.loadRecords("resources/students.txt");
+        grads.setUser("hanxx123");
+        StudentRecord transcript = grads.getTranscript("hanxx123");
 
+        // Compare to:
+        GRADS grads1 = new GRADS();
+        grads1.loadUsers("resources/users.txt");
+        grads1.loadRecords("resources/students.txt");
+        grads1.setUser("tolas9999");  // CSCI GPC
+        StudentRecord compareTranscript = grads1.getTranscript("hanxx123");
+
+        assert(compareStudentRecords(transcript, compareTranscript));
     }
 
     @Test
     public void testStudentUpdateTranscript() throws Exception {
+        GRADS grads = new GRADS();
+        grads.loadUsers("resources/users.txt");
+        grads.loadCourses("resources/courses.txt");
+        grads.loadRecords("resources/students.txt");
+        grads.setUser("hanxx123");
 
+        StudentRecord studentRecord = grads.getTranscript("hanxx123");
+        List<Professor> professorList = studentRecord.getAdvisors();
+        Professor professor = new Professor(Department.MATH, professorList.get(0).getFirstName(), professorList.get(0).getLastName());
+        professorList.set(0, professor);
+
+        studentRecord.setAdvisors(professorList);
+        grads.updateTranscript("hanxx123", studentRecord);
+        StudentRecord newTranscript = grads.getTranscript("hanxx123");
+
+        // Compare to:
+        GRADS grads1 = new GRADS();
+        grads1.loadUsers("resources/users.txt");
+        grads1.loadRecords("resources/testGPCChangeAdvisor.txt");
+        grads1.setUser("hanxx123");  // CSCI GPC
+        StudentRecord compareTranscript = grads1.getTranscript("hanxx123");
+
+        assert(compareStudentRecords(newTranscript, compareTranscript));
     }
 
     @Test
     public void testGPCUpdateTranscript() throws Exception {
+        GRADS grads = new GRADS();
+        grads.loadUsers("resources/users.txt");
+        grads.loadCourses("resources/courses.txt");
+        grads.loadRecords("resources/students.txt");
+        grads.setUser("tolas9999");
 
+        StudentRecord studentRecord = grads.getTranscript("hanxx123");
+        List<Professor> professorList = studentRecord.getAdvisors();
+        Professor professor = new Professor(Department.MATH, professorList.get(0).getFirstName(), professorList.get(0).getLastName());
+        professorList.set(0, professor);
+
+        studentRecord.setAdvisors(professorList);
+        grads.updateTranscript("hanxx123", studentRecord);
+        StudentRecord newTranscript = grads.getTranscript("hanxx123");
+
+        // Compare to:
+        GRADS grads1 = new GRADS();
+        grads1.loadUsers("resources/users.txt");
+        grads1.loadRecords("resources/testGPCChangeAdvisor.txt");
+        grads1.setUser("tolas9999");  // CSCI GPC
+        StudentRecord compareTranscript = grads1.getTranscript("hanxx123");
+
+        assert(compareStudentRecords(newTranscript, compareTranscript));
     }
 
     @Test
     public void testStudentAddNote() throws Exception {
+        GRADS grads = new GRADS();
+        grads.loadUsers("resources/users.txt");
+        grads.loadCourses("resources/courses.txt");
+        grads.loadRecords("resources/students.txt");
+        grads.setUser("hanxx123");
 
+        StudentRecord studentRecord = grads.getTranscript("hanxx123");
+        studentRecord.addNote("note4");
+        grads.updateTranscript("hanxx123", studentRecord);
+        StudentRecord newTranscript = grads.getTranscript("hanxx123");
+
+        // Compare to:
+        GRADS grads1 = new GRADS();
+        grads1.loadUsers("resources/users.txt");
+        grads1.loadRecords("resources/testAddNote.txt");
+        grads1.setUser("hanxx123");  // CSCI GPC
+        StudentRecord compareTranscript = grads1.getTranscript("hanxx123");
+
+        assert(compareStudentRecords(newTranscript, compareTranscript));
     }
 
     @Test
     public void testGPCAddNote() throws Exception {
+        GRADS grads = new GRADS();
+        grads.loadUsers("resources/users.txt");
+        grads.loadCourses("resources/courses.txt");
+        grads.loadRecords("resources/students.txt");
+        grads.setUser("tolas9999");
 
+        StudentRecord studentRecord = grads.getTranscript("hanxx123");
+        studentRecord.addNote("note4");
+        grads.updateTranscript("hanxx123", studentRecord);
+        StudentRecord newTranscript = grads.getTranscript("hanxx123");
+
+        // Compare to:
+        GRADS grads1 = new GRADS();
+        grads1.loadUsers("resources/users.txt");
+        grads1.loadRecords("resources/testAddNote.txt");
+        grads1.setUser("tolas9999");  // CSCI GPC
+        StudentRecord compareTranscript = grads1.getTranscript("hanxx123");
+
+        assert(compareStudentRecords(newTranscript, compareTranscript));
     }
 
     @Test
@@ -411,25 +516,82 @@ public class GRADSTest extends TestCase {
         StudentRecord compareTranscript = grads1.getTranscript("zhang9101");
 
         assert(compareStudentRecords(newTranscript, compareTranscript));
-        //assert(compareStudentRecords(compareTranscript, compareTranscript));
-        //assert(compareStudentRecords(newTranscript, newTranscript));
-        //assert(true);
     }
 
     @Test
     public void testGPCChangeMilestone() throws Exception {
+        GRADS grads = new GRADS();
+        grads.loadUsers("resources/users.txt");
+        grads.loadCourses("resources/courses.txt");
+        grads.loadRecords("resources/students.txt");
+        grads.setUser("tolas9999");
+        StudentRecord studentRecord = grads.getTranscript("hanxx123");
 
+        List<CompletedMilestone> milestoneList = studentRecord.getMilestonesSet();
+        int year = milestoneList.get(0).getTerm().getYear() - 1;
+        Milestone milestone = milestoneList.get(0).getMilestone();
+        Term term = new Term(milestoneList.get(0).getTerm().getSemester(), year);
+        milestoneList.set(0, new CompletedMilestone(milestone, term));
+
+        studentRecord.setMilestonesSet(milestoneList);
+        grads.updateTranscript("hanxx123", studentRecord);
+        StudentRecord newTranscript = grads.getTranscript("hanxx123");
+
+        // Compare to:
+        GRADS grads1 = new GRADS();
+        grads1.loadUsers("resources/users.txt");
+        grads1.loadRecords("resources/testGPCChangeMilestone.txt");
+        grads1.setUser("tolas9999");  // CSCI GPC
+        StudentRecord compareTranscript = grads1.getTranscript("hanxx123");
+
+        assert(compareStudentRecords(newTranscript, compareTranscript));
     }
 
     @Test
     public void testGPCChangeAdvisor() throws Exception {
+        GRADS grads = new GRADS();
+        grads.loadUsers("resources/users.txt");
+        grads.loadCourses("resources/courses.txt");
+        grads.loadRecords("resources/students.txt");
+        grads.setUser("tolas9999");
 
+        StudentRecord studentRecord = grads.getTranscript("desil1337");
+        studentRecord.addAdvisor(new Professor(Department.COMPUTER_SCIENCE, "Will", "Smith"));
+        grads.updateTranscript("desil1337", studentRecord);
+        StudentRecord newTranscript = grads.getTranscript("desil1337");
+
+        // Compare to:
+        GRADS grads1 = new GRADS();
+        grads1.loadUsers("resources/users.txt");
+        grads1.loadRecords("resources/testAddAdvisor.txt");
+        grads1.setUser("tolas9999");  // CSCI GPC
+        StudentRecord compareTranscript = grads1.getTranscript("desil1337");
+
+        assert(compareStudentRecords(newTranscript, compareTranscript));
     }
 
     @Test
     //PhD or Plan B student
     public void testStudentAuthorizedChangeAdvisor() throws Exception {
+        GRADS grads = new GRADS();
+        grads.loadUsers("resources/users.txt");
+        grads.loadCourses("resources/courses.txt");
+        grads.loadRecords("resources/students.txt");
+        grads.setUser("desil1337");
 
+        StudentRecord studentRecord = grads.getTranscript("desil1337");
+        studentRecord.addAdvisor(new Professor(Department.COMPUTER_SCIENCE, "Will", "Smith"));
+        grads.updateTranscript("desil1337", studentRecord);
+        StudentRecord newTranscript = grads.getTranscript("desil1337");
+
+        // Compare to:
+        GRADS grads1 = new GRADS();
+        grads1.loadUsers("resources/users.txt");
+        grads1.loadRecords("resources/testAddAdvisor.txt");
+        grads1.setUser("desil1337");  // CSCI GPC
+        StudentRecord compareTranscript = grads1.getTranscript("desil1337");
+
+        assert(compareStudentRecords(newTranscript, compareTranscript));
     }
 
     @Test
