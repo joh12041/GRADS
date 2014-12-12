@@ -329,10 +329,7 @@ public class GRADSTest extends TestCase {
         grads.loadCourses("resources/courses.txt");
         grads.loadRecords("resources/students_original.txt");
         grads.setUser("tolas9999");
-
-        StudentRecord studentRecord = grads.getTranscript("hanxx123");
-        studentRecord.addNote("note4");
-        grads.updateTranscript("hanxx123", studentRecord);
+        grads.addNote("hanxx123", "note4");
         StudentRecord newTranscript = grads.getTranscript("hanxx123");
 
         // Compare to:
