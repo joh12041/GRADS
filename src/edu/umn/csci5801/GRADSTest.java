@@ -54,7 +54,7 @@ public class GRADSTest extends TestCase {
             return false; }
         else if(!sr1.getTermBegan().sameTerm(sr2.getTermBegan())) { // termBegan
             return false; }
-        else if(compareProfessorList(sr1.getAdvisors(), sr2.getAdvisors())) { // advisors
+        else if(!compareProfessorList(sr1.getAdvisors(), sr2.getAdvisors())) { // advisors
             return false; }
         else if(!compareProfessorList(sr1.getCommittee(), sr2.getCommittee())) { // committee
             return false; }
@@ -395,23 +395,25 @@ public class GRADSTest extends TestCase {
     @Test
     public void testGPCAddMilestone() throws Exception {
         GRADS grads = new GRADS();
-        grads.loadUsers("resourses/users.txt");
+        grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
         grads.loadRecords("resources/students.txt");
-        grads.setUser("tolas9999");  // CSCI GPC
+        grads.setUser("tolas9999");
         StudentRecord studentRecord = grads.getTranscript("zhang9101");
-        studentRecord.addMilestonesSet(new CompletedMilestone(Milestone.DPF_SUBMITTED, new Term(Semester.FALL, 2014)));
+        studentRecord.addMilestonesSet(new CompletedMilestone(Milestone.PRELIM_COMMITTEE_APPOINTED, new Term(Semester.FALL, 2014)));
         grads.updateTranscript("zhang9101", studentRecord);
         StudentRecord newTranscript = grads.getTranscript("zhang9101");
         // Compare to:
         GRADS grads1 = new GRADS();
-        grads1.loadUsers("resourses/users.txt");
-        grads1.loadRecords("resources/students_testGPCAddMilestone.txt");
+        grads1.loadUsers("resources/users.txt");
+        grads1.loadRecords("resources/testGPCAddMilestone.txt");
         grads1.setUser("tolas9999");  // CSCI GPC
         StudentRecord compareTranscript = grads1.getTranscript("zhang9101");
 
-        //assert(compareStudentRecords(newTranscript, compareTranscript));
-        assert(compareStudentRecords(newTranscript, newTranscript));
+        assert(compareStudentRecords(newTranscript, compareTranscript));
+        //assert(compareStudentRecords(compareTranscript, compareTranscript));
+        //assert(compareStudentRecords(newTranscript, newTranscript));
+        //assert(true);
     }
 
     @Test

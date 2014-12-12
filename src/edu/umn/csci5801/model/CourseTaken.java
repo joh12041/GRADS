@@ -108,7 +108,7 @@ public class CourseTaken {
         if(this.grade != ct.getGrade()) {
             return false;
         }
-        if(this.term != ct.getTerm()) {
+        if(!this.term.sameTerm(ct.getTerm())) {
             return false;
         }
         return true;
