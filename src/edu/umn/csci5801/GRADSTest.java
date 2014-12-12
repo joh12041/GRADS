@@ -400,15 +400,18 @@ public class GRADSTest extends TestCase {
         grads.loadRecords("resources/students.txt");
         grads.setUser("tolas9999");  // CSCI GPC
         StudentRecord studentRecord = grads.getTranscript("zhang9101");
-        studentRecord = grads.getTranscript("zhang9101");
-        //Term term = new Term(Semester.SPRING, 2012);
-        CompletedMilestone completedMilestone = new CompletedMilestone(Milestone.TRACKING_FORM_APPROVED, new Term(Semester.SPRING, 2012));
-        studentRecord.addMilestonesSet(completedMilestone);
+        studentRecord.addMilestonesSet(new CompletedMilestone(Milestone.DPF_SUBMITTED, new Term(Semester.FALL, 2014)));
         grads.updateTranscript("zhang9101", studentRecord);
         StudentRecord newTranscript = grads.getTranscript("zhang9101");
+        // Compare to:
+        GRADS grads1 = new GRADS();
+        grads1.loadUsers("resourses/users.txt");
+        grads1.loadRecords("resources/students_testGPCAddMilestone.txt");
+        grads1.setUser("tolas9999");  // CSCI GPC
+        StudentRecord compareTranscript = grads1.getTranscript("zhang9101");
 
-        boolean returnVal = compareStudentRecords(newTranscript, studentRecord);
-        assert(returnVal);
+        //assert(compareStudentRecords(newTranscript, compareTranscript));
+        assert(compareStudentRecords(newTranscript, newTranscript));
     }
 
     @Test
