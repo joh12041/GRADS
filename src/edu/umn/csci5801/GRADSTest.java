@@ -181,7 +181,7 @@ public class GRADSTest extends TestCase {
         grads.loadRecords("resources/students.txt");
         grads.setUser("tolas9999");
         grads.getStudentIDs();
-        String expectedOutputString = "[\"smith1234\",\"doe5678\",\"nguy0621\",\"gayxx067\",\"bob099\",\"desil1337\",\"hanxx123\"]";
+        String expectedOutputString = "[\"smith1234\",\"doe5678\",\"nguy0621\",\"gayxx067\",\"bob099\",\"desil1337\",\"hanxx123\",\"zhang9101\"]";
         assertEquals(expectedOutputString,readFile("studentids.txt"));
     }
 
