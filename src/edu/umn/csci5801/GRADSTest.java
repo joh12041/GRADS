@@ -212,12 +212,17 @@ public class GRADSTest extends TestCase {
     //@Test(expected = Exception.class)
     @Test(expected = IOException.class)
     public void testStudentGetOtherTranscript() throws Exception {
-        GRADS grads = new GRADS();
-        grads.loadUsers("resources/users.txt");
-        grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/students.txt");
-        grads.setUser("smith1234");
-        grads.getTranscript("hanxx123");
+        try {
+            GRADS grads = new GRADS();
+            grads.loadUsers("resources/users.txt");
+            grads.loadCourses("resources/courses.txt");
+            grads.loadRecords("resources/students.txt");
+            grads.setUser("smith1234");
+            grads.getTranscript("hanxx123");
+            fail("Should throw Invalid User Exception");
+        } catch (InvalidUserException e) {
+            assertTrue(e.getMessage().equals("Invalid user"));
+        }
     }
 
     @Test
