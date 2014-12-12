@@ -216,6 +216,15 @@ public class GRADSTest extends TestCase {
 
     @Test
     public void testStudentUpdateTranscript() throws Exception {
+        GRADS grads = new GRADS();
+        List<CourseTaken> coursesTaken =  Arrays.asList();
+        grads.loadUsers("resources/users.txt");
+        grads.loadCourses("resources/courses.txt");
+        grads.loadRecords("resources/students.txt");
+        grads.setUser("smith1234");
+        StudentRecord sR = grads.getTranscript("smith1234");
+        sR.appendCourses(coursesTaken);
+        grads.updateTranscript("smith1234",sR);
 
     }
 
@@ -226,7 +235,12 @@ public class GRADSTest extends TestCase {
 
     @Test
     public void testStudentAddNote() throws Exception {
-
+        GRADS grads = new GRADS();
+        grads.loadUsers("resources/users.txt");
+        grads.loadCourses("resources/courses.txt");
+        grads.loadRecords("resources/students.txt");
+        grads.setUser("zhang9101");
+        grads.addNote("zhang9101","additional note");
     }
 
     @Test
