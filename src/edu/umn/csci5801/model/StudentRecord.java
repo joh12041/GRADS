@@ -48,7 +48,6 @@ public class StudentRecord {
      *
      * @param s - A variable of type Student identifying the student of the StudentRecord object
      * @param dep - A variable of type Department identifying the student's department of the StudentRecord object
-     * @param r - A variable of type Role identifying the role of the student accessing the StudentRecord object
      * @param deg - A variable of type Degree identifying the student's degree of the StudentRecord object
      * @param tb - A variable of type Term identifying the term the student began of the StudentRecord object
      * @param a - A variable of type List<Professor> identifying the student's advisor of the StudentRecord object
@@ -56,7 +55,7 @@ public class StudentRecord {
      * @param ct - A variable of type List<CourseTaken> identifying the student's courses taken of the StudentRecord object
      * @param n - A variable of type List<String> identifying the notes appended to the student of the StudentRecord object
      */
-    public StudentRecord(Student s, Department dep, Role r, Degree deg, Term tb, List<Professor> a, List<Professor> c,
+    public StudentRecord(Student s, Department dep, Degree deg, Term tb, List<Professor> a, List<Professor> c,
                          List<CourseTaken> ct, List<String> n){
         student = s;
         department = dep;

@@ -440,12 +440,14 @@ public class GRADSTest extends TestCase {
     //GPA below Master req, rest met
     public void testMasterSimulateCoursesLowGPA() throws Exception {
         GRADS grads = new GRADS();
-        List<CourseTaken> coursesTaken =  Arrays.asList();
         grads.loadUsers("resources/users.txt");
         grads.loadCourses("resources/courses.txt");
         grads.loadRecords("resources/studentsJohnMastersA.txt");
         grads.setUser("smith1234");
-        grads.simulateCourses("smith1234", coursesTaken);
+        StudentRecord sr = grads.getTranscript("smith1234");
+        sr.setDegreeSought(Degree.MS_C);
+        grads.updateTranscript("smith1234",sr);
+        grads.generateProgressSummary("smith1234");
     }
 
     @Test
@@ -744,6 +746,28 @@ public class GRADSTest extends TestCase {
     //this is not a thing
     public void testStudentAllowCourse() throws Exception {
 
+    }
+
+    @Test
+    //new test not found in requirements - ooh we found a bug!
+    public void testEmptyStudentRecordProgressReport() throws Exception {
+        GRADS grads = new GRADS();
+        grads.loadUsers("resources/users.txt");
+        grads.loadCourses("resources/courses.txt");
+        grads.loadRecords("resources/studentsJohnMastersA.txt");
+        grads.setUser("tolas9999");
+        StudentRecord oldSR = grads.getTranscript("smith1234");
+        Student s = oldSR.getStudent();
+        Department d = oldSR.getDepartment();
+        Degree dS = Degree.MS_B;
+        Term tB = oldSR.getTermBegan();
+        List<Professor> advs = oldSR.getAdvisors();
+        List<Professor> comm = oldSR.getCommittee();
+        List<CourseTaken> coursesTaken =  null;
+        List<String> notes = oldSR.getNotes();
+        StudentRecord sr = new StudentRecord(s, d, dS, tB, advs, comm, coursesTaken, notes);
+        grads.updateTranscript("smith1234",sr);
+        grads.generateProgressSummary("smith1234");
     }
 
 }
