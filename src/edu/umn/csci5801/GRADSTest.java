@@ -121,9 +121,10 @@ public class GRADSTest extends TestCase {
     }
 
     @Test(expected = IOException.class)
-    public void textExceptionThrownLoadUsers() throws Exception {
+    public void testExceptionThrownLoadUsers() throws Exception {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/not_a_file.txt");
+
     }
 
     @Test
