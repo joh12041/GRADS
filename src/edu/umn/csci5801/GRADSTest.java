@@ -4,6 +4,7 @@ import edu.umn.csci5801.model.InvalidUserException;
 import junit.framework.TestCase;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 
 import edu.umn.csci5801.model.CourseArea;
@@ -11,6 +12,7 @@ import edu.umn.csci5801.model.CourseTaken;
 import edu.umn.csci5801.model.Grade;
 import edu.umn.csci5801.model.Term;
 import edu.umn.csci5801.model.Course;
+
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -29,7 +31,7 @@ public class GRADSTest extends TestCase {
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
             while (line != null) {
-                sb.append(line.replaceAll("\\s",""));
+                sb.append(line.replaceAll("\\s", ""));
                 line = br.readLine();
             }
             return sb.toString();
@@ -42,6 +44,7 @@ public class GRADSTest extends TestCase {
     public void testLoadUsers() throws Exception {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
+
     }
 
     @Test(expected = IOException.class)
@@ -99,13 +102,18 @@ public class GRADSTest extends TestCase {
         assertEquals(expectedOutputString,readFile("studentids.txt"));
     }
     
-    @Test(expected = InvalidUserException.class)
+    @Test
     public void testStudentGetStudentIDs() throws Exception {
-        GRADS grads = new GRADS();
-        grads.loadUsers("resources/users.txt");
-        grads.loadRecords("resources/courses.txt");
-        grads.setUser("nguy0621");
-        grads.getStudentIDs();
+        try {
+            GRADS grads = new GRADS();
+            grads.loadUsers("resources/users.txt");
+            grads.loadRecords("resources/courses.txt");
+            grads.setUser("nguy0621");
+            grads.getStudentIDs();
+            fail("Should throw Invalid User Exception");
+        } catch (InvalidUserException e) {
+            assertTrue(e.getMessage().equals("User does not have this access to Student IDs"));
+        }
     }
 
     @Test
@@ -153,14 +161,20 @@ public class GRADSTest extends TestCase {
     	grads.generateProgressSummary("zhang9101");
     }
     
-    @Test(expected = InvalidUserException.class)
+    @Test
     public void testStudentGenerateOtherProgressSummary() throws Exception {
-    	GRADS grads = new GRADS();
-    	grads.loadUsers("resources/users.txt");
-    	grads.loadCourses("resources/courses.txt");
-    	grads.loadRecords("resources/students.txt");
-    	grads.setUser("zhang9101");
-    	grads.generateProgressSummary("doe5678");
+    	try {
+            GRADS grads = new GRADS();
+            grads.loadUsers("resources/users.txt");
+            grads.loadCourses("resources/courses.txt");
+            grads.loadRecords("resources/students.txt");
+            grads.setUser("zhang9101");
+            grads.generateProgressSummary("doe5678");
+            fail("Student can't generate another student's progress summary");
+        } catch (InvalidUserException e) {
+            assertTrue(e.getMessage().equals("Invalid user"));
+        }
+
     }
     
     @Test
@@ -186,13 +200,17 @@ public class GRADSTest extends TestCase {
     
     @Test
     public void testStudentSimulateOtherCourses() throws Exception {
-    	GRADS grads = new GRADS();
-    	List<CourseTaken> coursesTaken =  Arrays.asList();
-    	grads.loadUsers("resources/users.txt");
-    	grads.loadCourses("resources/courses.txt");
-    	grads.loadRecords("resources/students.txt");
-    	grads.setUser("zhang9101");
-    	grads.simulateCourses("doe5678", coursesTaken);
+        try {
+            GRADS grads = new GRADS();
+            List<CourseTaken> coursesTaken = Arrays.asList();
+            grads.loadUsers("resources/users.txt");
+            grads.loadCourses("resources/courses.txt");
+            grads.loadRecords("resources/students.txt");
+            grads.setUser("zhang9101");
+            grads.simulateCourses("doe5678", coursesTaken);
+        } catch (InvalidUserException e) {
+            assertTrue(e.getMessage().equals("Invalid user"));
+        }
     }
     
     @Test

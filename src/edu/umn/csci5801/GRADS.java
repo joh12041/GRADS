@@ -132,9 +132,10 @@ public class GRADS implements GRADSIntf {
      *      system belonging to the current user
      * @throws Exception is the current user is not a GPC.
      */
+    @Override
     public List<String> getStudentIDs() throws Exception {
         if(currentUser == null || currentUser.getRole() == Role.STUDENT || currentUser.getDepartment() != Department.COMPUTER_SCIENCE){
-            Exception exception = new InvalidUserException();
+            Exception exception = new InvalidUserException("User does not have this access to Student IDs");
             throw exception;
         }
         List<String> studentIDList = new ArrayList<String>();
@@ -168,7 +169,7 @@ public class GRADS implements GRADSIntf {
      */
     public StudentRecord getTranscript(String userId) throws Exception {
         if(currentUser == null || currentUser.getDepartment() != Department.COMPUTER_SCIENCE || (currentUser.getRole() == Role.STUDENT && !(userId.equals(currentUser.getId())))) {
-            Exception exception = new InvalidUserException();
+            Exception exception = new InvalidUserException("Invalid user");
             throw exception;
         }
         StudentRecord studentRecord = new StudentRecord();
@@ -206,7 +207,7 @@ public class GRADS implements GRADSIntf {
      */
     public void updateTranscript(String userId, StudentRecord transcript) throws Exception {
         if(currentUser == null || currentUser.getDepartment() != Department.COMPUTER_SCIENCE || (currentUser.getRole() == Role.STUDENT && !(userId.equals(currentUser.getId())))) {
-            Exception exception = new InvalidUserException();
+            Exception exception = new InvalidUserException("Invalid user");
             throw exception;
         }
         int count = 0, index = -1;
@@ -233,7 +234,7 @@ public class GRADS implements GRADSIntf {
      */
     public void addNote(String userId, String note) throws Exception {
         if(currentUser == null || currentUser.getDepartment() != Department.COMPUTER_SCIENCE || (currentUser.getRole() == Role.STUDENT && !(userId.equals(currentUser.getId())))) {
-            Exception exception = new InvalidUserException();
+            Exception exception = new InvalidUserException("Invalid user");
             throw exception;
         }
         if(this.recordList == null) {
@@ -265,7 +266,7 @@ public class GRADS implements GRADSIntf {
      */
     public ProgressSummary generateProgressSummary(String userId) throws Exception {
         if(currentUser == null || currentUser.getDepartment() != Department.COMPUTER_SCIENCE || (currentUser.getRole() == Role.STUDENT && !(userId.equals(currentUser.getId())))) {
-            Exception exception = new InvalidUserException();
+            Exception exception = new InvalidUserException("Invalid user");
             throw exception;
         }
         ProgressSummary progressSummaryReturn = new ProgressSummary();
@@ -305,7 +306,7 @@ public class GRADS implements GRADSIntf {
      */
     public ProgressSummary simulateCourses(String userId, List<CourseTaken> courses) throws Exception {
         if(currentUser == null || currentUser.getDepartment() != Department.COMPUTER_SCIENCE || (currentUser.getRole() == Role.STUDENT && !(userId.equals(currentUser.getId())))) {
-            Exception exception = new InvalidUserException();
+            Exception exception = new InvalidUserException("Invalid user");
             throw exception;
         }
         ProgressSummary progressSummaryReturn = new ProgressSummary();
