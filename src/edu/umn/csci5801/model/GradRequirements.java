@@ -112,7 +112,7 @@ public class GradRequirements {
     }
 
     /**
-     * getDegree() - Method which returns the degree
+     * getDegreeSought() - Method which returns the degree
      *
      * @return reqChecks - Returns the degree stored in the GradRequirements object
      */
@@ -121,7 +121,7 @@ public class GradRequirements {
     }
 
     /**
-     * getDegree() - Method which returns a list of Requirements
+     * getDegreeSought() - Method which returns a list of Requirements
      *
      * @param degree - Variable of type Degree which contains the type of degree to test against
      * @return reqChecks - Returns the List<Reqirements> to test completed requirements against

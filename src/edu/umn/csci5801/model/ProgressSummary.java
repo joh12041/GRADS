@@ -28,7 +28,7 @@ public class ProgressSummary {
 
     private Student student;
     private Department department;
-    private Degree degree;
+    private Degree degreeSought;
     private Term termBegan;
     private List<Professor> advisors;
     private List<Professor> committee;
@@ -44,7 +44,7 @@ public class ProgressSummary {
                            List<Professor> a, List<Professor> c, List<String> n, List<CourseTaken> ct) {
         student = s;
         department = dep;
-        degree = deg;
+        degreeSought = deg;
         termBegan = tb;
         advisors = a;
         committee = c;
@@ -58,7 +58,7 @@ public class ProgressSummary {
      * @param completedMilestonesList - Input of type List<CompletedMilestone> which contains a student's completed milestones
      */
     public void checkGradStatus(List<CompletedMilestone> completedMilestonesList) throws Exception {
-        GradRequirements gradRequirements = new GradRequirements(degree);
+        GradRequirements gradRequirements = new GradRequirements(degreeSought);
         try {
             gradRequirements.testReqList(coursesTaken, completedMilestonesList);
         } catch(Exception e) {
@@ -96,8 +96,8 @@ public class ProgressSummary {
         return coursesTaken;
     }
 
-    public Degree getDegree() {
-        return degree;
+    public Degree getDegreeSought() {
+        return degreeSought;
     }
 
     public Student getStudent() {

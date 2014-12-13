@@ -3,20 +3,15 @@ package edu.umn.csci5801;
 import edu.umn.csci5801.model.*;
 import junit.framework.TestCase;
 
-import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 public class GRADSTest extends TestCase {
 
@@ -864,7 +859,7 @@ public class GRADSTest extends TestCase {
         assert(progressSummary.getAdvisors().get(0).getLastName().equals("Moody"));
         assertEquals(progressSummary.getCoursesTaken().get(0).getGrade(), Grade.B);
         assert(progressSummary.getCommittee().get(0).getLastName().equals("Voldy"));
-        assertEquals(progressSummary.getDegree(), Degree.MS_C);
+        assertEquals(progressSummary.getDegreeSought(), Degree.MS_C);
         assertEquals(progressSummary.getDepartment(), Department.COMPUTER_SCIENCE);
         assert(progressSummary.getNotes().get(0).equals("BACON"));
         assert(progressSummary.getStudent().getLastName().equals("Watson"));

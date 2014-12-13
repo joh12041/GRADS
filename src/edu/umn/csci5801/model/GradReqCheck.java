@@ -27,8 +27,8 @@ import java.util.List;
  */
 public class GradReqCheck {
 
-    private Reqs reqName;
-    private boolean result;
+    private Reqs name;
+    private boolean passed;
     private Requirement details;
 
     /**
@@ -36,21 +36,21 @@ public class GradReqCheck {
      */
     public GradReqCheck() {}
     public GradReqCheck(Reqs n) {
-        reqName = n;
+        name = n;
     }
 
     /**
      * Methods for setting attributes of a GradReqCheck object
      */
-    public void setReqName(Reqs n) { reqName = n; }
-    public void setResult(boolean ic) { result = ic; }
+    public void setName(Reqs n) { name = n; }
+    public void setPassed(boolean ic) { passed = ic; }
     public void setDetails(Requirement r) { details = r; }
 
     /**
      * Methods for getting attributes of a GradReqCheck object
      */
-    public Reqs getReqName() { return reqName; }
-    public boolean getResult() { return result; }
+    public Reqs getName() { return name; }
+    public boolean getPassed() { return passed; }
     public Requirement getDetails() { return details; }
 
     /**
@@ -63,7 +63,7 @@ public class GradReqCheck {
                 if (courseTakenList == null) {
                     Requirement r = new Requirement();
                     this.details = r;
-                    this.result = false;
+                    this.passed = false;
                     break;
                 }
                 try {
@@ -77,7 +77,7 @@ public class GradReqCheck {
                 if (courseTakenList == null) {
                     Requirement r = new Requirement();
                     this.details = r;
-                    this.result = false;
+                    this.passed = false;
                     break;
                 }
                 try {
@@ -91,7 +91,7 @@ public class GradReqCheck {
                 if (courseTakenList == null) {
                     Requirement r = new Requirement();
                     this.details = r;
-                    this.result = false;
+                    this.passed = false;
                     break;
                 }
                 casePASSED_AS_SATISFACTORY(requirement, courseTakenList);
@@ -100,7 +100,7 @@ public class GradReqCheck {
                 if (courseTakenList == null) {
                     Requirement r = new Requirement();
                     this.details = r;
-                    this.result = false;
+                    this.passed = false;
                     break;
                 }
                 casePASSED_AS_SATISFACTORY(requirement, courseTakenList);
@@ -109,7 +109,7 @@ public class GradReqCheck {
                 if (courseTakenList == null) {
                     Requirement r = new Requirement();
                     this.details = r;
-                    this.result = false;
+                    this.passed = false;
                     break;
                 }
                 casePASSED_AS_SATISFACTORY(requirement, courseTakenList);
@@ -118,7 +118,7 @@ public class GradReqCheck {
                 if (courseTakenList == null) {
                     Requirement r = new Requirement();
                     this.details = r;
-                    this.result = false;
+                    this.passed = false;
                     break;
                 }
                 casePASSED_AS_SATISFACTORY(requirement, courseTakenList);
@@ -127,7 +127,7 @@ public class GradReqCheck {
                 if (courseTakenList == null) {
                     Requirement r = new Requirement();
                     this.details = r;
-                    this.result = false;
+                    this.passed = false;
                     break;
                 }
                 caseOUT_OF_DEPARTMENT(requirement, courseTakenList);
@@ -136,7 +136,7 @@ public class GradReqCheck {
                 if (courseTakenList == null) {
                     Requirement r = new Requirement();
                     this.details = r;
-                    this.result = false;
+                    this.passed = false;
                     break;
                 }
                 casePASSED_WITH_C(requirement, courseTakenList);
@@ -145,7 +145,7 @@ public class GradReqCheck {
                 if (courseTakenList == null) {
                     Requirement r = new Requirement();
                     this.details = r;
-                    this.result = false;
+                    this.passed = false;
                     break;
                 }
                 casePASSED_WITH_C(requirement, courseTakenList);
@@ -154,7 +154,7 @@ public class GradReqCheck {
                 if (courseTakenList == null) {
                     Requirement r = new Requirement();
                     this.details = r;
-                    this.result = false;
+                    this.passed = false;
                     break;
                 }
                 casePASSED_WITH_C(requirement, courseTakenList);
@@ -163,43 +163,55 @@ public class GradReqCheck {
                 if (courseTakenList == null) {
                     Requirement r = new Requirement();
                     this.details = r;
-                    this.result = false;
+                    this.passed = false;
+                    this.name = Reqs.TOTAL_CREDITS;
                     break;
                 }
                 caseTOTAL_CREDITS_PHD(requirement, courseTakenList);
+                this.name = Reqs.TOTAL_CREDITS;
+                this.details.setName(Reqs.TOTAL_CREDITS);
                 break;
             case TOTAL_CREDITS_MSA:
                 if (courseTakenList == null) {
                     Requirement r = new Requirement();
                     this.details = r;
-                    this.result = false;
+                    this.passed = false;
+                    this.name = Reqs.TOTAL_CREDITS;
                     break;
                 }
                 caseTOTAL_CREDITS_MSA(requirement, courseTakenList);
+                this.name = Reqs.TOTAL_CREDITS;
+                this.details.setName(Reqs.TOTAL_CREDITS);
                 break;
             case TOTAL_CREDITS_MSB:
                 if (courseTakenList == null) {
                     Requirement r = new Requirement();
                     this.details = r;
-                    this.result = false;
+                    this.passed = false;
+                    this.name = Reqs.TOTAL_CREDITS;
                     break;
                 }
                 caseTOTAL_CREDITS_MSBC(requirement, courseTakenList);
+                this.name = Reqs.TOTAL_CREDITS;
+                this.details.setName(Reqs.TOTAL_CREDITS);
                 break;
             case TOTAL_CREDITS_MSC:
                 if (courseTakenList == null) {
                     Requirement r = new Requirement();
                     this.details = r;
-                    this.result = false;
+                    this.passed = false;
+                    this.name = Reqs.TOTAL_CREDITS;
                     break;
                 }
                 caseTOTAL_CREDITS_MSBC(requirement, courseTakenList);
+                this.name = Reqs.TOTAL_CREDITS;
+                this.details.setName(Reqs.TOTAL_CREDITS);
                 break;
             case COURSE_CREDITS:
                 if (courseTakenList == null) {
                     Requirement r = new Requirement();
                     this.details = r;
-                    this.result = false;
+                    this.passed = false;
                     break;
                 }
                 caseCOURSE_CREDITS(requirement, courseTakenList);
@@ -208,7 +220,7 @@ public class GradReqCheck {
                 if (courseTakenList == null) {
                     Requirement r = new Requirement();
                     this.details = r;
-                    this.result = false;
+                    this.passed = false;
                     break;
                 }
                 try {
@@ -222,7 +234,7 @@ public class GradReqCheck {
                 if (courseTakenList == null) {
                     Requirement r = new Requirement();
                     this.details = r;
-                    this.result = false;
+                    this.passed = false;
                     break;
                 }
                 try {
@@ -236,7 +248,7 @@ public class GradReqCheck {
                 if (courseTakenList == null) {
                     Requirement r = new Requirement();
                     this.details = r;
-                    this.result = false;
+                    this.passed = false;
                     break;
                 }
                 try {
@@ -250,7 +262,7 @@ public class GradReqCheck {
                 if (courseTakenList == null) {
                     Requirement r = new Requirement();
                     this.details = r;
-                    this.result = false;
+                    this.passed = false;
                     break;
                 }
                 try {
@@ -264,7 +276,7 @@ public class GradReqCheck {
                 if (completedMilestoneList == null) {
                     Requirement r = new Requirement();
                     this.details = r;
-                    this.result = false;
+                    this.passed = false;
                     break;
                 }
                 caseMILESTONES(requirement, completedMilestoneList);
@@ -273,7 +285,7 @@ public class GradReqCheck {
                 if (completedMilestoneList == null) {
                     Requirement r = new Requirement();
                     this.details = r;
-                    this.result = false;
+                    this.passed = false;
                     break;
                 }
                 caseMILESTONES(requirement, completedMilestoneList);
@@ -282,7 +294,7 @@ public class GradReqCheck {
                 if (completedMilestoneList == null) {
                     Requirement r = new Requirement();
                     this.details = r;
-                    this.result = false;
+                    this.passed = false;
                     break;
                 }
                 caseMILESTONES(requirement, completedMilestoneList);
@@ -291,7 +303,7 @@ public class GradReqCheck {
                 if (completedMilestoneList == null) {
                     Requirement r = new Requirement();
                     this.details = r;
-                    this.result = false;
+                    this.passed = false;
                     break;
                 }
                 caseMILESTONES(requirement, completedMilestoneList);
@@ -304,7 +316,7 @@ public class GradReqCheck {
 
     private void  caseBREADTH_REQUIREMENT_MS(Requirement requirement, List<CourseTaken> courseTakenList) throws Exception {
 
-        this.result = false;
+        this.passed = false;
         CourseTaken topThry = null;
         CourseTaken topAppl = null;
         CourseTaken topArch = null;
@@ -427,14 +439,14 @@ public class GradReqCheck {
             throw exception;
         }
         if (details.getGpa() >= requirement.getGpa() && this.details.getCourses().size() == 5) {
-            this.result = true;
+            this.passed = true;
         }
 
     }
 
     private void caseBREADTH_REQUIREMENT_PHD(Requirement requirement, List<CourseTaken> courseTakenList) throws Exception {
 
-        this.result = false;
+        this.passed = false;
         CourseTaken topThry = null;
         CourseTaken topAppl = null;
         CourseTaken topArch = null;
@@ -604,13 +616,13 @@ public class GradReqCheck {
             throw exception;
         }
         if (details.getGpa() >= requirement.getGpa() && this.details.getCourses().size() == 5) {
-            this.result = true;
+            this.passed = true;
         }
     }
 
     //Checks any requirement that is based on passing with satisfactory a certain number of credits of a single course
     private void casePASSED_AS_SATISFACTORY(Requirement requirement, List<CourseTaken> courseTakenList) {
-        this.result = false;
+        this.passed = false;
         int takenCredits = 0;
         List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
         List<String> validCourseIDs = new ArrayList<String>();
@@ -635,12 +647,12 @@ public class GradReqCheck {
         this.details = new Requirement(requirement.getName(), newCourseTakenList);
         this.details.setCredits(takenCredits);
         if (takenCredits >= requirement.getCredits()) {
-            this.result = true;
+            this.passed = true;
         }
     }
 
     private void caseOUT_OF_DEPARTMENT(Requirement requirement, List<CourseTaken> courseTakenList) {
-        this.result = false;
+        this.passed = false;
         int takenCredits = 0;
         List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
 
@@ -659,12 +671,12 @@ public class GradReqCheck {
         this.details = new Requirement(requirement.getName(), newCourseTakenList);
         this.details.setCredits(takenCredits);
         if (takenCredits >= requirement.getCredits()) {
-            this.result = true;
+            this.passed = true;
         }
     }
 
     private void casePASSED_WITH_C(Requirement requirement, List<CourseTaken> courseTakenList) {
-        this.result = false;
+        this.passed = false;
         boolean takenClass = false;
         int takenCredits = 0;
         List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
@@ -690,12 +702,12 @@ public class GradReqCheck {
         this.details = new Requirement(requirement.getName(), newCourseTakenList);
         this.details.setCredits(takenCredits);
         if (takenCredits >= requirement.getCredits()) {
-            this.result = true;
+            this.passed = true;
         }
     }
 
     private void caseTOTAL_CREDITS_PHD(Requirement requirement, List<CourseTaken> courseTakenList) {
-        this.result = false;
+        this.passed = false;
         int csciCredits = 0;
         int totalCredits = 0;
         int reqCsciCredits = 16;
@@ -734,12 +746,12 @@ public class GradReqCheck {
         this.details = new Requirement(requirement.getName(), newCourseTakenList);
         this.details.setCredits(totalCredits);
         if (csciCredits >= reqCsciCredits && totalCredits >= reqTotalCredits) {
-            this.result = true;
+            this.passed = true;
         }
     }
 
     private void caseTOTAL_CREDITS_MSA(Requirement requirement, List<CourseTaken> courseTakenList) {
-        this.result = false;
+        this.passed = false;
         int totalCredits = 0;
         int reqTotalCredits = 31;
         List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
@@ -761,12 +773,12 @@ public class GradReqCheck {
         this.details = new Requirement(requirement.getName(), newCourseTakenList);
         this.details.setCredits(totalCredits);
         if (totalCredits >= reqTotalCredits) {
-            this.result = true;
+            this.passed = true;
         }
     }
 
     private void caseTOTAL_CREDITS_MSBC(Requirement requirement, List<CourseTaken> courseTakenList) {
-        this.result = false;
+        this.passed = false;
         int csciCredits = 0;
         int totalCredits = 0;
         int reqCsciCredits = 16;
@@ -799,7 +811,7 @@ public class GradReqCheck {
         this.details = new Requirement(requirement.getName(), newCourseTakenList);
         this.details.setCredits(totalCredits);
         if (csciCredits >= reqCsciCredits && totalCredits >= reqTotalCredits) {
-            this.result = true;
+            this.passed = true;
         }
     }
 
@@ -809,7 +821,7 @@ public class GradReqCheck {
         //Check that grades are A, B, or C
         //Remove any thesis credits from consideration
 
-        this.result = false;
+        this.passed = false;
         int csciCredits = 0;
         int totalCredits = 0;
         int reqCsciCredits = 16;
@@ -848,12 +860,12 @@ public class GradReqCheck {
         this.details = new Requirement(requirement.getName(), newCourseTakenList);
         this.details.setCredits(totalCredits);
         if (csciCredits >= reqCsciCredits && totalCredits >= reqTotalCredits) {
-            this.result = true;
+            this.passed = true;
         }
     }
 
     private void caseOVERALL_GPA(Requirement requirement, List<CourseTaken> courseTakenList) throws Exception {
-        this.result = false;
+        this.passed = false;
 
         //Calculate GPA and fill in gradReqCheck
         this.details = new Requirement(requirement.getName(), courseTakenList);
@@ -864,12 +876,12 @@ public class GradReqCheck {
             throw exception;
         }
         if (details.getGpa() >= requirement.getGpa()) {
-            this.result = true;
+            this.passed = true;
         }
     }
 
     private void caseIN_PROGRAM_GPA(Requirement requirement, List<CourseTaken> courseTakenList) throws Exception {
-        this.result = false;
+        this.passed = false;
         List<CourseTaken> newCourseTakenList = new ArrayList<CourseTaken>();
 
         //Find and collect only the coursesTaken that are CSCI 5000 level
@@ -888,12 +900,12 @@ public class GradReqCheck {
             throw exception;
         }
         if (details.getGpa() >= requirement.getGpa()) {
-            this.result = true;
+            this.passed = true;
         }
     }
 
     private void caseMILESTONES(Requirement requirement, List<CompletedMilestone> completedMilestoneList) {
-        this.result = false;
+        this.passed = false;
         int studentsMilestones = 0;
 
         //Find if the student passed each milestone and count it if so
@@ -910,7 +922,7 @@ public class GradReqCheck {
         this.details = new Requirement(requirement.getName(), completedMilestoneList, requirement.getNotes());
         //Check if requirement passed
         if (studentsMilestones == requirement.getMilestones().size()) {
-            this.result = true;
+            this.passed = true;
         }
     }
 }
