@@ -2,9 +2,7 @@ package edu.umn.csci5801;
 
 import edu.umn.csci5801.model.*;
 import junit.framework.TestCase;
-
 import org.junit.Test;
-
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -13,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class GRADSTest extends TestCase {
+public class GRADSTestBasedOnAssignment2 extends TestCase {
 
     private String readFile(String fileName) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(fileName));
