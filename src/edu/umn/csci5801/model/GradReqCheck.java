@@ -438,7 +438,7 @@ public class GradReqCheck {
             Exception exception = new InvalidGradeException(e);
             throw exception;
         }
-        if (details.getGpa() >= requirement.getGpa() && this.details.getCourses().size() == 5) {
+        if (details.getGpa() >= requirement.getGpa() && this.details.getCourses().size() == 3) {
             this.passed = true;
         }
 
@@ -886,7 +886,7 @@ public class GradReqCheck {
 
         //Find and collect only the coursesTaken that are CSCI 5000 level
         for(CourseTaken courseTaken : courseTakenList) {
-            if (courseTaken.getCourse().getId().matches("^csci5[0-9]{3}$")) {
+            if (courseTaken.getCourse().getId().matches("^csci[56789][0-9]{3}$")) {
                 newCourseTakenList.add(courseTaken);
             }
         }
