@@ -114,6 +114,7 @@ public class GRADSTest extends TestCase {
     }
 
     @Test
+    //Added
     public void testLoadUsers() throws Exception {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
@@ -121,29 +122,34 @@ public class GRADSTest extends TestCase {
     }
 
     @Test(expected = IOException.class)
+    //Added
     public void textExceptionThrownLoadUsers() throws Exception {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/not_a_file.txt");
     }
 
     @Test
+    //Added
     public void testLoadCourses() throws Exception {
         GRADS grads = new GRADS();
         grads.loadCourses("resources/courses.txt");
     }
 
     @Test(expected = IOException.class)
+    //Added
     public void testExceptionThrownLoadCourses() throws Exception {
         GRADS grads = new GRADS();
         grads.loadCourses("resources/not_a_file.txt");
     }
     @Test
+    //Added
     public void testLoadRecords() throws Exception {
         GRADS grads = new GRADS();
         grads.loadRecords("resources/students_original.txt");
     }
 
     @Test(expected = IOException.class)
+    //Added
     public void testExceptionThrownLoadRecords() throws Exception {
         GRADS grads = new GRADS();
         grads.loadRecords("resources/not_a_file.txt");
@@ -179,7 +185,7 @@ public class GRADSTest extends TestCase {
     }
 
     @Test
-    //
+    //Added
     public void testStudentGetStudentIDs() throws Exception {
         try {
             GRADS grads = new GRADS();
@@ -253,7 +259,7 @@ public class GRADSTest extends TestCase {
     }
 
     @Test
-    //
+    //Added
     public void testStudentUpdateTranscript() throws Exception {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
@@ -281,7 +287,7 @@ public class GRADSTest extends TestCase {
     }
 
     @Test
-    //
+    //Added
     public void testGPCUpdateTranscript() throws Exception {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
@@ -309,7 +315,7 @@ public class GRADSTest extends TestCase {
     }
 
     @Test
-
+    //Added
     public void testStudentAddNote() throws Exception {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
@@ -411,6 +417,7 @@ public class GRADSTest extends TestCase {
     }
 
     @Test
+    //Added
     public void testStudentSimulateOtherCourses() throws Exception {
         try {
             GRADS grads = new GRADS();
@@ -427,6 +434,7 @@ public class GRADSTest extends TestCase {
 
     //see test two above for student
     @Test
+    //Added
     public void testGPCSimulateCourses() throws Exception {
         GRADS grads = new GRADS();
         List<CourseTaken> coursesTaken =  Arrays.asList();
@@ -591,6 +599,7 @@ public class GRADSTest extends TestCase {
     }
 
     @Test
+    //Added
     public void testGPCChangeAdvisor() throws Exception {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
@@ -661,6 +670,7 @@ public class GRADSTest extends TestCase {
     @Test
     //delete? or write similar to ones above
     //PhD, Plan A, or Plan C
+    //Added
     public void testGPCChangeCommittee() throws Exception {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
@@ -732,7 +742,7 @@ public class GRADSTest extends TestCase {
     //tolas9999
     @Test
     //need to fix this
-    //
+    //Added
     public void testGPCChangeGrade() throws Exception {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
@@ -761,7 +771,7 @@ public class GRADSTest extends TestCase {
 
     @Test
     //need to evaluate if this should fail or not
-
+    //Added
     public void testStudentChangeGrade() throws Exception {
 
     }
@@ -775,12 +785,14 @@ public class GRADSTest extends TestCase {
 
     @Test
     //this is not a thing
+    //Added
     public void testStudentAllowCourse() throws Exception {
 
     }
 
     @Test
     //new test not found in requirements - ooh we found a bug!
+    //Added
     public void testEmptyStudentRecordProgressReport() throws Exception {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
