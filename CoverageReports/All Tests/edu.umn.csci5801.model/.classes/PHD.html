@@ -1,0 +1,242 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: PHD</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">edu.umn.csci5801.model</a> ]
+</div>
+
+<h1>Coverage Summary for Class: PHD (edu.umn.csci5801.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PHD</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (84/ 84)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;/**
+<i>2</i>&nbsp; * Copyright 2014 CSCI5801 Fall2014 Group1
+<i>3</i>&nbsp; *
+<i>4</i>&nbsp; * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<i>5</i>&nbsp; * you may not use this file except in compliance with the License.
+<i>6</i>&nbsp; * You may obtain a copy of the License at
+<i>7</i>&nbsp; *
+<i>8</i>&nbsp; *    http://www.apache.org/licenses/LICENSE-2.0
+<i>9</i>&nbsp; *
+<i>10</i>&nbsp; * Unless required by applicable law or agreed to in writing, software
+<i>11</i>&nbsp; * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<i>12</i>&nbsp; * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<i>13</i>&nbsp; * See the License for the specific language governing permissions and
+<i>14</i>&nbsp; * limitations under the License.
+<i>15</i>&nbsp; */
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;package edu.umn.csci5801.model;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;import java.util.ArrayList;
+<i>20</i>&nbsp;import java.util.List;
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;/**
+<i>23</i>&nbsp; * PHD.java - Class containing all graduation requirements for students
+<i>24</i>&nbsp; * pursuing a PhD. Also included is a mechanism to access all requirements
+<i>25</i>&nbsp; * externally.
+<i>26</i>&nbsp; *
+<i>27</i>&nbsp; * @author CSCI5801 Fall2014 Group1
+<i>28</i>&nbsp; * @version 1.0
+<i>29</i>&nbsp; */
+<b class="fc"><i>30</i>&nbsp;public class PHD {</b>
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    private List&lt;Requirement&gt; reqList;
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;    /**
+<i>35</i>&nbsp;     * getReqList() - Method for getting the requirements list for PhD
+<i>36</i>&nbsp;     *
+<i>37</i>&nbsp;     * @return reqList - Return the list of all requirements for graduation for PhD
+<i>38</i>&nbsp;     */
+<i>39</i>&nbsp;    public List&lt;Requirement&gt; getReqList() {
+<b class="fc"><i>40</i>&nbsp;        if(reqList == null) {</b>
+<b class="fc"><i>41</i>&nbsp;            setReqList();</b>
+<i>42</i>&nbsp;        }
+<b class="fc"><i>43</i>&nbsp;        return reqList;</b>
+<i>44</i>&nbsp;    }
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;    /**
+<i>47</i>&nbsp;     * setReqList() - Method for setting the requirements list for PhD
+<i>48</i>&nbsp;     */
+<i>49</i>&nbsp;    private void setReqList() {
+<i>50</i>&nbsp;
+<b class="fc"><i>51</i>&nbsp;        List&lt;Requirement&gt; tempReqList = new ArrayList&lt;Requirement&gt;();</b>
+<i>52</i>&nbsp;
+<b class="fc"><i>53</i>&nbsp;        List&lt;String&gt; ls = new ArrayList&lt;String&gt;();</b>
+<b class="fc"><i>54</i>&nbsp;        ls.add(&quot;&quot;);</b>
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;        // REQUIREMENT #1 BREADTH_REQUIREMENT_PHD
+<b class="fc"><i>57</i>&nbsp;        List&lt;CourseTaken&gt; ctl1 = new ArrayList&lt;CourseTaken&gt;();</b>
+<b class="fc"><i>58</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Analysis of Numerical Algorithms&quot;,&quot;csci5302&quot;,&quot;3&quot;,CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));</b>
+<b class="fc"><i>59</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Computational Aspects of Matrix Theory&quot;,&quot;csci5304&quot;,&quot;3&quot;,CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));</b>
+<b class="fc"><i>60</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Computational Complexity&quot;,&quot;csci5403&quot;,&quot;3&quot;,CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));</b>
+<b class="fc"><i>61</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Advanced Algorithms and Data Structures&quot;,&quot;csci5421&quot;,&quot;3&quot;,CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));</b>
+<b class="fc"><i>62</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Machine Learning&quot;,&quot;csci5525&quot;,&quot;3&quot;,CourseArea.THEORY_ALGORITHMS), new Term(), Grade.C));</b>
+<i>63</i>&nbsp;
+<b class="fc"><i>64</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Operating Systems&quot;,&quot;csci5103&quot;,&quot;3&quot;,CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));</b>
+<b class="fc"><i>65</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;System Modeling and Performance Evaluation&quot;,&quot;csci5104&quot;,&quot;3&quot;,CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));</b>
+<b class="fc"><i>66</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Introduction to Distributed Systems&quot;,&quot;csci5105&quot;,&quot;3&quot;,CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));</b>
+<b class="fc"><i>67</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Programming Languages&quot;,&quot;csci5106&quot;,&quot;3&quot;,CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));</b>
+<b class="fc"><i>68</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Introduction to Compilers&quot;,&quot;csci5161&quot;,&quot;3&quot;,CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));</b>
+<b class="fc"><i>69</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Advanced Computer Architecture&quot;,&quot;csci5204&quot;,&quot;3&quot;,CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));</b>
+<b class="fc"><i>70</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Data Communications and Computer Networks&quot;,&quot;csci5211&quot;,&quot;3&quot;,CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));</b>
+<b class="fc"><i>71</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Foundations of Advanced Networking&quot;,&quot;csci5221&quot;,&quot;3&quot;,CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));</b>
+<b class="fc"><i>72</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Wireless and Sensor Networks&quot;,&quot;csci5231&quot;,&quot;3&quot;,CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));</b>
+<b class="fc"><i>73</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Introduction to Parallel Computing: Architectures, Algorithms, and Programming&quot;,&quot;csci5451&quot;,&quot;3&quot;,CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));</b>
+<b class="fc"><i>74</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Functional Genomics, Systems Biology, and Bioinformatics&quot;,&quot;csci5461&quot;,&quot;3&quot;,CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));</b>
+<b class="fc"><i>75</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Architecture and Implementation of Database Management Systems&quot;,&quot;csci5708&quot;,&quot;3&quot;,CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));</b>
+<b class="fc"><i>76</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Software Engineering I&quot;,&quot;csci5801&quot;,&quot;3&quot;,CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));</b>
+<b class="fc"><i>77</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Software Engineering II&quot;,&quot;csci5802&quot;,&quot;3&quot;,CourseArea.ARCHITECTURE_SYSTEMS_SOFTWARE), new Term(), Grade.C));</b>
+<i>78</i>&nbsp;
+<b class="fc"><i>79</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;User Interface Design, Implementation, and Evaluation&quot;,&quot;csci5115&quot;,&quot;3&quot;,CourseArea.APPLICATIONS), new Term(), Grade.C));</b>
+<b class="fc"><i>80</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Collaborative and Social Computing&quot;,&quot;csci5125&quot;,&quot;3&quot;,CourseArea.APPLICATIONS), new Term(), Grade.C));</b>
+<b class="fc"><i>81</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Introduction to Computer Security&quot;,&quot;csci5271&quot;,&quot;3&quot;,CourseArea.APPLICATIONS), new Term(), Grade.C));</b>
+<b class="fc"><i>82</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Modern Cryptography&quot;,&quot;csci5471&quot;,&quot;3&quot;,CourseArea.APPLICATIONS), new Term(), Grade.C));</b>
+<b class="fc"><i>83</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Computational Techniques for Genomics&quot;,&quot;csci5481&quot;,&quot;3&quot;,CourseArea.APPLICATIONS), new Term(), Grade.C));</b>
+<b class="fc"><i>84</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Artificial Intelligence I&quot;,&quot;csci5511&quot;,&quot;3&quot;,CourseArea.APPLICATIONS), new Term(), Grade.C));</b>
+<b class="fc"><i>85</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Artificial Intelligence II&quot;,&quot;csci5512&quot;,&quot;3&quot;,CourseArea.APPLICATIONS), new Term(), Grade.C));</b>
+<b class="fc"><i>86</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Introduction to Machine Learning&quot;,&quot;csci5521&quot;,&quot;3&quot;,CourseArea.APPLICATIONS), new Term(), Grade.C));</b>
+<b class="fc"><i>87</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Introduction to Data Mining&quot;,&quot;csci5523&quot;,&quot;3&quot;,CourseArea.APPLICATIONS), new Term(), Grade.C));</b>
+<b class="fc"><i>88</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Introduction to Intelligent Robotic Systems&quot;,&quot;csci5551&quot;,&quot;3&quot;,CourseArea.APPLICATIONS), new Term(), Grade.C));</b>
+<b class="fc"><i>89</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Computer Vision&quot;,&quot;csci5561&quot;,&quot;3&quot;,CourseArea.APPLICATIONS), new Term(), Grade.C));</b>
+<b class="fc"><i>90</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Fundamentals of Computer Graphics I&quot;,&quot;csci5607&quot;,&quot;3&quot;,CourseArea.APPLICATIONS), new Term(), Grade.C));</b>
+<b class="fc"><i>91</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Fundamentals of Computer Graphics 2&quot;,&quot;csci5608&quot;,&quot;3&quot;,CourseArea.APPLICATIONS), new Term(), Grade.C));</b>
+<b class="fc"><i>92</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Visualization&quot;,&quot;csci5609&quot;,&quot;3&quot;,CourseArea.APPLICATIONS), new Term(), Grade.C));</b>
+<b class="fc"><i>93</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Animation and Planning in Games&quot;,&quot;csci5611&quot;,&quot;3&quot;,CourseArea.APPLICATIONS), new Term(), Grade.C));</b>
+<b class="fc"><i>94</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Virtual Reality and 3D Interaction&quot;,&quot;csci5619&quot;,&quot;3&quot;,CourseArea.APPLICATIONS), new Term(), Grade.C));</b>
+<b class="fc"><i>95</i>&nbsp;        ctl1.add(new CourseTaken(new Course(&quot;Principles of Database Systems&quot;,&quot;csci5707&quot;,&quot;3&quot;,CourseArea.APPLICATIONS), new Term(), Grade.C));</b>
+<i>96</i>&nbsp;
+<b class="fc"><i>97</i>&nbsp;        Requirement req1 = new Requirement(Reqs.BREADTH_REQUIREMENT_PHD, 3.45, ctl1, 15, ls);</b>
+<b class="fc"><i>98</i>&nbsp;        tempReqList.add(req1);</b>
+<i>99</i>&nbsp;
+<i>100</i>&nbsp;        //REQUIREMENT #2 THESIS_PHD
+<b class="fc"><i>101</i>&nbsp;        List&lt;CourseTaken&gt; ctl2 = new ArrayList&lt;CourseTaken&gt;();</b>
+<b class="fc"><i>102</i>&nbsp;        ctl2.add(new CourseTaken(new Course(&quot;Thesis Credit: Doctoral&quot;,&quot;csci8888&quot;,&quot;24&quot;),new Term(), Grade.S));</b>
+<i>103</i>&nbsp;
+<b class="fc"><i>104</i>&nbsp;        Requirement req2 = new Requirement(Reqs.THESIS_PHD,ctl2,24,ls);</b>
+<b class="fc"><i>105</i>&nbsp;        tempReqList.add(req2);</b>
+<i>106</i>&nbsp;
+<i>107</i>&nbsp;        //REQUIREMENT #3 COLLOQUIUM
+<b class="fc"><i>108</i>&nbsp;        List&lt;CourseTaken&gt; ctl3 = new ArrayList&lt;CourseTaken&gt;();</b>
+<b class="fc"><i>109</i>&nbsp;        ctl3.add(new CourseTaken(new Course(&quot;Computer Science Colloquium&quot;,&quot;csci8970&quot;,&quot;1&quot;),new Term(), Grade.S));</b>
+<i>110</i>&nbsp;
+<b class="fc"><i>111</i>&nbsp;        Requirement req3 = new Requirement(Reqs.COLLOQUIUM,ctl3,1,ls);</b>
+<b class="fc"><i>112</i>&nbsp;        tempReqList.add(req3);</b>
+<i>113</i>&nbsp;
+<i>114</i>&nbsp;        //REQUIREMENT #4 OUT_OF_DEPARTMENT
+<i>115</i>&nbsp;
+<b class="fc"><i>116</i>&nbsp;        Requirement req4 = new Requirement(Reqs.OUT_OF_DEPARTMENT);</b>
+<b class="fc"><i>117</i>&nbsp;        tempReqList.add(req4);</b>
+<i>118</i>&nbsp;
+<i>119</i>&nbsp;        //REQUIREMENT #5 INTRO_TO_RESEARCH
+<b class="fc"><i>120</i>&nbsp;        List&lt;CourseTaken&gt; ctl5 = new ArrayList&lt;CourseTaken&gt;();</b>
+<b class="fc"><i>121</i>&nbsp;        ctl5.add(new CourseTaken(new Course(&quot;Introduction to Research in Computer Science I&quot;,&quot;csci8001&quot;,&quot;1&quot;),new Term(), Grade.S));</b>
+<b class="fc"><i>122</i>&nbsp;        ctl5.add(new CourseTaken(new Course(&quot;Introduction to Research in Computer Science II&quot;,&quot;csci8002&quot;,&quot;2&quot;),new Term(), Grade.S));</b>
+<i>123</i>&nbsp;
+<b class="fc"><i>124</i>&nbsp;        Requirement req5 = new Requirement(Reqs.INTRO_TO_RESEARCH, ctl5, 3, ls);</b>
+<b class="fc"><i>125</i>&nbsp;        tempReqList.add(req5);</b>
+<i>126</i>&nbsp;
+<i>127</i>&nbsp;        //REQUIREMENT #6 TOTAL_CREDITS_PHD
+<b class="fc"><i>128</i>&nbsp;        Requirement req6 = new Requirement(Reqs.TOTAL_CREDITS_PHD, 31);</b>
+<b class="fc"><i>129</i>&nbsp;        tempReqList.add(req6);</b>
+<i>130</i>&nbsp;
+<i>131</i>&nbsp;        //REQUIREMENT #7 OVERALL_GPA_PHD
+<b class="fc"><i>132</i>&nbsp;        Requirement req7 = new Requirement(Reqs.OVERALL_GPA_PHD, 3.45);</b>
+<b class="fc"><i>133</i>&nbsp;        tempReqList.add(req7);</b>
+<i>134</i>&nbsp;
+<i>135</i>&nbsp;        //REQUIREMENT #8 IN_PROGRAM_GPA_PHD
+<b class="fc"><i>136</i>&nbsp;        Requirement req8 = new Requirement(Reqs.IN_PROGRAM_GPA_PHD, 3.45);</b>
+<b class="fc"><i>137</i>&nbsp;        tempReqList.add(req8);</b>
+<i>138</i>&nbsp;
+<i>139</i>&nbsp;        //Requirement #9 MILESTONES_PHD
+<b class="fc"><i>140</i>&nbsp;        List&lt;CompletedMilestone&gt; lm9 = new ArrayList&lt;CompletedMilestone&gt;();</b>
+<b class="fc"><i>141</i>&nbsp;        lm9.add(new CompletedMilestone(Milestone.PRELIM_COMMITTEE_APPOINTED));</b>
+<b class="fc"><i>142</i>&nbsp;        lm9.add(new CompletedMilestone(Milestone.WRITTEN_PE_SUBMITTED));</b>
+<b class="fc"><i>143</i>&nbsp;        lm9.add(new CompletedMilestone(Milestone.WRITTEN_PE_APPROVED));</b>
+<b class="fc"><i>144</i>&nbsp;        lm9.add(new CompletedMilestone(Milestone.ORAL_PE_PASSED));</b>
+<b class="fc"><i>145</i>&nbsp;        lm9.add(new CompletedMilestone(Milestone.DPF_SUBMITTED));</b>
+<b class="fc"><i>146</i>&nbsp;        lm9.add(new CompletedMilestone(Milestone.DPF_APPROVED));</b>
+<b class="fc"><i>147</i>&nbsp;        lm9.add(new CompletedMilestone(Milestone.THESIS_COMMITTEE_APPOINTED));</b>
+<b class="fc"><i>148</i>&nbsp;        lm9.add(new CompletedMilestone(Milestone.PROPOSAL_PASSED));</b>
+<b class="fc"><i>149</i>&nbsp;        lm9.add(new CompletedMilestone(Milestone.GRADUATION_PACKET_REQUESTED));</b>
+<b class="fc"><i>150</i>&nbsp;        lm9.add(new CompletedMilestone(Milestone.THESIS_SUBMITTED));</b>
+<b class="fc"><i>151</i>&nbsp;        lm9.add(new CompletedMilestone(Milestone.THESIS_APPROVED));</b>
+<b class="fc"><i>152</i>&nbsp;        lm9.add(new CompletedMilestone(Milestone.DEFENSE_PASSED));</b>
+<i>153</i>&nbsp;
+<b class="fc"><i>154</i>&nbsp;        Requirement req9 = new Requirement(Reqs.MILESTONES_PHD,lm9,ls);</b>
+<b class="fc"><i>155</i>&nbsp;        tempReqList.add(req9);</b>
+<i>156</i>&nbsp;
+<b class="fc"><i>157</i>&nbsp;        reqList = tempReqList;</b>
+<b class="fc"><i>158</i>&nbsp;    }</b>
+<i>159</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2014-12-13 14:30</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,919 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: GRADSTestAllTests</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">edu.umn.csci5801</a> ]
+</div>
+
+<h1>Coverage Summary for Class: GRADSTestAllTests (edu.umn.csci5801)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">GRADSTestAllTests</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (51/ 51)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    93.1%
+  </span>
+  <span class="absValue">
+    (528/ 567)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package edu.umn.csci5801;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import edu.umn.csci5801.model.*;
+<i>4</i>&nbsp;import junit.framework.TestCase;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;import org.junit.Test;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;import java.io.BufferedReader;
+<i>10</i>&nbsp;import java.io.FileReader;
+<i>11</i>&nbsp;import java.io.IOException;
+<i>12</i>&nbsp;import java.util.ArrayList;
+<i>13</i>&nbsp;import java.util.Arrays;
+<i>14</i>&nbsp;import java.util.List;
+<i>15</i>&nbsp;
+<b class="fc"><i>16</i>&nbsp;public class GRADSTestAllTests extends TestCase {</b>
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;    private String readFile(String fileName) throws IOException {
+<b class="fc"><i>19</i>&nbsp;        BufferedReader br = new BufferedReader(new FileReader(fileName));</b>
+<i>20</i>&nbsp;        try {
+<b class="fc"><i>21</i>&nbsp;            StringBuilder sb = new StringBuilder();</b>
+<b class="fc"><i>22</i>&nbsp;            String line = br.readLine();</b>
+<b class="fc"><i>23</i>&nbsp;            while (line != null) {</b>
+<b class="fc"><i>24</i>&nbsp;                sb.append(line.replaceAll(&quot;\\s&quot;, &quot;&quot;));</b>
+<b class="fc"><i>25</i>&nbsp;                line = br.readLine();</b>
+<i>26</i>&nbsp;            }
+<b class="fc"><i>27</i>&nbsp;            return sb.toString();</b>
+<i>28</i>&nbsp;        } finally {
+<b class="fc"><i>29</i>&nbsp;            br.close();</b>
+<i>30</i>&nbsp;        }
+<i>31</i>&nbsp;    }
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;    private boolean compareStudentRecords(StudentRecord sr1, StudentRecord sr2) {
+<b class="fc"><i>34</i>&nbsp;        if(!sr1.getStudent().sameStudents(sr2.getStudent())) { // Student</b>
+<b class="nc"><i>35</i>&nbsp;            return false; }</b>
+<b class="fc"><i>36</i>&nbsp;        else if(sr1.getDepartment() != sr2.getDepartment()) { // Department</b>
+<b class="nc"><i>37</i>&nbsp;            return false; }</b>
+<b class="fc"><i>38</i>&nbsp;        else if(sr1.getDegreeSought() != sr2.getDegreeSought()) { // degreeSought</b>
+<b class="nc"><i>39</i>&nbsp;            return false; }</b>
+<b class="fc"><i>40</i>&nbsp;        else if(!sr1.getTermBegan().sameTerm(sr2.getTermBegan())) { // termBegan</b>
+<b class="nc"><i>41</i>&nbsp;            return false; }</b>
+<b class="fc"><i>42</i>&nbsp;        else if(!compareProfessorList(sr1.getAdvisors(), sr2.getAdvisors())) { // advisors</b>
+<b class="nc"><i>43</i>&nbsp;            return false; }</b>
+<b class="fc"><i>44</i>&nbsp;        else if(!compareProfessorList(sr1.getCommittee(), sr2.getCommittee())) { // committee</b>
+<b class="nc"><i>45</i>&nbsp;            return false; }</b>
+<b class="fc"><i>46</i>&nbsp;        else if(!compareCoursesTaken(sr1.getCoursesTaken(), sr2.getCoursesTaken())) { // coursesTaken</b>
+<b class="nc"><i>47</i>&nbsp;            return false; }</b>
+<b class="fc"><i>48</i>&nbsp;        else if(!compareMilestonesList(sr1.getMilestonesSet(), sr2.getMilestonesSet())) { // milestonesSet</b>
+<b class="nc"><i>49</i>&nbsp;            return false; }</b>
+<b class="fc"><i>50</i>&nbsp;        else if(!compareNotesList(sr1.getNotes(), sr2.getNotes())) { // notes</b>
+<b class="nc"><i>51</i>&nbsp;            return false; }</b>
+<b class="fc"><i>52</i>&nbsp;        return true;</b>
+<i>53</i>&nbsp;    }
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;    private boolean compareNotesList(List&lt;String&gt; l1, List&lt;String&gt; l2) {
+<b class="fc"><i>56</i>&nbsp;        if(l1.isEmpty() &amp;&amp; l2.isEmpty()) {</b>
+<b class="fc"><i>57</i>&nbsp;            return true; }</b>
+<b class="fc"><i>58</i>&nbsp;        else if(l1.isEmpty() || l2.isEmpty()) {</b>
+<b class="nc"><i>59</i>&nbsp;            return false; }</b>
+<b class="fc"><i>60</i>&nbsp;        if(l1.size() != l2.size()) {</b>
+<b class="nc"><i>61</i>&nbsp;            return false; }</b>
+<b class="fc"><i>62</i>&nbsp;        for(int i=0; i&lt; l1.size(); i++) {</b>
+<b class="fc"><i>63</i>&nbsp;            if(!l2.get(i).equals(l2.get(i))) {</b>
+<b class="nc"><i>64</i>&nbsp;                return false; }</b>
+<i>65</i>&nbsp;        }
+<b class="fc"><i>66</i>&nbsp;        return true;</b>
+<i>67</i>&nbsp;    }
+<i>68</i>&nbsp;
+<i>69</i>&nbsp;    private boolean compareMilestonesList(List&lt;CompletedMilestone&gt; l1, List&lt;CompletedMilestone&gt; l2) {
+<b class="fc"><i>70</i>&nbsp;        if(l1.isEmpty() &amp;&amp; l2.isEmpty()) {</b>
+<b class="nc"><i>71</i>&nbsp;            return true; }</b>
+<b class="fc"><i>72</i>&nbsp;        else if(l1.isEmpty() || l2.isEmpty()) {</b>
+<b class="nc"><i>73</i>&nbsp;            return false; }</b>
+<b class="fc"><i>74</i>&nbsp;        if(l1.size() != l2.size()) {</b>
+<b class="nc"><i>75</i>&nbsp;            return false; }</b>
+<b class="fc"><i>76</i>&nbsp;        for(int i=0; i&lt; l1.size(); i++) {</b>
+<b class="fc"><i>77</i>&nbsp;            if(!l1.get(i).compareCompletedMilestone(l2.get(i))) {</b>
+<b class="nc"><i>78</i>&nbsp;                return false; }</b>
+<i>79</i>&nbsp;        }
+<b class="fc"><i>80</i>&nbsp;        return true;</b>
+<i>81</i>&nbsp;    }
+<i>82</i>&nbsp;
+<i>83</i>&nbsp;    private boolean compareProfessorList(List&lt;Professor&gt; l1, List&lt;Professor&gt; l2) {
+<b class="fc"><i>84</i>&nbsp;        if(l1.isEmpty() &amp;&amp; l2.isEmpty()) {</b>
+<b class="nc"><i>85</i>&nbsp;            return true; }</b>
+<b class="fc"><i>86</i>&nbsp;        else if(l1.isEmpty() || l2.isEmpty()) {</b>
+<b class="nc"><i>87</i>&nbsp;            return false; }</b>
+<b class="fc"><i>88</i>&nbsp;        if(l1.size() != l2.size()) {</b>
+<b class="nc"><i>89</i>&nbsp;            return false; }</b>
+<b class="fc"><i>90</i>&nbsp;        for(int i=0; i&lt; l1.size(); i++) {</b>
+<b class="fc"><i>91</i>&nbsp;            if(!l1.get(i).compareProfessor(l2.get(i))) {</b>
+<b class="nc"><i>92</i>&nbsp;                return false; }</b>
+<i>93</i>&nbsp;        }
+<b class="fc"><i>94</i>&nbsp;        return true;</b>
+<i>95</i>&nbsp;    }
+<i>96</i>&nbsp;
+<i>97</i>&nbsp;    private boolean compareCoursesTaken(List&lt;CourseTaken&gt; l1, List&lt;CourseTaken&gt; l2) {
+<b class="fc"><i>98</i>&nbsp;        if(l1.isEmpty() &amp;&amp; l2.isEmpty()) {</b>
+<b class="nc"><i>99</i>&nbsp;            return true; }</b>
+<b class="fc"><i>100</i>&nbsp;        else if(l1.isEmpty() || l2.isEmpty()) {</b>
+<b class="nc"><i>101</i>&nbsp;            return false; }</b>
+<b class="fc"><i>102</i>&nbsp;        if(l1.size() != l2.size()) {</b>
+<b class="nc"><i>103</i>&nbsp;            return false; }</b>
+<b class="fc"><i>104</i>&nbsp;        for(int i=0; i&lt; l1.size(); i++) {</b>
+<b class="fc"><i>105</i>&nbsp;            if(!l1.get(i).compareCourseTaken(l2.get(i))) {</b>
+<b class="nc"><i>106</i>&nbsp;                return false; }</b>
+<i>107</i>&nbsp;        }
+<b class="fc"><i>108</i>&nbsp;        return true;</b>
+<i>109</i>&nbsp;    }
+<i>110</i>&nbsp;
+<i>111</i>&nbsp;    @Test
+<i>112</i>&nbsp;    public void testLoadUsers() throws Exception {
+<b class="fc"><i>113</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>114</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<i>115</i>&nbsp;
+<b class="fc"><i>116</i>&nbsp;    }</b>
+<i>117</i>&nbsp;
+<i>118</i>&nbsp;    @Test(expected = IOException.class)
+<i>119</i>&nbsp;    public void testExceptionThrownLoadUsers() throws Exception {
+<b class="fc"><i>120</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>121</i>&nbsp;        grads.loadUsers(&quot;resources/not_a_file.txt&quot;);</b>
+<i>122</i>&nbsp;
+<b class="fc"><i>123</i>&nbsp;    }</b>
+<i>124</i>&nbsp;
+<i>125</i>&nbsp;    @Test
+<i>126</i>&nbsp;    public void testLoadCourses() throws Exception {
+<b class="fc"><i>127</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>128</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>129</i>&nbsp;    }</b>
+<i>130</i>&nbsp;
+<i>131</i>&nbsp;    @Test(expected = IOException.class)
+<i>132</i>&nbsp;    public void testExceptionThrownLoadCourses() throws Exception {
+<b class="fc"><i>133</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>134</i>&nbsp;        grads.loadCourses(&quot;resources/not_a_file.txt&quot;);</b>
+<b class="fc"><i>135</i>&nbsp;    }</b>
+<i>136</i>&nbsp;    @Test
+<i>137</i>&nbsp;    public void testLoadRecords() throws Exception {
+<b class="fc"><i>138</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>139</i>&nbsp;        grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>140</i>&nbsp;    }</b>
+<i>141</i>&nbsp;
+<i>142</i>&nbsp;    @Test(expected = IOException.class)
+<i>143</i>&nbsp;    public void testExceptionThrownLoadRecords() throws Exception {
+<b class="fc"><i>144</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>145</i>&nbsp;        grads.loadRecords(&quot;resources/not_a_file.txt&quot;);</b>
+<b class="fc"><i>146</i>&nbsp;    }</b>
+<i>147</i>&nbsp;
+<i>148</i>&nbsp;    @Test
+<i>149</i>&nbsp;    public void testSetUser() throws Exception {
+<b class="fc"><i>150</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>151</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>152</i>&nbsp;        grads.setUser(&quot;tolas9999&quot;);</b>
+<b class="fc"><i>153</i>&nbsp;    }</b>
+<i>154</i>&nbsp;
+<i>155</i>&nbsp;    @Test
+<i>156</i>&nbsp;    public void testGetUser() throws Exception {
+<b class="fc"><i>157</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>158</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>159</i>&nbsp;        grads.setUser(&quot;tolas9999&quot;);</b>
+<b class="fc"><i>160</i>&nbsp;        assertEquals(&quot;tolas9999&quot;,grads.getUser());</b>
+<b class="fc"><i>161</i>&nbsp;    }</b>
+<i>162</i>&nbsp;
+<i>163</i>&nbsp;    @Test
+<i>164</i>&nbsp;    public void testGPCGetStudentIDs() throws Exception {
+<b class="fc"><i>165</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>166</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>167</i>&nbsp;        grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>168</i>&nbsp;        grads.setUser(&quot;tolas9999&quot;);</b>
+<b class="fc"><i>169</i>&nbsp;        grads.getStudentIDs();</b>
+<b class="fc"><i>170</i>&nbsp;        String expectedOutputString = &quot;[\&quot;smith1234\&quot;,\&quot;doe5678\&quot;,\&quot;nguy0621\&quot;,\&quot;gayxx067\&quot;,\&quot;bob099\&quot;,\&quot;desil1337\&quot;,\&quot;hanxx123\&quot;,\&quot;zhang9101\&quot;]&quot;;</b>
+<b class="fc"><i>171</i>&nbsp;        assertEquals(expectedOutputString,readFile(&quot;studentids.txt&quot;));</b>
+<b class="fc"><i>172</i>&nbsp;    }</b>
+<i>173</i>&nbsp;
+<i>174</i>&nbsp;    @Test
+<i>175</i>&nbsp;    public void testStudentGetStudentIDs() throws Exception {
+<i>176</i>&nbsp;        try {
+<b class="fc"><i>177</i>&nbsp;            GRADS grads = new GRADS();</b>
+<b class="fc"><i>178</i>&nbsp;            grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>179</i>&nbsp;            grads.loadRecords(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>180</i>&nbsp;            grads.setUser(&quot;nguy0621&quot;);</b>
+<b class="fc"><i>181</i>&nbsp;            grads.getStudentIDs();</b>
+<b class="nc"><i>182</i>&nbsp;            fail(&quot;Should throw Invalid User Exception&quot;);</b>
+<b class="fc"><i>183</i>&nbsp;        } catch (InvalidUserException e) {</b>
+<b class="fc"><i>184</i>&nbsp;            assertTrue(e.getMessage().equals(&quot;User does not have this access to Student IDs&quot;));</b>
+<b class="nc"><i>185</i>&nbsp;        }</b>
+<b class="fc"><i>186</i>&nbsp;    }</b>
+<i>187</i>&nbsp;
+<i>188</i>&nbsp;    @Test
+<i>189</i>&nbsp;    public void testStudentGetOwnTranscript() throws Exception {
+<b class="fc"><i>190</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>191</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>192</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>193</i>&nbsp;        grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>194</i>&nbsp;        grads.setUser(&quot;hanxx123&quot;);</b>
+<b class="fc"><i>195</i>&nbsp;        StudentRecord transcript = grads.getTranscript(&quot;hanxx123&quot;);</b>
+<i>196</i>&nbsp;
+<i>197</i>&nbsp;        // Compare to:
+<b class="fc"><i>198</i>&nbsp;        GRADS grads1 = new GRADS();</b>
+<b class="fc"><i>199</i>&nbsp;        grads1.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>200</i>&nbsp;        grads1.loadRecords(&quot;resources/testGPCAddMilestone.txt&quot;);</b>
+<b class="fc"><i>201</i>&nbsp;        grads1.setUser(&quot;tolas9999&quot;);  // CSCI GPC</b>
+<b class="fc"><i>202</i>&nbsp;        StudentRecord compareTranscript = grads1.getTranscript(&quot;hanxx123&quot;);</b>
+<i>203</i>&nbsp;
+<b class="fc"><i>204</i>&nbsp;        assert(compareStudentRecords(transcript, compareTranscript));</b>
+<b class="fc"><i>205</i>&nbsp;    }</b>
+<i>206</i>&nbsp;
+<i>207</i>&nbsp;    //@Test(expected = InvalidUserException.class)
+<i>208</i>&nbsp;    //@Test(expected = Exception.class)
+<i>209</i>&nbsp;    //Needs try/catch clause
+<i>210</i>&nbsp;    @Test(expected = IOException.class)
+<i>211</i>&nbsp;    public void testStudentGetOtherTranscript() throws Exception {
+<i>212</i>&nbsp;        try {
+<b class="fc"><i>213</i>&nbsp;            GRADS grads = new GRADS();</b>
+<b class="fc"><i>214</i>&nbsp;            grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>215</i>&nbsp;            grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>216</i>&nbsp;            grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>217</i>&nbsp;            grads.setUser(&quot;smith1234&quot;);</b>
+<b class="fc"><i>218</i>&nbsp;            grads.getTranscript(&quot;hanxx123&quot;);</b>
+<b class="nc"><i>219</i>&nbsp;            fail(&quot;Should throw Invalid User Exception&quot;);</b>
+<b class="fc"><i>220</i>&nbsp;        } catch (InvalidUserException e) {</b>
+<b class="fc"><i>221</i>&nbsp;            assertTrue(e.getMessage().equals(&quot;Invalid user&quot;));</b>
+<b class="nc"><i>222</i>&nbsp;        }</b>
+<b class="fc"><i>223</i>&nbsp;    }</b>
+<i>224</i>&nbsp;
+<i>225</i>&nbsp;    @Test
+<i>226</i>&nbsp;    public void testGPCGetTranscript() throws Exception {
+<b class="fc"><i>227</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>228</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>229</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>230</i>&nbsp;        grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>231</i>&nbsp;        grads.setUser(&quot;hanxx123&quot;);</b>
+<b class="fc"><i>232</i>&nbsp;        StudentRecord transcript = grads.getTranscript(&quot;hanxx123&quot;);</b>
+<i>233</i>&nbsp;
+<i>234</i>&nbsp;        // Compare to:
+<b class="fc"><i>235</i>&nbsp;        GRADS grads1 = new GRADS();</b>
+<b class="fc"><i>236</i>&nbsp;        grads1.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>237</i>&nbsp;        grads1.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>238</i>&nbsp;        grads1.setUser(&quot;tolas9999&quot;);  // CSCI GPC</b>
+<b class="fc"><i>239</i>&nbsp;        StudentRecord compareTranscript = grads1.getTranscript(&quot;hanxx123&quot;);</b>
+<i>240</i>&nbsp;
+<b class="fc"><i>241</i>&nbsp;        assert(compareStudentRecords(transcript, compareTranscript));</b>
+<b class="fc"><i>242</i>&nbsp;    }</b>
+<i>243</i>&nbsp;
+<i>244</i>&nbsp;    @Test
+<i>245</i>&nbsp;    public void testStudentUpdateTranscript() throws Exception {
+<b class="fc"><i>246</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>247</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>248</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>249</i>&nbsp;        grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>250</i>&nbsp;        grads.setUser(&quot;hanxx123&quot;);</b>
+<i>251</i>&nbsp;
+<b class="fc"><i>252</i>&nbsp;        StudentRecord studentRecord = grads.getTranscript(&quot;hanxx123&quot;);</b>
+<b class="fc"><i>253</i>&nbsp;        List&lt;Professor&gt; professorList = studentRecord.getAdvisors();</b>
+<b class="fc"><i>254</i>&nbsp;        Professor professor = new Professor(Department.MATH, professorList.get(0).getFirstName(), professorList.get(0).getLastName());</b>
+<b class="fc"><i>255</i>&nbsp;        professorList.set(0, professor);</b>
+<i>256</i>&nbsp;
+<b class="fc"><i>257</i>&nbsp;        studentRecord.setAdvisors(professorList);</b>
+<b class="fc"><i>258</i>&nbsp;        grads.updateTranscript(&quot;hanxx123&quot;, studentRecord);</b>
+<b class="fc"><i>259</i>&nbsp;        StudentRecord newTranscript = grads.getTranscript(&quot;hanxx123&quot;);</b>
+<i>260</i>&nbsp;
+<i>261</i>&nbsp;        // Compare to:
+<b class="fc"><i>262</i>&nbsp;        GRADS grads1 = new GRADS();</b>
+<b class="fc"><i>263</i>&nbsp;        grads1.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>264</i>&nbsp;        grads1.loadRecords(&quot;resources/testGPCChangeAdvisor.txt&quot;);</b>
+<b class="fc"><i>265</i>&nbsp;        grads1.setUser(&quot;hanxx123&quot;);  // CSCI GPC</b>
+<b class="fc"><i>266</i>&nbsp;        StudentRecord compareTranscript = grads1.getTranscript(&quot;hanxx123&quot;);</b>
+<i>267</i>&nbsp;
+<b class="fc"><i>268</i>&nbsp;        assert(compareStudentRecords(newTranscript, compareTranscript));</b>
+<b class="fc"><i>269</i>&nbsp;    }</b>
+<i>270</i>&nbsp;
+<i>271</i>&nbsp;    @Test
+<i>272</i>&nbsp;    public void testGPCUpdateTranscript() throws Exception {
+<b class="fc"><i>273</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>274</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>275</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>276</i>&nbsp;        grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>277</i>&nbsp;        grads.setUser(&quot;tolas9999&quot;);</b>
+<i>278</i>&nbsp;
+<b class="fc"><i>279</i>&nbsp;        StudentRecord studentRecord = grads.getTranscript(&quot;hanxx123&quot;);</b>
+<b class="fc"><i>280</i>&nbsp;        List&lt;Professor&gt; professorList = studentRecord.getAdvisors();</b>
+<b class="fc"><i>281</i>&nbsp;        Professor professor = new Professor(Department.MATH, professorList.get(0).getFirstName(), professorList.get(0).getLastName());</b>
+<b class="fc"><i>282</i>&nbsp;        professorList.set(0, professor);</b>
+<i>283</i>&nbsp;
+<b class="fc"><i>284</i>&nbsp;        studentRecord.setAdvisors(professorList);</b>
+<b class="fc"><i>285</i>&nbsp;        grads.updateTranscript(&quot;hanxx123&quot;, studentRecord);</b>
+<b class="fc"><i>286</i>&nbsp;        StudentRecord newTranscript = grads.getTranscript(&quot;hanxx123&quot;);</b>
+<i>287</i>&nbsp;
+<i>288</i>&nbsp;        // Compare to:
+<b class="fc"><i>289</i>&nbsp;        GRADS grads1 = new GRADS();</b>
+<b class="fc"><i>290</i>&nbsp;        grads1.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>291</i>&nbsp;        grads1.loadRecords(&quot;resources/testGPCChangeAdvisor.txt&quot;);</b>
+<b class="fc"><i>292</i>&nbsp;        grads1.setUser(&quot;tolas9999&quot;);  // CSCI GPC</b>
+<b class="fc"><i>293</i>&nbsp;        StudentRecord compareTranscript = grads1.getTranscript(&quot;hanxx123&quot;);</b>
+<i>294</i>&nbsp;
+<b class="fc"><i>295</i>&nbsp;        assert(compareStudentRecords(newTranscript, compareTranscript));</b>
+<b class="fc"><i>296</i>&nbsp;    }</b>
+<i>297</i>&nbsp;
+<i>298</i>&nbsp;    @Test
+<i>299</i>&nbsp;    public void testStudentAddNote() throws Exception {
+<b class="fc"><i>300</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>301</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>302</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>303</i>&nbsp;        grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>304</i>&nbsp;        grads.setUser(&quot;hanxx123&quot;);</b>
+<i>305</i>&nbsp;
+<b class="fc"><i>306</i>&nbsp;        StudentRecord studentRecord = grads.getTranscript(&quot;hanxx123&quot;);</b>
+<b class="fc"><i>307</i>&nbsp;        studentRecord.addNote(&quot;note4&quot;);</b>
+<b class="fc"><i>308</i>&nbsp;        grads.updateTranscript(&quot;hanxx123&quot;, studentRecord);</b>
+<b class="fc"><i>309</i>&nbsp;        StudentRecord newTranscript = grads.getTranscript(&quot;hanxx123&quot;);</b>
+<i>310</i>&nbsp;
+<i>311</i>&nbsp;        // Compare to:
+<b class="fc"><i>312</i>&nbsp;        GRADS grads1 = new GRADS();</b>
+<b class="fc"><i>313</i>&nbsp;        grads1.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>314</i>&nbsp;        grads1.loadRecords(&quot;resources/testAddNote.txt&quot;);</b>
+<b class="fc"><i>315</i>&nbsp;        grads1.setUser(&quot;hanxx123&quot;);  // CSCI GPC</b>
+<b class="fc"><i>316</i>&nbsp;        StudentRecord compareTranscript = grads1.getTranscript(&quot;hanxx123&quot;);</b>
+<i>317</i>&nbsp;
+<b class="fc"><i>318</i>&nbsp;        assert(compareStudentRecords(newTranscript, compareTranscript));</b>
+<b class="fc"><i>319</i>&nbsp;    }</b>
+<i>320</i>&nbsp;
+<i>321</i>&nbsp;    @Test
+<i>322</i>&nbsp;    public void testGPCAddNote() throws Exception {
+<b class="fc"><i>323</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>324</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>325</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>326</i>&nbsp;        grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>327</i>&nbsp;        grads.setUser(&quot;tolas9999&quot;);</b>
+<b class="fc"><i>328</i>&nbsp;        grads.addNote(&quot;hanxx123&quot;, &quot;note4&quot;);</b>
+<b class="fc"><i>329</i>&nbsp;        StudentRecord newTranscript = grads.getTranscript(&quot;hanxx123&quot;);</b>
+<i>330</i>&nbsp;
+<i>331</i>&nbsp;        // Compare to:
+<b class="fc"><i>332</i>&nbsp;        GRADS grads1 = new GRADS();</b>
+<b class="fc"><i>333</i>&nbsp;        grads1.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>334</i>&nbsp;        grads1.loadRecords(&quot;resources/testAddNote.txt&quot;);</b>
+<b class="fc"><i>335</i>&nbsp;        grads1.setUser(&quot;tolas9999&quot;);  // CSCI GPC</b>
+<b class="fc"><i>336</i>&nbsp;        StudentRecord compareTranscript = grads1.getTranscript(&quot;hanxx123&quot;);</b>
+<i>337</i>&nbsp;
+<b class="fc"><i>338</i>&nbsp;        assert(compareStudentRecords(newTranscript, compareTranscript));</b>
+<b class="fc"><i>339</i>&nbsp;    }</b>
+<i>340</i>&nbsp;
+<i>341</i>&nbsp;    //can&#39;t think of any way to assert this easily
+<i>342</i>&nbsp;    @Test
+<i>343</i>&nbsp;    public void testStudentGenerateOwnProgressSummary() throws Exception {
+<b class="fc"><i>344</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>345</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>346</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>347</i>&nbsp;        grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>348</i>&nbsp;        grads.setUser(&quot;zhang9101&quot;);</b>
+<b class="fc"><i>349</i>&nbsp;        grads.generateProgressSummary(&quot;zhang9101&quot;);</b>
+<b class="fc"><i>350</i>&nbsp;    }</b>
+<i>351</i>&nbsp;
+<i>352</i>&nbsp;    @Test
+<i>353</i>&nbsp;    public void testStudentGenerateOtherProgressSummary() throws Exception {
+<i>354</i>&nbsp;        try {
+<b class="fc"><i>355</i>&nbsp;            GRADS grads = new GRADS();</b>
+<b class="fc"><i>356</i>&nbsp;            grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>357</i>&nbsp;            grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>358</i>&nbsp;            grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>359</i>&nbsp;            grads.setUser(&quot;zhang9101&quot;);</b>
+<b class="fc"><i>360</i>&nbsp;            grads.generateProgressSummary(&quot;doe5678&quot;);</b>
+<b class="nc"><i>361</i>&nbsp;            fail(&quot;Student can&#39;t generate another student&#39;s progress summary&quot;);</b>
+<b class="fc"><i>362</i>&nbsp;        } catch (InvalidUserException e) {</b>
+<b class="fc"><i>363</i>&nbsp;            assertTrue(e.getMessage().equals(&quot;Invalid user&quot;));</b>
+<b class="nc"><i>364</i>&nbsp;        }</b>
+<i>365</i>&nbsp;
+<b class="fc"><i>366</i>&nbsp;    }</b>
+<i>367</i>&nbsp;
+<i>368</i>&nbsp;    //no good way to test correctness
+<i>369</i>&nbsp;    @Test
+<i>370</i>&nbsp;    public void testGPCGenerateProgressSummary() throws Exception {
+<b class="fc"><i>371</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>372</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>373</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>374</i>&nbsp;        grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>375</i>&nbsp;        grads.setUser(&quot;tolas9999&quot;);</b>
+<b class="fc"><i>376</i>&nbsp;        grads.generateProgressSummary(&quot;zhang9101&quot;);</b>
+<b class="fc"><i>377</i>&nbsp;    }</b>
+<i>378</i>&nbsp;
+<i>379</i>&nbsp;    //needs second check with courses already added to a students_original.txt transcript and then compare function
+<i>380</i>&nbsp;    @Test
+<i>381</i>&nbsp;    public void testStudentSimulateOwnCourses() throws Exception {
+<b class="fc"><i>382</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>383</i>&nbsp;        List&lt;CourseTaken&gt; coursesTaken =  Arrays.asList();</b>
+<b class="fc"><i>384</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>385</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>386</i>&nbsp;        grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>387</i>&nbsp;        grads.setUser(&quot;zhang9101&quot;);</b>
+<b class="fc"><i>388</i>&nbsp;        grads.simulateCourses(&quot;zhang9101&quot;, coursesTaken);</b>
+<b class="fc"><i>389</i>&nbsp;    }</b>
+<i>390</i>&nbsp;
+<i>391</i>&nbsp;    @Test
+<i>392</i>&nbsp;    public void testStudentSimulateOtherCourses() throws Exception {
+<i>393</i>&nbsp;        try {
+<b class="fc"><i>394</i>&nbsp;            GRADS grads = new GRADS();</b>
+<b class="fc"><i>395</i>&nbsp;            List&lt;CourseTaken&gt; coursesTaken = Arrays.asList();</b>
+<b class="fc"><i>396</i>&nbsp;            grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>397</i>&nbsp;            grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>398</i>&nbsp;            grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>399</i>&nbsp;            grads.setUser(&quot;zhang9101&quot;);</b>
+<b class="fc"><i>400</i>&nbsp;            grads.simulateCourses(&quot;doe5678&quot;, coursesTaken);</b>
+<b class="fc"><i>401</i>&nbsp;        } catch (InvalidUserException e) {</b>
+<b class="fc"><i>402</i>&nbsp;            assertTrue(e.getMessage().equals(&quot;Invalid user&quot;));</b>
+<b class="nc"><i>403</i>&nbsp;        }</b>
+<b class="fc"><i>404</i>&nbsp;    }</b>
+<i>405</i>&nbsp;
+<i>406</i>&nbsp;    //see test two above for student
+<i>407</i>&nbsp;    @Test
+<i>408</i>&nbsp;    public void testGPCSimulateCourses() throws Exception {
+<b class="fc"><i>409</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>410</i>&nbsp;        List&lt;CourseTaken&gt; coursesTaken =  Arrays.asList();</b>
+<b class="fc"><i>411</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>412</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>413</i>&nbsp;        grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>414</i>&nbsp;        grads.setUser(&quot;tolas9999&quot;);</b>
+<b class="fc"><i>415</i>&nbsp;        grads.simulateCourses(&quot;zhang9101&quot;, coursesTaken);</b>
+<b class="fc"><i>416</i>&nbsp;    }</b>
+<i>417</i>&nbsp;
+<i>418</i>&nbsp;    @Test
+<i>419</i>&nbsp;    //maybe check the GPA specifically?
+<i>420</i>&nbsp;    //GPA below PhD req, rest met
+<i>421</i>&nbsp;    public void testPhDSimulateCoursesLowGPA() throws Exception {
+<b class="fc"><i>422</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>423</i>&nbsp;        List&lt;CourseTaken&gt; coursesTaken =  Arrays.asList();</b>
+<b class="fc"><i>424</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>425</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>426</i>&nbsp;        grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>427</i>&nbsp;        grads.setUser(&quot;smith1234&quot;);</b>
+<b class="fc"><i>428</i>&nbsp;        grads.simulateCourses(&quot;smith1234&quot;, coursesTaken);</b>
+<b class="fc"><i>429</i>&nbsp;    }</b>
+<i>430</i>&nbsp;
+<i>431</i>&nbsp;    @Test
+<i>432</i>&nbsp;    //maybe check the GPA specifically?
+<i>433</i>&nbsp;    //GPA below Master req, rest met
+<i>434</i>&nbsp;    public void testMasterSimulateCoursesLowGPA() throws Exception {
+<b class="fc"><i>435</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>436</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>437</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>438</i>&nbsp;        grads.loadRecords(&quot;resources/studentsJohnMastersA.txt&quot;);</b>
+<b class="fc"><i>439</i>&nbsp;        grads.setUser(&quot;smith1234&quot;);</b>
+<b class="fc"><i>440</i>&nbsp;        StudentRecord sr = grads.getTranscript(&quot;smith1234&quot;);</b>
+<b class="fc"><i>441</i>&nbsp;        sr.setDegreeSought(Degree.MS_C);</b>
+<b class="fc"><i>442</i>&nbsp;        grads.updateTranscript(&quot;smith1234&quot;,sr);</b>
+<b class="fc"><i>443</i>&nbsp;        grads.generateProgressSummary(&quot;smith1234&quot;);</b>
+<b class="fc"><i>444</i>&nbsp;    }</b>
+<i>445</i>&nbsp;
+<i>446</i>&nbsp;    @Test
+<i>447</i>&nbsp;    //maybe check the thesis credit directly?
+<i>448</i>&nbsp;    //PhD doesn&#39;t meet thesis credit, rest met
+<i>449</i>&nbsp;    public void testPhDSimulateCoursesThesisCredit() throws Exception {
+<b class="fc"><i>450</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>451</i>&nbsp;        List&lt;CourseTaken&gt; coursesTaken =  Arrays.asList();</b>
+<b class="fc"><i>452</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>453</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>454</i>&nbsp;        grads.loadRecords(&quot;resources/studentsJanePhd.txt&quot;);</b>
+<b class="fc"><i>455</i>&nbsp;        grads.setUser(&quot;doe5678&quot;);</b>
+<b class="fc"><i>456</i>&nbsp;        grads.simulateCourses(&quot;doe5678&quot;, coursesTaken);</b>
+<b class="fc"><i>457</i>&nbsp;    }</b>
+<i>458</i>&nbsp;
+<i>459</i>&nbsp;    @Test
+<i>460</i>&nbsp;    //how to test?
+<i>461</i>&nbsp;    //All requirements met
+<i>462</i>&nbsp;    public void testMasterSimulateCoursesAllMet() throws Exception {
+<b class="fc"><i>463</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>464</i>&nbsp;        List&lt;CourseTaken&gt; coursesTaken =  Arrays.asList();</b>
+<b class="fc"><i>465</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>466</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>467</i>&nbsp;        grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>468</i>&nbsp;        grads.setUser(&quot;doe5678&quot;);</b>
+<b class="fc"><i>469</i>&nbsp;        grads.simulateCourses(&quot;doe5678&quot;, coursesTaken);</b>
+<b class="fc"><i>470</i>&nbsp;    }</b>
+<i>471</i>&nbsp;
+<i>472</i>&nbsp;    @Test
+<i>473</i>&nbsp;    //how to test?
+<i>474</i>&nbsp;    //PhD adds courses to meet necessary requirements
+<i>475</i>&nbsp;    public void testPhDSimulateCoursesNewCourse() throws Exception {
+<b class="fc"><i>476</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>477</i>&nbsp;        Term f15 = new Term();</b>
+<b class="fc"><i>478</i>&nbsp;        f15.setSemester(&quot;FALL&quot;);</b>
+<b class="fc"><i>479</i>&nbsp;        f15.setYear(2015);</b>
+<b class="fc"><i>480</i>&nbsp;        Course csci8980 = new Course(&quot;Special Advanced Topics in Computer Science&quot;, &quot;csci8980&quot;, &quot;3&quot;);</b>
+<b class="fc"><i>481</i>&nbsp;        CourseTaken csci8980f15 = new CourseTaken(csci8980, f15, Grade.B);</b>
+<b class="fc"><i>482</i>&nbsp;        Course math5335 = new Course(&quot;MATH 5335&quot;, &quot;math5335&quot;, &quot;4&quot;);</b>
+<b class="fc"><i>483</i>&nbsp;        CourseTaken math5335f15 = new CourseTaken(math5335, f15, Grade.A);</b>
+<b class="fc"><i>484</i>&nbsp;        Course math5336 = new Course(&quot;MATH 5336&quot;, &quot;math5336&quot;, &quot;3&quot;);</b>
+<b class="fc"><i>485</i>&nbsp;        CourseTaken math5336f15 = new CourseTaken(math5336, f15, Grade.A);</b>
+<b class="fc"><i>486</i>&nbsp;        Course csci5512 = new Course(&quot;Artificial Intelligence II&quot;, &quot;csci5512&quot;, &quot;3&quot;, CourseArea.APPLICATIONS);</b>
+<b class="fc"><i>487</i>&nbsp;        CourseTaken csci5512f15 = new CourseTaken(csci5512, f15, Grade.B);</b>
+<b class="fc"><i>488</i>&nbsp;        Course cs8970 = new Course(&quot;Computer Science Colloquium&quot;, &quot;csci8970&quot;, &quot;1&quot;);</b>
+<b class="fc"><i>489</i>&nbsp;        CourseTaken cs8970f15 = new CourseTaken(cs8970, f15, Grade.S);</b>
+<b class="fc"><i>490</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>491</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>492</i>&nbsp;        grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>493</i>&nbsp;        List&lt;CourseTaken&gt; coursesTaken =  Arrays.asList(csci8980f15, math5335f15, math5336f15, csci5512f15, cs8970f15);</b>
+<b class="fc"><i>494</i>&nbsp;        grads.setUser(&quot;zhang9101&quot;);</b>
+<b class="fc"><i>495</i>&nbsp;        grads.simulateCourses(&quot;zhang9101&quot;, coursesTaken);</b>
+<b class="fc"><i>496</i>&nbsp;    }</b>
+<i>497</i>&nbsp;
+<i>498</i>&nbsp;    @Test
+<i>499</i>&nbsp;    public void testGPCAddMilestone() throws Exception {
+<b class="fc"><i>500</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>501</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>502</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>503</i>&nbsp;        grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>504</i>&nbsp;        grads.setUser(&quot;tolas9999&quot;);</b>
+<b class="fc"><i>505</i>&nbsp;        StudentRecord studentRecord = grads.getTranscript(&quot;zhang9101&quot;);</b>
+<b class="fc"><i>506</i>&nbsp;        studentRecord.addMilestonesSet(new CompletedMilestone(Milestone.PRELIM_COMMITTEE_APPOINTED, new Term(Semester.FALL, 2014)));</b>
+<b class="fc"><i>507</i>&nbsp;        grads.updateTranscript(&quot;zhang9101&quot;, studentRecord);</b>
+<b class="fc"><i>508</i>&nbsp;        StudentRecord newTranscript = grads.getTranscript(&quot;zhang9101&quot;);</b>
+<i>509</i>&nbsp;        // Compare to:
+<b class="fc"><i>510</i>&nbsp;        GRADS grads1 = new GRADS();</b>
+<b class="fc"><i>511</i>&nbsp;        grads1.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>512</i>&nbsp;        grads1.loadRecords(&quot;resources/testGPCAddMilestone.txt&quot;);</b>
+<b class="fc"><i>513</i>&nbsp;        grads1.setUser(&quot;tolas9999&quot;);  // CSCI GPC</b>
+<b class="fc"><i>514</i>&nbsp;        StudentRecord compareTranscript = grads1.getTranscript(&quot;zhang9101&quot;);</b>
+<i>515</i>&nbsp;
+<b class="fc"><i>516</i>&nbsp;        assert(compareStudentRecords(newTranscript, compareTranscript));</b>
+<b class="fc"><i>517</i>&nbsp;    }</b>
+<i>518</i>&nbsp;
+<i>519</i>&nbsp;    @Test
+<i>520</i>&nbsp;    public void testGPCChangeMilestone() throws Exception {
+<b class="fc"><i>521</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>522</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>523</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>524</i>&nbsp;        grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>525</i>&nbsp;        grads.setUser(&quot;tolas9999&quot;);</b>
+<b class="fc"><i>526</i>&nbsp;        StudentRecord studentRecord = grads.getTranscript(&quot;hanxx123&quot;);</b>
+<i>527</i>&nbsp;
+<b class="fc"><i>528</i>&nbsp;        List&lt;CompletedMilestone&gt; milestoneList = studentRecord.getMilestonesSet();</b>
+<b class="fc"><i>529</i>&nbsp;        int year = milestoneList.get(0).getTerm().getYear() - 1;</b>
+<b class="fc"><i>530</i>&nbsp;        Milestone milestone = milestoneList.get(0).getMilestone();</b>
+<b class="fc"><i>531</i>&nbsp;        Term term = new Term(milestoneList.get(0).getTerm().getSemester(), year);</b>
+<b class="fc"><i>532</i>&nbsp;        milestoneList.set(0, new CompletedMilestone(milestone, term));</b>
+<i>533</i>&nbsp;
+<b class="fc"><i>534</i>&nbsp;        studentRecord.setMilestonesSet(milestoneList);</b>
+<b class="fc"><i>535</i>&nbsp;        grads.updateTranscript(&quot;hanxx123&quot;, studentRecord);</b>
+<b class="fc"><i>536</i>&nbsp;        StudentRecord newTranscript = grads.getTranscript(&quot;hanxx123&quot;);</b>
+<i>537</i>&nbsp;
+<i>538</i>&nbsp;        // Compare to:
+<b class="fc"><i>539</i>&nbsp;        GRADS grads1 = new GRADS();</b>
+<b class="fc"><i>540</i>&nbsp;        grads1.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>541</i>&nbsp;        grads1.loadRecords(&quot;resources/testGPCChangeMilestone.txt&quot;);</b>
+<b class="fc"><i>542</i>&nbsp;        grads1.setUser(&quot;tolas9999&quot;);  // CSCI GPC</b>
+<b class="fc"><i>543</i>&nbsp;        StudentRecord compareTranscript = grads1.getTranscript(&quot;hanxx123&quot;);</b>
+<i>544</i>&nbsp;
+<b class="fc"><i>545</i>&nbsp;        assert(compareStudentRecords(newTranscript, compareTranscript));</b>
+<b class="fc"><i>546</i>&nbsp;    }</b>
+<i>547</i>&nbsp;
+<i>548</i>&nbsp;    @Test
+<i>549</i>&nbsp;    public void testGPCChangeAdvisor() throws Exception {
+<b class="fc"><i>550</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>551</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>552</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>553</i>&nbsp;        grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>554</i>&nbsp;        grads.setUser(&quot;tolas9999&quot;);</b>
+<i>555</i>&nbsp;
+<b class="fc"><i>556</i>&nbsp;        StudentRecord studentRecord = grads.getTranscript(&quot;desil1337&quot;);</b>
+<b class="fc"><i>557</i>&nbsp;        studentRecord.addAdvisor(new Professor(Department.COMPUTER_SCIENCE, &quot;Will&quot;, &quot;Smith&quot;));</b>
+<b class="fc"><i>558</i>&nbsp;        grads.updateTranscript(&quot;desil1337&quot;, studentRecord);</b>
+<b class="fc"><i>559</i>&nbsp;        StudentRecord newTranscript = grads.getTranscript(&quot;desil1337&quot;);</b>
+<i>560</i>&nbsp;
+<i>561</i>&nbsp;        // Compare to:
+<b class="fc"><i>562</i>&nbsp;        GRADS grads1 = new GRADS();</b>
+<b class="fc"><i>563</i>&nbsp;        grads1.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>564</i>&nbsp;        grads1.loadRecords(&quot;resources/testAddAdvisor.txt&quot;);</b>
+<b class="fc"><i>565</i>&nbsp;        grads1.setUser(&quot;tolas9999&quot;);  // CSCI GPC</b>
+<b class="fc"><i>566</i>&nbsp;        StudentRecord compareTranscript = grads1.getTranscript(&quot;desil1337&quot;);</b>
+<i>567</i>&nbsp;
+<b class="fc"><i>568</i>&nbsp;        assert(compareStudentRecords(newTranscript, compareTranscript));</b>
+<b class="fc"><i>569</i>&nbsp;    }</b>
+<i>570</i>&nbsp;
+<i>571</i>&nbsp;    @Test
+<i>572</i>&nbsp;    //PhD or Plan B student
+<i>573</i>&nbsp;    public void testStudentAuthorizedChangeAdvisor() throws Exception {
+<b class="fc"><i>574</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>575</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>576</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>577</i>&nbsp;        grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>578</i>&nbsp;        grads.setUser(&quot;desil1337&quot;);</b>
+<i>579</i>&nbsp;
+<b class="fc"><i>580</i>&nbsp;        StudentRecord studentRecord = grads.getTranscript(&quot;desil1337&quot;);</b>
+<b class="fc"><i>581</i>&nbsp;        studentRecord.addAdvisor(new Professor(Department.COMPUTER_SCIENCE, &quot;Will&quot;, &quot;Smith&quot;));</b>
+<b class="fc"><i>582</i>&nbsp;        grads.updateTranscript(&quot;desil1337&quot;, studentRecord);</b>
+<b class="fc"><i>583</i>&nbsp;        StudentRecord newTranscript = grads.getTranscript(&quot;desil1337&quot;);</b>
+<i>584</i>&nbsp;
+<i>585</i>&nbsp;        // Compare to:
+<b class="fc"><i>586</i>&nbsp;        GRADS grads1 = new GRADS();</b>
+<b class="fc"><i>587</i>&nbsp;        grads1.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>588</i>&nbsp;        grads1.loadRecords(&quot;resources/testAddAdvisor.txt&quot;);</b>
+<b class="fc"><i>589</i>&nbsp;        grads1.setUser(&quot;desil1337&quot;);  // CSCI GPC</b>
+<b class="fc"><i>590</i>&nbsp;        StudentRecord compareTranscript = grads1.getTranscript(&quot;desil1337&quot;);</b>
+<i>591</i>&nbsp;
+<b class="fc"><i>592</i>&nbsp;        assert(compareStudentRecords(newTranscript, compareTranscript));</b>
+<b class="fc"><i>593</i>&nbsp;    }</b>
+<i>594</i>&nbsp;
+<i>595</i>&nbsp;    @Test
+<i>596</i>&nbsp;    //try/catch clause needed
+<i>597</i>&nbsp;    //PhD or Plan B student
+<i>598</i>&nbsp;    public void testStudentUnauthorizedChangeAdvisor() throws Exception {
+<i>599</i>&nbsp;        try {
+<b class="fc"><i>600</i>&nbsp;            GRADS grads = new GRADS();</b>
+<b class="fc"><i>601</i>&nbsp;            List&lt;CourseTaken&gt; coursesTaken = Arrays.asList();</b>
+<b class="fc"><i>602</i>&nbsp;            grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>603</i>&nbsp;            grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>604</i>&nbsp;            grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>605</i>&nbsp;            grads.setUser(&quot;zhang9101&quot;);</b>
+<b class="fc"><i>606</i>&nbsp;            StudentRecord studentRecord = grads.getTranscript(&quot;gayxx067&quot;);</b>
+<b class="nc"><i>607</i>&nbsp;            studentRecord.addAdvisor(new Professor(Department.MATH, &quot;Will&quot;, &quot;Smith&quot;));</b>
+<b class="nc"><i>608</i>&nbsp;            grads.updateTranscript(&quot;gayxx067&quot;, studentRecord);</b>
+<b class="fc"><i>609</i>&nbsp;        } catch (InvalidUserException e) {</b>
+<b class="fc"><i>610</i>&nbsp;            assertTrue(e.getMessage().equals(&quot;Invalid user&quot;));</b>
+<b class="nc"><i>611</i>&nbsp;        }</b>
+<b class="fc"><i>612</i>&nbsp;    }</b>
+<i>613</i>&nbsp;
+<i>614</i>&nbsp;    @Test
+<i>615</i>&nbsp;    //delete? or write similar to ones above
+<i>616</i>&nbsp;    //PhD, Plan A, or Plan C
+<i>617</i>&nbsp;    public void testGPCChangeCommittee() throws Exception {
+<b class="fc"><i>618</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>619</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>620</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>621</i>&nbsp;        grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>622</i>&nbsp;        grads.setUser(&quot;tolas9999&quot;);</b>
+<i>623</i>&nbsp;
+<b class="fc"><i>624</i>&nbsp;        StudentRecord studentRecord = grads.getTranscript(&quot;nguy0621&quot;);</b>
+<b class="fc"><i>625</i>&nbsp;        studentRecord.addCommitteeMember(new Professor(Department.COMPUTER_SCIENCE, &quot;Iron&quot;, &quot;Man&quot;));</b>
+<b class="fc"><i>626</i>&nbsp;        grads.updateTranscript(&quot;nguy0621&quot;, studentRecord);</b>
+<b class="fc"><i>627</i>&nbsp;        StudentRecord newTranscript = grads.getTranscript(&quot;nguy0621&quot;);</b>
+<i>628</i>&nbsp;
+<i>629</i>&nbsp;        // Compare to:
+<b class="fc"><i>630</i>&nbsp;        GRADS grads1 = new GRADS();</b>
+<b class="fc"><i>631</i>&nbsp;        grads1.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>632</i>&nbsp;        grads1.loadRecords(&quot;resources/testAddAdvisor.txt&quot;);</b>
+<b class="fc"><i>633</i>&nbsp;        grads1.setUser(&quot;tolas9999&quot;);  // CSCI GPC</b>
+<b class="fc"><i>634</i>&nbsp;        StudentRecord compareTranscript = grads1.getTranscript(&quot;nguy0621&quot;);</b>
+<i>635</i>&nbsp;
+<b class="fc"><i>636</i>&nbsp;        assert(compareStudentRecords(newTranscript, compareTranscript));</b>
+<b class="fc"><i>637</i>&nbsp;    }</b>
+<i>638</i>&nbsp;
+<i>639</i>&nbsp;    @Test
+<i>640</i>&nbsp;    //delete?
+<i>641</i>&nbsp;    //PhD, Plan A, or Plan C
+<i>642</i>&nbsp;    public void testStudentAuthorizedChangeCommittee() throws Exception {
+<b class="fc"><i>643</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>644</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>645</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>646</i>&nbsp;        grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>647</i>&nbsp;        grads.setUser(&quot;nguy0621&quot;);</b>
+<i>648</i>&nbsp;
+<b class="fc"><i>649</i>&nbsp;        StudentRecord studentRecord = grads.getTranscript(&quot;nguy0621&quot;);</b>
+<b class="fc"><i>650</i>&nbsp;        studentRecord.addCommitteeMember(new Professor(Department.COMPUTER_SCIENCE, &quot;Iron&quot;, &quot;Man&quot;));</b>
+<b class="fc"><i>651</i>&nbsp;        grads.updateTranscript(&quot;nguy0621&quot;, studentRecord);</b>
+<b class="fc"><i>652</i>&nbsp;        StudentRecord newTranscript = grads.getTranscript(&quot;nguy0621&quot;);</b>
+<i>653</i>&nbsp;
+<i>654</i>&nbsp;        // Compare to:
+<b class="fc"><i>655</i>&nbsp;        GRADS grads1 = new GRADS();</b>
+<b class="fc"><i>656</i>&nbsp;        grads1.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>657</i>&nbsp;        grads1.loadRecords(&quot;resources/testAddAdvisor.txt&quot;);</b>
+<b class="fc"><i>658</i>&nbsp;        grads1.setUser(&quot;nguy0621&quot;);  // CSCI GPC</b>
+<b class="fc"><i>659</i>&nbsp;        StudentRecord compareTranscript = grads1.getTranscript(&quot;nguy0621&quot;);</b>
+<i>660</i>&nbsp;
+<b class="fc"><i>661</i>&nbsp;        assert(compareStudentRecords(newTranscript, compareTranscript));</b>
+<b class="fc"><i>662</i>&nbsp;    }</b>
+<i>663</i>&nbsp;
+<i>664</i>&nbsp;    @Test
+<i>665</i>&nbsp;    //try/catch clause if this is needed
+<i>666</i>&nbsp;    //PhD, Plan A, or Plan C
+<i>667</i>&nbsp;    public void testStudentUnauthorizedChangeCommittee() throws Exception {
+<i>668</i>&nbsp;        try {
+<b class="fc"><i>669</i>&nbsp;            GRADS grads = new GRADS();</b>
+<b class="fc"><i>670</i>&nbsp;            grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>671</i>&nbsp;            grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>672</i>&nbsp;            grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>673</i>&nbsp;            grads.setUser(&quot;gayxx067&quot;);</b>
+<i>674</i>&nbsp;
+<b class="fc"><i>675</i>&nbsp;            StudentRecord studentRecord = grads.getTranscript(&quot;nguy0621&quot;);</b>
+<b class="nc"><i>676</i>&nbsp;            studentRecord.addCommitteeMember(new Professor(Department.COMPUTER_SCIENCE, &quot;Iron&quot;, &quot;Man&quot;));</b>
+<b class="nc"><i>677</i>&nbsp;            grads.updateTranscript(&quot;nguy0621&quot;, studentRecord);</b>
+<b class="fc"><i>678</i>&nbsp;        } catch (InvalidUserException e) {</b>
+<b class="fc"><i>679</i>&nbsp;            assertTrue(e.getMessage().equals(&quot;Invalid user&quot;));</b>
+<b class="nc"><i>680</i>&nbsp;        }</b>
+<b class="fc"><i>681</i>&nbsp;    }</b>
+<i>682</i>&nbsp;    //desil1337
+<i>683</i>&nbsp;    //tolas9999
+<i>684</i>&nbsp;    @Test
+<i>685</i>&nbsp;    //need to fix this
+<i>686</i>&nbsp;    public void testGPCChangeGrade() throws Exception {
+<b class="fc"><i>687</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>688</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>689</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>690</i>&nbsp;        grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>691</i>&nbsp;        grads.setUser(&quot;tolas9999&quot;);</b>
+<i>692</i>&nbsp;
+<b class="fc"><i>693</i>&nbsp;        StudentRecord studentRecord = grads.getTranscript(&quot;desil1337&quot;);</b>
+<b class="fc"><i>694</i>&nbsp;        List&lt;CourseTaken&gt; courseTakenList = studentRecord.getCoursesTaken();</b>
+<b class="fc"><i>695</i>&nbsp;        Course course = courseTakenList.get(0).getCourse();</b>
+<b class="fc"><i>696</i>&nbsp;        Term term = courseTakenList.get(0).getTerm();</b>
+<b class="fc"><i>697</i>&nbsp;        courseTakenList.set(0, new CourseTaken(course, term, Grade.A));</b>
+<b class="fc"><i>698</i>&nbsp;        studentRecord.setCoursesTaken(courseTakenList);</b>
+<b class="fc"><i>699</i>&nbsp;        grads.updateTranscript(&quot;desil1337&quot;, studentRecord);</b>
+<b class="fc"><i>700</i>&nbsp;        StudentRecord newTranscript = grads.getTranscript(&quot;desil1337&quot;);</b>
+<i>701</i>&nbsp;
+<i>702</i>&nbsp;        // Compare to:
+<b class="fc"><i>703</i>&nbsp;        GRADS grads1 = new GRADS();</b>
+<b class="fc"><i>704</i>&nbsp;        grads1.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>705</i>&nbsp;        grads1.loadRecords(&quot;resources/testChangeGrade.txt&quot;);</b>
+<b class="fc"><i>706</i>&nbsp;        grads1.setUser(&quot;tolas9999&quot;);  // CSCI GPC</b>
+<b class="fc"><i>707</i>&nbsp;        StudentRecord compareTranscript = grads1.getTranscript(&quot;desil1337&quot;);</b>
+<i>708</i>&nbsp;
+<b class="fc"><i>709</i>&nbsp;        assert(compareStudentRecords(newTranscript, compareTranscript));</b>
+<b class="fc"><i>710</i>&nbsp;    }</b>
+<i>711</i>&nbsp;
+<i>712</i>&nbsp;    @Test
+<i>713</i>&nbsp;    //new test not found in requirements - ooh we found a bug!
+<i>714</i>&nbsp;    public void testEmptyStudentRecordProgressReport() throws Exception {
+<b class="fc"><i>715</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>716</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>717</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>718</i>&nbsp;        grads.loadRecords(&quot;resources/studentsJohnMastersA.txt&quot;);</b>
+<b class="fc"><i>719</i>&nbsp;        grads.setUser(&quot;tolas9999&quot;);</b>
+<b class="fc"><i>720</i>&nbsp;        StudentRecord oldSR = grads.getTranscript(&quot;smith1234&quot;);</b>
+<b class="fc"><i>721</i>&nbsp;        Student s = oldSR.getStudent();</b>
+<b class="fc"><i>722</i>&nbsp;        Department d = oldSR.getDepartment();</b>
+<b class="fc"><i>723</i>&nbsp;        Degree dS = Degree.MS_B;</b>
+<b class="fc"><i>724</i>&nbsp;        Term tB = oldSR.getTermBegan();</b>
+<b class="fc"><i>725</i>&nbsp;        List&lt;Professor&gt; advs = oldSR.getAdvisors();</b>
+<b class="fc"><i>726</i>&nbsp;        List&lt;Professor&gt; comm = oldSR.getCommittee();</b>
+<b class="fc"><i>727</i>&nbsp;        List&lt;CourseTaken&gt; coursesTaken =  null;</b>
+<b class="fc"><i>728</i>&nbsp;        List&lt;String&gt; notes = oldSR.getNotes();</b>
+<b class="fc"><i>729</i>&nbsp;        StudentRecord sr = new StudentRecord(s, d, dS, tB, advs, comm, coursesTaken, notes);</b>
+<b class="fc"><i>730</i>&nbsp;        grads.updateTranscript(&quot;smith1234&quot;,sr);</b>
+<b class="fc"><i>731</i>&nbsp;        grads.generateProgressSummary(&quot;smith1234&quot;);</b>
+<b class="fc"><i>732</i>&nbsp;    }</b>
+<i>733</i>&nbsp;
+<i>734</i>&nbsp;    @Test
+<i>735</i>&nbsp;    public void testThrowInvalidStudentException() throws Exception {
+<b class="fc"><i>736</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>737</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>738</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>739</i>&nbsp;        grads.loadRecords(&quot;resources/studentsBAD.txt&quot;);</b>
+<b class="fc"><i>740</i>&nbsp;        grads.setUser(&quot;tolas9999&quot;);</b>
+<i>741</i>&nbsp;        try {
+<b class="fc"><i>742</i>&nbsp;            grads.getStudentIDs();</b>
+<b class="fc"><i>743</i>&nbsp;        } catch (InvalidStudentException e) {</b>
+<b class="fc"><i>744</i>&nbsp;            assertTrue(e.getMessage().equals(&quot;Invalid Students&quot;));</b>
+<b class="nc"><i>745</i>&nbsp;        }</b>
+<b class="fc"><i>746</i>&nbsp;    }</b>
+<i>747</i>&nbsp;
+<i>748</i>&nbsp;    @Test
+<i>749</i>&nbsp;    public void testThrowInvalidStudentListException() throws Exception {
+<b class="fc"><i>750</i>&nbsp;        GRADS grads = new GRADS();</b>
+<b class="fc"><i>751</i>&nbsp;        grads.loadUsers(&quot;resources/users.txt&quot;);</b>
+<b class="fc"><i>752</i>&nbsp;        grads.loadCourses(&quot;resources/courses.txt&quot;);</b>
+<b class="fc"><i>753</i>&nbsp;        grads.loadRecords(&quot;resources/students_original.txt&quot;);</b>
+<b class="fc"><i>754</i>&nbsp;        grads.setUser(&quot;tolas9999&quot;);</b>
+<i>755</i>&nbsp;        try {
+<b class="fc"><i>756</i>&nbsp;            grads.getTranscript(&quot;Bad ID&quot;);</b>
+<b class="fc"><i>757</i>&nbsp;        } catch (InvalidStudentListException e) {</b>
+<b class="fc"><i>758</i>&nbsp;            assertTrue(e.getMessage().equals(&quot;Student Does Not Exist&quot;));</b>
+<b class="nc"><i>759</i>&nbsp;        }</b>
+<b class="fc"><i>760</i>&nbsp;    }</b>
+<i>761</i>&nbsp;
+<i>762</i>&nbsp;    @Test
+<i>763</i>&nbsp;    public void testGetAndSetCompletedMilestonesMethods() throws Exception {
+<b class="fc"><i>764</i>&nbsp;        CompletedMilestone completedMilestone = new CompletedMilestone();</b>
+<b class="fc"><i>765</i>&nbsp;        completedMilestone.setMilestone(Milestone.DEFENSE_PASSED);</b>
+<b class="fc"><i>766</i>&nbsp;        completedMilestone.setTerm(new Term(Semester.SUMMER, 2012));</b>
+<b class="fc"><i>767</i>&nbsp;        assertEquals(completedMilestone.getMilestone(),Milestone.DEFENSE_PASSED);</b>
+<b class="fc"><i>768</i>&nbsp;        assertEquals(completedMilestone.getTerm().getSemester(), Semester.SUMMER);</b>
+<b class="fc"><i>769</i>&nbsp;        assertEquals(completedMilestone.getTerm().getYear(), 2012);</b>
+<b class="fc"><i>770</i>&nbsp;    }</b>
+<i>771</i>&nbsp;
+<i>772</i>&nbsp;    @Test
+<i>773</i>&nbsp;    public void testGetAndSetCourseMethods() throws Exception {
+<b class="fc"><i>774</i>&nbsp;        Course course = new Course();</b>
+<b class="fc"><i>775</i>&nbsp;        course.setCourseArea(CourseArea.APPLICATIONS);</b>
+<b class="fc"><i>776</i>&nbsp;        course.setId(&quot;stringID&quot;);</b>
+<b class="fc"><i>777</i>&nbsp;        course.setName(&quot;Course Name&quot;);</b>
+<b class="fc"><i>778</i>&nbsp;        course.setNumCredits(&quot;75&quot;);</b>
+<i>779</i>&nbsp;
+<b class="fc"><i>780</i>&nbsp;        assertEquals(course.getCourseArea(), CourseArea.APPLICATIONS);</b>
+<b class="fc"><i>781</i>&nbsp;        assertEquals(course.getId(), &quot;stringID&quot;);</b>
+<b class="fc"><i>782</i>&nbsp;        assertEquals(course.getName(),&quot;Course Name&quot;);</b>
+<b class="fc"><i>783</i>&nbsp;        assertEquals(course.getNumCredits(), &quot;75&quot;);</b>
+<b class="fc"><i>784</i>&nbsp;    }</b>
+<i>785</i>&nbsp;
+<i>786</i>&nbsp;    @Test
+<i>787</i>&nbsp;    public void testGetAndSetRequirementsMethods() throws Exception {
+<b class="fc"><i>788</i>&nbsp;        Requirement requirement = new Requirement();</b>
+<b class="fc"><i>789</i>&nbsp;        requirement.setName(Reqs.BREADTH_REQUIREMENT_MS);</b>
+<b class="fc"><i>790</i>&nbsp;        List&lt;CompletedMilestone&gt; completedMilestoneList = new ArrayList&lt;CompletedMilestone&gt;();</b>
+<b class="fc"><i>791</i>&nbsp;        completedMilestoneList.add(new CompletedMilestone(Milestone.DEFENSE_PASSED));</b>
+<b class="fc"><i>792</i>&nbsp;        requirement.setMilestones(completedMilestoneList);</b>
+<b class="fc"><i>793</i>&nbsp;        requirement.setCredits(3);</b>
+<b class="fc"><i>794</i>&nbsp;        requirement.setGpa(3.7);</b>
+<b class="fc"><i>795</i>&nbsp;        List&lt;String&gt; notesList = new ArrayList&lt;String&gt;();</b>
+<b class="fc"><i>796</i>&nbsp;        notesList.add(&quot;note&quot;);</b>
+<b class="fc"><i>797</i>&nbsp;        requirement.setNotes(notesList);</b>
+<b class="fc"><i>798</i>&nbsp;        List&lt;CourseTaken&gt; courseTakenList = new ArrayList&lt;CourseTaken&gt;();</b>
+<b class="fc"><i>799</i>&nbsp;        courseTakenList.add(new CourseTaken(new Course(&quot;1&quot;, &quot;2&quot;,&quot;3&quot;), new Term(Semester.SUMMER, 2014), Grade.B));</b>
+<b class="fc"><i>800</i>&nbsp;        requirement.setCourses(courseTakenList);</b>
+<i>801</i>&nbsp;
+<b class="fc"><i>802</i>&nbsp;        boolean check = false;</b>
+<b class="fc"><i>803</i>&nbsp;        if(requirement.getGpa() == 3.7) check = true;</b>
+<b class="fc"><i>804</i>&nbsp;        assert(check);</b>
+<b class="fc"><i>805</i>&nbsp;        assertEquals(requirement.getCredits(), 3);</b>
+<b class="fc"><i>806</i>&nbsp;        assertEquals(requirement.getName(), Reqs.BREADTH_REQUIREMENT_MS);</b>
+<b class="fc"><i>807</i>&nbsp;    }</b>
+<i>808</i>&nbsp;
+<i>809</i>&nbsp;    @Test
+<i>810</i>&nbsp;    public void testGetAndSetProgressSummaryMethods() throws Exception {
+<b class="fc"><i>811</i>&nbsp;        Student student = new Student(&quot;studentID&quot;, &quot;Emma&quot;, &quot;Watson&quot;);</b>
+<b class="fc"><i>812</i>&nbsp;        Department department = Department.COMPUTER_SCIENCE;</b>
+<b class="fc"><i>813</i>&nbsp;        Degree degree = Degree.MS_C;</b>
+<b class="fc"><i>814</i>&nbsp;        Term term = new Term(Semester.FALL, 2014);</b>
+<b class="fc"><i>815</i>&nbsp;        List&lt;Professor&gt; professorList1 = new ArrayList&lt;Professor&gt;();</b>
+<b class="fc"><i>816</i>&nbsp;        professorList1.add(new Professor(Department.MATH, &quot;Mad-Eye&quot;, &quot;Moody&quot;));</b>
+<b class="fc"><i>817</i>&nbsp;        List&lt;Professor&gt; professorList2 = new ArrayList&lt;Professor&gt;();</b>
+<b class="fc"><i>818</i>&nbsp;        professorList2.add(new Professor(Department.MATH, &quot;Lord&quot;, &quot;Voldy&quot;));</b>
+<b class="fc"><i>819</i>&nbsp;        List&lt;String&gt; stringList = new ArrayList&lt;String&gt;();</b>
+<b class="fc"><i>820</i>&nbsp;        stringList.add(&quot;BACON&quot;);</b>
+<b class="fc"><i>821</i>&nbsp;        List&lt;CourseTaken&gt; courseTakenList = new ArrayList&lt;CourseTaken&gt;();</b>
+<b class="fc"><i>822</i>&nbsp;        Course course = new Course(&quot;Name&quot;, &quot;ID&quot;, &quot;3.14&quot;);</b>
+<b class="fc"><i>823</i>&nbsp;        courseTakenList.add(new CourseTaken(course,new Term(Semester.SPRING,2013),Grade.B));</b>
+<b class="fc"><i>824</i>&nbsp;        ProgressSummary progressSummary = new ProgressSummary(student, department, degree, term, professorList1,</b>
+<i>825</i>&nbsp;                professorList2, stringList, courseTakenList);
+<i>826</i>&nbsp;
+<b class="fc"><i>827</i>&nbsp;        assert(progressSummary.getAdvisors().get(0).getLastName().equals(&quot;Moody&quot;));</b>
+<b class="fc"><i>828</i>&nbsp;        assertEquals(progressSummary.getCoursesTaken().get(0).getGrade(), Grade.B);</b>
+<b class="fc"><i>829</i>&nbsp;        assert(progressSummary.getCommittee().get(0).getLastName().equals(&quot;Voldy&quot;));</b>
+<b class="fc"><i>830</i>&nbsp;        assertEquals(progressSummary.getDegreeSought(), Degree.MS_C);</b>
+<b class="fc"><i>831</i>&nbsp;        assertEquals(progressSummary.getDepartment(), Department.COMPUTER_SCIENCE);</b>
+<b class="fc"><i>832</i>&nbsp;        assert(progressSummary.getNotes().get(0).equals(&quot;BACON&quot;));</b>
+<b class="fc"><i>833</i>&nbsp;        assert(progressSummary.getStudent().getLastName().equals(&quot;Watson&quot;));</b>
+<b class="fc"><i>834</i>&nbsp;    }</b>
+<i>835</i>&nbsp;
+<i>836</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2014-12-13 14:30</div>
+</div>
+</body>
+</html>

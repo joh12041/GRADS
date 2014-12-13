@@ -107,43 +107,6 @@ public class GRADSTestBasedOnAssignment2 extends TestCase {
     }
 
     @Test
-    public void testLoadUsers() throws Exception {
-        GRADS grads = new GRADS();
-        grads.loadUsers("resources/users.txt");
-
-    }
-
-    @Test(expected = IOException.class)
-    public void testExceptionThrownLoadUsers() throws Exception {
-        GRADS grads = new GRADS();
-        grads.loadUsers("resources/not_a_file.txt");
-
-    }
-
-    @Test
-    public void testLoadCourses() throws Exception {
-        GRADS grads = new GRADS();
-        grads.loadCourses("resources/courses.txt");
-    }
-
-    @Test(expected = IOException.class)
-    public void testExceptionThrownLoadCourses() throws Exception {
-        GRADS grads = new GRADS();
-        grads.loadCourses("resources/not_a_file.txt");
-    }
-    @Test
-    public void testLoadRecords() throws Exception {
-        GRADS grads = new GRADS();
-        grads.loadRecords("resources/students_original.txt");
-    }
-
-    @Test(expected = IOException.class)
-    public void testExceptionThrownLoadRecords() throws Exception {
-        GRADS grads = new GRADS();
-        grads.loadRecords("resources/not_a_file.txt");
-    }
-
-    @Test
     public void testSetUser() throws Exception {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
@@ -288,29 +251,6 @@ public class GRADSTestBasedOnAssignment2 extends TestCase {
         grads1.loadUsers("resources/users.txt");
         grads1.loadRecords("resources/testGPCChangeAdvisor.txt");
         grads1.setUser("tolas9999");  // CSCI GPC
-        StudentRecord compareTranscript = grads1.getTranscript("hanxx123");
-
-        assert(compareStudentRecords(newTranscript, compareTranscript));
-    }
-
-    @Test
-    public void testStudentAddNote() throws Exception {
-        GRADS grads = new GRADS();
-        grads.loadUsers("resources/users.txt");
-        grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/students_original.txt");
-        grads.setUser("hanxx123");
-
-        StudentRecord studentRecord = grads.getTranscript("hanxx123");
-        studentRecord.addNote("note4");
-        grads.updateTranscript("hanxx123", studentRecord);
-        StudentRecord newTranscript = grads.getTranscript("hanxx123");
-
-        // Compare to:
-        GRADS grads1 = new GRADS();
-        grads1.loadUsers("resources/users.txt");
-        grads1.loadRecords("resources/testAddNote.txt");
-        grads1.setUser("hanxx123");  // CSCI GPC
         StudentRecord compareTranscript = grads1.getTranscript("hanxx123");
 
         assert(compareStudentRecords(newTranscript, compareTranscript));
@@ -491,20 +431,6 @@ public class GRADSTestBasedOnAssignment2 extends TestCase {
         List<CourseTaken> coursesTaken =  Arrays.asList(csci8980f15, math5335f15, math5336f15, csci5512f15, cs8970f15);
         grads.setUser("zhang9101");
         grads.simulateCourses("zhang9101", coursesTaken);
-    }
-
-    @Test
-    //delete?
-    //MastersA adds courses to meet necessary requirements except 8000 level
-    public void testMasterSimulateCoursesNewCourse() throws Exception {
-
-    }
-
-    @Test
-    //delete?
-    //MastersA doesn't meet credits, 8000-level, or Colloquium
-    public void testMasterSimulateCoursesNew() throws Exception {
-
     }
 
     @Test
@@ -722,24 +648,6 @@ public class GRADSTestBasedOnAssignment2 extends TestCase {
     }
 
     @Test
-    //need to evaluate if this should fail or not
-    public void testStudentChangeGrade() throws Exception {
-
-    }
-
-    @Test
-    //is this even a thing?
-    public void testGPCAllowCourse() throws Exception {
-
-    }
-
-    @Test
-    //this is not a thing
-    public void testStudentAllowCourse() throws Exception {
-
-    }
-
-    @Test
     //new test not found in requirements - ooh we found a bug!
     public void testEmptyStudentRecordProgressReport() throws Exception {
         GRADS grads = new GRADS();
@@ -759,108 +667,6 @@ public class GRADSTestBasedOnAssignment2 extends TestCase {
         StudentRecord sr = new StudentRecord(s, d, dS, tB, advs, comm, coursesTaken, notes);
         grads.updateTranscript("smith1234",sr);
         grads.generateProgressSummary("smith1234");
-    }
-
-    @Test
-    public void testThrowInvalidStudentException() throws Exception {
-        GRADS grads = new GRADS();
-        grads.loadUsers("resources/users.txt");
-        grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/studentsBAD.txt");
-        grads.setUser("tolas9999");
-        try {
-            grads.getStudentIDs();
-        } catch (InvalidStudentException e) {
-            assertTrue(e.getMessage().equals("Invalid Students"));
-        }
-    }
-
-    @Test
-    public void testThrowInvalidStudentListException() throws Exception {
-        GRADS grads = new GRADS();
-        grads.loadUsers("resources/users.txt");
-        grads.loadCourses("resources/courses.txt");
-        grads.loadRecords("resources/students_original.txt");
-        grads.setUser("tolas9999");
-        try {
-            grads.getTranscript("Bad ID");
-        } catch (InvalidStudentListException e) {
-            assertTrue(e.getMessage().equals("Student Does Not Exist"));
-        }
-    }
-
-    @Test
-    public void testGetAndSetCompletedMilestonesMethods() throws Exception {
-        CompletedMilestone completedMilestone = new CompletedMilestone();
-        completedMilestone.setMilestone(Milestone.DEFENSE_PASSED);
-        completedMilestone.setTerm(new Term(Semester.SUMMER, 2012));
-        assertEquals(completedMilestone.getMilestone(),Milestone.DEFENSE_PASSED);
-        assertEquals(completedMilestone.getTerm().getSemester(), Semester.SUMMER);
-        assertEquals(completedMilestone.getTerm().getYear(), 2012);
-    }
-
-    @Test
-    public void testGetAndSetCourseMethods() throws Exception {
-        Course course = new Course();
-        course.setCourseArea(CourseArea.APPLICATIONS);
-        course.setId("stringID");
-        course.setName("Course Name");
-        course.setNumCredits("75");
-
-        assertEquals(course.getCourseArea(), CourseArea.APPLICATIONS);
-        assertEquals(course.getId(), "stringID");
-        assertEquals(course.getName(),"Course Name");
-        assertEquals(course.getNumCredits(), "75");
-    }
-
-    @Test
-    public void testGetAndSetRequirementsMethods() throws Exception {
-        Requirement requirement = new Requirement();
-        requirement.setName(Reqs.BREADTH_REQUIREMENT_MS);
-        List<CompletedMilestone> completedMilestoneList = new ArrayList<CompletedMilestone>();
-        completedMilestoneList.add(new CompletedMilestone(Milestone.DEFENSE_PASSED));
-        requirement.setMilestones(completedMilestoneList);
-        requirement.setCredits(3);
-        requirement.setGpa(3.7);
-        List<String> notesList = new ArrayList<String>();
-        notesList.add("note");
-        requirement.setNotes(notesList);
-        List<CourseTaken> courseTakenList = new ArrayList<CourseTaken>();
-        courseTakenList.add(new CourseTaken(new Course("1", "2","3"), new Term(Semester.SUMMER, 2014), Grade.B));
-        requirement.setCourses(courseTakenList);
-
-        boolean check = false;
-        if(requirement.getGpa() == 3.7) check = true;
-        assert(check);
-        assertEquals(requirement.getCredits(), 3);
-        assertEquals(requirement.getName(), Reqs.BREADTH_REQUIREMENT_MS);
-    }
-
-    @Test
-    public void testGetAndSetProgressSummaryMethods() throws Exception {
-        Student student = new Student("studentID", "Emma", "Watson");
-        Department department = Department.COMPUTER_SCIENCE;
-        Degree degree = Degree.MS_C;
-        Term term = new Term(Semester.FALL, 2014);
-        List<Professor> professorList1 = new ArrayList<Professor>();
-        professorList1.add(new Professor(Department.MATH, "Mad-Eye", "Moody"));
-        List<Professor> professorList2 = new ArrayList<Professor>();
-        professorList2.add(new Professor(Department.MATH, "Lord", "Voldy"));
-        List<String> stringList = new ArrayList<String>();
-        stringList.add("BACON");
-        List<CourseTaken> courseTakenList = new ArrayList<CourseTaken>();
-        Course course = new Course("Name", "ID", "3.14");
-        courseTakenList.add(new CourseTaken(course,new Term(Semester.SPRING,2013),Grade.B));
-        ProgressSummary progressSummary = new ProgressSummary(student, department, degree, term, professorList1,
-                professorList2, stringList, courseTakenList);
-
-        assert(progressSummary.getAdvisors().get(0).getLastName().equals("Moody"));
-        assertEquals(progressSummary.getCoursesTaken().get(0).getGrade(), Grade.B);
-        assert(progressSummary.getCommittee().get(0).getLastName().equals("Voldy"));
-        assertEquals(progressSummary.getDegreeSought(), Degree.MS_C);
-        assertEquals(progressSummary.getDepartment(), Department.COMPUTER_SCIENCE);
-        assert(progressSummary.getNotes().get(0).equals("BACON"));
-        assert(progressSummary.getStudent().getLastName().equals("Watson"));
     }
 
 }

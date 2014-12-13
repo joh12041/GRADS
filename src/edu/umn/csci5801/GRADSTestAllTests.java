@@ -496,20 +496,6 @@ public class GRADSTestAllTests extends TestCase {
     }
 
     @Test
-    //delete?
-    //MastersA adds courses to meet necessary requirements except 8000 level
-    public void testMasterSimulateCoursesNewCourse() throws Exception {
-
-    }
-
-    @Test
-    //delete?
-    //MastersA doesn't meet credits, 8000-level, or Colloquium
-    public void testMasterSimulateCoursesNew() throws Exception {
-
-    }
-
-    @Test
     public void testGPCAddMilestone() throws Exception {
         GRADS grads = new GRADS();
         grads.loadUsers("resources/users.txt");
@@ -721,24 +707,6 @@ public class GRADSTestAllTests extends TestCase {
         StudentRecord compareTranscript = grads1.getTranscript("desil1337");
 
         assert(compareStudentRecords(newTranscript, compareTranscript));
-    }
-
-    @Test
-    //need to evaluate if this should fail or not
-    public void testStudentChangeGrade() throws Exception {
-
-    }
-
-    @Test
-    //is this even a thing?
-    public void testGPCAllowCourse() throws Exception {
-
-    }
-
-    @Test
-    //this is not a thing
-    public void testStudentAllowCourse() throws Exception {
-
     }
 
     @Test

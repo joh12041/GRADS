@@ -1,0 +1,1037 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: GradReqCheck</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">edu.umn.csci5801.model</a> ]
+</div>
+
+<h1>Coverage Summary for Class: GradReqCheck (edu.umn.csci5801.model)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">GradReqCheck</td>
+<td class="coverageStat">
+  <span class="percent">
+    66.7%
+  </span>
+  <span class="absValue">
+    (14/ 21)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    76.8%
+  </span>
+  <span class="absValue">
+    (447/ 582)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">GradReqCheck$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    68.2%
+  </span>
+  <span class="absValue">
+    (15/ 22)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    76.9%
+  </span>
+  <span class="absValue">
+    (449/ 584)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;/**
+<i>2</i>&nbsp; * Copyright 2014 CSCI5801 Fall2014 Group1
+<i>3</i>&nbsp; *
+<i>4</i>&nbsp; * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<i>5</i>&nbsp; * you may not use this file except in compliance with the License.
+<i>6</i>&nbsp; * You may obtain a copy of the License at
+<i>7</i>&nbsp; *
+<i>8</i>&nbsp; *    http://www.apache.org/licenses/LICENSE-2.0
+<i>9</i>&nbsp; *
+<i>10</i>&nbsp; * Unless required by applicable law or agreed to in writing, software
+<i>11</i>&nbsp; * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<i>12</i>&nbsp; * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<i>13</i>&nbsp; * See the License for the specific language governing permissions and
+<i>14</i>&nbsp; * limitations under the License.
+<i>15</i>&nbsp; */
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;package edu.umn.csci5801.model;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;import java.util.ArrayList;
+<i>20</i>&nbsp;import java.util.List;
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;/**
+<i>23</i>&nbsp; * GradReqCheck.java - Class that handles the checking of completed student requirements against graduation requirements
+<i>24</i>&nbsp; *
+<i>25</i>&nbsp; * @author CSCI5801 Fall2014 Group1
+<i>26</i>&nbsp; * @version 1.0
+<i>27</i>&nbsp; */
+<i>28</i>&nbsp;public class GradReqCheck {
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;    private Reqs name;
+<i>31</i>&nbsp;    private boolean passed;
+<i>32</i>&nbsp;    private Requirement details;
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;    /**
+<i>35</i>&nbsp;     * ProgressSummary() - Constructors for creating a GradReqCheck object
+<i>36</i>&nbsp;     */
+<b class="nc"><i>37</i>&nbsp;    public GradReqCheck() {}</b>
+<b class="fc"><i>38</i>&nbsp;    public GradReqCheck(Reqs n) {</b>
+<b class="fc"><i>39</i>&nbsp;        name = n;</b>
+<b class="fc"><i>40</i>&nbsp;    }</b>
+<i>41</i>&nbsp;
+<i>42</i>&nbsp;    /**
+<i>43</i>&nbsp;     * Methods for setting attributes of a GradReqCheck object
+<i>44</i>&nbsp;     */
+<b class="nc"><i>45</i>&nbsp;    public void setName(Reqs n) { name = n; }</b>
+<b class="nc"><i>46</i>&nbsp;    public void setPassed(boolean ic) { passed = ic; }</b>
+<b class="nc"><i>47</i>&nbsp;    public void setDetails(Requirement r) { details = r; }</b>
+<i>48</i>&nbsp;
+<i>49</i>&nbsp;    /**
+<i>50</i>&nbsp;     * Methods for getting attributes of a GradReqCheck object
+<i>51</i>&nbsp;     */
+<b class="nc"><i>52</i>&nbsp;    public Reqs getName() { return name; }</b>
+<b class="nc"><i>53</i>&nbsp;    public boolean getPassed() { return passed; }</b>
+<b class="nc"><i>54</i>&nbsp;    public Requirement getDetails() { return details; }</b>
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;    /**
+<i>57</i>&nbsp;     * Methods which test various completed requirements against graduation requirements, in whole or in part
+<i>58</i>&nbsp;     */
+<i>59</i>&nbsp;    public void testReq(Requirement requirement, List&lt;CourseTaken&gt; courseTakenList, List&lt;CompletedMilestone&gt; completedMilestoneList) throws Exception {
+<i>60</i>&nbsp;        //Logic for checking any given requirement
+<b class="fc"><i>61</i>&nbsp;        switch (requirement.getName()) {</b>
+<i>62</i>&nbsp;            case BREADTH_REQUIREMENT_MS:
+<b class="fc"><i>63</i>&nbsp;                if (courseTakenList == null) {</b>
+<b class="fc"><i>64</i>&nbsp;                    Requirement r = new Requirement();</b>
+<b class="fc"><i>65</i>&nbsp;                    this.details = r;</b>
+<b class="fc"><i>66</i>&nbsp;                    this.passed = false;</b>
+<b class="fc"><i>67</i>&nbsp;                    break;</b>
+<i>68</i>&nbsp;                }
+<i>69</i>&nbsp;                try {
+<b class="fc"><i>70</i>&nbsp;                    caseBREADTH_REQUIREMENT_MS(requirement, courseTakenList);</b>
+<b class="nc"><i>71</i>&nbsp;                } catch(InvalidGradeException e) {</b>
+<b class="nc"><i>72</i>&nbsp;                    Exception exception = new InvalidGradeException(e);</b>
+<b class="nc"><i>73</i>&nbsp;                    throw exception;</b>
+<b class="fc"><i>74</i>&nbsp;                }</b>
+<i>75</i>&nbsp;                break;
+<i>76</i>&nbsp;            case BREADTH_REQUIREMENT_PHD:
+<b class="fc"><i>77</i>&nbsp;                if (courseTakenList == null) {</b>
+<b class="nc"><i>78</i>&nbsp;                    Requirement r = new Requirement();</b>
+<b class="nc"><i>79</i>&nbsp;                    this.details = r;</b>
+<b class="nc"><i>80</i>&nbsp;                    this.passed = false;</b>
+<b class="nc"><i>81</i>&nbsp;                    break;</b>
+<i>82</i>&nbsp;                }
+<i>83</i>&nbsp;                try {
+<b class="fc"><i>84</i>&nbsp;                    caseBREADTH_REQUIREMENT_PHD(requirement, courseTakenList);</b>
+<b class="nc"><i>85</i>&nbsp;                } catch(InvalidGradeException e) {</b>
+<b class="nc"><i>86</i>&nbsp;                    Exception exception = new InvalidGradeException(e);</b>
+<b class="nc"><i>87</i>&nbsp;                    throw exception;</b>
+<b class="fc"><i>88</i>&nbsp;                }</b>
+<i>89</i>&nbsp;                break;
+<i>90</i>&nbsp;            case THESIS_PHD:
+<b class="fc"><i>91</i>&nbsp;                if (courseTakenList == null) {</b>
+<b class="nc"><i>92</i>&nbsp;                    Requirement r = new Requirement();</b>
+<b class="nc"><i>93</i>&nbsp;                    this.details = r;</b>
+<b class="nc"><i>94</i>&nbsp;                    this.passed = false;</b>
+<b class="nc"><i>95</i>&nbsp;                    break;</b>
+<i>96</i>&nbsp;                }
+<b class="fc"><i>97</i>&nbsp;                casePASSED_AS_SATISFACTORY(requirement, courseTakenList);</b>
+<b class="fc"><i>98</i>&nbsp;                break;</b>
+<i>99</i>&nbsp;            case THESIS_MS:
+<b class="fc"><i>100</i>&nbsp;                if (courseTakenList == null) {</b>
+<b class="nc"><i>101</i>&nbsp;                    Requirement r = new Requirement();</b>
+<b class="nc"><i>102</i>&nbsp;                    this.details = r;</b>
+<b class="nc"><i>103</i>&nbsp;                    this.passed = false;</b>
+<b class="nc"><i>104</i>&nbsp;                    break;</b>
+<i>105</i>&nbsp;                }
+<b class="fc"><i>106</i>&nbsp;                casePASSED_AS_SATISFACTORY(requirement, courseTakenList);</b>
+<b class="fc"><i>107</i>&nbsp;                break;</b>
+<i>108</i>&nbsp;            case PLAN_B_PROJECT:
+<b class="fc"><i>109</i>&nbsp;                if (courseTakenList == null) {</b>
+<b class="fc"><i>110</i>&nbsp;                    Requirement r = new Requirement();</b>
+<b class="fc"><i>111</i>&nbsp;                    this.details = r;</b>
+<b class="fc"><i>112</i>&nbsp;                    this.passed = false;</b>
+<b class="fc"><i>113</i>&nbsp;                    break;</b>
+<i>114</i>&nbsp;                }
+<b class="fc"><i>115</i>&nbsp;                casePASSED_AS_SATISFACTORY(requirement, courseTakenList);</b>
+<b class="fc"><i>116</i>&nbsp;                break;</b>
+<i>117</i>&nbsp;            case COLLOQUIUM:
+<b class="fc"><i>118</i>&nbsp;                if (courseTakenList == null) {</b>
+<b class="fc"><i>119</i>&nbsp;                    Requirement r = new Requirement();</b>
+<b class="fc"><i>120</i>&nbsp;                    this.details = r;</b>
+<b class="fc"><i>121</i>&nbsp;                    this.passed = false;</b>
+<b class="fc"><i>122</i>&nbsp;                    break;</b>
+<i>123</i>&nbsp;                }
+<b class="fc"><i>124</i>&nbsp;                casePASSED_AS_SATISFACTORY(requirement, courseTakenList);</b>
+<b class="fc"><i>125</i>&nbsp;                break;</b>
+<i>126</i>&nbsp;            case OUT_OF_DEPARTMENT:
+<b class="fc"><i>127</i>&nbsp;                if (courseTakenList == null) {</b>
+<b class="nc"><i>128</i>&nbsp;                    Requirement r = new Requirement();</b>
+<b class="nc"><i>129</i>&nbsp;                    this.details = r;</b>
+<b class="nc"><i>130</i>&nbsp;                    this.passed = false;</b>
+<b class="nc"><i>131</i>&nbsp;                    break;</b>
+<i>132</i>&nbsp;                }
+<b class="fc"><i>133</i>&nbsp;                caseOUT_OF_DEPARTMENT(requirement, courseTakenList);</b>
+<b class="fc"><i>134</i>&nbsp;                break;</b>
+<i>135</i>&nbsp;            case PHD_LEVEL_COURSES:
+<b class="fc"><i>136</i>&nbsp;                if (courseTakenList == null) {</b>
+<b class="fc"><i>137</i>&nbsp;                    Requirement r = new Requirement();</b>
+<b class="fc"><i>138</i>&nbsp;                    this.details = r;</b>
+<b class="fc"><i>139</i>&nbsp;                    this.passed = false;</b>
+<b class="fc"><i>140</i>&nbsp;                    break;</b>
+<i>141</i>&nbsp;                }
+<b class="fc"><i>142</i>&nbsp;                casePASSED_WITH_C(requirement, courseTakenList);</b>
+<b class="fc"><i>143</i>&nbsp;                break;</b>
+<i>144</i>&nbsp;            case PHD_LEVEL_COURSES_PLANC:
+<b class="fc"><i>145</i>&nbsp;                if (courseTakenList == null) {</b>
+<b class="nc"><i>146</i>&nbsp;                    Requirement r = new Requirement();</b>
+<b class="nc"><i>147</i>&nbsp;                    this.details = r;</b>
+<b class="nc"><i>148</i>&nbsp;                    this.passed = false;</b>
+<b class="nc"><i>149</i>&nbsp;                    break;</b>
+<i>150</i>&nbsp;                }
+<b class="fc"><i>151</i>&nbsp;                casePASSED_WITH_C(requirement, courseTakenList);</b>
+<b class="fc"><i>152</i>&nbsp;                break;</b>
+<i>153</i>&nbsp;            case INTRO_TO_RESEARCH:
+<b class="fc"><i>154</i>&nbsp;                if (courseTakenList == null) {</b>
+<b class="nc"><i>155</i>&nbsp;                    Requirement r = new Requirement();</b>
+<b class="nc"><i>156</i>&nbsp;                    this.details = r;</b>
+<b class="nc"><i>157</i>&nbsp;                    this.passed = false;</b>
+<b class="nc"><i>158</i>&nbsp;                    break;</b>
+<i>159</i>&nbsp;                }
+<b class="fc"><i>160</i>&nbsp;                casePASSED_WITH_C(requirement, courseTakenList);</b>
+<b class="fc"><i>161</i>&nbsp;                break;</b>
+<i>162</i>&nbsp;            case TOTAL_CREDITS_PHD:
+<b class="fc"><i>163</i>&nbsp;                if (courseTakenList == null) {</b>
+<b class="nc"><i>164</i>&nbsp;                    Requirement r = new Requirement();</b>
+<b class="nc"><i>165</i>&nbsp;                    this.details = r;</b>
+<b class="nc"><i>166</i>&nbsp;                    this.passed = false;</b>
+<b class="nc"><i>167</i>&nbsp;                    this.name = Reqs.TOTAL_CREDITS;</b>
+<b class="nc"><i>168</i>&nbsp;                    break;</b>
+<i>169</i>&nbsp;                }
+<b class="fc"><i>170</i>&nbsp;                caseTOTAL_CREDITS_PHD(requirement, courseTakenList);</b>
+<b class="fc"><i>171</i>&nbsp;                this.name = Reqs.TOTAL_CREDITS;</b>
+<b class="fc"><i>172</i>&nbsp;                this.details.setName(Reqs.TOTAL_CREDITS);</b>
+<b class="fc"><i>173</i>&nbsp;                break;</b>
+<i>174</i>&nbsp;            case TOTAL_CREDITS_MSA:
+<b class="fc"><i>175</i>&nbsp;                if (courseTakenList == null) {</b>
+<b class="nc"><i>176</i>&nbsp;                    Requirement r = new Requirement();</b>
+<b class="nc"><i>177</i>&nbsp;                    this.details = r;</b>
+<b class="nc"><i>178</i>&nbsp;                    this.passed = false;</b>
+<b class="nc"><i>179</i>&nbsp;                    this.name = Reqs.TOTAL_CREDITS;</b>
+<b class="nc"><i>180</i>&nbsp;                    break;</b>
+<i>181</i>&nbsp;                }
+<b class="fc"><i>182</i>&nbsp;                caseTOTAL_CREDITS_MSA(requirement, courseTakenList);</b>
+<b class="fc"><i>183</i>&nbsp;                this.name = Reqs.TOTAL_CREDITS;</b>
+<b class="fc"><i>184</i>&nbsp;                this.details.setName(Reqs.TOTAL_CREDITS);</b>
+<b class="fc"><i>185</i>&nbsp;                break;</b>
+<i>186</i>&nbsp;            case TOTAL_CREDITS_MSB:
+<b class="fc"><i>187</i>&nbsp;                if (courseTakenList == null) {</b>
+<b class="fc"><i>188</i>&nbsp;                    Requirement r = new Requirement();</b>
+<b class="fc"><i>189</i>&nbsp;                    this.details = r;</b>
+<b class="fc"><i>190</i>&nbsp;                    this.passed = false;</b>
+<b class="fc"><i>191</i>&nbsp;                    this.name = Reqs.TOTAL_CREDITS;</b>
+<b class="fc"><i>192</i>&nbsp;                    break;</b>
+<i>193</i>&nbsp;                }
+<b class="fc"><i>194</i>&nbsp;                caseTOTAL_CREDITS_MSBC(requirement, courseTakenList);</b>
+<b class="fc"><i>195</i>&nbsp;                this.name = Reqs.TOTAL_CREDITS;</b>
+<b class="fc"><i>196</i>&nbsp;                this.details.setName(Reqs.TOTAL_CREDITS);</b>
+<b class="fc"><i>197</i>&nbsp;                break;</b>
+<i>198</i>&nbsp;            case TOTAL_CREDITS_MSC:
+<b class="fc"><i>199</i>&nbsp;                if (courseTakenList == null) {</b>
+<b class="nc"><i>200</i>&nbsp;                    Requirement r = new Requirement();</b>
+<b class="nc"><i>201</i>&nbsp;                    this.details = r;</b>
+<b class="nc"><i>202</i>&nbsp;                    this.passed = false;</b>
+<b class="nc"><i>203</i>&nbsp;                    this.name = Reqs.TOTAL_CREDITS;</b>
+<b class="nc"><i>204</i>&nbsp;                    break;</b>
+<i>205</i>&nbsp;                }
+<b class="fc"><i>206</i>&nbsp;                caseTOTAL_CREDITS_MSBC(requirement, courseTakenList);</b>
+<b class="fc"><i>207</i>&nbsp;                this.name = Reqs.TOTAL_CREDITS;</b>
+<b class="fc"><i>208</i>&nbsp;                this.details.setName(Reqs.TOTAL_CREDITS);</b>
+<b class="fc"><i>209</i>&nbsp;                break;</b>
+<i>210</i>&nbsp;            case COURSE_CREDITS:
+<b class="fc"><i>211</i>&nbsp;                if (courseTakenList == null) {</b>
+<b class="nc"><i>212</i>&nbsp;                    Requirement r = new Requirement();</b>
+<b class="nc"><i>213</i>&nbsp;                    this.details = r;</b>
+<b class="nc"><i>214</i>&nbsp;                    this.passed = false;</b>
+<b class="nc"><i>215</i>&nbsp;                    break;</b>
+<i>216</i>&nbsp;                }
+<b class="fc"><i>217</i>&nbsp;                caseCOURSE_CREDITS(requirement, courseTakenList);</b>
+<b class="fc"><i>218</i>&nbsp;                break;</b>
+<i>219</i>&nbsp;            case OVERALL_GPA_PHD:
+<b class="fc"><i>220</i>&nbsp;                if (courseTakenList == null) {</b>
+<b class="nc"><i>221</i>&nbsp;                    Requirement r = new Requirement();</b>
+<b class="nc"><i>222</i>&nbsp;                    this.details = r;</b>
+<b class="nc"><i>223</i>&nbsp;                    this.passed = false;</b>
+<b class="nc"><i>224</i>&nbsp;                    break;</b>
+<i>225</i>&nbsp;                }
+<i>226</i>&nbsp;                try {
+<b class="fc"><i>227</i>&nbsp;                    caseOVERALL_GPA(requirement, courseTakenList);</b>
+<b class="nc"><i>228</i>&nbsp;                } catch(InvalidGradeException e) {</b>
+<b class="nc"><i>229</i>&nbsp;                    Exception exception = new InvalidGradeException(e);</b>
+<b class="nc"><i>230</i>&nbsp;                    throw exception;</b>
+<b class="fc"><i>231</i>&nbsp;                }</b>
+<i>232</i>&nbsp;                break;
+<i>233</i>&nbsp;            case IN_PROGRAM_GPA_PHD:
+<b class="fc"><i>234</i>&nbsp;                if (courseTakenList == null) {</b>
+<b class="nc"><i>235</i>&nbsp;                    Requirement r = new Requirement();</b>
+<b class="nc"><i>236</i>&nbsp;                    this.details = r;</b>
+<b class="nc"><i>237</i>&nbsp;                    this.passed = false;</b>
+<b class="nc"><i>238</i>&nbsp;                    break;</b>
+<i>239</i>&nbsp;                }
+<i>240</i>&nbsp;                try {
+<b class="fc"><i>241</i>&nbsp;                    caseIN_PROGRAM_GPA(requirement, courseTakenList);</b>
+<b class="nc"><i>242</i>&nbsp;                } catch(InvalidGradeException e) {</b>
+<b class="nc"><i>243</i>&nbsp;                    Exception exception = new InvalidGradeException(e);</b>
+<b class="nc"><i>244</i>&nbsp;                    throw exception;</b>
+<b class="fc"><i>245</i>&nbsp;                }</b>
+<i>246</i>&nbsp;                break;
+<i>247</i>&nbsp;            case OVERALL_GPA_MS:
+<b class="fc"><i>248</i>&nbsp;                if (courseTakenList == null) {</b>
+<b class="fc"><i>249</i>&nbsp;                    Requirement r = new Requirement();</b>
+<b class="fc"><i>250</i>&nbsp;                    this.details = r;</b>
+<b class="fc"><i>251</i>&nbsp;                    this.passed = false;</b>
+<b class="fc"><i>252</i>&nbsp;                    break;</b>
+<i>253</i>&nbsp;                }
+<i>254</i>&nbsp;                try {
+<b class="fc"><i>255</i>&nbsp;                    caseOVERALL_GPA(requirement, courseTakenList);</b>
+<b class="nc"><i>256</i>&nbsp;                } catch(InvalidGradeException e) {</b>
+<b class="nc"><i>257</i>&nbsp;                    Exception exception = new InvalidGradeException(e);</b>
+<b class="nc"><i>258</i>&nbsp;                    throw exception;</b>
+<b class="fc"><i>259</i>&nbsp;                }</b>
+<i>260</i>&nbsp;                break;
+<i>261</i>&nbsp;            case IN_PROGRAM_GPA_MS:
+<b class="fc"><i>262</i>&nbsp;                if (courseTakenList == null) {</b>
+<b class="fc"><i>263</i>&nbsp;                    Requirement r = new Requirement();</b>
+<b class="fc"><i>264</i>&nbsp;                    this.details = r;</b>
+<b class="fc"><i>265</i>&nbsp;                    this.passed = false;</b>
+<b class="fc"><i>266</i>&nbsp;                    break;</b>
+<i>267</i>&nbsp;                }
+<i>268</i>&nbsp;                try {
+<b class="fc"><i>269</i>&nbsp;                    caseIN_PROGRAM_GPA(requirement, courseTakenList);</b>
+<b class="nc"><i>270</i>&nbsp;                } catch(InvalidGradeException e) {</b>
+<b class="nc"><i>271</i>&nbsp;                    Exception exception = new InvalidGradeException(e);</b>
+<b class="nc"><i>272</i>&nbsp;                    throw exception;</b>
+<b class="fc"><i>273</i>&nbsp;                }</b>
+<i>274</i>&nbsp;                break;
+<i>275</i>&nbsp;            case MILESTONES_PHD:
+<b class="fc"><i>276</i>&nbsp;                if (completedMilestoneList == null) {</b>
+<b class="fc"><i>277</i>&nbsp;                    Requirement r = new Requirement();</b>
+<b class="fc"><i>278</i>&nbsp;                    this.details = r;</b>
+<b class="fc"><i>279</i>&nbsp;                    this.passed = false;</b>
+<b class="fc"><i>280</i>&nbsp;                    break;</b>
+<i>281</i>&nbsp;                }
+<b class="fc"><i>282</i>&nbsp;                caseMILESTONES(requirement, completedMilestoneList);</b>
+<b class="fc"><i>283</i>&nbsp;                break;</b>
+<i>284</i>&nbsp;            case MILESTONES_MS_A:
+<b class="fc"><i>285</i>&nbsp;                if (completedMilestoneList == null) {</b>
+<b class="nc"><i>286</i>&nbsp;                    Requirement r = new Requirement();</b>
+<b class="nc"><i>287</i>&nbsp;                    this.details = r;</b>
+<b class="nc"><i>288</i>&nbsp;                    this.passed = false;</b>
+<b class="nc"><i>289</i>&nbsp;                    break;</b>
+<i>290</i>&nbsp;                }
+<b class="fc"><i>291</i>&nbsp;                caseMILESTONES(requirement, completedMilestoneList);</b>
+<b class="fc"><i>292</i>&nbsp;                break;</b>
+<i>293</i>&nbsp;            case MILESTONES_MS_B:
+<b class="fc"><i>294</i>&nbsp;                if (completedMilestoneList == null) {</b>
+<b class="fc"><i>295</i>&nbsp;                    Requirement r = new Requirement();</b>
+<b class="fc"><i>296</i>&nbsp;                    this.details = r;</b>
+<b class="fc"><i>297</i>&nbsp;                    this.passed = false;</b>
+<b class="fc"><i>298</i>&nbsp;                    break;</b>
+<i>299</i>&nbsp;                }
+<b class="fc"><i>300</i>&nbsp;                caseMILESTONES(requirement, completedMilestoneList);</b>
+<b class="fc"><i>301</i>&nbsp;                break;</b>
+<i>302</i>&nbsp;            case MILESTONES_MS_C:
+<b class="fc"><i>303</i>&nbsp;                if (completedMilestoneList == null) {</b>
+<b class="nc"><i>304</i>&nbsp;                    Requirement r = new Requirement();</b>
+<b class="nc"><i>305</i>&nbsp;                    this.details = r;</b>
+<b class="nc"><i>306</i>&nbsp;                    this.passed = false;</b>
+<b class="nc"><i>307</i>&nbsp;                    break;</b>
+<i>308</i>&nbsp;                }
+<b class="fc"><i>309</i>&nbsp;                caseMILESTONES(requirement, completedMilestoneList);</b>
+<b class="fc"><i>310</i>&nbsp;                break;</b>
+<i>311</i>&nbsp;            default:
+<b class="nc"><i>312</i>&nbsp;                Exception e = new InvalidRequirementException();</b>
+<b class="nc"><i>313</i>&nbsp;                throw e;</b>
+<i>314</i>&nbsp;        }
+<b class="fc"><i>315</i>&nbsp;    }</b>
+<i>316</i>&nbsp;
+<i>317</i>&nbsp;    private void  caseBREADTH_REQUIREMENT_MS(Requirement requirement, List&lt;CourseTaken&gt; courseTakenList) throws Exception {
+<i>318</i>&nbsp;
+<b class="fc"><i>319</i>&nbsp;        this.passed = false;</b>
+<b class="fc"><i>320</i>&nbsp;        CourseTaken topThry = null;</b>
+<b class="fc"><i>321</i>&nbsp;        CourseTaken topAppl = null;</b>
+<b class="fc"><i>322</i>&nbsp;        CourseTaken topArch = null;</b>
+<i>323</i>&nbsp;
+<b class="fc"><i>324</i>&nbsp;        List&lt;CourseTaken&gt; newCourseTakenList = new ArrayList&lt;CourseTaken&gt;();</b>
+<b class="fc"><i>325</i>&nbsp;        List&lt;String&gt; validCourseIDs = new ArrayList&lt;String&gt;();</b>
+<b class="fc"><i>326</i>&nbsp;        List&lt;Grade&gt; validGrades = new ArrayList&lt;Grade&gt;();</b>
+<b class="fc"><i>327</i>&nbsp;        validGrades.add(Grade.A);</b>
+<b class="fc"><i>328</i>&nbsp;        validGrades.add(Grade.B);</b>
+<b class="fc"><i>329</i>&nbsp;        validGrades.add(Grade.C);</b>
+<i>330</i>&nbsp;
+<i>331</i>&nbsp;        //Generate list of valid courses
+<b class="fc"><i>332</i>&nbsp;        for (CourseTaken validCourseTaken : requirement.getCourses()) {</b>
+<b class="fc"><i>333</i>&nbsp;            validCourseIDs.add(validCourseTaken.getCourse().getId());</b>
+<b class="fc"><i>334</i>&nbsp;        }</b>
+<i>335</i>&nbsp;
+<i>336</i>&nbsp;
+<b class="fc"><i>337</i>&nbsp;        CourseArea ca = null;</b>
+<i>338</i>&nbsp;        //Find and count only the coursesTaken that match the requirement
+<b class="fc"><i>339</i>&nbsp;        for (CourseTaken courseTaken : courseTakenList) {</b>
+<b class="fc"><i>340</i>&nbsp;            for (CourseTaken validCourseTaken2 : requirement.getCourses()) {</b>
+<b class="fc"><i>341</i>&nbsp;                if (courseTaken.getCourse().getId().equals(validCourseTaken2.getCourse().getId())) {</b>
+<b class="fc"><i>342</i>&nbsp;                    ca = validCourseTaken2.getCourse().getCourseArea();</b>
+<b class="fc"><i>343</i>&nbsp;                    break;</b>
+<i>344</i>&nbsp;                }
+<b class="fc"><i>345</i>&nbsp;            }</b>
+<i>346</i>&nbsp;
+<b class="fc"><i>347</i>&nbsp;            if (ca != null &amp;&amp; validCourseIDs.contains(courseTaken.getCourse().getId()) &amp;&amp; validGrades.contains(courseTaken.getGrade())) {</b>
+<b class="fc"><i>348</i>&nbsp;                switch (ca) {</b>
+<i>349</i>&nbsp;                    case APPLICATIONS:
+<b class="fc"><i>350</i>&nbsp;                        if (topAppl == null) {</b>
+<b class="fc"><i>351</i>&nbsp;                            topAppl = courseTaken;</b>
+<b class="fc"><i>352</i>&nbsp;                            break;</b>
+<i>353</i>&nbsp;                        }
+<b class="fc"><i>354</i>&nbsp;                        if (topAppl.getGrade() == Grade.A) {</b>
+<b class="nc"><i>355</i>&nbsp;                            break;</b>
+<i>356</i>&nbsp;                        }
+<b class="fc"><i>357</i>&nbsp;                        if (topAppl.getGrade() == Grade.B) {</b>
+<b class="fc"><i>358</i>&nbsp;                            if (courseTaken.getGrade() == Grade.A) {</b>
+<b class="fc"><i>359</i>&nbsp;                                topAppl = courseTaken;</b>
+<b class="fc"><i>360</i>&nbsp;                                break;</b>
+<i>361</i>&nbsp;                            }
+<i>362</i>&nbsp;                            break;
+<i>363</i>&nbsp;                        }
+<b class="nc"><i>364</i>&nbsp;                        if (topAppl.getGrade() == Grade.C) {</b>
+<b class="nc"><i>365</i>&nbsp;                            if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B) {</b>
+<b class="nc"><i>366</i>&nbsp;                                topAppl = courseTaken;</b>
+<b class="nc"><i>367</i>&nbsp;                                break;</b>
+<i>368</i>&nbsp;                            }
+<i>369</i>&nbsp;                            break;
+<i>370</i>&nbsp;                        }
+<i>371</i>&nbsp;                        break;
+<i>372</i>&nbsp;
+<i>373</i>&nbsp;                    case THEORY_ALGORITHMS:
+<b class="fc"><i>374</i>&nbsp;                        if (topThry == null) {</b>
+<b class="fc"><i>375</i>&nbsp;                            topThry = courseTaken;</b>
+<b class="fc"><i>376</i>&nbsp;                            break;</b>
+<i>377</i>&nbsp;                        }
+<b class="fc"><i>378</i>&nbsp;                        if (topThry.getGrade() == Grade.A) {</b>
+<b class="fc"><i>379</i>&nbsp;                            break;</b>
+<i>380</i>&nbsp;                        }
+<b class="fc"><i>381</i>&nbsp;                        if (topThry.getGrade() == Grade.B) {</b>
+<b class="fc"><i>382</i>&nbsp;                            if (courseTaken.getGrade() == Grade.A) {</b>
+<b class="nc"><i>383</i>&nbsp;                                topThry = courseTaken;</b>
+<b class="nc"><i>384</i>&nbsp;                                break;</b>
+<i>385</i>&nbsp;                            }
+<i>386</i>&nbsp;                            break;
+<i>387</i>&nbsp;                        }
+<b class="nc"><i>388</i>&nbsp;                        if (topThry.getGrade() == Grade.C) {</b>
+<b class="nc"><i>389</i>&nbsp;                            if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B) {</b>
+<b class="nc"><i>390</i>&nbsp;                                topThry = courseTaken;</b>
+<b class="nc"><i>391</i>&nbsp;                                break;</b>
+<i>392</i>&nbsp;                            }
+<i>393</i>&nbsp;                            break;
+<i>394</i>&nbsp;                        }
+<i>395</i>&nbsp;                        break;
+<i>396</i>&nbsp;
+<i>397</i>&nbsp;                    case ARCHITECTURE_SYSTEMS_SOFTWARE:
+<b class="fc"><i>398</i>&nbsp;                        if (topArch == null) {</b>
+<b class="fc"><i>399</i>&nbsp;                            topArch = courseTaken;</b>
+<b class="fc"><i>400</i>&nbsp;                            break;</b>
+<i>401</i>&nbsp;                        }
+<b class="fc"><i>402</i>&nbsp;                        if (topArch.getGrade() == Grade.A) {</b>
+<b class="fc"><i>403</i>&nbsp;                            break;</b>
+<i>404</i>&nbsp;                        }
+<b class="fc"><i>405</i>&nbsp;                        if (topArch.getGrade() == Grade.B) {</b>
+<b class="fc"><i>406</i>&nbsp;                            if (courseTaken.getGrade() == Grade.A) {</b>
+<b class="fc"><i>407</i>&nbsp;                                topArch = courseTaken;</b>
+<b class="fc"><i>408</i>&nbsp;                                break;</b>
+<i>409</i>&nbsp;                            }
+<i>410</i>&nbsp;                            break;
+<i>411</i>&nbsp;                        }
+<b class="nc"><i>412</i>&nbsp;                        if (topArch.getGrade() == Grade.C) {</b>
+<b class="nc"><i>413</i>&nbsp;                            if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B) {</b>
+<b class="nc"><i>414</i>&nbsp;                                topArch = courseTaken;</b>
+<i>415</i>&nbsp;                                break;
+<i>416</i>&nbsp;                            }
+<i>417</i>&nbsp;                            break;
+<i>418</i>&nbsp;                        }
+<i>419</i>&nbsp;                        break;
+<i>420</i>&nbsp;                }
+<i>421</i>&nbsp;            }
+<b class="fc"><i>422</i>&nbsp;        }</b>
+<b class="fc"><i>423</i>&nbsp;        if (topAppl != null) {</b>
+<b class="fc"><i>424</i>&nbsp;            newCourseTakenList.add(topAppl);</b>
+<i>425</i>&nbsp;        }
+<b class="fc"><i>426</i>&nbsp;        if (topThry != null) {</b>
+<b class="fc"><i>427</i>&nbsp;            newCourseTakenList.add(topThry);</b>
+<i>428</i>&nbsp;        }
+<b class="fc"><i>429</i>&nbsp;        if (topArch != null) {</b>
+<b class="fc"><i>430</i>&nbsp;            newCourseTakenList.add(topArch);</b>
+<i>431</i>&nbsp;        }
+<i>432</i>&nbsp;
+<i>433</i>&nbsp;        //Fill in gradReqCheck
+<b class="fc"><i>434</i>&nbsp;        this.details = new Requirement(requirement.getName(), newCourseTakenList);</b>
+<i>435</i>&nbsp;        try {
+<b class="fc"><i>436</i>&nbsp;            this.details.calculateGpa();</b>
+<b class="nc"><i>437</i>&nbsp;        } catch(InvalidGradeException e) {</b>
+<b class="nc"><i>438</i>&nbsp;            Exception exception = new InvalidGradeException(e);</b>
+<b class="nc"><i>439</i>&nbsp;            throw exception;</b>
+<b class="fc"><i>440</i>&nbsp;        }</b>
+<b class="fc"><i>441</i>&nbsp;        if (details.getGpa() &gt;= requirement.getGpa() &amp;&amp; this.details.getCourses().size() == 3) {</b>
+<b class="fc"><i>442</i>&nbsp;            this.passed = true;</b>
+<i>443</i>&nbsp;        }
+<i>444</i>&nbsp;
+<b class="fc"><i>445</i>&nbsp;    }</b>
+<i>446</i>&nbsp;
+<i>447</i>&nbsp;    private void caseBREADTH_REQUIREMENT_PHD(Requirement requirement, List&lt;CourseTaken&gt; courseTakenList) throws Exception {
+<i>448</i>&nbsp;
+<b class="fc"><i>449</i>&nbsp;        this.passed = false;</b>
+<b class="fc"><i>450</i>&nbsp;        CourseTaken topThry = null;</b>
+<b class="fc"><i>451</i>&nbsp;        CourseTaken topAppl = null;</b>
+<b class="fc"><i>452</i>&nbsp;        CourseTaken topArch = null;</b>
+<b class="fc"><i>453</i>&nbsp;        CourseTaken fourth = null;</b>
+<b class="fc"><i>454</i>&nbsp;        CourseTaken fifth = null;</b>
+<i>455</i>&nbsp;
+<b class="fc"><i>456</i>&nbsp;        List&lt;CourseTaken&gt; newCourseTakenList = new ArrayList&lt;CourseTaken&gt;();</b>
+<b class="fc"><i>457</i>&nbsp;        List&lt;String&gt; validCourseIDs = new ArrayList&lt;String&gt;();</b>
+<b class="fc"><i>458</i>&nbsp;        List&lt;Grade&gt; validGrades = new ArrayList&lt;Grade&gt;();</b>
+<b class="fc"><i>459</i>&nbsp;        validGrades.add(Grade.A);</b>
+<b class="fc"><i>460</i>&nbsp;        validGrades.add(Grade.B);</b>
+<b class="fc"><i>461</i>&nbsp;        validGrades.add(Grade.C);</b>
+<i>462</i>&nbsp;
+<i>463</i>&nbsp;        //Generate list of valid courses
+<b class="fc"><i>464</i>&nbsp;        for (CourseTaken validCourseTaken : requirement.getCourses()) {</b>
+<b class="fc"><i>465</i>&nbsp;            validCourseIDs.add(validCourseTaken.getCourse().getId());</b>
+<b class="fc"><i>466</i>&nbsp;        }</b>
+<i>467</i>&nbsp;
+<b class="fc"><i>468</i>&nbsp;        CourseArea ca = null;</b>
+<i>469</i>&nbsp;        //Find and count only the coursesTaken that match the requirement
+<b class="fc"><i>470</i>&nbsp;        for (CourseTaken courseTaken : courseTakenList) {</b>
+<b class="fc"><i>471</i>&nbsp;            for (CourseTaken validCourseTaken2 : requirement.getCourses()) {</b>
+<b class="fc"><i>472</i>&nbsp;                if (courseTaken.getCourse().getId().equals(validCourseTaken2.getCourse().getId())) {</b>
+<b class="fc"><i>473</i>&nbsp;                    ca = validCourseTaken2.getCourse().getCourseArea();</b>
+<b class="fc"><i>474</i>&nbsp;                    break;</b>
+<i>475</i>&nbsp;                }
+<b class="fc"><i>476</i>&nbsp;            }</b>
+<i>477</i>&nbsp;
+<b class="fc"><i>478</i>&nbsp;            if (ca != null &amp;&amp; validCourseIDs.contains(courseTaken.getCourse().getId()) &amp;&amp; validGrades.contains(courseTaken.getGrade())) {</b>
+<b class="fc"><i>479</i>&nbsp;                switch (ca) {</b>
+<i>480</i>&nbsp;                    case APPLICATIONS:
+<b class="fc"><i>481</i>&nbsp;                        if (topAppl == null) {</b>
+<b class="fc"><i>482</i>&nbsp;                            topAppl = courseTaken;</b>
+<b class="fc"><i>483</i>&nbsp;                            break;</b>
+<i>484</i>&nbsp;                        }
+<b class="fc"><i>485</i>&nbsp;                        if (topAppl.getGrade() == Grade.A) {</b>
+<b class="nc"><i>486</i>&nbsp;                            break;</b>
+<i>487</i>&nbsp;                        }
+<b class="fc"><i>488</i>&nbsp;                        if (topAppl.getGrade() == Grade.B) {</b>
+<b class="fc"><i>489</i>&nbsp;                            if (courseTaken.getGrade() == Grade.A) {</b>
+<b class="fc"><i>490</i>&nbsp;                                topAppl = courseTaken;</b>
+<b class="fc"><i>491</i>&nbsp;                                break;</b>
+<i>492</i>&nbsp;                            }
+<i>493</i>&nbsp;                            break;
+<i>494</i>&nbsp;                        }
+<b class="nc"><i>495</i>&nbsp;                        if (topAppl.getGrade() == Grade.C) {</b>
+<b class="nc"><i>496</i>&nbsp;                            if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B) {</b>
+<b class="nc"><i>497</i>&nbsp;                                topAppl = courseTaken;</b>
+<b class="nc"><i>498</i>&nbsp;                                break;</b>
+<i>499</i>&nbsp;                            }
+<i>500</i>&nbsp;                            break;
+<i>501</i>&nbsp;                        }
+<i>502</i>&nbsp;                        break;
+<i>503</i>&nbsp;
+<i>504</i>&nbsp;                    case THEORY_ALGORITHMS:
+<b class="fc"><i>505</i>&nbsp;                        if (topThry == null) {</b>
+<b class="fc"><i>506</i>&nbsp;                            topThry = courseTaken;</b>
+<b class="fc"><i>507</i>&nbsp;                            break;</b>
+<i>508</i>&nbsp;                        }
+<b class="fc"><i>509</i>&nbsp;                        if (topThry.getGrade() == Grade.A) {</b>
+<b class="fc"><i>510</i>&nbsp;                            break;</b>
+<i>511</i>&nbsp;                        }
+<b class="fc"><i>512</i>&nbsp;                        if (topThry.getGrade() == Grade.B) {</b>
+<b class="fc"><i>513</i>&nbsp;                            if (courseTaken.getGrade() == Grade.A) {</b>
+<b class="nc"><i>514</i>&nbsp;                                topThry = courseTaken;</b>
+<b class="nc"><i>515</i>&nbsp;                                break;</b>
+<i>516</i>&nbsp;                            }
+<i>517</i>&nbsp;                            break;
+<i>518</i>&nbsp;                        }
+<b class="nc"><i>519</i>&nbsp;                        if (topThry.getGrade() == Grade.C) {</b>
+<b class="nc"><i>520</i>&nbsp;                            if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B) {</b>
+<b class="nc"><i>521</i>&nbsp;                                topThry = courseTaken;</b>
+<b class="nc"><i>522</i>&nbsp;                                break;</b>
+<i>523</i>&nbsp;                            }
+<i>524</i>&nbsp;                            break;
+<i>525</i>&nbsp;                        }
+<i>526</i>&nbsp;                        break;
+<i>527</i>&nbsp;
+<i>528</i>&nbsp;                    case ARCHITECTURE_SYSTEMS_SOFTWARE:
+<b class="fc"><i>529</i>&nbsp;                        if (topArch == null) {</b>
+<b class="fc"><i>530</i>&nbsp;                            topArch = courseTaken;</b>
+<b class="fc"><i>531</i>&nbsp;                            break;</b>
+<i>532</i>&nbsp;                        }
+<b class="fc"><i>533</i>&nbsp;                        if (topArch.getGrade() == Grade.A) {</b>
+<b class="fc"><i>534</i>&nbsp;                            break;</b>
+<i>535</i>&nbsp;                        }
+<b class="fc"><i>536</i>&nbsp;                        if (topArch.getGrade() == Grade.B) {</b>
+<b class="fc"><i>537</i>&nbsp;                            if (courseTaken.getGrade() == Grade.A) {</b>
+<b class="fc"><i>538</i>&nbsp;                                topArch = courseTaken;</b>
+<b class="fc"><i>539</i>&nbsp;                                break;</b>
+<i>540</i>&nbsp;                            }
+<i>541</i>&nbsp;                            break;
+<i>542</i>&nbsp;                        }
+<b class="nc"><i>543</i>&nbsp;                        if (topArch.getGrade() == Grade.C) {</b>
+<b class="nc"><i>544</i>&nbsp;                            if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B) {</b>
+<b class="nc"><i>545</i>&nbsp;                                topArch = courseTaken;</b>
+<i>546</i>&nbsp;                                break;
+<i>547</i>&nbsp;                            }
+<i>548</i>&nbsp;                            break;
+<i>549</i>&nbsp;                        }
+<i>550</i>&nbsp;                        break;
+<i>551</i>&nbsp;                }
+<i>552</i>&nbsp;            }
+<b class="fc"><i>553</i>&nbsp;        }</b>
+<i>554</i>&nbsp;
+<b class="fc"><i>555</i>&nbsp;        if (topAppl != null) {</b>
+<b class="fc"><i>556</i>&nbsp;            newCourseTakenList.add(topAppl);</b>
+<i>557</i>&nbsp;        }
+<b class="fc"><i>558</i>&nbsp;        if (topThry != null) {</b>
+<b class="fc"><i>559</i>&nbsp;            newCourseTakenList.add(topThry);</b>
+<i>560</i>&nbsp;        }
+<b class="fc"><i>561</i>&nbsp;        if (topArch != null) {</b>
+<b class="fc"><i>562</i>&nbsp;            newCourseTakenList.add(topArch);</b>
+<i>563</i>&nbsp;        }
+<i>564</i>&nbsp;
+<b class="fc"><i>565</i>&nbsp;        for (CourseTaken courseTaken2 : courseTakenList) {</b>
+<b class="fc"><i>566</i>&nbsp;            if (validCourseIDs.contains(courseTaken2.getCourse().getId()) &amp;&amp; validGrades.contains(courseTaken2.getGrade()) &amp;&amp; !newCourseTakenList.contains(courseTaken2)) {</b>
+<b class="fc"><i>567</i>&nbsp;                if (fourth == null) {</b>
+<b class="fc"><i>568</i>&nbsp;                    fourth = courseTaken2;</b>
+<b class="fc"><i>569</i>&nbsp;                    continue;</b>
+<i>570</i>&nbsp;                }
+<b class="fc"><i>571</i>&nbsp;                if (fifth == null) {</b>
+<b class="fc"><i>572</i>&nbsp;                    fifth = courseTaken2;</b>
+<b class="fc"><i>573</i>&nbsp;                    continue;</b>
+<i>574</i>&nbsp;                }
+<b class="fc"><i>575</i>&nbsp;                if (fourth.getGrade() == Grade.C) {</b>
+<b class="nc"><i>576</i>&nbsp;                    if (courseTaken2.getGrade() == Grade.A || courseTaken2.getGrade() == Grade.B) {</b>
+<b class="nc"><i>577</i>&nbsp;                        fourth = courseTaken2;</b>
+<b class="nc"><i>578</i>&nbsp;                        continue;</b>
+<i>579</i>&nbsp;                    }
+<i>580</i>&nbsp;                }
+<b class="fc"><i>581</i>&nbsp;                if (fifth.getGrade() == Grade.C) {</b>
+<b class="nc"><i>582</i>&nbsp;                    if (courseTaken2.getGrade() == Grade.A || courseTaken2.getGrade() == Grade.B) {</b>
+<b class="nc"><i>583</i>&nbsp;                        fifth = courseTaken2;</b>
+<b class="nc"><i>584</i>&nbsp;                        continue;</b>
+<i>585</i>&nbsp;                    }
+<i>586</i>&nbsp;                }
+<b class="fc"><i>587</i>&nbsp;                if (fourth.getGrade() == Grade.B) {</b>
+<b class="fc"><i>588</i>&nbsp;                    if (courseTaken2.getGrade() == Grade.A) {</b>
+<b class="nc"><i>589</i>&nbsp;                        fourth = courseTaken2;</b>
+<b class="nc"><i>590</i>&nbsp;                        continue;</b>
+<i>591</i>&nbsp;                    }
+<i>592</i>&nbsp;                }
+<b class="fc"><i>593</i>&nbsp;                if (fifth.getGrade() == Grade.B) {</b>
+<b class="fc"><i>594</i>&nbsp;                    if (courseTaken2.getGrade() == Grade.A) {</b>
+<b class="fc"><i>595</i>&nbsp;                        fifth = courseTaken2;</b>
+<b class="fc"><i>596</i>&nbsp;                        continue;</b>
+<i>597</i>&nbsp;                    }
+<i>598</i>&nbsp;                }
+<i>599</i>&nbsp;            }
+<b class="fc"><i>600</i>&nbsp;        }</b>
+<i>601</i>&nbsp;
+<i>602</i>&nbsp;
+<b class="fc"><i>603</i>&nbsp;        if (fourth != null) {</b>
+<b class="fc"><i>604</i>&nbsp;            newCourseTakenList.add(fourth);</b>
+<i>605</i>&nbsp;        }
+<b class="fc"><i>606</i>&nbsp;        if (fifth != null) {</b>
+<b class="fc"><i>607</i>&nbsp;            newCourseTakenList.add(fifth);</b>
+<i>608</i>&nbsp;        }
+<i>609</i>&nbsp;
+<i>610</i>&nbsp;        //Fill in gradReqCheck
+<b class="fc"><i>611</i>&nbsp;        this.details = new Requirement(requirement.getName(), newCourseTakenList);</b>
+<i>612</i>&nbsp;        try {
+<b class="fc"><i>613</i>&nbsp;            this.details.calculateGpa();</b>
+<b class="nc"><i>614</i>&nbsp;        } catch(InvalidGradeException e) {</b>
+<b class="nc"><i>615</i>&nbsp;            Exception exception = new InvalidGradeException(e);</b>
+<b class="nc"><i>616</i>&nbsp;            throw exception;</b>
+<b class="fc"><i>617</i>&nbsp;        }</b>
+<b class="fc"><i>618</i>&nbsp;        if (details.getGpa() &gt;= requirement.getGpa() &amp;&amp; this.details.getCourses().size() == 5) {</b>
+<b class="fc"><i>619</i>&nbsp;            this.passed = true;</b>
+<i>620</i>&nbsp;        }
+<b class="fc"><i>621</i>&nbsp;    }</b>
+<i>622</i>&nbsp;
+<i>623</i>&nbsp;    //Checks any requirement that is based on passing with satisfactory a certain number of credits of a single course
+<i>624</i>&nbsp;    private void casePASSED_AS_SATISFACTORY(Requirement requirement, List&lt;CourseTaken&gt; courseTakenList) {
+<b class="fc"><i>625</i>&nbsp;        this.passed = false;</b>
+<b class="fc"><i>626</i>&nbsp;        int takenCredits = 0;</b>
+<b class="fc"><i>627</i>&nbsp;        List&lt;CourseTaken&gt; newCourseTakenList = new ArrayList&lt;CourseTaken&gt;();</b>
+<b class="fc"><i>628</i>&nbsp;        List&lt;String&gt; validCourseIDs = new ArrayList&lt;String&gt;();</b>
+<i>629</i>&nbsp;
+<i>630</i>&nbsp;        //Generate list of valid courses
+<b class="fc"><i>631</i>&nbsp;        for (CourseTaken validCourseTaken : requirement.getCourses()) {</b>
+<b class="fc"><i>632</i>&nbsp;            validCourseIDs.add(validCourseTaken.getCourse().getId());</b>
+<b class="fc"><i>633</i>&nbsp;        }</b>
+<i>634</i>&nbsp;
+<i>635</i>&nbsp;        //Find and count only the coursesTaken that match the requirement
+<b class="fc"><i>636</i>&nbsp;        for (CourseTaken courseTaken : courseTakenList) {</b>
+<b class="fc"><i>637</i>&nbsp;            if (validCourseIDs.contains(courseTaken.getCourse().getId())) {</b>
+<b class="fc"><i>638</i>&nbsp;                newCourseTakenList.add(courseTaken);</b>
+<i>639</i>&nbsp;                //Check if passed and therefore credits count toward requirement
+<b class="fc"><i>640</i>&nbsp;                if (courseTaken.getGrade() == Grade.S) {</b>
+<b class="fc"><i>641</i>&nbsp;                    takenCredits = takenCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());</b>
+<i>642</i>&nbsp;                }
+<i>643</i>&nbsp;            }
+<b class="fc"><i>644</i>&nbsp;        }</b>
+<i>645</i>&nbsp;
+<i>646</i>&nbsp;        //Fill in gradReqCheck
+<b class="fc"><i>647</i>&nbsp;        this.details = new Requirement(requirement.getName(), newCourseTakenList);</b>
+<b class="fc"><i>648</i>&nbsp;        this.details.setCredits(takenCredits);</b>
+<b class="fc"><i>649</i>&nbsp;        if (takenCredits &gt;= requirement.getCredits()) {</b>
+<b class="fc"><i>650</i>&nbsp;            this.passed = true;</b>
+<i>651</i>&nbsp;        }
+<b class="fc"><i>652</i>&nbsp;    }</b>
+<i>653</i>&nbsp;
+<i>654</i>&nbsp;    private void caseOUT_OF_DEPARTMENT(Requirement requirement, List&lt;CourseTaken&gt; courseTakenList) {
+<b class="fc"><i>655</i>&nbsp;        this.passed = false;</b>
+<b class="fc"><i>656</i>&nbsp;        int takenCredits = 0;</b>
+<b class="fc"><i>657</i>&nbsp;        List&lt;CourseTaken&gt; newCourseTakenList = new ArrayList&lt;CourseTaken&gt;();</b>
+<i>658</i>&nbsp;
+<i>659</i>&nbsp;        //Find and count only the coursesTaken that match the requirement
+<b class="fc"><i>660</i>&nbsp;        for (CourseTaken courseTaken : courseTakenList) {</b>
+<b class="fc"><i>661</i>&nbsp;            if (courseTaken.getCourse().getId().matches(&quot;^(?!csci).*[56789][0-9]{3}$&quot;)) {</b>
+<b class="fc"><i>662</i>&nbsp;                newCourseTakenList.add(courseTaken);</b>
+<i>663</i>&nbsp;                //Check if passed and therefore credits count toward requirement
+<b class="fc"><i>664</i>&nbsp;                if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B || courseTaken.getGrade() == Grade.C) {</b>
+<b class="fc"><i>665</i>&nbsp;                    takenCredits = takenCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());</b>
+<i>666</i>&nbsp;                }
+<i>667</i>&nbsp;            }
+<b class="fc"><i>668</i>&nbsp;        }</b>
+<i>669</i>&nbsp;
+<i>670</i>&nbsp;        //Fill in gradReqCheck
+<b class="fc"><i>671</i>&nbsp;        this.details = new Requirement(requirement.getName(), newCourseTakenList);</b>
+<b class="fc"><i>672</i>&nbsp;        this.details.setCredits(takenCredits);</b>
+<b class="fc"><i>673</i>&nbsp;        if (takenCredits &gt;= requirement.getCredits()) {</b>
+<b class="fc"><i>674</i>&nbsp;            this.passed = true;</b>
+<i>675</i>&nbsp;        }
+<b class="fc"><i>676</i>&nbsp;    }</b>
+<i>677</i>&nbsp;
+<i>678</i>&nbsp;    private void casePASSED_WITH_C(Requirement requirement, List&lt;CourseTaken&gt; courseTakenList) {
+<b class="fc"><i>679</i>&nbsp;        this.passed = false;</b>
+<b class="fc"><i>680</i>&nbsp;        boolean takenClass = false;</b>
+<b class="fc"><i>681</i>&nbsp;        int takenCredits = 0;</b>
+<b class="fc"><i>682</i>&nbsp;        List&lt;CourseTaken&gt; newCourseTakenList = new ArrayList&lt;CourseTaken&gt;();</b>
+<b class="fc"><i>683</i>&nbsp;        List&lt;String&gt; validCourseIDs = new ArrayList&lt;String&gt;();</b>
+<i>684</i>&nbsp;
+<i>685</i>&nbsp;        //Generate list of valid courses
+<b class="fc"><i>686</i>&nbsp;        for (CourseTaken validCourseTaken : requirement.getCourses()) {</b>
+<b class="fc"><i>687</i>&nbsp;            validCourseIDs.add(validCourseTaken.getCourse().getId());</b>
+<b class="fc"><i>688</i>&nbsp;        }</b>
+<i>689</i>&nbsp;
+<i>690</i>&nbsp;        //Find and count only the coursesTaken that match the requirement
+<b class="fc"><i>691</i>&nbsp;        for (CourseTaken courseTaken : courseTakenList) {</b>
+<b class="fc"><i>692</i>&nbsp;            if (validCourseIDs.contains(courseTaken.getCourse().getId())) {</b>
+<b class="fc"><i>693</i>&nbsp;                newCourseTakenList.add(courseTaken);</b>
+<i>694</i>&nbsp;                //Check if passed and therefore credits count toward requirement
+<b class="fc"><i>695</i>&nbsp;                if (courseTaken.getGrade() == Grade.A || courseTaken.getGrade() == Grade.B || courseTaken.getGrade() == Grade.C) {</b>
+<b class="fc"><i>696</i>&nbsp;                    takenCredits = takenCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());</b>
+<i>697</i>&nbsp;                }
+<i>698</i>&nbsp;            }
+<b class="fc"><i>699</i>&nbsp;        }</b>
+<i>700</i>&nbsp;
+<i>701</i>&nbsp;        //Fill in gradReqCheck
+<b class="fc"><i>702</i>&nbsp;        this.details = new Requirement(requirement.getName(), newCourseTakenList);</b>
+<b class="fc"><i>703</i>&nbsp;        this.details.setCredits(takenCredits);</b>
+<b class="fc"><i>704</i>&nbsp;        if (takenCredits &gt;= requirement.getCredits()) {</b>
+<b class="fc"><i>705</i>&nbsp;            this.passed = true;</b>
+<i>706</i>&nbsp;        }
+<b class="fc"><i>707</i>&nbsp;    }</b>
+<i>708</i>&nbsp;
+<i>709</i>&nbsp;    private void caseTOTAL_CREDITS_PHD(Requirement requirement, List&lt;CourseTaken&gt; courseTakenList) {
+<b class="fc"><i>710</i>&nbsp;        this.passed = false;</b>
+<b class="fc"><i>711</i>&nbsp;        int csciCredits = 0;</b>
+<b class="fc"><i>712</i>&nbsp;        int totalCredits = 0;</b>
+<b class="fc"><i>713</i>&nbsp;        int reqCsciCredits = 16;</b>
+<b class="fc"><i>714</i>&nbsp;        int reqTotalCredits = 31;</b>
+<b class="fc"><i>715</i>&nbsp;        List&lt;CourseTaken&gt; newCourseTakenList = new ArrayList&lt;CourseTaken&gt;();</b>
+<i>716</i>&nbsp;
+<i>717</i>&nbsp;        //Only letter grades A, B, C, and S count towards requirements
+<b class="fc"><i>718</i>&nbsp;        List&lt;Grade&gt; validGrades = new ArrayList&lt;Grade&gt;();</b>
+<b class="fc"><i>719</i>&nbsp;        validGrades.add(Grade.A);</b>
+<b class="fc"><i>720</i>&nbsp;        validGrades.add(Grade.B);</b>
+<b class="fc"><i>721</i>&nbsp;        validGrades.add(Grade.C);</b>
+<b class="fc"><i>722</i>&nbsp;        validGrades.add(Grade.S);</b>
+<b class="fc"><i>723</i>&nbsp;        List&lt;String&gt; invalidCourseIDs = new ArrayList&lt;String&gt;();</b>
+<i>724</i>&nbsp;
+<i>725</i>&nbsp;        //Thesis credits do not count
+<b class="fc"><i>726</i>&nbsp;        invalidCourseIDs.add(&quot;csci8777&quot;);</b>
+<b class="fc"><i>727</i>&nbsp;        invalidCourseIDs.add(&quot;csci8888&quot;);</b>
+<b class="fc"><i>728</i>&nbsp;        invalidCourseIDs.add(&quot;csci8666&quot;);</b>
+<i>729</i>&nbsp;
+<b class="fc"><i>730</i>&nbsp;        for(CourseTaken courseTaken : courseTakenList) {</b>
+<b class="fc"><i>731</i>&nbsp;            if (validGrades.contains(courseTaken.getGrade()) &amp;&amp; !invalidCourseIDs.contains(courseTaken.getCourse().getId())) {</b>
+<i>732</i>&nbsp;                //Collect only the coursesTaken that are CSCI 5000+ level
+<b class="fc"><i>733</i>&nbsp;                if (courseTaken.getCourse().getId().matches(&quot;^csci[56789][0-9]{3}$&quot;)) {</b>
+<b class="fc"><i>734</i>&nbsp;                    newCourseTakenList.add(courseTaken);</b>
+<b class="fc"><i>735</i>&nbsp;                    csciCredits = csciCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());</b>
+<b class="fc"><i>736</i>&nbsp;                    totalCredits = totalCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());</b>
+<b class="fc"><i>737</i>&nbsp;                    continue;</b>
+<i>738</i>&nbsp;                }
+<i>739</i>&nbsp;                //Collect the coursesTaken that are non-CSCI or CSCI below the 5000 level
+<b class="fc"><i>740</i>&nbsp;                newCourseTakenList.add(courseTaken);</b>
+<b class="fc"><i>741</i>&nbsp;                totalCredits = totalCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());</b>
+<i>742</i>&nbsp;            }
+<b class="fc"><i>743</i>&nbsp;        }</b>
+<i>744</i>&nbsp;
+<i>745</i>&nbsp;        //Fill in reqCheck and ensure 16 CSCI 5000+ level credits and 31 total
+<b class="fc"><i>746</i>&nbsp;        this.details = new Requirement(requirement.getName(), newCourseTakenList);</b>
+<b class="fc"><i>747</i>&nbsp;        this.details.setCredits(totalCredits);</b>
+<b class="fc"><i>748</i>&nbsp;        if (csciCredits &gt;= reqCsciCredits &amp;&amp; totalCredits &gt;= reqTotalCredits) {</b>
+<b class="fc"><i>749</i>&nbsp;            this.passed = true;</b>
+<i>750</i>&nbsp;        }
+<b class="fc"><i>751</i>&nbsp;    }</b>
+<i>752</i>&nbsp;
+<i>753</i>&nbsp;    private void caseTOTAL_CREDITS_MSA(Requirement requirement, List&lt;CourseTaken&gt; courseTakenList) {
+<b class="fc"><i>754</i>&nbsp;        this.passed = false;</b>
+<b class="fc"><i>755</i>&nbsp;        int totalCredits = 0;</b>
+<b class="fc"><i>756</i>&nbsp;        int reqTotalCredits = 31;</b>
+<b class="fc"><i>757</i>&nbsp;        List&lt;CourseTaken&gt; newCourseTakenList = new ArrayList&lt;CourseTaken&gt;();</b>
+<i>758</i>&nbsp;
+<i>759</i>&nbsp;        //Only letter grades A, B, C, and S count towards requirements
+<b class="fc"><i>760</i>&nbsp;        List&lt;Grade&gt; validGrades = new ArrayList&lt;Grade&gt;();</b>
+<b class="fc"><i>761</i>&nbsp;        validGrades.add(Grade.A);</b>
+<b class="fc"><i>762</i>&nbsp;        validGrades.add(Grade.B);</b>
+<b class="fc"><i>763</i>&nbsp;        validGrades.add(Grade.C);</b>
+<b class="fc"><i>764</i>&nbsp;        validGrades.add(Grade.S);</b>
+<i>765</i>&nbsp;
+<b class="fc"><i>766</i>&nbsp;        for(CourseTaken courseTaken : courseTakenList) {</b>
+<b class="fc"><i>767</i>&nbsp;            if (validGrades.contains(courseTaken.getGrade())) {</b>
+<b class="fc"><i>768</i>&nbsp;                newCourseTakenList.add(courseTaken);</b>
+<b class="fc"><i>769</i>&nbsp;                totalCredits = totalCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());</b>
+<i>770</i>&nbsp;            }
+<b class="fc"><i>771</i>&nbsp;        }</b>
+<i>772</i>&nbsp;
+<b class="fc"><i>773</i>&nbsp;        this.details = new Requirement(requirement.getName(), newCourseTakenList);</b>
+<b class="fc"><i>774</i>&nbsp;        this.details.setCredits(totalCredits);</b>
+<b class="fc"><i>775</i>&nbsp;        if (totalCredits &gt;= reqTotalCredits) {</b>
+<b class="fc"><i>776</i>&nbsp;            this.passed = true;</b>
+<i>777</i>&nbsp;        }
+<b class="fc"><i>778</i>&nbsp;    }</b>
+<i>779</i>&nbsp;
+<i>780</i>&nbsp;    private void caseTOTAL_CREDITS_MSBC(Requirement requirement, List&lt;CourseTaken&gt; courseTakenList) {
+<b class="fc"><i>781</i>&nbsp;        this.passed = false;</b>
+<b class="fc"><i>782</i>&nbsp;        int csciCredits = 0;</b>
+<b class="fc"><i>783</i>&nbsp;        int totalCredits = 0;</b>
+<b class="fc"><i>784</i>&nbsp;        int reqCsciCredits = 16;</b>
+<b class="fc"><i>785</i>&nbsp;        int reqTotalCredits = 31;</b>
+<b class="fc"><i>786</i>&nbsp;        List&lt;CourseTaken&gt; newCourseTakenList = new ArrayList&lt;CourseTaken&gt;();</b>
+<i>787</i>&nbsp;
+<i>788</i>&nbsp;        //Only letter grades A, B, C, and S count towards requirements
+<b class="fc"><i>789</i>&nbsp;        List&lt;Grade&gt; validGrades = new ArrayList&lt;Grade&gt;();</b>
+<b class="fc"><i>790</i>&nbsp;        validGrades.add(Grade.A);</b>
+<b class="fc"><i>791</i>&nbsp;        validGrades.add(Grade.B);</b>
+<b class="fc"><i>792</i>&nbsp;        validGrades.add(Grade.C);</b>
+<b class="fc"><i>793</i>&nbsp;        validGrades.add(Grade.S);</b>
+<i>794</i>&nbsp;
+<b class="fc"><i>795</i>&nbsp;        for(CourseTaken courseTaken : courseTakenList) {</b>
+<b class="fc"><i>796</i>&nbsp;            if (validGrades.contains(courseTaken.getGrade())) {</b>
+<i>797</i>&nbsp;                //Collect only the coursesTaken that are CSCI 5000+ level
+<b class="fc"><i>798</i>&nbsp;                if (courseTaken.getCourse().getId().matches(&quot;^csci[56789][0-9]{3}$&quot;)) {</b>
+<b class="fc"><i>799</i>&nbsp;                    newCourseTakenList.add(courseTaken);</b>
+<b class="fc"><i>800</i>&nbsp;                    csciCredits = csciCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());</b>
+<b class="fc"><i>801</i>&nbsp;                    totalCredits = totalCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());</b>
+<b class="fc"><i>802</i>&nbsp;                    continue;</b>
+<i>803</i>&nbsp;                }
+<i>804</i>&nbsp;                //Collect the coursesTaken that are non-CSCI or CSCI below the 5000 level
+<b class="fc"><i>805</i>&nbsp;                newCourseTakenList.add(courseTaken);</b>
+<b class="fc"><i>806</i>&nbsp;                totalCredits = totalCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());</b>
+<i>807</i>&nbsp;            }
+<b class="fc"><i>808</i>&nbsp;        }</b>
+<i>809</i>&nbsp;
+<i>810</i>&nbsp;        //Fill in reqCheck and ensure 16 CSCI 5000+ level credits and 31 total
+<b class="fc"><i>811</i>&nbsp;        this.details = new Requirement(requirement.getName(), newCourseTakenList);</b>
+<b class="fc"><i>812</i>&nbsp;        this.details.setCredits(totalCredits);</b>
+<b class="fc"><i>813</i>&nbsp;        if (csciCredits &gt;= reqCsciCredits &amp;&amp; totalCredits &gt;= reqTotalCredits) {</b>
+<b class="fc"><i>814</i>&nbsp;            this.passed = true;</b>
+<i>815</i>&nbsp;        }
+<b class="fc"><i>816</i>&nbsp;    }</b>
+<i>817</i>&nbsp;
+<i>818</i>&nbsp;    private void caseCOURSE_CREDITS(Requirement requirement, List&lt;CourseTaken&gt; courseTakenList) {
+<i>819</i>&nbsp;        //Track CSCI credits and Non-CSCI credits
+<i>820</i>&nbsp;        //Use regex similar to IN_PROGRAM_GPA and OUT_OF_DEPARTMENT to get individual credit requirements
+<i>821</i>&nbsp;        //Check that grades are A, B, or C
+<i>822</i>&nbsp;        //Remove any thesis credits from consideration
+<i>823</i>&nbsp;
+<b class="fc"><i>824</i>&nbsp;        this.passed = false;</b>
+<b class="fc"><i>825</i>&nbsp;        int csciCredits = 0;</b>
+<b class="fc"><i>826</i>&nbsp;        int totalCredits = 0;</b>
+<b class="fc"><i>827</i>&nbsp;        int reqCsciCredits = 16;</b>
+<b class="fc"><i>828</i>&nbsp;        int reqTotalCredits = 22;</b>
+<b class="fc"><i>829</i>&nbsp;        List&lt;CourseTaken&gt; newCourseTakenList = new ArrayList&lt;CourseTaken&gt;();</b>
+<i>830</i>&nbsp;
+<i>831</i>&nbsp;        //Only letter grades A, B, C count towards requirements
+<b class="fc"><i>832</i>&nbsp;        List&lt;Grade&gt; validGrades = new ArrayList&lt;Grade&gt;();</b>
+<b class="fc"><i>833</i>&nbsp;        validGrades.add(Grade.A);</b>
+<b class="fc"><i>834</i>&nbsp;        validGrades.add(Grade.B);</b>
+<b class="fc"><i>835</i>&nbsp;        validGrades.add(Grade.C);</b>
+<b class="fc"><i>836</i>&nbsp;        validGrades.add(Grade.S);</b>
+<b class="fc"><i>837</i>&nbsp;        List&lt;String&gt; invalidCourseIDs = new ArrayList&lt;String&gt;();</b>
+<i>838</i>&nbsp;
+<i>839</i>&nbsp;        //Thesis credits do not count
+<b class="fc"><i>840</i>&nbsp;        invalidCourseIDs.add(&quot;csci8777&quot;);</b>
+<b class="fc"><i>841</i>&nbsp;        invalidCourseIDs.add(&quot;csci8888&quot;);</b>
+<b class="fc"><i>842</i>&nbsp;        invalidCourseIDs.add(&quot;csci8666&quot;);</b>
+<i>843</i>&nbsp;
+<b class="fc"><i>844</i>&nbsp;        for(CourseTaken courseTaken : courseTakenList) {</b>
+<b class="fc"><i>845</i>&nbsp;            if (validGrades.contains(courseTaken.getGrade()) &amp;&amp; !invalidCourseIDs.contains(courseTaken.getCourse().getId())) {</b>
+<i>846</i>&nbsp;                //Collect only the coursesTaken that are CSCI 5000+ level
+<b class="fc"><i>847</i>&nbsp;                if (courseTaken.getCourse().getId().matches(&quot;^csci[56789][0-9]{3}$&quot;)) {</b>
+<b class="fc"><i>848</i>&nbsp;                    newCourseTakenList.add(courseTaken);</b>
+<b class="fc"><i>849</i>&nbsp;                    csciCredits = csciCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());</b>
+<b class="fc"><i>850</i>&nbsp;                    totalCredits = totalCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());</b>
+<b class="fc"><i>851</i>&nbsp;                    continue;</b>
+<i>852</i>&nbsp;                }
+<i>853</i>&nbsp;                //Collect only the coursesTaken that are non-CSCI or CSCI below the 5000 level
+<b class="fc"><i>854</i>&nbsp;                newCourseTakenList.add(courseTaken);</b>
+<b class="fc"><i>855</i>&nbsp;                totalCredits = totalCredits + Integer.parseInt(courseTaken.getCourse().getNumCredits());</b>
+<i>856</i>&nbsp;            }
+<b class="fc"><i>857</i>&nbsp;        }</b>
+<i>858</i>&nbsp;
+<i>859</i>&nbsp;        //Calculate GPA and fill in gradReqCheck
+<b class="fc"><i>860</i>&nbsp;        this.details = new Requirement(requirement.getName(), newCourseTakenList);</b>
+<b class="fc"><i>861</i>&nbsp;        this.details.setCredits(totalCredits);</b>
+<b class="fc"><i>862</i>&nbsp;        if (csciCredits &gt;= reqCsciCredits &amp;&amp; totalCredits &gt;= reqTotalCredits) {</b>
+<b class="fc"><i>863</i>&nbsp;            this.passed = true;</b>
+<i>864</i>&nbsp;        }
+<b class="fc"><i>865</i>&nbsp;    }</b>
+<i>866</i>&nbsp;
+<i>867</i>&nbsp;    private void caseOVERALL_GPA(Requirement requirement, List&lt;CourseTaken&gt; courseTakenList) throws Exception {
+<b class="fc"><i>868</i>&nbsp;        this.passed = false;</b>
+<i>869</i>&nbsp;
+<i>870</i>&nbsp;        //Calculate GPA and fill in gradReqCheck
+<b class="fc"><i>871</i>&nbsp;        this.details = new Requirement(requirement.getName(), courseTakenList);</b>
+<i>872</i>&nbsp;        try {
+<b class="fc"><i>873</i>&nbsp;            this.details.calculateGpa();</b>
+<b class="nc"><i>874</i>&nbsp;        } catch(InvalidGradeException e) {</b>
+<b class="nc"><i>875</i>&nbsp;            Exception exception = new InvalidGradeException(e);</b>
+<b class="nc"><i>876</i>&nbsp;            throw exception;</b>
+<b class="fc"><i>877</i>&nbsp;        }</b>
+<b class="fc"><i>878</i>&nbsp;        if (details.getGpa() &gt;= requirement.getGpa()) {</b>
+<b class="fc"><i>879</i>&nbsp;            this.passed = true;</b>
+<i>880</i>&nbsp;        }
+<b class="fc"><i>881</i>&nbsp;    }</b>
+<i>882</i>&nbsp;
+<i>883</i>&nbsp;    private void caseIN_PROGRAM_GPA(Requirement requirement, List&lt;CourseTaken&gt; courseTakenList) throws Exception {
+<b class="fc"><i>884</i>&nbsp;        this.passed = false;</b>
+<b class="fc"><i>885</i>&nbsp;        List&lt;CourseTaken&gt; newCourseTakenList = new ArrayList&lt;CourseTaken&gt;();</b>
+<i>886</i>&nbsp;
+<i>887</i>&nbsp;        //Find and collect only the coursesTaken that are CSCI 5000 level
+<b class="fc"><i>888</i>&nbsp;        for(CourseTaken courseTaken : courseTakenList) {</b>
+<b class="fc"><i>889</i>&nbsp;            if (courseTaken.getCourse().getId().matches(&quot;^csci[56789][0-9]{3}$&quot;)) {</b>
+<b class="fc"><i>890</i>&nbsp;                newCourseTakenList.add(courseTaken);</b>
+<i>891</i>&nbsp;            }
+<b class="fc"><i>892</i>&nbsp;        }</b>
+<i>893</i>&nbsp;
+<i>894</i>&nbsp;        //Calculate GPA and fill in gradReqCheck
+<b class="fc"><i>895</i>&nbsp;        this.details = new Requirement(requirement.getName(), newCourseTakenList);</b>
+<i>896</i>&nbsp;        try {
+<b class="fc"><i>897</i>&nbsp;            this.details.calculateGpa();</b>
+<b class="nc"><i>898</i>&nbsp;        } catch(InvalidGradeException e) {</b>
+<b class="nc"><i>899</i>&nbsp;            Exception exception = new InvalidGradeException(e);</b>
+<b class="nc"><i>900</i>&nbsp;            throw exception;</b>
+<b class="fc"><i>901</i>&nbsp;        }</b>
+<b class="fc"><i>902</i>&nbsp;        if (details.getGpa() &gt;= requirement.getGpa()) {</b>
+<b class="fc"><i>903</i>&nbsp;            this.passed = true;</b>
+<i>904</i>&nbsp;        }
+<b class="fc"><i>905</i>&nbsp;    }</b>
+<i>906</i>&nbsp;
+<i>907</i>&nbsp;    private void caseMILESTONES(Requirement requirement, List&lt;CompletedMilestone&gt; completedMilestoneList) {
+<b class="fc"><i>908</i>&nbsp;        this.passed = false;</b>
+<b class="fc"><i>909</i>&nbsp;        int studentsMilestones = 0;</b>
+<i>910</i>&nbsp;
+<i>911</i>&nbsp;        //Find if the student passed each milestone and count it if so
+<b class="fc"><i>912</i>&nbsp;        for(CompletedMilestone requiredMilestone : requirement.getMilestones()) {</b>
+<b class="fc"><i>913</i>&nbsp;            for (CompletedMilestone studentMilestone : completedMilestoneList) {</b>
+<b class="fc"><i>914</i>&nbsp;                if (studentMilestone.getMilestone() == (requiredMilestone.getMilestone())) {</b>
+<b class="fc"><i>915</i>&nbsp;                    studentsMilestones++;</b>
+<b class="fc"><i>916</i>&nbsp;                    break;</b>
+<i>917</i>&nbsp;                }
+<b class="fc"><i>918</i>&nbsp;            }</b>
+<b class="fc"><i>919</i>&nbsp;        }</b>
+<i>920</i>&nbsp;
+<i>921</i>&nbsp;        //Fill in gradReqCheck
+<b class="fc"><i>922</i>&nbsp;        this.details = new Requirement(requirement.getName(), completedMilestoneList, requirement.getNotes());</b>
+<i>923</i>&nbsp;        //Check if requirement passed
+<b class="fc"><i>924</i>&nbsp;        if (studentsMilestones == requirement.getMilestones().size()) {</b>
+<b class="nc"><i>925</i>&nbsp;            this.passed = true;</b>
+<i>926</i>&nbsp;        }
+<b class="fc"><i>927</i>&nbsp;    }</b>
+<i>928</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2014-12-13 14:30</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,199 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Term</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">edu.umn.csci5801.model</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Term (edu.umn.csci5801.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Term</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    77.8%
+  </span>
+  <span class="absValue">
+    (7/ 9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    44.1%
+  </span>
+  <span class="absValue">
+    (15/ 34)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;/**
+<i>2</i>&nbsp; * Copyright 2014 CSCI5801 Fall2014 Group1
+<i>3</i>&nbsp; *
+<i>4</i>&nbsp; * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<i>5</i>&nbsp; * you may not use this file except in compliance with the License.
+<i>6</i>&nbsp; * You may obtain a copy of the License at
+<i>7</i>&nbsp; *
+<i>8</i>&nbsp; *    http://www.apache.org/licenses/LICENSE-2.0
+<i>9</i>&nbsp; *
+<i>10</i>&nbsp; * Unless required by applicable law or agreed to in writing, software
+<i>11</i>&nbsp; * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<i>12</i>&nbsp; * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<i>13</i>&nbsp; * See the License for the specific language governing permissions and
+<i>14</i>&nbsp; * limitations under the License.
+<i>15</i>&nbsp; */
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;package edu.umn.csci5801.model;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;/**
+<i>20</i>&nbsp; * Term.java - Class containing attributes identifying a term,
+<i>21</i>&nbsp; * including term&#39;s semester, and professor&#39;s term&#39;s year
+<i>22</i>&nbsp; *
+<i>23</i>&nbsp; * @author CSCI5801 Fall2014 Group1
+<i>24</i>&nbsp; * @version 1.0
+<i>25</i>&nbsp; */
+<i>26</i>&nbsp;public class Term {
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    private Semester semester;
+<i>29</i>&nbsp;    private int year;
+<i>30</i>&nbsp;
+<b class="fc"><i>31</i>&nbsp;    public Term() {};</b>
+<b class="fc"><i>32</i>&nbsp;    public Term(Semester s, int y) {</b>
+<b class="fc"><i>33</i>&nbsp;        semester = s;</b>
+<b class="fc"><i>34</i>&nbsp;        year = y;</b>
+<b class="fc"><i>35</i>&nbsp;    }</b>
+<b class="nc"><i>36</i>&nbsp;    public Term(String s, int y) {</b>
+<b class="nc"><i>37</i>&nbsp;        year = y;</b>
+<b class="nc"><i>38</i>&nbsp;        if(s.equals(&quot;FALL&quot;)){</b>
+<b class="nc"><i>39</i>&nbsp;            this.semester = Semester.FALL;</b>
+<i>40</i>&nbsp;        }
+<b class="nc"><i>41</i>&nbsp;        else if(s.equals(&quot;SPRING&quot;)) {</b>
+<b class="nc"><i>42</i>&nbsp;            this.semester = Semester.SPRING;</b>
+<i>43</i>&nbsp;        }
+<b class="nc"><i>44</i>&nbsp;        else if(s.equals(&quot;SUMMER&quot;)) {</b>
+<b class="nc"><i>45</i>&nbsp;            this.semester = Semester.SUMMER;</b>
+<i>46</i>&nbsp;        }
+<b class="nc"><i>47</i>&nbsp;    }</b>
+<i>48</i>&nbsp;
+<i>49</i>&nbsp;    /**
+<i>50</i>&nbsp;     * setSemester() - Method for setting the semester attribute of a Term object
+<i>51</i>&nbsp;     *
+<i>52</i>&nbsp;     * @param sem - A variable of type String identifying a term&#39;s semester
+<i>53</i>&nbsp;     * @throws Exception - If a String which isn&#39;t a valid semester is entered
+<i>54</i>&nbsp;     */
+<i>55</i>&nbsp;    public void setSemester(String sem) throws Exception {
+<b class="fc"><i>56</i>&nbsp;        if(sem.equals(&quot;FALL&quot;)){</b>
+<b class="fc"><i>57</i>&nbsp;            this.semester = Semester.FALL;</b>
+<i>58</i>&nbsp;        }
+<b class="nc"><i>59</i>&nbsp;        else if(sem.equals(&quot;SPRING&quot;)) {</b>
+<b class="nc"><i>60</i>&nbsp;            this.semester = Semester.SPRING;</b>
+<i>61</i>&nbsp;        }
+<b class="nc"><i>62</i>&nbsp;        else if(sem.equals(&quot;SUMMER&quot;)) {</b>
+<b class="nc"><i>63</i>&nbsp;            this.semester = Semester.SUMMER;</b>
+<i>64</i>&nbsp;        }
+<i>65</i>&nbsp;        else {
+<b class="nc"><i>66</i>&nbsp;            Exception e = new Exception();</b>
+<b class="nc"><i>67</i>&nbsp;            throw e;</b>
+<i>68</i>&nbsp;        }
+<b class="fc"><i>69</i>&nbsp;    }</b>
+<i>70</i>&nbsp;
+<i>71</i>&nbsp;    /**
+<i>72</i>&nbsp;     * setSemester() - Method for setting the semester attribute of a Term object
+<i>73</i>&nbsp;     *
+<i>74</i>&nbsp;     * @param sem - A variable of type Semester identifying a term&#39;s semester
+<i>75</i>&nbsp;     */
+<i>76</i>&nbsp;    public void setSemester(Semester sem) {
+<b class="nc"><i>77</i>&nbsp;        this.semester = sem;</b>
+<b class="nc"><i>78</i>&nbsp;    }</b>
+<i>79</i>&nbsp;
+<i>80</i>&nbsp;    /**
+<i>81</i>&nbsp;     * setYear() - Method for setting the year attribute of a Term object
+<i>82</i>&nbsp;     *
+<i>83</i>&nbsp;     * @param yr - A variable of type int identifying a term&#39;s year
+<i>84</i>&nbsp;     */
+<i>85</i>&nbsp;    public void setYear(int yr) {
+<b class="fc"><i>86</i>&nbsp;        this.year = yr;</b>
+<b class="fc"><i>87</i>&nbsp;    }</b>
+<i>88</i>&nbsp;
+<i>89</i>&nbsp;    /**
+<i>90</i>&nbsp;     * getSemester() - Method for getting the semester attribute of a Term object
+<i>91</i>&nbsp;     *
+<i>92</i>&nbsp;     * @return semester - Return the semester attribute
+<i>93</i>&nbsp;     */
+<i>94</i>&nbsp;    public Semester getSemester() {
+<b class="fc"><i>95</i>&nbsp;        return semester;</b>
+<i>96</i>&nbsp;    }
+<i>97</i>&nbsp;
+<i>98</i>&nbsp;    /**
+<i>99</i>&nbsp;     * getYear() - Method for getting the year attribute of a Term object
+<i>100</i>&nbsp;     *
+<i>101</i>&nbsp;     * @return year - Return the year attribute
+<i>102</i>&nbsp;     */
+<i>103</i>&nbsp;    public int getYear() {
+<b class="fc"><i>104</i>&nbsp;        return year;</b>
+<i>105</i>&nbsp;    }
+<i>106</i>&nbsp;
+<i>107</i>&nbsp;    public boolean sameTerm(Term t) {
+<b class="fc"><i>108</i>&nbsp;        if(this.semester != t.getSemester()) {</b>
+<b class="nc"><i>109</i>&nbsp;            return false;</b>
+<i>110</i>&nbsp;        }
+<b class="fc"><i>111</i>&nbsp;        else if(this.year != t.getYear()) {</b>
+<b class="nc"><i>112</i>&nbsp;            return false;</b>
+<i>113</i>&nbsp;        }
+<b class="fc"><i>114</i>&nbsp;        return true;</b>
+<i>115</i>&nbsp;    }
+<i>116</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2014-12-13 14:30</div>
+</div>
+</body>
+</html>

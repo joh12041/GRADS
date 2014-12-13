@@ -1,0 +1,237 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Course</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">edu.umn.csci5801.model</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Course (edu.umn.csci5801.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Course</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (12/ 12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    87.9%
+  </span>
+  <span class="absValue">
+    (29/ 33)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;/**
+<i>2</i>&nbsp; * Copyright 2014 CSCI5801 Fall2014 Group1
+<i>3</i>&nbsp; *
+<i>4</i>&nbsp; * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<i>5</i>&nbsp; * you may not use this file except in compliance with the License.
+<i>6</i>&nbsp; * You may obtain a copy of the License at
+<i>7</i>&nbsp; *
+<i>8</i>&nbsp; *    http://www.apache.org/licenses/LICENSE-2.0
+<i>9</i>&nbsp; *
+<i>10</i>&nbsp; * Unless required by applicable law or agreed to in writing, software
+<i>11</i>&nbsp; * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<i>12</i>&nbsp; * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<i>13</i>&nbsp; * See the License for the specific language governing permissions and
+<i>14</i>&nbsp; * limitations under the License.
+<i>15</i>&nbsp; */
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;package edu.umn.csci5801.model;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;/**
+<i>20</i>&nbsp; * Course.java - Class containing attributes identifying a course,
+<i>21</i>&nbsp; * including term&#39;s name, id, number of credits, and course area
+<i>22</i>&nbsp; *
+<i>23</i>&nbsp; * @author CSCI5801 Fall2014 Group1
+<i>24</i>&nbsp; * @version 1.0
+<i>25</i>&nbsp; */
+<i>26</i>&nbsp;public class Course {
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    private String name;
+<i>29</i>&nbsp;    private String id;
+<i>30</i>&nbsp;    private String numCredits;
+<i>31</i>&nbsp;    private CourseArea courseArea;
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;    /**
+<i>34</i>&nbsp;     * Course() - Constructor for creating a Course object
+<i>35</i>&nbsp;     */
+<b class="fc"><i>36</i>&nbsp;    public Course() {}</b>
+<i>37</i>&nbsp;
+<i>38</i>&nbsp;    /**
+<i>39</i>&nbsp;     * Course() - Constructor for creating a Course object
+<i>40</i>&nbsp;     *
+<i>41</i>&nbsp;     * @param n - A variable of type String identifying a course&#39;s name
+<i>42</i>&nbsp;     * @param i_d - A variable of type String identifying a course&#39;s id
+<i>43</i>&nbsp;     * @param nc - A variable of type String identifying a course&#39;s number of credits
+<i>44</i>&nbsp;     * @param ca - A variable of type CourseArea identifying a course&#39;s course area
+<i>45</i>&nbsp;     */
+<b class="fc"><i>46</i>&nbsp;    public Course(String n, String i_d, String nc, CourseArea ca) {</b>
+<b class="fc"><i>47</i>&nbsp;        name = n;</b>
+<b class="fc"><i>48</i>&nbsp;        id = i_d;</b>
+<b class="fc"><i>49</i>&nbsp;        numCredits = nc;</b>
+<b class="fc"><i>50</i>&nbsp;        courseArea = ca;</b>
+<b class="fc"><i>51</i>&nbsp;    }</b>
+<i>52</i>&nbsp;
+<i>53</i>&nbsp;    /**
+<i>54</i>&nbsp;     * Course() - Constructor for creating a Course object
+<i>55</i>&nbsp;     *
+<i>56</i>&nbsp;     * @param n - A variable of type String identifying a course&#39;s name
+<i>57</i>&nbsp;     * @param i_d - A variable of type String identifying a course&#39;s id
+<i>58</i>&nbsp;     * @param nc - A variable of type String identifying a course&#39;s number of credits
+<i>59</i>&nbsp;     */
+<i>60</i>&nbsp;
+<b class="fc"><i>61</i>&nbsp;    public Course(String n, String i_d, String nc) {</b>
+<b class="fc"><i>62</i>&nbsp;        name = n;</b>
+<b class="fc"><i>63</i>&nbsp;        id = i_d;</b>
+<b class="fc"><i>64</i>&nbsp;        numCredits = nc;</b>
+<b class="fc"><i>65</i>&nbsp;    }</b>
+<i>66</i>&nbsp;
+<i>67</i>&nbsp;    /**
+<i>68</i>&nbsp;     * setName() - Method for setting the name attribute of a Course object
+<i>69</i>&nbsp;     *
+<i>70</i>&nbsp;     * @param name - A variable of type String identifying a course&#39;s name
+<i>71</i>&nbsp;     */
+<i>72</i>&nbsp;    public void setName(String name) {
+<b class="fc"><i>73</i>&nbsp;        this.name = name;</b>
+<b class="fc"><i>74</i>&nbsp;    }</b>
+<i>75</i>&nbsp;
+<i>76</i>&nbsp;    /**
+<i>77</i>&nbsp;     * setId() - Method for setting the id attribute of a Course object
+<i>78</i>&nbsp;     *
+<i>79</i>&nbsp;     * @param id - A variable of type String identifying a course&#39;s id
+<i>80</i>&nbsp;     */
+<i>81</i>&nbsp;    public void setId(String id) {
+<b class="fc"><i>82</i>&nbsp;        this.id = id;</b>
+<b class="fc"><i>83</i>&nbsp;    }</b>
+<i>84</i>&nbsp;
+<i>85</i>&nbsp;    /**
+<i>86</i>&nbsp;     * setNumCredits() - Method for setting the numCredits attribute of a Course object
+<i>87</i>&nbsp;     *
+<i>88</i>&nbsp;     * @param numCredits - A variable of type String identifying a course&#39;s number of credits
+<i>89</i>&nbsp;     */
+<i>90</i>&nbsp;    public void setNumCredits(String numCredits) {
+<b class="fc"><i>91</i>&nbsp;        this.numCredits = numCredits;</b>
+<b class="fc"><i>92</i>&nbsp;    }</b>
+<i>93</i>&nbsp;
+<i>94</i>&nbsp;    /**
+<i>95</i>&nbsp;     * setCourseArea() - Method for setting the courseArea attribute of a Course object
+<i>96</i>&nbsp;     *
+<i>97</i>&nbsp;     * @param courseArea - A variable of type CourseArea identifying a course&#39;s course area
+<i>98</i>&nbsp;     */
+<i>99</i>&nbsp;    public void setCourseArea(CourseArea courseArea) {
+<b class="fc"><i>100</i>&nbsp;        this.courseArea = courseArea;</b>
+<b class="fc"><i>101</i>&nbsp;    }</b>
+<i>102</i>&nbsp;
+<i>103</i>&nbsp;    /**
+<i>104</i>&nbsp;     * getName() - Method for getting the name attribute of a Course object
+<i>105</i>&nbsp;     *
+<i>106</i>&nbsp;     * @return name - Return the name attribute
+<i>107</i>&nbsp;     */
+<i>108</i>&nbsp;    public String getName() {
+<b class="fc"><i>109</i>&nbsp;        return name;</b>
+<i>110</i>&nbsp;    }
+<i>111</i>&nbsp;
+<i>112</i>&nbsp;    /**
+<i>113</i>&nbsp;     * getId() - Method for getting the id attribute of a Course object
+<i>114</i>&nbsp;     *
+<i>115</i>&nbsp;     * @return id - Return the id attribute
+<i>116</i>&nbsp;     */
+<i>117</i>&nbsp;    public String getId() {
+<b class="fc"><i>118</i>&nbsp;        return id;</b>
+<i>119</i>&nbsp;    }
+<i>120</i>&nbsp;
+<i>121</i>&nbsp;    /**
+<i>122</i>&nbsp;     * getNumCredits() - Method for getting the numCredits attribute of a Course object
+<i>123</i>&nbsp;     *
+<i>124</i>&nbsp;     * @return numCredits - Return the numCredits attribute
+<i>125</i>&nbsp;     */
+<i>126</i>&nbsp;    public String getNumCredits() {
+<b class="fc"><i>127</i>&nbsp;        return numCredits;</b>
+<i>128</i>&nbsp;    }
+<i>129</i>&nbsp;
+<i>130</i>&nbsp;    /**
+<i>131</i>&nbsp;     * getCourseArea() - Method for getting the courseArea attribute of a Course object
+<i>132</i>&nbsp;     *
+<i>133</i>&nbsp;     * @return courseArea - Return the courseArea attribute
+<i>134</i>&nbsp;     */
+<i>135</i>&nbsp;    public CourseArea getCourseArea() {
+<b class="fc"><i>136</i>&nbsp;        return courseArea;</b>
+<i>137</i>&nbsp;    }
+<i>138</i>&nbsp;
+<i>139</i>&nbsp;    public boolean compareCourse(Course c) {
+<b class="fc"><i>140</i>&nbsp;        if(!this.id.equals(c.getId())) {</b>
+<b class="nc"><i>141</i>&nbsp;            return false;</b>
+<i>142</i>&nbsp;        }
+<b class="fc"><i>143</i>&nbsp;        if(this.courseArea != c.getCourseArea()) {</b>
+<b class="nc"><i>144</i>&nbsp;            return false;</b>
+<i>145</i>&nbsp;        }
+<b class="fc"><i>146</i>&nbsp;        if(!this.numCredits.equals(c.getNumCredits())) {</b>
+<b class="nc"><i>147</i>&nbsp;            return false;</b>
+<i>148</i>&nbsp;        }
+<b class="fc"><i>149</i>&nbsp;        if(!this.name.equals(c.getName())) {</b>
+<b class="nc"><i>150</i>&nbsp;            return false;</b>
+<i>151</i>&nbsp;        }
+<b class="fc"><i>152</i>&nbsp;        return true;</b>
+<i>153</i>&nbsp;    }
+<i>154</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2014-12-13 14:30</div>
+</div>
+</body>
+</html>
