@@ -6,7 +6,7 @@
  * You may obtain a copy of the License at
  *
  *    http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  * ProgressSummary.java - Class that handles the creation of a progress summary
- * 
+ *
  * @author CSCI5801 Fall2014 Group1
  * @version 1.0
  */
@@ -54,23 +54,23 @@ public class ProgressSummary {
 
     /**
      * checkGradStatus() - Method for checking how close a student is to graduating
-     * 
+     *
      * @param completedMilestonesList - Input of type List<CompletedMilestone> which contains a student's completed milestones
      */
     public void checkGradStatus(List<CompletedMilestone> completedMilestonesList) throws Exception {
-    	GradRequirements gradRequirements = new GradRequirements(degree);
-    	try {
-    		gradRequirements.testReqList(coursesTaken, completedMilestonesList);
-    	} catch(Exception e) {
-    		Exception exception = new InvalidRequirementException("Exception when checking courses against milestones in checkGradStatus", e);
+        GradRequirements gradRequirements = new GradRequirements(degree);
+        try {
+            gradRequirements.testReqList(coursesTaken, completedMilestonesList);
+        } catch(Exception e) {
+            Exception exception = new InvalidRequirementException("Exception when checking courses against milestones in checkGradStatus", e);
             throw exception;
-    	}
-    	try {
-    		requirementCheckResults = gradRequirements.getReqChecks();
-    	} catch(Exception e) {
-    		Exception exception = new InvalidRequirementException("Exception when checking completed requirements against graduation requirements in checkGradStatus", e);
+        }
+        try {
+            requirementCheckResults = gradRequirements.getReqChecks();
+        } catch(Exception e) {
+            Exception exception = new InvalidRequirementException("Exception when checking completed requirements against graduation requirements in checkGradStatus", e);
             throw exception;
-    	}
+        }
     }
 
     /**

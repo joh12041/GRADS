@@ -144,7 +144,7 @@ public class GRADS implements GRADSIntf {
                 studentIDList.add(sr.getStudent().getId());
             }
         } catch(Exception e){
-        	Exception exception = new InvalidStudentException();
+            Exception exception = new InvalidStudentException("Invalid Students");
             throw exception;
         }
         String representation = new GsonBuilder().setPrettyPrinting().create().toJson(studentIDList);
@@ -181,7 +181,7 @@ public class GRADS implements GRADSIntf {
             }
         }
         if(!assigned) {
-            Exception e = new InvalidStudentListException();
+            Exception e = new InvalidStudentListException("Student Does Not Exist");
             throw e;
         }
 

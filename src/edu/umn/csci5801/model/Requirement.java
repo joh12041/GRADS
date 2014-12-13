@@ -6,7 +6,7 @@
  * You may obtain a copy of the License at
  *
  *    http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -21,7 +21,7 @@ import java.util.List;
 
 /**
  * Requirement.java - Class that handles the status of a Requirement
- * 
+ *
  * @author CSCI5801 Fall2014 Group1
  * @version 1.0
  */
@@ -48,15 +48,6 @@ public class Requirement {
         name = _name_;
         courses = _courses_;
     }
-    public Requirement(Reqs _name_, double _gpa_, List<CourseTaken> _courses_, int _credits_,
-                       List<CompletedMilestone> _milestones_, List<String> _notes_) {
-        name = _name_;
-        gpa = _gpa_;
-        courses = _courses_;
-        credits = _credits_;
-        milestones = _milestones_;
-        notes = _notes_;
-    }
     public Requirement(Reqs _name_, List<CourseTaken> _courses_, int _credits_,
                        List<String> _notes_) {
         name = _name_;
@@ -82,58 +73,58 @@ public class Requirement {
      * Methods for setting or adding attributes of a Requirement object
      */
     public void setName(Reqs n) {
-    	name = n;
+        name = n;
     }
     public void setGpa(double g_p_a) {
-    	gpa = g_p_a;
+        gpa = g_p_a;
     }
     public void setCourses(List<CourseTaken> coursesTaken) {
-    	courses = coursesTaken;
+        courses = coursesTaken;
     }
     public void addCourse(CourseTaken ct) {
-    	courses.add(ct);
+        courses.add(ct);
     }
     public void setCredits(int c) {
-    	credits = c;
+        credits = c;
     }
     public void setMilestones(List<CompletedMilestone> list) {
-    	milestones = list;
+        milestones = list;
     }
     public void addMilestone(CompletedMilestone cm) {
-    	milestones.add(cm);
+        milestones.add(cm);
     }
     public void setNotes(List<String> list) {
-    	notes = list;
+        notes = list;
     }
     public void addNote(String note) {
-    	notes.add(note);
+        notes.add(note);
     }
 
     /**
      * Methods for getting attributes of a Requirement object
      */
     public double getGpa() {
-    	return gpa;
+        return gpa;
     }
     public int getCredits() {
-    	return credits;
+        return credits;
     }
     public List<CompletedMilestone> getMilestones() {
-    	return milestones;
+        return milestones;
     }
     public List<CourseTaken> getCourses() {
-    	return courses;
+        return courses;
     }
     public List<String> getNotes() {
-    	return notes;
+        return notes;
     }
     public Reqs getName() {
-    	return name;
+        return name;
     }
 
     /**
      * gradeToDouble() - Method for mapping letter grades to numerical grades
-     * 
+     *
      * @param grade - Input of type Grade which contains a letter grade
      * @return gradeD - Returns a Double containing a numerical value for a grade
      */
@@ -151,7 +142,7 @@ public class Requirement {
             case F: gradeD = 0.0;
                 break;
             default:
-            	Exception exception = new InvalidGradeException("Exception when converting letter grade to numeric grade");
+                Exception exception = new InvalidGradeException("Exception when converting letter grade to numeric grade");
                 throw exception;
         }
         return gradeD;
@@ -173,13 +164,13 @@ public class Requirement {
         validGrades.add(Grade.F);
         for (CourseTaken cT : courses){
             if (validGrades.contains(cT.getGrade())) {
-            	try {
-            		totalGradePoints = totalGradePoints + (gradeToDouble(cT.getGrade()) * Integer.parseInt(cT.getCourse().getNumCredits()));
-            		totalCourseCredits = totalCourseCredits + Integer.parseInt(cT.getCourse().getNumCredits());
-            	} catch(InvalidGradeException e) {
-            		Exception exception = new InvalidGradeException(e);
+                try {
+                    totalGradePoints = totalGradePoints + (gradeToDouble(cT.getGrade()) * Integer.parseInt(cT.getCourse().getNumCredits()));
+                    totalCourseCredits = totalCourseCredits + Integer.parseInt(cT.getCourse().getNumCredits());
+                } catch(InvalidGradeException e) {
+                    Exception exception = new InvalidGradeException(e);
                     throw exception;
-            	}
+                }
             }
         }
         gpa = (totalGradePoints / totalCourseCredits);

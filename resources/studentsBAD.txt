@@ -1,0 +1,848 @@
+[
+  {
+    "department": "COMPUTER_SCIENCE",
+    "degreeSought": "MS_B",
+    "termBegan": {
+      "semester": "FALL",
+      "year": 2007
+    },
+    "advisors": [
+      {
+        "department": "COMPUTER_SCIENCE",
+        "firstName": "William",
+        "lastName": "Schuler"
+      }
+    ],
+    "committee": [
+      {
+        "department": "COMPUTER_SCIENCE",
+        "firstName": "Maria",
+        "lastName": "Gini"
+      },
+      {
+        "department": "COMPUTER_SCIENCE",
+        "firstName": "Daniel",
+        "lastName": "Boley"
+      },
+      {
+        "department": "MATH",
+        "firstName": "Richard",
+        "lastName": "McGehee"
+      }
+    ],
+    "notes": [
+      "None"
+    ]
+  },
+  {
+    "department": "COMPUTER_SCIENCE",
+    "degreeSought": "MS_B",
+    "termBegan": {
+      "semester": "FALL",
+      "year": 2009
+    },
+    "advisors": [
+      {
+        "department": "COMPUTER_SCIENCE",
+        "firstName": "William",
+        "lastName": "Schuler"
+      }
+    ],
+    "committee": [
+      {
+        "department": "COMPUTER_SCIENCE",
+        "firstName": "Maria",
+        "lastName": "Gini"
+      },
+      {
+        "department": "COMPUTER_SCIENCE",
+        "firstName": "Daniel",
+        "lastName": "Boley"
+      },
+      {
+        "department": "MATH",
+        "firstName": "Richard",
+        "lastName": "McGehee"
+      }
+    ],
+    "coursesTaken": [
+      {
+        "course": {
+          "name": "Advanced Algorithms and Data Structures",
+          "id": "csci5421",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "FALL",
+          "year": 2009
+        },
+        "grade": "A"
+      },
+      {
+        "course": {
+          "name": "Computer Science Colloquium",
+          "id": "csci8970",
+          "numCredits": "1"
+        },
+        "term": {
+          "semester": "FALL",
+          "year": 2009
+        },
+        "grade": "S"
+      },
+      {
+        "course": {
+          "name": "Machine Learning",
+          "id": "csci5525",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "FALL",
+          "year": 2009
+        },
+        "grade": "A"
+      },
+      {
+        "course": {
+          "name": "Operating Systems",
+          "id": "csci5103",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "FALL",
+          "year": 2009
+        },
+        "grade": "B"
+      },
+      {
+        "course": {
+          "name": "Programming Languages",
+          "id": "csci5106",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2010
+        },
+        "grade": "B"
+      },
+      {
+        "course": {
+          "name": "Distributed Systems",
+          "id": "csci5105",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2010
+        },
+        "grade": "A"
+      },
+      {
+        "course": {
+          "name": "Introduction to Compilers",
+          "id": "csci5161",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2010
+        },
+        "grade": "B"
+      },
+      {
+        "course": {
+          "name": "Geometry I",
+          "id": "math5335",
+          "numCredits": "4"
+        },
+        "term": {
+          "semester": "FALL",
+          "year": 2010
+        },
+        "grade": "A"
+      },
+      {
+        "course": {
+          "name": "Software Engineering I",
+          "id": "csci5801",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "FALL",
+          "year": 2010
+        },
+        "grade": "A"
+      },
+      {
+        "course": {
+          "name": "Artificial Intelligence I",
+          "id": "csci5511",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "FALL",
+          "year": 2010
+        },
+        "grade": "B"
+      },
+      {
+        "course": {
+          "name": "Software Foundations",
+          "id": "csci8980",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2011
+        },
+        "grade": "A"
+      },
+      {
+        "course": {
+          "name": "Geometry II",
+          "id": "math5336",
+          "numCredits": "4"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2011
+        },
+        "grade": "A"
+      },
+      {
+        "course": {
+          "name": "Plan B Project",
+          "id": "csci8760",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2011
+        },
+        "grade": "S"
+      }
+    ],
+    "milestonesSet": [
+      {
+        "milestone": "PROJECT_COMMITTEE_APPOINTED",
+        "term": {
+          "semester": "FALL",
+          "year": 2014
+        }
+      }
+    ],
+    "notes": [
+      "note1",
+      "note2"
+    ]
+  },
+  {
+    "department": "COMPUTER_SCIENCE",
+    "degreeSought": "PHD",
+    "termBegan": {
+      "semester": "SPRING",
+      "year": 2008
+    },
+    "advisors": [
+      {
+        "department": "COMPUTER_SCIENCE",
+        "firstName": "William",
+        "lastName": "Schuler"
+      }
+    ],
+    "committee": [
+      {
+        "department": "COMPUTER_SCIENCE",
+        "firstName": "Maria",
+        "lastName": "Gini"
+      },
+      {
+        "department": "COMPUTER_SCIENCE",
+        "firstName": "Daniel",
+        "lastName": "Boley"
+      },
+      {
+        "department": "MATH",
+        "firstName": "Richard",
+        "lastName": "McGehee"
+      }
+    ],
+    "coursesTaken": [
+      {
+        "course": {
+          "name": "Naptime",
+          "id": "nap5234",
+          "numCredits": "5"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2008
+        },
+        "grade": "B"
+      },
+      {
+        "course": {
+          "name": "Advanced Naptime",
+          "id": "nap8888",
+          "numCredits": "5"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2008
+        },
+        "grade": "B"
+      },
+      {
+        "course": {
+          "name": "Introduction to Research in Computer Science I",
+          "id": "csci8001",
+          "numCredits": "1"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2008
+        },
+        "grade": "A"
+      },
+      {
+        "course": {
+          "name": "Introduction to Research in Computer Science II",
+          "id": "csci8002",
+          "numCredits": "1"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2008
+        },
+        "grade": "F"
+      },
+      {
+        "course": {
+          "name": "Computer Science Colloquium",
+          "id": "csci8970",
+          "numCredits": "1"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2008
+        },
+        "grade": "S"
+      },
+      {
+        "course": {
+          "name": "Thesis Credit: Doctoral",
+          "id": "csci8888",
+          "numCredits": "10"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2008
+        },
+        "grade": "S"
+      },
+      {
+        "course": {
+          "name": "Thesis Credit: Doctoral",
+          "id": "csci8888",
+          "numCredits": "12"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2008
+        },
+        "grade": "S"
+      },
+      {
+        "course": {
+          "name": "Advanced Algorithms and Data Structures",
+          "id": "csci5421",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2008
+        },
+        "grade": "A"
+      },
+      {
+        "course": {
+          "name": "Machine Learning",
+          "id": "csci5525",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2008
+        },
+        "grade": "A"
+      },
+      {
+        "course": {
+          "name": "Operating System",
+          "id": "csci5103",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "SUMMER",
+          "year": 2008
+        },
+        "grade": "B"
+      },
+      {
+        "course": {
+          "name": "Programming Languages",
+          "id": "csci5106",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "FALL",
+          "year": 2008
+        },
+        "grade": "C"
+      },
+      {
+        "course": {
+          "name": "Introduction to Distributed Systems",
+          "id": "csci5105",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "FALL",
+          "year": 2008
+        },
+        "grade": "D"
+      },
+      {
+        "course": {
+          "name": "Introduction to Compilers",
+          "id": "csci5161",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2009
+        },
+        "grade": "F"
+      },
+      {
+        "course": {
+          "name": "Data Communications and Computer Networks",
+          "id": "csci5211",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2009
+        },
+        "grade": "S"
+      },
+      {
+        "course": {
+          "name": "Software Engineering I",
+          "id": "csci5801",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2009
+        },
+        "grade": "N"
+      },
+      {
+        "course": {
+          "name": "Artificial Intelligence I",
+          "id": "csci5511",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "FALL",
+          "year": 2009
+        },
+        "grade": "_"
+      },
+      {
+        "course": {
+          "name": "Principles of Database Systems",
+          "id": "csci5707",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "FALL",
+          "year": 2009
+        },
+        "grade": "A"
+      },
+      {
+        "course": {
+          "name": "Artificial Intelligence II",
+          "id": "csci5512",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2010
+        },
+        "grade": "A"
+      }
+    ],
+    "milestonesSet": [
+      {
+        "milestone": "PRELIM_COMMITTEE_APPOINTED",
+        "term": {
+          "semester": "FALL",
+          "year": 2014
+        }
+      }
+    ],
+    "notes": [
+      "note1",
+      "note2"
+    ]
+  },
+  {
+    "department": "COMPUTER_SCIENCE",
+    "degreeSought": "MS_B",
+    "termBegan": {
+      "semester": "FALL",
+      "year": 2012
+    },
+    "advisors": [
+      {
+        "department": "COMPUTER_SCIENCE",
+        "firstName": "Mats",
+        "lastName": "Heimdahl"
+      }
+    ],
+    "notes": [
+      "note1",
+      "note2",
+      "note3"
+    ]
+  },
+  {
+    "department": "MATH",
+    "degreeSought": "PHD",
+    "termBegan": {
+      "year": 2008
+    },
+    "advisors": [
+      {
+        "department": "MATH",
+        "firstName": "Adams",
+        "lastName": "Scot"
+      }
+    ],
+    "committee": [
+      {
+        "department": "MATH",
+        "firstName": "Adams",
+        "lastName": "Scot"
+      },
+      {
+        "department": "MATH",
+        "firstName": "Anderson",
+        "lastName": "Greg"
+      },
+      {
+        "department": "MATH",
+        "firstName": "Foo",
+        "lastName": "Jasmine"
+      }
+    ],
+    "coursesTaken": [
+      {
+        "course": {
+          "name": "Enumerative Combinatorics",
+          "id": "math5705",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2008
+        },
+        "grade": "B"
+      },
+      {
+        "course": {
+          "name": "Tutorial in Advanced Mathematics",
+          "id": "math5900",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2008
+        },
+        "grade": "B"
+      },
+      null
+    ],
+    "milestonesSet": [
+      {
+        "milestone": "THESIS_SUBMITTED",
+        "term": {
+          "semester": "FALL",
+          "year": 2014
+        }
+      }
+    ],
+    "notes": [
+      "note1",
+      "note2"
+    ]
+  },
+  {
+    "department": "COMPUTER_SCIENCE",
+    "degreeSought": "MS_A",
+    "termBegan": {
+      "semester": "FALL",
+      "year": 2012
+    },
+    "advisors": [
+      {
+        "department": "COMPUTER_SCIENCE",
+        "firstName": "Joseph",
+        "lastName": "Konstan"
+      }
+    ],
+    "committee": [
+      {
+        "department": "COMPUTER_SCIENCE",
+        "firstName": "Joseph",
+        "lastName": "Konstan"
+      },
+      {
+        "department": "COMPUTER_SCIENCE",
+        "firstName": "Loren",
+        "lastName": "Terveen"
+      },
+      {
+        "department": "COMPUTER_SCIENCE",
+        "firstName": "Brent",
+        "lastName": "Hecht"
+      }
+    ],
+    "coursesTaken": [
+      {
+        "course": {
+          "name": "Computer Science Colloquium",
+          "id": "csci8970",
+          "numCredits": "1"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2008
+        },
+        "grade": "S"
+      },
+      {
+        "course": {
+          "name": "Advanced Algorithms and Data Structures",
+          "id": "csci5421",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2008
+        },
+        "grade": "A"
+      },
+      {
+        "course": {
+          "name": "Machine Learning",
+          "id": "csci5525",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2008
+        },
+        "grade": "A"
+      },
+      {
+        "course": {
+          "name": "Operating System",
+          "id": "csci5103",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "SUMMER",
+          "year": 2008
+        },
+        "grade": "B"
+      },
+      {
+        "course": {
+          "name": "Introduction to Distributed Systems",
+          "id": "csci5105",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "FALL",
+          "year": 2008
+        },
+        "grade": "D"
+      },
+      {
+        "course": {
+          "name": "Software Engineering I",
+          "id": "csci5801",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2009
+        },
+        "grade": "N"
+      },
+      {
+        "course": {
+          "name": "User Interface Design",
+          "id": "csci5115",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "FALL",
+          "year": 2009
+        },
+        "grade": "_"
+      }
+    ],
+    "milestonesSet": [
+      {
+        "milestone": "DPF_SUBMITTED",
+        "term": {
+          "semester": "FALL",
+          "year": 2013
+        }
+      },
+      {
+        "milestone": "DPF_APPROVED",
+        "term": {
+          "semester": "FALL",
+          "year": 2013
+        }
+      },
+      {
+        "milestone": "THESIS_COMMITTEE_APPOINTED",
+        "term": {
+          "semester": "SPRING",
+          "year": 2014
+        }
+      }
+    ],
+    "notes": [
+      "note1",
+      "note2",
+      "note3"
+    ]
+  },
+  {
+    "department": "COMPUTER_SCIENCE",
+    "degreeSought": "MS_C",
+    "termBegan": {
+      "semester": "FALL",
+      "year": 2013
+    },
+    "advisors": [
+      {
+        "department": "COMPUTER_SCIENCE",
+        "firstName": "Loren",
+        "lastName": "Terveen"
+      }
+    ],
+    "committee": [
+      {
+        "department": "COMPUTER_SCIENCE",
+        "firstName": "Lana",
+        "lastName": "Yarsh"
+      },
+      {
+        "department": "COMPUTER_SCIENCE",
+        "firstName": "Loren",
+        "lastName": "Terveen"
+      },
+      {
+        "department": "COMPUTER_SCIENCE",
+        "firstName": "Brent",
+        "lastName": "Hecht"
+      }
+    ],
+    "coursesTaken": [
+      {
+        "course": {
+          "name": "Advanced Algorithms and Data Structures",
+          "id": "csci5421",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2008
+        },
+        "grade": "A"
+      },
+      {
+        "course": {
+          "name": "Operating System",
+          "id": "csci5103",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "SUMMER",
+          "year": 2008
+        },
+        "grade": "B"
+      },
+      {
+        "course": {
+          "name": "Introduction to Distributed Systems",
+          "id": "csci5105",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "FALL",
+          "year": 2008
+        },
+        "grade": "D"
+      },
+      {
+        "course": {
+          "name": "Software Engineering I",
+          "id": "csci5801",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "SPRING",
+          "year": 2009
+        },
+        "grade": "N"
+      },
+      {
+        "course": {
+          "name": "User Interface Design",
+          "id": "csci5115",
+          "numCredits": "3"
+        },
+        "term": {
+          "semester": "FALL",
+          "year": 2009
+        },
+        "grade": "_"
+      }
+    ],
+    "milestonesSet": [
+      {
+        "milestone": "DPF_SUBMITTED",
+        "term": {
+          "semester": "FALL",
+          "year": 2014
+        }
+      }
+    ],
+    "notes": [
+      "note1",
+      "note2",
+      "note3"
+    ]
+  }
+]
