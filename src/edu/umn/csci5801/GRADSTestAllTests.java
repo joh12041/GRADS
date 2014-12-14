@@ -176,7 +176,7 @@ public class GRADSTestAllTests extends TestCase {
         try {
             GRADS grads = new GRADS();
             grads.loadUsers("resources/users.txt");
-            grads.loadRecords("resources/courses.txt");
+            grads.loadRecords("resources/students_original.txt");
             grads.setUser("nguy0621");
             grads.getStudentIDs();
             fail("Should throw Invalid User Exception");

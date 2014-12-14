@@ -133,11 +133,12 @@ public class GRADSTestBasedOnAssignment2 extends TestCase {
     }
 
     @Test
+    
     public void testStudentGetStudentIDs() throws Exception {
         try {
             GRADS grads = new GRADS();
             grads.loadUsers("resources/users.txt");
-            grads.loadRecords("resources/courses.txt");
+            grads.loadRecords("resources/students_original.txt");
             grads.setUser("nguy0621");
             grads.getStudentIDs();
             fail("Should throw Invalid User Exception");
@@ -167,7 +168,6 @@ public class GRADSTestBasedOnAssignment2 extends TestCase {
 
     //@Test(expected = InvalidUserException.class)
     //@Test(expected = Exception.class)
-    //Needs try/catch clause
     @Test(expected = IOException.class)
     public void testStudentGetOtherTranscript() throws Exception {
         try {
